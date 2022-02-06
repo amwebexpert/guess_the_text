@@ -1,6 +1,6 @@
 # guess_the_text
 
-Words guess game app
+Words guess game app in Flutter
 
 
 ## Usefull command lines
@@ -23,7 +23,6 @@ Words guess game app
     flutter run -d "iPhone 13"
     flutter run -d "SM A505W"
 
-
 #### BE Api
 
 - https://amw-hangman-api.herokuapp.com/api/v1/categories
@@ -31,7 +30,9 @@ Words guess game app
 
 
 #### App name update
-    https://stackoverflow.com/a/56039224/704681
+
+- https://stackoverflow.com/a/56039224/704681
+
 
 #### App icons generation
 
