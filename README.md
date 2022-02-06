@@ -5,12 +5,11 @@ Words guess game app in Flutter
 
 ## Roadmap
 
-[ ] Introduce Lottie animations, see https://pub.dev/packages/lottie
-[ ] Add about page informations about the native version but also about the BE API
-[ ] Preferences page
-[ ] Dark theme mode
-[ ] Add I18N support
-
+- Introduce Lottie animations, see https://pub.dev/packages/lottie
+- Add about page informations about the native version but also about the BE API
+- Preferences page
+- Dark theme mode
+- Add I18N support
 
 ## Usefull command lines
 
@@ -23,6 +22,11 @@ Words guess game app in Flutter
     flutter pub get
     flutter clean
     flutter run
+
+## Build & Publish to Google Play
+
+- https://docs.flutter.dev/deployment/android
+
 
 ## Start Flutter app on Simulator or a specific device
 
