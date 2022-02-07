@@ -5,6 +5,7 @@ Words guess game app in Flutter
 
 ## Roadmap
 
+- Add GuessTheText privacy policy HTML page to BE Server (similar to this http://amwebexpert.users.sourceforge.net/#/privacy-policies/csv-viewer)
 - Introduce Lottie animations, see https://pub.dev/packages/lottie
 - Add about page informations about the native version but also about the BE API
 - Preferences page
@@ -19,14 +20,18 @@ Words guess game app in Flutter
     flutter doctor
     which flutter
 
-    flutter pub get
     flutter clean
+    flutter pub get
     flutter run
 
 ## Build & Publish to Google Play
 
 - https://docs.flutter.dev/deployment/android
+- https://github.com/flutter/flutter/issues/64334
 
+    flutter clean,
+    flutter pub get,
+    flutter build appbundle --release --no-tree-shake-icons
 
 ## Start Flutter app on Simulator or a specific device
 
