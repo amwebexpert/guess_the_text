@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AboutWidget extends StatelessWidget {
+  const AboutWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    const String title = 'About this application...';
+    String title = AppLocalizations.of(context)!.about;
     const String backgroundImage =
         'assets/images/background-pexels-pixabay-461940.jpg';
 
@@ -14,7 +17,7 @@ class AboutWidget extends StatelessWidget {
           backgroundColor: Colors.orange[700],
         ),
         body: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
             image: AssetImage(backgroundImage),
             fit: BoxFit.cover,
@@ -25,7 +28,7 @@ class AboutWidget extends StatelessWidget {
               Center(
                 child: Text(
                   title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18,
                     fontFamily: 'IndieFlower',
                   ),

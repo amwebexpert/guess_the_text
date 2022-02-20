@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'package:guess_the_text/services/api_category.dart';
 import 'package:guess_the_text/services/hangman_service.dart';
 
 class CategoriesWidget extends StatelessWidget {
-  final HangmanService service = HangmanService.singleton;
+  const CategoriesWidget({Key? key}) : super(key: key);
 
   void loadCategory(BuildContext context, index) async {
+    final HangmanService service = HangmanService.singleton;
+
     List<ApiCategory> categories = service.categories;
     ApiCategory category = categories[index];
 
@@ -20,12 +24,13 @@ class CategoriesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const String title = 'About this application...';
+    final HangmanService service = HangmanService.singleton;
+
     List<ApiCategory> categories = service.categories;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(AppLocalizations.of(context)!.categories),
         centerTitle: true,
         backgroundColor: Colors.orange[700],
       ),
@@ -38,7 +43,7 @@ class CategoriesWidget extends StatelessWidget {
                 child: ListTile(
                   onTap: () => loadCategory(context, index),
                   title: Text(categories[index].name),
-                  leading: Icon(Icons.refresh),
+                  leading: const Icon(Icons.refresh),
                 ),
               ),
             );

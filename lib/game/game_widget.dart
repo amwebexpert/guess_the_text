@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'package:guess_the_text/game/letters-widget.dart';
 import 'package:guess_the_text/game/work_session_conclusion_widget.dart';
 import 'package:guess_the_text/game/work_session_text_widget.dart';
@@ -38,7 +40,7 @@ class _GameWidgetState extends State<GameWidget> {
     switch (value) {
       case 'Categories':
         dynamic result = await Navigator.pushNamed(context, '/categories');
-        print('new category: ${result['name']}');
+        print('new category: ${result.toString()}');
         reset();
         break;
       case 'A propos...':
@@ -59,7 +61,7 @@ class _GameWidgetState extends State<GameWidget> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Le pendu numérique'),
+        title: Text(AppLocalizations.of(context)!.appTitle),
         centerTitle: true,
         backgroundColor: Colors.orange[700],
         actions: <Widget>[
