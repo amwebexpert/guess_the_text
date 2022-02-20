@@ -6,6 +6,8 @@ import 'package:guess_the_text/model/word_to_guess.dart';
 import 'package:guess_the_text/services/hangman_service.dart';
 
 class GameWidget extends StatefulWidget {
+  const GameWidget({Key? key}) : super(key: key);
+
   @override
   _GameWidgetState createState() => _GameWidgetState();
 }
@@ -47,7 +49,9 @@ class _GameWidgetState extends State<GameWidget> {
 
   @override
   Widget build(BuildContext context) {
-    data = data.isEmpty ? ModalRoute.of(context)!.settings.arguments as Map<dynamic, dynamic> : data;
+    data = data.isEmpty
+        ? ModalRoute.of(context)!.settings.arguments as Map<dynamic, dynamic>
+        : data;
     print(data['categories']);
 
     String currentStateImg =

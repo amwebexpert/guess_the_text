@@ -3,6 +3,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart' as spinner;
 import 'package:guess_the_text/services/hangman_service.dart';
 
 class LoadingWidget extends StatefulWidget {
+  const LoadingWidget({Key? key}) : super(key: key);
+
   @override
   _LoadingWidgetState createState() => _LoadingWidgetState();
 }
@@ -25,7 +27,6 @@ class _LoadingWidgetState extends State<LoadingWidget> {
   }
 
   @override
-  Widget build(BuildContext context) => const Center(
-        child: spinner.SpinKitWave(color: Colors.orange, size: 50)
-    );
-  }
+  Widget build(BuildContext context) =>
+      const Center(child: spinner.SpinKitWave(color: Colors.orange, size: 50));
+}
