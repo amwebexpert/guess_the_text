@@ -17,6 +17,9 @@ class PreferencesStore {
   // actions
   late Action toggleLocale;
 
+  /// factory constructor, allows the singleton pattern. Anywhere in the app we can do things like the following:
+  /// - PreferencesStore().toggleLocale();
+  /// only one instance of the store will be created
   factory PreferencesStore() {
     _instance ??= PreferencesStore._();
     return _instance!;
@@ -27,9 +30,9 @@ class PreferencesStore {
   }
 
   void _toggleLocale() {
+    String actualLanguageCode = locale.languageCode;
     String newLanguageCode = locale.languageCode == 'en' ? 'fr' : 'en';
-    print(
-        "______________ changing language from [${locale.languageCode}] to [$newLanguageCode]");
+    print("Locale [$actualLanguageCode] ==> [$newLanguageCode]");
     locale = Locale(newLanguageCode);
   }
 }
