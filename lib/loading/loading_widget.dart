@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart' as spinner;
+import 'package:lottie/lottie.dart';
 import 'package:guess_the_text/services/hangman_service.dart';
 
 class LoadingWidget extends StatefulWidget {
@@ -27,6 +27,8 @@ class _LoadingWidgetState extends State<LoadingWidget> {
   }
 
   @override
-  Widget build(BuildContext context) =>
-      const Center(child: spinner.SpinKitWave(color: Colors.orange, size: 50));
+  Widget build(BuildContext context) => Center(
+        child:
+            Lottie.asset('assets/animations/loading/23486-reading-a-book.json'),
+      );
 }
