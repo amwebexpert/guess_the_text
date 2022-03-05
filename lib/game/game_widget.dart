@@ -1,5 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'package:flutter_spinkit/flutter_spinkit.dart' as spinner;
 
 import 'package:guess_the_text/game/letters-widget.dart';
 import 'package:guess_the_text/game/work_session_conclusion_widget.dart';
@@ -18,6 +22,7 @@ class _GameWidgetState extends State<GameWidget> {
   final HangmanService service = HangmanService.singleton;
   late TextToGuess textToGuess;
   Map data = {};
+  bool isShuffling = false;
 
   @override
   void initState() {
@@ -28,8 +33,17 @@ class _GameWidgetState extends State<GameWidget> {
   }
 
   void reset() {
-    String newText = service.shuffle().normalized;
-    setState(() => textToGuess = TextToGuess(characters: newText));
+    setState(() {
+      isShuffling = true;
+    });
+
+    const duration = Duration(milliseconds: 400);
+    Timer(duration, () {
+      setState(() => ({
+            textToGuess = TextToGuess(characters: service.shuffle().normalized),
+            isShuffling = false
+          }));
+    });
   }
 
   void tryLetter(String c) {
@@ -82,7 +96,12 @@ class _GameWidgetState extends State<GameWidget> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            WordSessionText(textToGuess: textToGuess, isHiddenMode: true),
+            isShuffling
+                ? const Padding(
+                    padding: EdgeInsets.all(20.0),
+                    child: spinner.SpinKitWave(color: Colors.orange, size: 30),
+                  )
+                : WordSessionText(textToGuess: textToGuess, isHiddenMode: true),
             Expanded(child: Image.asset(currentStateImg)),
             textToGuess.isGameOver()
                 ? WordSessionConclusion(textToGuess: textToGuess)
