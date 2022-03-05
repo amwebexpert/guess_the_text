@@ -14,12 +14,12 @@ class PreferencesStore {
   Locale get locale => _locale.value;
   set locale(Locale newValue) => _locale.value = newValue;
 
-  // actions
+  // actions ()
   late Action toggleLocale;
 
-  /// factory constructor, allows the singleton pattern. Anywhere in the app we can do things like the following:
-  /// - PreferencesStore().toggleLocale();
-  /// only one instance of the store will be created
+  // factory constructor, allows the singleton pattern. Anywhere in the app we can do things like the following:
+  // - PreferencesStore().toggleLocale();
+  // only one instance of the store will be created
   factory PreferencesStore() {
     _instance ??= PreferencesStore._();
     return _instance!;
