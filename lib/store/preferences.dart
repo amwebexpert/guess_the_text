@@ -4,6 +4,8 @@ import 'dart:ui';
 import 'package:mobx/mobx.dart';
 
 class PreferencesStore {
+  static PreferencesStore? _instance;
+
   final Observable<Locale> _locale = Observable(
       Locale(Platform.localeName.split('_')[0]),
       name: 'User prefered locale');
@@ -15,7 +17,12 @@ class PreferencesStore {
   // actions
   late Action toggleLocale;
 
-  PreferencesStore() {
+  factory PreferencesStore() {
+    _instance ??= PreferencesStore._();
+    return _instance!;
+  }
+
+  PreferencesStore._() {
     toggleLocale = Action(_toggleLocale);
   }
 
