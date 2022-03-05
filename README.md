@@ -61,6 +61,12 @@ Words guess game app in Flutter
 - https://stackoverflow.com/a/56039224/704681
 
 
+#### App localization
+
+- https://docs.flutter.dev/development/accessibility-and-localization/internationalization
+- https://stackoverflow.com/a/62825776/704681
+
+
 #### App icons generation
 
 - https://pub.dev/packages/flutter_launcher_icons
@@ -80,3 +86,8 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+
+## Multiple git repository
+
+- https://stackoverflow.com/questions/3225862/multiple-github-accounts-ssh-config
