@@ -20,10 +20,9 @@ class PreferencesStore {
   }
 
   void _toggleLocale() {
-    print("______________ changing language !!!");
-    print(locale.languageCode);
     String newLanguageCode = locale.languageCode == 'en' ? 'fr' : 'en';
-    print(newLanguageCode);
+    print(
+        "______________ changing language from [${locale.languageCode}] to [$newLanguageCode]");
     locale = Locale(newLanguageCode);
   }
 }

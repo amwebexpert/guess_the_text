@@ -25,11 +25,9 @@ class _HangmanAppState extends State<HangmanApp> {
 
   @override
   Widget build(BuildContext context) {
-    Timer(const Duration(seconds: 7), () {
-      preferences.toggleLocale();
-    });
-
     return Observer(builder: (BuildContext context) {
+      Timer(const Duration(seconds: 3), preferences.toggleLocale);
+
       return MaterialApp(
         // debugShowCheckedModeBanner: false, // uncomment to take screen captures without the banner
         localizationsDelegates: AppLocalizations.localizationsDelegates,
