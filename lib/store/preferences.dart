@@ -25,6 +25,7 @@ class PreferencesStore {
     return _instance!;
   }
 
+  // private constructor called only once by factory
   PreferencesStore._() {
     toggleLocale = Action(_toggleLocale);
   }
