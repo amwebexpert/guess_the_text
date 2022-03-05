@@ -50,7 +50,7 @@ Words guess game app in Flutter
     flutter run -d "iPhone 13"
     flutter run -d "SM A505W"
 
-#### BE Api
+#### BE Api (deployed on Heroku)
 
 - https://amw-hangman-api.herokuapp.com/api/v1/categories
 - https://amw-hangman-api.herokuapp.com/api/v1/categories/580b0004-d581-49d1-9c84-bddffdb5f3fd/texts
