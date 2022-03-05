@@ -26,7 +26,7 @@ class _HangmanAppState extends State<HangmanApp> {
   @override
   Widget build(BuildContext context) {
     Timer(const Duration(seconds: 7), () {
-      preferences.triggerDelayedLanguageChange();
+      preferences.toggleLocale();
     });
 
     return Observer(builder: (BuildContext context) {
