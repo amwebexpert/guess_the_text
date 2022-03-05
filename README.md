@@ -5,15 +5,21 @@ Words guess game app in Flutter
 
 ## Roadmap
 
+- Store: https://pub.dev/packages/flutter_mobx
+- Add I18N support, see https://pub.dev/packages/easy_localization
 - Add GuessTheText privacy policy HTML page to BE Server (similar to this http://amwebexpert.users.sourceforge.net/#/privacy-policies/csv-viewer)
 - Add bgImage and set the native top status bar color (ref video #33)
 - Add .pop and async await navigation approach (ref video #35)
 - Apply Flutter Cookbook official site section patterns
 - Introduce Lottie animations, see https://pub.dev/packages/lottie
 - Add about page informations about the native version but also about the BE API
-- Preferences page
+- Preferences page & shared preferences
 - Dark theme mode
-- Add I18N support
+- Example of Stack layout
+- Animations: Tweens, Physic-based
+- Icon of app inside the appBar
+- Start loading with in-app storage, and in background download other categories
+- flutter build web (c.f. result in build/web/index.html)
 
 ## Usefull command lines
 
