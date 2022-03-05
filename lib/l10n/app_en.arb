@@ -1,5 +1,6 @@
 {
   "about": "About this app",
   "appTitle": "Guess the text",
-  "categories": "Categories"
+  "categories": "Categories",
+  "category": "Category"
 }
