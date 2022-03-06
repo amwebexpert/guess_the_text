@@ -98,7 +98,7 @@ class _GameWidgetState extends State<GameWidget> {
           children: <Widget>[
             isShuffling
                 ? const Padding(
-                    padding: EdgeInsets.all(20.0),
+                    padding: EdgeInsets.fromLTRB(0, 40, 0, 7),
                     child: spinner.SpinKitWave(color: Colors.orange, size: 30),
                   )
                 : WordSessionText(textToGuess: textToGuess, isHiddenMode: true),
