@@ -59,7 +59,7 @@ class HangmanService {
   }
 
   ApiText shuffle() {
-    int i = Random().nextInt(entries.length);
+    int i = Random(DateTime.now().millisecondsSinceEpoch).nextInt(entries.length);
     return entries.elementAt(i);
   }
 }

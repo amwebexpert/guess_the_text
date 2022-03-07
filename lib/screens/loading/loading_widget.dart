@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:guess_the_text/services/hangman_service.dart';
 
+import 'animations.dart';
+
 class LoadingWidget extends StatefulWidget {
   const LoadingWidget({Key? key}) : super(key: key);
 
@@ -22,13 +24,11 @@ class _LoadingWidgetState extends State<LoadingWidget> {
     await service.loadCategories();
     await service.loadData();
 
-    Navigator.pushReplacementNamed(context, '/game',
-        arguments: {'categories': service.categories});
+    Navigator.pushReplacementNamed(context, '/game', arguments: {'categories': service.categories});
   }
 
   @override
   Widget build(BuildContext context) => Center(
-        child:
-            Lottie.asset('assets/animations/loading/23486-reading-a-book.json'),
+        child: Lottie.asset(getAnimationPath()),
       );
 }
