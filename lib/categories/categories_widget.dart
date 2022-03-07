@@ -8,8 +8,7 @@ class CategoriesWidget extends StatelessWidget {
   const CategoriesWidget({Key? key}) : super(key: key);
 
   void loadCategory(BuildContext context, index) async {
-    final HangmanService service = HangmanService.singleton;
-
+    final HangmanService service = HangmanService();
     List<ApiCategory> categories = service.categories;
     ApiCategory category = categories[index];
 
@@ -24,9 +23,7 @@ class CategoriesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final HangmanService service = HangmanService.singleton;
-
-    List<ApiCategory> categories = service.categories;
+    List<ApiCategory> categories = HangmanService().categories;
 
     return Scaffold(
       appBar: AppBar(

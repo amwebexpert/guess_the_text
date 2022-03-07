@@ -4,7 +4,8 @@ import 'dart:ui';
 import 'package:mobx/mobx.dart';
 
 class PreferencesStore {
-  static PreferencesStore? _instance;
+  static final PreferencesStore _instance =
+      PreferencesStore._privateConstructor();
 
   final Observable<Locale> _locale = Observable(
       Locale(Platform.localeName.split('_')[0]),
@@ -17,16 +18,9 @@ class PreferencesStore {
   // actions ()
   late Action toggleLocale;
 
-  // factory constructor, allows the singleton pattern. Anywhere in the app we can do things like the following:
-  // - PreferencesStore().toggleLocale();
-  // only one instance of the store will be created
-  factory PreferencesStore() {
-    _instance ??= PreferencesStore._();
-    return _instance!;
-  }
+  factory PreferencesStore() => _instance;
 
-  // private constructor called only once by factory
-  PreferencesStore._() {
+  PreferencesStore._privateConstructor() {
     toggleLocale = Action(_toggleLocale);
   }
 

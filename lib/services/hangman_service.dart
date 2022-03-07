@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 import 'api_text.dart';
 
 class HangmanService {
-  static final HangmanService singleton = HangmanService();
+  static final HangmanService _instance = HangmanService._privateConstructor();
 
   static const String hostName = 'amw-hangman-api.herokuapp.com';
   static const String apiPathCategories = '/api/v1/categories';
@@ -15,6 +15,9 @@ class HangmanService {
   List<ApiCategory> categories = [];
   late String selectedCategoryUuid;
   List<ApiText> entries = [];
+
+  factory HangmanService() => _instance;
+  HangmanService._privateConstructor();
 
   Future<void> loadCategories() async {
     try {

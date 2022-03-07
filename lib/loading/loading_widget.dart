@@ -10,7 +10,7 @@ class LoadingWidget extends StatefulWidget {
 }
 
 class _LoadingWidgetState extends State<LoadingWidget> {
-  HangmanService service = HangmanService.singleton;
+  final HangmanService service = HangmanService();
 
   @override
   void initState() {

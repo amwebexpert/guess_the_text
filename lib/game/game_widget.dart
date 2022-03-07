@@ -21,7 +21,7 @@ class GameWidget extends StatefulWidget {
 }
 
 class _GameWidgetState extends State<GameWidget> {
-  final HangmanService service = HangmanService.singleton;
+  final HangmanService service = HangmanService();
   late TextToGuess textToGuess;
   Map data = {};
   bool isShuffling = false;
