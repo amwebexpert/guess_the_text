@@ -4,16 +4,13 @@ import 'dart:ui';
 import 'package:mobx/mobx.dart';
 
 class PreferencesStore {
-  static final PreferencesStore _instance =
-      PreferencesStore._privateConstructor();
+  static final PreferencesStore _instance = PreferencesStore._privateConstructor();
 
-  final Observable<Locale> _locale = Observable(
-      Locale(Platform.localeName.split('_')[0]),
-      name: 'User prefered locale');
+  final Observable<Locale> _locale =
+      Observable(Locale(Platform.localeName.split('_')[0]), name: 'User prefered locale');
 
-  // getter/setter wrappers
+  // getter wrappers
   Locale get locale => _locale.value;
-  set locale(Locale newValue) => _locale.value = newValue;
 
   // actions ()
   late Action toggleLocale;
@@ -28,6 +25,6 @@ class PreferencesStore {
     String actualLanguageCode = locale.languageCode;
     String newLanguageCode = locale.languageCode == 'en' ? 'fr' : 'en';
     print("Locale [$actualLanguageCode] ==> [$newLanguageCode]");
-    locale = Locale(newLanguageCode);
+    _locale.value = Locale(newLanguageCode);
   }
 }
