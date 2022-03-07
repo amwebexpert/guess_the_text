@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../model/word_to_guess.dart';
+import 'package:guess_the_text/model/word_to_guess.dart';
 
 class WordSessionText extends StatelessWidget {
   final TextToGuess textToGuess;
@@ -10,7 +9,7 @@ class WordSessionText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String text = this.isHiddenMode ? textToGuess.wordGame() : textToGuess.characters;
+    String text = isHiddenMode ? textToGuess.wordGame() : textToGuess.characters;
 
     return Text(
       text,

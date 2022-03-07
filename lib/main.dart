@@ -3,10 +3,10 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'package:guess_the_text/categories/categories_widget.dart';
-import 'package:guess_the_text/game/game_widget.dart';
-import 'package:guess_the_text/loading/loading_widget.dart';
-import 'package:guess_the_text/about/about_widget.dart';
+import 'package:guess_the_text/screens/categories/categories_widget.dart';
+import 'package:guess_the_text/screens/game/game_widget.dart';
+import 'package:guess_the_text/screens/loading/loading_widget.dart';
+import 'package:guess_the_text/screens/about/about_widget.dart';
 import 'package:guess_the_text/store/preferences.dart';
 
 void main() => runApp(const HangmanApp());

@@ -5,13 +5,13 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_spinkit/flutter_spinkit.dart' as spinner;
 
-import 'package:guess_the_text/game/letters-widget.dart';
-import 'package:guess_the_text/game/work_session_conclusion_widget.dart';
-import 'package:guess_the_text/game/work_session_text_widget.dart';
+import 'package:guess_the_text/screens/game/letters_widget.dart';
+import 'package:guess_the_text/screens/game/work_session_conclusion_widget.dart';
+import 'package:guess_the_text/screens/game/work_session_text_widget.dart';
 import 'package:guess_the_text/model/word_to_guess.dart';
 import 'package:guess_the_text/services/hangman_service.dart';
 
-import '../app-menu/app_menu.dart';
+import 'app-menu/app_menu.dart';
 
 class GameWidget extends StatefulWidget {
   const GameWidget({Key? key}) : super(key: key);
@@ -41,10 +41,9 @@ class _GameWidgetState extends State<GameWidget> {
 
     const duration = Duration(milliseconds: 400);
     Timer(duration, () {
-      setState(() => ({
-            textToGuess = TextToGuess(characters: service.shuffle().normalized),
-            isShuffling = false
-          }));
+      var newText = service.shuffle().normalized;
+      print('new text $newText');
+      setState(() => ({textToGuess = TextToGuess(characters: newText), isShuffling = false}));
     });
   }
 
@@ -55,8 +54,7 @@ class _GameWidgetState extends State<GameWidget> {
   @override
   Widget build(BuildContext context) {
     var localizations = AppLocalizations.of(context)!;
-    String currentStateImg =
-        "assets/images/${textToGuess.currentStateImage()}.png";
+    String currentStateImg = "assets/images/${textToGuess.currentStateImage()}.png";
 
     return Scaffold(
       appBar: AppBar(
@@ -77,8 +75,7 @@ class _GameWidgetState extends State<GameWidget> {
             Expanded(child: Image.asset(currentStateImg)),
             textToGuess.isGameOver()
                 ? WordSessionConclusion(textToGuess: textToGuess)
-                : LettersWidget(
-                    textToGuess: textToGuess, onLetterPressed: tryLetter),
+                : LettersWidget(textToGuess: textToGuess, onLetterPressed: tryLetter),
           ],
         ),
       ),

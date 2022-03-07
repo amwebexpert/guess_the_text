@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppMenu extends StatelessWidget {
-  Function() resetState;
+  final Function() resetState;
 
-  AppMenu({
+  const AppMenu({
     Key? key,
     required this.resetState,
   }) : super(key: key);
@@ -25,12 +25,14 @@ class AppMenu extends StatelessWidget {
           children: [
             const SizedBox(
               height: 80,
-              child: DrawerHeader(
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        fit: BoxFit.contain,
-                        image: AssetImage('assets/images/drawer-header.png'))),
-                child: Text(''),
+              child: Padding(
+                padding: EdgeInsets.all(100.0),
+                child: DrawerHeader(
+                  decoration: BoxDecoration(
+                      image:
+                          DecorationImage(fit: BoxFit.contain, image: AssetImage('assets/images/drawer-header.png'))),
+                  child: Text(''),
+                ),
               ),
             ),
             ListTile(

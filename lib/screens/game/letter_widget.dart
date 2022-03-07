@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-
-import '../model/word_to_guess.dart';
+import 'package:guess_the_text/model/word_to_guess.dart';
 
 class LetterWidget extends StatelessWidget {
   final void Function(String c) onLetterPressed;
   final TextToGuess textToGuess;
   final String letter;
 
-  const LetterWidget({Key? key, required this.letter, required this.textToGuess, required this.onLetterPressed}) : super(key: key);
+  const LetterWidget({Key? key, required this.letter, required this.textToGuess, required this.onLetterPressed})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
