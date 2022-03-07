@@ -15,6 +15,7 @@ Words guess game app in Flutter
 - Preferences page & shared preferences
 - Dark theme mode
 - Example of Stack layout
+- Add Typography Widget and use it for for all Text()
 - Animations: Tweens, Physic-based
 - Icon of app inside the appBar
 - Start loading with in-app storage, and in background download other categories

@@ -11,6 +11,8 @@ import 'package:guess_the_text/game/work_session_text_widget.dart';
 import 'package:guess_the_text/model/word_to_guess.dart';
 import 'package:guess_the_text/services/hangman_service.dart';
 
+import '../app-menu/app_menu.dart';
+
 class GameWidget extends StatefulWidget {
   const GameWidget({Key? key}) : super(key: key);
 
@@ -50,47 +52,17 @@ class _GameWidgetState extends State<GameWidget> {
     setState(() => textToGuess.tryChar(c: c));
   }
 
-  void appBarMenuItemClick(String value) async {
-    switch (value) {
-      case 'Categories':
-        dynamic result = await Navigator.pushNamed(context, '/categories');
-        print('new category: ${result.toString()}');
-        reset();
-        break;
-      case 'A propos...':
-        Navigator.pushNamed(context, '/about');
-        break;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    data = data.isEmpty
-        ? ModalRoute.of(context)!.settings.arguments as Map<dynamic, dynamic>
-        : data;
-    print(data['categories']);
-
+    var localizations = AppLocalizations.of(context)!;
     String currentStateImg =
         "assets/images/${textToGuess.currentStateImage()}.png";
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.appTitle),
+        title: Text(localizations.appTitle),
         centerTitle: true,
         backgroundColor: Colors.orange[700],
-        actions: <Widget>[
-          PopupMenuButton<String>(
-            onSelected: appBarMenuItemClick,
-            itemBuilder: (BuildContext context) {
-              return {'Categories', 'A propos...'}.map((String choice) {
-                return PopupMenuItem<String>(
-                  value: choice,
-                  child: Text(choice),
-                );
-              }).toList();
-            },
-          ),
-        ],
       ),
       body: Center(
         child: Column(
@@ -98,7 +70,7 @@ class _GameWidgetState extends State<GameWidget> {
           children: <Widget>[
             isShuffling
                 ? const Padding(
-                    padding: EdgeInsets.fromLTRB(0, 40, 0, 7),
+                    padding: EdgeInsets.fromLTRB(0, 30, 0, 10),
                     child: spinner.SpinKitWave(color: Colors.orange, size: 30),
                   )
                 : WordSessionText(textToGuess: textToGuess, isHiddenMode: true),
@@ -110,11 +82,12 @@ class _GameWidgetState extends State<GameWidget> {
           ],
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       floatingActionButton: FloatingActionButton(
         onPressed: reset,
         child: const Icon(Icons.refresh),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
+      drawer: AppMenu(resetState: reset),
     );
   }
 }
