@@ -23,17 +23,10 @@ class AppMenu extends StatelessWidget {
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: [
-            const SizedBox(
-              height: 80,
-              child: Padding(
-                padding: EdgeInsets.all(100.0),
-                child: DrawerHeader(
-                  decoration: BoxDecoration(
-                      image:
-                          DecorationImage(fit: BoxFit.contain, image: AssetImage('assets/images/drawer-header.png'))),
-                  child: Text(''),
-                ),
-              ),
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                  image: DecorationImage(fit: BoxFit.contain, image: AssetImage('assets/images/drawer-header.png'))),
+              child: Text(''),
             ),
             ListTile(
               title: Text(

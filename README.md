@@ -5,13 +5,10 @@ Words guess game app in Flutter
 
 ## Roadmap
 
+- Add about page informations about the native version but also about the BE API
 - Add GuessTheText privacy policy HTML page to the About screen
   https://amw-hangman-api.herokuapp.com/privacy-policy.html
-- Add bgImage and set the native top status bar color (ref video #33)
-- Add .pop and async await navigation approach (ref video #35)
 - Apply Flutter Cookbook official site section patterns
-- Introduce Lottie animations, see https://pub.dev/packages/lottie
-- Add about page informations about the native version but also about the BE API
 - Preferences page & shared preferences
 - Dark theme mode
 - Example of Stack layout
