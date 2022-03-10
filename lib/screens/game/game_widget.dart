@@ -50,14 +50,19 @@ class _GameWidgetState extends State<GameWidget> {
 
   @override
   Widget build(BuildContext context) {
-    var localizations = AppLocalizations.of(context)!;
+    AppLocalizations localizations = AppLocalizations.of(context)!;
     String currentStateImg = "assets/images/${textToGuess.currentStateImage()}.png";
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(localizations.appTitle),
-        centerTitle: true,
         backgroundColor: Colors.orange[700],
+        title: Text(
+          localizations.appTitle,
+          style: const TextStyle(
+            fontSize: 18,
+            fontFamily: 'IndieFlower',
+          ),
+        ),
       ),
       body: OrientationBuilder(builder: (context, orientation) {
         return orientation == Orientation.portrait

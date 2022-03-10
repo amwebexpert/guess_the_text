@@ -6,14 +6,18 @@ class AboutWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String title = AppLocalizations.of(context)!.about;
-    const String backgroundImage =
-        'assets/images/background-pexels-pixabay-461940.jpg';
+    AppLocalizations localizations = AppLocalizations.of(context)!;
+    const String backgroundImage = 'assets/images/background-pexels-pixabay-461940.jpg';
 
     return Scaffold(
         appBar: AppBar(
-          title: Text(title),
-          centerTitle: true,
+          title: Text(
+            localizations.about,
+            style: const TextStyle(
+              fontSize: 18,
+              fontFamily: 'IndieFlower',
+            ),
+          ),
           backgroundColor: Colors.orange[700],
         ),
         body: Container(
@@ -25,13 +29,12 @@ class AboutWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Center(
-                child: Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontFamily: 'IndieFlower',
-                  ),
+              Text(
+                localizations.about + '... Under construction...',
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontFamily: 'IndieFlower',
+                  color: Colors.white,
                 ),
               ),
             ],

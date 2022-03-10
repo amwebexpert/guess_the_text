@@ -25,11 +25,17 @@ class CategoriesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<ApiCategory> categories = HangmanService().categories;
+    AppLocalizations localizations = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.categories),
-        centerTitle: true,
+        title: Text(
+          localizations.categories,
+          style: const TextStyle(
+            fontSize: 18,
+            fontFamily: 'IndieFlower',
+          ),
+        ),
         backgroundColor: Colors.orange[700],
       ),
       body: ListView.builder(

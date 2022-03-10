@@ -12,7 +12,7 @@ class AppMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var localizations = AppLocalizations.of(context)!;
+    AppLocalizations localizations = AppLocalizations.of(context)!;
 
     return Drawer(
       // Add a ListView to the drawer. This ensures the user can scroll
