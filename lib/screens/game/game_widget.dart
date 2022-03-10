@@ -3,10 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'package:flutter_spinkit/flutter_spinkit.dart' as spinner;
-
 import 'package:guess_the_text/screens/game/letters_widget.dart';
 import 'package:guess_the_text/screens/game/work_session_conclusion_widget.dart';
+import 'package:guess_the_text/screens/game/work_session_text_loading_widjet.dart';
 import 'package:guess_the_text/screens/game/work_session_text_widget.dart';
 import 'package:guess_the_text/model/word_to_guess.dart';
 import 'package:guess_the_text/services/hangman_service.dart';
@@ -67,10 +66,7 @@ class _GameWidgetState extends State<GameWidget> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             isShuffling
-                ? const Padding(
-                    padding: EdgeInsets.fromLTRB(0, 18, 0, 10),
-                    child: spinner.SpinKitWave(color: Colors.orange, size: 30),
-                  )
+                ? const WordSessionTextLoading()
                 : WordSessionText(textToGuess: textToGuess, isHiddenMode: true),
             Expanded(child: Image.asset(currentStateImg)),
             textToGuess.isGameOver()
