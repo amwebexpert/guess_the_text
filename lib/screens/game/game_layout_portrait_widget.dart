@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:guess_the_text/model/word_to_guess.dart';
 import 'package:guess_the_text/screens/game/game_bottom_widhet.dart';
 import 'package:guess_the_text/screens/game/game_top_widget.dart';
-import 'package:guess_the_text/screens/game/work_session_conclusion_widget.dart';
 
 class GameLayoutPortraitWidget extends StatelessWidget {
   final TextToGuess textToGuess;

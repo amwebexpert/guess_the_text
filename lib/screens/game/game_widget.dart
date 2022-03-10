@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guess_the_text/screens/game/game_layout_landscape_widget.dart';
 import 'package:guess_the_text/screens/game/game_layout_portrait_widget.dart';
 
 import 'package:guess_the_text/model/word_to_guess.dart';
@@ -58,8 +59,19 @@ class _GameWidgetState extends State<GameWidget> {
         centerTitle: true,
         backgroundColor: Colors.orange[700],
       ),
-      body: GameLayoutPortraitWidget(
-          textToGuess: textToGuess, tryLetter: tryLetter, isShuffling: isShuffling, currentStateImg: currentStateImg),
+      body: OrientationBuilder(builder: (context, orientation) {
+        return orientation == Orientation.portrait
+            ? GameLayoutPortraitWidget(
+                textToGuess: textToGuess,
+                tryLetter: tryLetter,
+                isShuffling: isShuffling,
+                currentStateImg: currentStateImg)
+            : GameLayoutLandscapeWidget(
+                textToGuess: textToGuess,
+                tryLetter: tryLetter,
+                isShuffling: isShuffling,
+                currentStateImg: currentStateImg);
+      }),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       floatingActionButton: FloatingActionButton(
         onPressed: reset,
