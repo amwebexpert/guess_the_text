@@ -11,8 +11,10 @@ class GameBottomWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return textToGuess.isGameOver()
-        ? WordSessionConclusion(textToGuess: textToGuess)
-        : LettersWidget(textToGuess: textToGuess, onLetterPressed: tryLetter);
+    if (textToGuess.isGameOver()) {
+      return WordSessionConclusion(textToGuess: textToGuess);
+    }
+
+    return LettersWidget(textToGuess: textToGuess, onLetterPressed: tryLetter);
   }
 }
