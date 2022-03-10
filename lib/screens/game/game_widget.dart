@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guess_the_text/screens/game/game_bottom_widhet.dart';
 
 import 'package:guess_the_text/screens/game/letters_widget.dart';
 import 'package:guess_the_text/screens/game/work_session_conclusion_widget.dart';
@@ -69,9 +70,7 @@ class _GameWidgetState extends State<GameWidget> {
                 ? const WordSessionTextLoading()
                 : WordSessionText(textToGuess: textToGuess, isHiddenMode: true),
             Expanded(child: Image.asset(currentStateImg)),
-            textToGuess.isGameOver()
-                ? WordSessionConclusion(textToGuess: textToGuess)
-                : LettersWidget(textToGuess: textToGuess, onLetterPressed: tryLetter),
+            GameBottomWidget(textToGuess: textToGuess, tryLetter: tryLetter),
           ],
         ),
       ),
