@@ -2,13 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:guess_the_text/screens/game/game_bottom_widhet.dart';
-import 'package:guess_the_text/screens/game/game_top_widget.dart';
+import 'package:guess_the_text/screens/game/game_layout_portrait_widget.dart';
 
-import 'package:guess_the_text/screens/game/letters_widget.dart';
-import 'package:guess_the_text/screens/game/work_session_conclusion_widget.dart';
-import 'package:guess_the_text/screens/game/work_session_text_loading_widjet.dart';
-import 'package:guess_the_text/screens/game/work_session_text_widget.dart';
 import 'package:guess_the_text/model/word_to_guess.dart';
 import 'package:guess_the_text/services/hangman_service.dart';
 
@@ -63,16 +58,8 @@ class _GameWidgetState extends State<GameWidget> {
         centerTitle: true,
         backgroundColor: Colors.orange[700],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            GameTopWidget(textToGuess: textToGuess, isShuffling: isShuffling),
-            Expanded(child: Image.asset(currentStateImg)),
-            GameBottomWidget(textToGuess: textToGuess, tryLetter: tryLetter),
-          ],
-        ),
-      ),
+      body: GameLayoutPortraitWidget(
+          textToGuess: textToGuess, tryLetter: tryLetter, isShuffling: isShuffling, currentStateImg: currentStateImg),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       floatingActionButton: FloatingActionButton(
         onPressed: reset,
