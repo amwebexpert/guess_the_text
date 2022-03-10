@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:guess_the_text/services/api_category.dart';
 import 'package:guess_the_text/services/hangman_service.dart';
+import 'package:guess_the_text/utils/icon_utils.dart';
 
 class CategoriesWidget extends StatelessWidget {
   const CategoriesWidget({Key? key}) : super(key: key);
@@ -39,8 +40,14 @@ class CategoriesWidget extends StatelessWidget {
               child: Card(
                 child: ListTile(
                   onTap: () => loadCategory(context, index),
-                  title: Text(categories[index].name),
-                  leading: const Icon(Icons.refresh),
+                  leading: Icon(iconsMap[categories[index].name]), // add an iconName attribute to model
+                  title: Text(
+                    categories[index].name,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontFamily: 'IndieFlower',
+                    ),
+                  ),
                 ),
               ),
             );

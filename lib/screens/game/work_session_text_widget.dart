@@ -14,7 +14,7 @@ class WordSessionText extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        fontSize: 48,
+        fontSize: 36,
         fontWeight: FontWeight.bold,
         letterSpacing: 2,
         color: Colors.orange[500],

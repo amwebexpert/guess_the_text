@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guess_the_text/utils/icon_utils.dart';
 
 class AppMenu extends StatelessWidget {
   final Function() resetState;
@@ -29,10 +30,15 @@ class AppMenu extends StatelessWidget {
               child: Text(''),
             ),
             ListTile(
+              leading: Icon(
+                iconsMap['categories'],
+                color: Colors.white,
+              ),
               title: Text(
                 localizations.categories,
                 style: const TextStyle(
                   color: Colors.white,
+                  fontSize: 18,
                   fontFamily: 'IndieFlower',
                 ),
               ),
@@ -46,11 +52,20 @@ class AppMenu extends StatelessWidget {
                 });
               },
             ),
+            const Divider(
+              color: Colors.white,
+              thickness: 1,
+            ),
             ListTile(
+              leading: Icon(
+                iconsMap['info'],
+                color: Colors.white,
+              ),
               title: Text(
                 localizations.about,
                 style: const TextStyle(
                   color: Colors.white,
+                  fontSize: 18,
                   fontFamily: 'IndieFlower',
                 ),
               ),
@@ -58,6 +73,10 @@ class AppMenu extends StatelessWidget {
                 Navigator.pop(context);
                 Navigator.pushNamed(context, '/about');
               },
+            ),
+            const Divider(
+              color: Colors.white,
+              thickness: 1,
             ),
           ],
         ),
