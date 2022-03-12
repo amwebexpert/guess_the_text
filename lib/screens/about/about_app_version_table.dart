@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter/services.dart';
 import 'package:guess_the_text/services/device/device_info_service.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AppVersionTable extends StatefulWidget {
   const AppVersionTable({
@@ -68,7 +70,23 @@ class _AppVersionTableState extends State<AppVersionTable> {
         DataRow(
           cells: <DataCell>[
             DataCell(Text(localizations.email)),
-            const DataCell(Text('amwebexpert@gmail.com')),
+            DataCell(
+              InkWell(
+                  child: const Text('amwebexpert@gmail.com',
+                      style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue)),
+                  onTap: () => launch('mailto:amwebexpert@gmail.com')),
+            ),
+          ],
+        ),
+        DataRow(
+          cells: <DataCell>[
+            const DataCell(Text('LinkedIn')),
+            DataCell(
+              InkWell(
+                  child: const Text('linkedin.com/in/amwebexpert',
+                      style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue)),
+                  onTap: () => launch('https://www.linkedin.com/in/amwebexpert')),
+            ),
           ],
         ),
       ],
