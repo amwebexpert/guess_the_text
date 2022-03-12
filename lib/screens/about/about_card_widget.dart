@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guess_the_text/screens/about/about_app_version_table.dart';
+import 'package:guess_the_text/screens/about/about_platform_info_table.dart';
 import 'package:guess_the_text/screens/loading/animations.dart';
 import 'package:lottie/lottie.dart';
 
@@ -42,6 +43,10 @@ class AboutCard extends StatelessWidget {
                   localizations.appDescription,
                   style: TextStyle(color: Colors.black.withOpacity(0.6)),
                 ),
+              ),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: PlatformInfoTable(),
               ),
             ],
           ),

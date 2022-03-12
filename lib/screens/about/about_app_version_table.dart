@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:guess_the_text/services/device/hangman_service.dart';
+import 'package:guess_the_text/services/device/device_info_service.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class AppVersionTable extends StatefulWidget {
@@ -30,11 +30,12 @@ class _AppVersionTableState extends State<AppVersionTable> {
 
   @override
   Widget build(BuildContext context) {
-    final DeviceInfosService deviceInfosService = DeviceInfosService();
+    final DeviceInfoService deviceInfosService = DeviceInfoService();
     final AppLocalizations localizations = AppLocalizations.of(context)!;
 
     return DataTable(
-      columnSpacing: 32,
+      horizontalMargin: 0,
+      columnSpacing: 16,
       headingRowHeight: 20,
       dataRowHeight: 20,
       columns: const <DataColumn>[
