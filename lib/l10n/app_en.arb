@@ -1,6 +1,14 @@
 {
   "about": "About this app",
+  "about_description": "Description",
+  "about_info": "Information",
+  "appAuthorName": "Author",
+  "appBuildNumber": "Build number",
+  "appDescription": "Free mobile application originally created to learn the Flutter framework in my spare time.\n\nThe goal is to learn a technology at the same time as providing a fun and scalable learning tool. The source code of this application will also be available shortly to eventually serve as a learning base for training sessions in Dart programming with Flutter!",
+  "appSubTitle": "Educational game about words and sentences",
   "appTitle": "Guess the text",
+  "appVersion": "Version",
   "categories": "Categories",
-  "category": "Category"
+  "category": "Category",
+  "email": "Email"
 }

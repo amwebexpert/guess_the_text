@@ -1,12 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
-class AboutWidget extends StatelessWidget {
+import 'about_card_widget.dart';
+
+class AboutWidget extends StatefulWidget {
   const AboutWidget({Key? key}) : super(key: key);
 
   @override
+  State<AboutWidget> createState() => _AboutWidgetState();
+}
+
+class _AboutWidgetState extends State<AboutWidget> {
+  @override
+  void initState() {
+    super.initState();
+
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  }
+
+  @override
+  void dispose() {
+    SystemChrome.setPreferredOrientations(DeviceOrientation.values.toList());
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    AppLocalizations localizations = AppLocalizations.of(context)!;
+    final AppLocalizations localizations = AppLocalizations.of(context)!;
     const String backgroundImage = 'assets/images/background-pexels-pixabay-461940.jpg';
 
     return Scaffold(
@@ -26,18 +48,9 @@ class AboutWidget extends StatelessWidget {
             image: AssetImage(backgroundImage),
             fit: BoxFit.cover,
           )),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text(
-                localizations.about + '... Under construction...',
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontFamily: 'IndieFlower',
-                  color: Colors.white,
-                ),
-              ),
-            ],
+          child: const Padding(
+            padding: EdgeInsets.all(24.0),
+            child: AboutCard(),
           ),
         ));
   }
