@@ -1,10 +1,10 @@
 import 'dart:convert' as convert;
 import 'dart:math';
 
-import 'package:guess_the_text/services/api_category.dart';
+import 'package:guess_the_text/services/hangman/model/api_category.dart';
 import 'package:http/http.dart' as http;
 
-import 'api_text.dart';
+import 'model/api_text.dart';
 
 class HangmanService {
   static final HangmanService _instance = HangmanService._privateConstructor();

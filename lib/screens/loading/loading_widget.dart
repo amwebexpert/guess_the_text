@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:guess_the_text/services/hangman/hangman_service.dart';
 import 'package:lottie/lottie.dart';
-import 'package:guess_the_text/services/hangman_service.dart';
 
 import 'animations.dart';
 

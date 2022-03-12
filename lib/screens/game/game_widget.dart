@@ -6,7 +6,7 @@ import 'package:guess_the_text/screens/game/game_layout_landscape_widget.dart';
 import 'package:guess_the_text/screens/game/game_layout_portrait_widget.dart';
 
 import 'package:guess_the_text/model/word_to_guess.dart';
-import 'package:guess_the_text/services/hangman_service.dart';
+import 'package:guess_the_text/services/hangman/hangman_service.dart';
 
 import 'app-menu/app_menu.dart';
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guess_the_text/services/hangman/hangman_service.dart';
+import 'package:guess_the_text/services/hangman/model/api_category.dart';
 
-import 'package:guess_the_text/services/api_category.dart';
-import 'package:guess_the_text/services/hangman_service.dart';
 import 'package:guess_the_text/utils/icon_utils.dart';
 
 class CategoriesWidget extends StatelessWidget {
