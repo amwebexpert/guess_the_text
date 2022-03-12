@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter/services.dart';
-import 'package:guess_the_text/services/device/device_info_service.dart';
+import 'package:guess_the_text/services/hangman/hangman_service.dart';
+import 'package:guess_the_text/services/hangman/model/api_about.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -17,10 +17,17 @@ class AppVersionTable extends StatefulWidget {
 class _AppVersionTableState extends State<AppVersionTable> {
   String appVersion = '';
   String appBuildNumber = '';
+  ApiAbout apiAbout = ApiAbout();
 
   @override
   void initState() {
     super.initState();
+
+    HangmanService().getAboutInfo().then((value) => {
+          setState(() {
+            apiAbout = value;
+          })
+        });
 
     PackageInfo.fromPlatform().then((packageInfo) {
       setState(() {
@@ -32,7 +39,6 @@ class _AppVersionTableState extends State<AppVersionTable> {
 
   @override
   Widget build(BuildContext context) {
-    final DeviceInfoService deviceInfosService = DeviceInfoService();
     final AppLocalizations localizations = AppLocalizations.of(context)!;
 
     return DataTable(
@@ -63,6 +69,18 @@ class _AppVersionTableState extends State<AppVersionTable> {
         ),
         DataRow(
           cells: <DataCell>[
+            DataCell(Text(localizations.appBackendName)),
+            DataCell(Text(apiAbout.name)),
+          ],
+        ),
+        DataRow(
+          cells: <DataCell>[
+            DataCell(Text(localizations.appBackendVersion)),
+            DataCell(Text(apiAbout.version)),
+          ],
+        ),
+        DataRow(
+          cells: <DataCell>[
             DataCell(Text(localizations.appAuthorName)),
             const DataCell(Text('André Masson')),
           ],
@@ -80,7 +98,7 @@ class _AppVersionTableState extends State<AppVersionTable> {
         ),
         DataRow(
           cells: <DataCell>[
-            const DataCell(Text('LinkedIn')),
+            DataCell(Text(localizations.appAuthorProfile)),
             DataCell(
               InkWell(
                   child: const Text('linkedin.com/in/amwebexpert',

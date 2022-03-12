@@ -1,6 +1,7 @@
 import 'dart:convert' as convert;
 import 'dart:math';
 
+import 'package:guess_the_text/services/hangman/model/api_about.dart';
 import 'package:guess_the_text/services/hangman/model/api_category.dart';
 import 'package:http/http.dart' as http;
 
@@ -11,6 +12,7 @@ class HangmanService {
 
   static const String hostName = 'amw-hangman-api.herokuapp.com';
   static const String apiPathCategories = '/api/v1/categories';
+  static const String apiPathAbout = '/api/v1/about';
 
   List<ApiCategory> categories = [];
   late String selectedCategoryUuid;
@@ -18,6 +20,26 @@ class HangmanService {
 
   factory HangmanService() => _instance;
   HangmanService._privateConstructor();
+
+  Future<ApiAbout> getAboutInfo() async {
+    try {
+      Uri url = Uri.https(hostName, apiPathAbout);
+
+      // API call
+      http.Response response = await http.get(url);
+
+      if (response.statusCode == 200) {
+        Map<String, dynamic> body = convert.jsonDecode(response.body);
+        return ApiAbout.fromJson(body);
+      } else {
+        print('Request failed with status: ${response.statusCode}.');
+      }
+    } catch (e) {
+      print('Request failed: ${e.toString()}');
+    }
+
+    return ApiAbout();
+  }
 
   Future<void> loadCategories() async {
     try {

@@ -1,6 +1,9 @@
 {
   "about": "About this app",
   "appAuthorName": "Author",
+  "appAuthorProfile": "Profile",
+  "appBackendName": "BE Api name",
+  "appBackendVersion": "BE version",
   "appBuildNumber": "Build #",
   "appDescription": "Free mobile application originally created to learn the Flutter framework in my spare time.\n\nThe goal is to learn a technology at the same time as providing a fun and scalable learning tool. The source code of this application will also be available shortly to eventually serve as a learning base for training sessions in Dart programming with Flutter!",
   "appSubTitle": "Educational game about words and sentences",

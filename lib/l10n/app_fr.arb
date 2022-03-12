@@ -1,6 +1,9 @@
 {
   "about": "À propos de l'app",
   "appAuthorName": "Auteur",
+  "appAuthorProfile": "Profile",
+  "appBackendName": "Serveur BE",
+  "appBackendVersion": "Version BE",
   "appBuildNumber": "Build #",
   "appDescription": "Application mobile gratuite crée à la base pour apprendre le framework Flutter dans mes temps libres.\n\nL'objectif est d'apprendre une technologie en même temps que de fournir un outil d'apprentissage amusant et évolutif. Le code source de cette application sera également disponible sous peu pour éventuellement servir de base d'apprentissage pour des sessions de formation en programmation Dart avec Flutter!",
   "appSubTitle": "Jeu éducatif sur les mots et les phrases",
