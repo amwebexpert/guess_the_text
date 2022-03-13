@@ -2,6 +2,11 @@
 
 Words guess game app in Flutter
 
+Deployed on:
+- [Google Play](https://play.google.com/store/apps/details?id=com.amwebexpert.app.guessthetext.guess_the_text)
+- App Store
+  - Not yet, will need to create an account and fill in all the forms and go through the approval process
+
 
 ## Roadmap
 
