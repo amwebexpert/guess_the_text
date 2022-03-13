@@ -30,6 +30,7 @@ class AppMenu extends StatelessWidget {
               child: Text(''),
             ),
             ListTile(
+              visualDensity: VisualDensity.compact,
               leading: Icon(
                 iconsMap['categories'],
                 color: Colors.white,
@@ -54,9 +55,10 @@ class AppMenu extends StatelessWidget {
             ),
             const Divider(
               color: Colors.white,
-              thickness: 1,
+              thickness: 0.5,
             ),
             ListTile(
+              visualDensity: VisualDensity.compact,
               leading: Icon(
                 iconsMap['info'],
                 color: Colors.white,
@@ -76,7 +78,7 @@ class AppMenu extends StatelessWidget {
             ),
             const Divider(
               color: Colors.white,
-              thickness: 1,
+              thickness: 0.5,
             ),
           ],
         ),
