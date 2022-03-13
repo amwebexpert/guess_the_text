@@ -5,18 +5,33 @@ Words guess game app in Flutter
 
 ## Roadmap
 
-- Add about page informations about the native version but also about the BE API
+- Use custom Theme and customize Typography (headline6, bodyText2, ...) https://docs.flutter.dev/cookbook/design/themes
+- Add ability to (input modal) add any text_to_guess on the fly
+- Check support for spaces and dash characters
 - Add GuessTheText privacy policy HTML page to the About screen
   https://amw-hangman-api.herokuapp.com/privacy-policy.html
 - Apply Flutter Cookbook official site section patterns
 - Preferences page & shared preferences
 - Dark theme mode
 - Example of Stack layout
-- Use custom Theme and customize Typography (headline6, bodyText2, ...) https://docs.flutter.dev/cookbook/design/themes
 - Animations: Tweens, Physic-based
 - Icon of app inside the appBar
 - Start loading with in-app storage, and in background download other categories
 - flutter build web (c.f. result in build/web/index.html)
+
+## Completed so far
+
+-	Scroll view, list view, Drawer menu
+-	I18n management
+-	Orientation locking
+-	Lottie animations
+-	Background images
+-	Conditional layout depending on device orientation
+-	State management with MobX
+-	Factory pattern to create services singleton
+-	Async API services
+-	FadeIn animation
+
 
 ## Usefull command lines
 
