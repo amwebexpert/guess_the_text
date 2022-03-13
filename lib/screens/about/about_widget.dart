@@ -12,11 +12,18 @@ class AboutWidget extends StatefulWidget {
 }
 
 class _AboutWidgetState extends State<AboutWidget> {
+  bool isVisible = false;
+
   @override
   void initState() {
     super.initState();
-
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
+    Future.delayed(const Duration(milliseconds: 400), () {
+      setState(() {
+        isVisible = true;
+      });
+    });
   }
 
   @override
@@ -47,9 +54,13 @@ class _AboutWidgetState extends State<AboutWidget> {
             image: AssetImage(backgroundImage),
             fit: BoxFit.cover,
           )),
-          child: const Padding(
-            padding: EdgeInsets.all(24.0),
-            child: AboutCard(),
+          child: AnimatedOpacity(
+            opacity: isVisible ? 1.0 : 0.0,
+            duration: const Duration(milliseconds: 1000),
+            child: const Padding(
+              padding: EdgeInsets.all(24.0),
+              child: AboutCard(),
+            ),
           ),
         ));
   }

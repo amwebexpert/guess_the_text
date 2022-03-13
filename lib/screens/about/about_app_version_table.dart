@@ -91,7 +91,7 @@ class _AppVersionTableState extends State<AppVersionTable> {
             DataCell(
               InkWell(
                   child: const Text('amwebexpert@gmail.com',
-                      style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue)),
+                      style: TextStyle(decoration: TextDecoration.underline, color: Colors.yellow)),
                   onTap: () => launch('mailto:amwebexpert@gmail.com')),
             ),
           ],
@@ -102,7 +102,7 @@ class _AppVersionTableState extends State<AppVersionTable> {
             DataCell(
               InkWell(
                   child: const Text('linkedin.com/in/amwebexpert',
-                      style: TextStyle(decoration: TextDecoration.underline, color: Colors.blue)),
+                      style: TextStyle(decoration: TextDecoration.underline, color: Colors.yellow)),
                   onTap: () => launch('https://www.linkedin.com/in/amwebexpert')),
             ),
           ],
