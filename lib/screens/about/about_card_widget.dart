@@ -4,6 +4,7 @@ import 'package:guess_the_text/screens/about/about_app_version_table.dart';
 import 'package:guess_the_text/screens/about/about_platform_info_table.dart';
 import 'package:guess_the_text/screens/loading/animations.dart';
 import 'package:lottie/lottie.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutCard extends StatelessWidget {
   const AboutCard({Key? key}) : super(key: key);
@@ -36,6 +37,10 @@ class AboutCard extends StatelessWidget {
                       child: Lottie.asset(getAnimationPath()),
                     )),
               ),
+              InkWell(
+                  child: Text(localizations.privacyPolicy,
+                      style: const TextStyle(decoration: TextDecoration.underline, color: Colors.yellow)),
+                  onTap: () => launch('https://amw-hangman-api.herokuapp.com/privacy-policy.html')),
               const AppVersionTable(),
               Padding(
                 padding: const EdgeInsets.fromLTRB(8, 24, 8, 10),

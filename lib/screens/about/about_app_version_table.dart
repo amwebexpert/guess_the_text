@@ -45,7 +45,7 @@ class _AppVersionTableState extends State<AppVersionTable> {
       horizontalMargin: 0,
       columnSpacing: 16,
       headingRowHeight: 20,
-      dataRowHeight: 20,
+      dataRowHeight: 24,
       columns: const <DataColumn>[
         DataColumn(
           label: Text(''),
@@ -81,16 +81,21 @@ class _AppVersionTableState extends State<AppVersionTable> {
         ),
         DataRow(
           cells: <DataCell>[
-            DataCell(Text(localizations.appAuthorName)),
-            const DataCell(Text('André Masson')),
+            DataCell(Text(localizations.githubProject)),
+            DataCell(
+              InkWell(
+                  child: const Text('Open Source project',
+                      style: TextStyle(decoration: TextDecoration.underline, color: Colors.yellow)),
+                  onTap: () => launch('https://github.com/amwebexpert/guess_the_text')),
+            ),
           ],
         ),
         DataRow(
           cells: <DataCell>[
-            DataCell(Text(localizations.email)),
+            DataCell(Text(localizations.appAuthorName)),
             DataCell(
               InkWell(
-                  child: const Text('amwebexpert@gmail.com',
+                  child: const Text('André Masson',
                       style: TextStyle(decoration: TextDecoration.underline, color: Colors.yellow)),
                   onTap: () => launch('mailto:amwebexpert@gmail.com')),
             ),

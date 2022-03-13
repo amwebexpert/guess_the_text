@@ -13,6 +13,8 @@
   "category": "Catégorie",
   "deviceInfo": "Votre appareil",
   "email": "Courriel",
+  "githubProject": "GitHub",
   "platform_key": "Information",
-  "platform_value": "Valeur"
+  "platform_value": "Valeur",
+  "privacyPolicy": "Politique de confidentialité"
 }

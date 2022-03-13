@@ -13,8 +13,6 @@ Deployed on:
 - Use custom Theme and customize Typography (headline6, bodyText2, ...) https://docs.flutter.dev/cookbook/design/themes
 - Add ability to (input modal) add any text_to_guess on the fly
 - Check support for spaces and dash characters
-- Add GuessTheText privacy policy HTML page to the About screen
-  https://amw-hangman-api.herokuapp.com/privacy-policy.html
 - Apply Flutter Cookbook official site section patterns
 - Preferences page & shared preferences
 - Dark theme mode
