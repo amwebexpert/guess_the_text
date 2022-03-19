@@ -35,9 +35,7 @@ class _PlatformInfoTableState extends State<PlatformInfoTable> {
           padding: const EdgeInsets.fromLTRB(0, 16, 0, 16),
           child: Text(
             localizations.deviceInfo,
-            style: const TextStyle(
-              fontSize: 16,
-            ),
+            style: Theme.of(context).textTheme.bodyText2,
           ),
         ),
         Table(

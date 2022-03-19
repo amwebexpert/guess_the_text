@@ -55,7 +55,6 @@ class _GameWidgetState extends State<GameWidget> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.orange[700],
         title: Text(
           localizations.appTitle,
           style: Theme.of(context).textTheme.caption,

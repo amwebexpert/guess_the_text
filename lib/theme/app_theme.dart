@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 final themeData = ThemeData(
-  colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.orange),
+  colorScheme:
+      ColorScheme.fromSwatch(primarySwatch: Colors.orange, accentColor: Colors.orange, brightness: Brightness.dark),
   fontFamily: 'IndieFlower',
   textTheme: const TextTheme(
     headline1: TextStyle(fontSize: 48.0),

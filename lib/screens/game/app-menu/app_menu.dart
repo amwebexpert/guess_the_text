@@ -13,34 +13,35 @@ class AppMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppLocalizations localizations = AppLocalizations.of(context)!;
+    const menuItemsColor = Colors.white;
 
     return Drawer(
       // Add a ListView to the drawer. This ensures the user can scroll
       // through the options in the drawer if there isn't enough vertical
       // space to fit everything.
       child: Container(
-        color: Colors.orange[700],
+        color: Theme.of(context).colorScheme.primary,
         child: ListView(
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
               decoration: BoxDecoration(
-                  image: DecorationImage(fit: BoxFit.contain, image: AssetImage('assets/images/drawer-header.png'))),
+                  image: DecorationImage(
+                      invertColors: true, fit: BoxFit.contain, image: AssetImage('assets/images/drawer-header.png'))),
               child: Text(''),
             ),
             ListTile(
               visualDensity: VisualDensity.compact,
               leading: Icon(
                 iconsMap['categories'],
-                color: Colors.white,
+                color: menuItemsColor,
               ),
               title: Text(
                 localizations.categories,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                ),
+                style: Theme.of(context).textTheme.bodyText1?.apply(
+                      color: menuItemsColor,
+                    ),
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -53,21 +54,20 @@ class AppMenu extends StatelessWidget {
               },
             ),
             const Divider(
-              color: Colors.white,
+              color: menuItemsColor,
               thickness: 0.5,
             ),
             ListTile(
               visualDensity: VisualDensity.compact,
               leading: Icon(
                 iconsMap['info'],
-                color: Colors.white,
+                color: menuItemsColor,
               ),
               title: Text(
                 localizations.about,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                ),
+                style: Theme.of(context).textTheme.bodyText1?.apply(
+                      color: menuItemsColor,
+                    ),
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -75,7 +75,7 @@ class AppMenu extends StatelessWidget {
               },
             ),
             const Divider(
-              color: Colors.white,
+              color: menuItemsColor,
               thickness: 0.5,
             ),
           ],
