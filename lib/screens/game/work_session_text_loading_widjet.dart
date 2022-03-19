@@ -8,9 +8,9 @@ class WordSessionTextLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.fromLTRB(0, 18, 0, 10),
-      child: spinner.SpinKitWave(color: Colors.orange, size: 30),
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 18, 0, 10),
+      child: spinner.SpinKitWave(color: Theme.of(context).colorScheme.primary, size: 30),
     );
   }
 }

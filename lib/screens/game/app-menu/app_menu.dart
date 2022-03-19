@@ -13,73 +13,60 @@ class AppMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppLocalizations localizations = AppLocalizations.of(context)!;
-    const menuItemsColor = Colors.white;
+    final bool isDark = Theme.of(context).colorScheme.brightness == Brightness.dark ? true : false;
 
     return Drawer(
       // Add a ListView to the drawer. This ensures the user can scroll
       // through the options in the drawer if there isn't enough vertical
       // space to fit everything.
-      child: Container(
-        color: Theme.of(context).colorScheme.primary,
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      invertColors: true, fit: BoxFit.contain, image: AssetImage('assets/images/drawer-header.png'))),
-              child: Text(''),
+      child: ListView(
+        // Important: Remove any padding from the ListView.
+        padding: EdgeInsets.zero,
+        children: [
+          DrawerHeader(
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    invertColors: isDark,
+                    fit: BoxFit.contain,
+                    image: const AssetImage('assets/images/drawer-header.png'))),
+            child: const Text(''),
+          ),
+          ListTile(
+            visualDensity: VisualDensity.compact,
+            leading: Icon(
+              iconsMap['categories'],
             ),
-            ListTile(
-              visualDensity: VisualDensity.compact,
-              leading: Icon(
-                iconsMap['categories'],
-                color: menuItemsColor,
-              ),
-              title: Text(
-                localizations.categories,
-                style: Theme.of(context).textTheme.bodyText1?.apply(
-                      color: menuItemsColor,
-                    ),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.pushNamed(context, '/categories').then((value) {
-                  if (value != null) {
-                    print('new category: $value');
-                    resetState();
-                  }
-                });
-              },
+            title: Text(localizations.categories, style: Theme.of(context).textTheme.bodyText1),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/categories').then((value) {
+                if (value != null) {
+                  print('new category: $value');
+                  resetState();
+                }
+              });
+            },
+          ),
+          const Divider(
+            thickness: 2,
+          ),
+          ListTile(
+            visualDensity: VisualDensity.compact,
+            leading: Icon(
+              iconsMap['info'],
             ),
-            const Divider(
-              color: menuItemsColor,
-              thickness: 0.5,
+            title: Text(
+              localizations.about,
             ),
-            ListTile(
-              visualDensity: VisualDensity.compact,
-              leading: Icon(
-                iconsMap['info'],
-                color: menuItemsColor,
-              ),
-              title: Text(
-                localizations.about,
-                style: Theme.of(context).textTheme.bodyText1?.apply(
-                      color: menuItemsColor,
-                    ),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.pushNamed(context, '/about');
-              },
-            ),
-            const Divider(
-              color: menuItemsColor,
-              thickness: 0.5,
-            ),
-          ],
-        ),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/about');
+            },
+          ),
+          const Divider(
+            thickness: 2,
+          ),
+        ],
       ),
     );
   }

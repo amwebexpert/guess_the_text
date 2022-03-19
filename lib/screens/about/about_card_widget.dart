@@ -14,7 +14,7 @@ class AboutCard extends StatelessWidget {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
 
     return Card(
-      color: Colors.orange[700],
+      color: Theme.of(context).colorScheme.secondaryContainer,
       clipBehavior: Clip.antiAlias,
       child: Padding(
         padding: const EdgeInsets.all(16.0),

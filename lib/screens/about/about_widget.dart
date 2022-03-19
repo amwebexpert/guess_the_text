@@ -43,7 +43,7 @@ class _AboutWidgetState extends State<AboutWidget> {
             localizations.about,
             style: Theme.of(context).textTheme.caption,
           ),
-          backgroundColor: Colors.orange[700],
+          backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
         ),
         body: Container(
           decoration: const BoxDecoration(

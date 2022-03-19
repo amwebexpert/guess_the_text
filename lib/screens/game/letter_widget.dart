@@ -11,10 +11,10 @@ class LetterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool letterConsumed = textToGuess.charsTried.contains(letter);
+    bool isLetterConsumed = textToGuess.charsTried.contains(letter);
 
     return ElevatedButton(
-      onPressed: letterConsumed ? null : () => onLetterPressed(letter),
+      onPressed: isLetterConsumed ? null : () => onLetterPressed(letter),
       child: Text(
         letter,
         style: Theme.of(context).textTheme.bodyText1?.apply(color: Colors.white),
