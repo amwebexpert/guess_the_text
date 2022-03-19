@@ -17,10 +17,7 @@ class LetterWidget extends StatelessWidget {
       onPressed: letterConsumed ? null : () => onLetterPressed(letter),
       child: Text(
         letter,
-        style: const TextStyle(
-          fontSize: 18,
-          color: Colors.white,
-        ),
+        style: Theme.of(context).textTheme.bodyText1?.apply(color: Colors.white),
       ),
     );
   }
