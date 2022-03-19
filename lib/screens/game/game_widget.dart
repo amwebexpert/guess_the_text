@@ -58,9 +58,7 @@ class _GameWidgetState extends State<GameWidget> {
         backgroundColor: Colors.orange[700],
         title: Text(
           localizations.appTitle,
-          style: const TextStyle(
-            fontSize: 18,
-          ),
+          style: Theme.of(context).textTheme.caption,
         ),
       ),
       body: OrientationBuilder(builder: (context, orientation) {

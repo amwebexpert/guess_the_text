@@ -41,9 +41,7 @@ class _AboutWidgetState extends State<AboutWidget> {
         appBar: AppBar(
           title: Text(
             localizations.about,
-            style: const TextStyle(
-              fontSize: 18,
-            ),
+            style: Theme.of(context).textTheme.caption,
           ),
           backgroundColor: Colors.orange[700],
         ),

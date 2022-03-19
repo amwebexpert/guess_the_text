@@ -31,11 +31,8 @@ class CategoriesWidget extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           localizations.categories,
-          style: const TextStyle(
-            fontSize: 18,
-          ),
+          style: Theme.of(context).textTheme.caption,
         ),
-        backgroundColor: Colors.orange[700],
       ),
       body: ListView.builder(
           itemCount: categories.length,
@@ -48,9 +45,7 @@ class CategoriesWidget extends StatelessWidget {
                   leading: Icon(iconsMap[categories[index].name]), // add an iconName attribute to model
                   title: Text(
                     categories[index].name,
-                    style: const TextStyle(
-                      fontSize: 18,
-                    ),
+                    style: Theme.of(context).textTheme.bodyText1,
                   ),
                 ),
               ),
