@@ -33,7 +33,6 @@ class CategoriesWidget extends StatelessWidget {
           localizations.categories,
           style: const TextStyle(
             fontSize: 18,
-            fontFamily: 'IndieFlower',
           ),
         ),
         backgroundColor: Colors.orange[700],
@@ -51,7 +50,6 @@ class CategoriesWidget extends StatelessWidget {
                     categories[index].name,
                     style: const TextStyle(
                       fontSize: 18,
-                      fontFamily: 'IndieFlower',
                     ),
                   ),
                 ),

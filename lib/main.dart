@@ -8,6 +8,7 @@ import 'package:guess_the_text/screens/game/game_widget.dart';
 import 'package:guess_the_text/screens/loading/loading_widget.dart';
 import 'package:guess_the_text/screens/about/about_widget.dart';
 import 'package:guess_the_text/store/preferences.dart';
+import 'package:guess_the_text/theme/app_theme.dart';
 
 void main() => runApp(const HangmanApp());
 
@@ -29,9 +30,7 @@ class _HangmanAppState extends State<HangmanApp> {
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         locale: preferences.locale,
-        theme: ThemeData(
-          primarySwatch: Colors.orange,
-        ),
+        theme: themeData,
         initialRoute: '/',
         routes: {
           '/': (context) => const LoadingWidget(),

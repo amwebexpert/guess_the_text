@@ -60,7 +60,6 @@ class _GameWidgetState extends State<GameWidget> {
           localizations.appTitle,
           style: const TextStyle(
             fontSize: 18,
-            fontFamily: 'IndieFlower',
           ),
         ),
       ),

@@ -40,7 +40,6 @@ class AppMenu extends StatelessWidget {
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 18,
-                  fontFamily: 'IndieFlower',
                 ),
               ),
               onTap: () {
@@ -68,7 +67,6 @@ class AppMenu extends StatelessWidget {
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 18,
-                  fontFamily: 'IndieFlower',
                 ),
               ),
               onTap: () {

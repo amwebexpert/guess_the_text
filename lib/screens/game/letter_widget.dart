@@ -20,7 +20,6 @@ class LetterWidget extends StatelessWidget {
         style: const TextStyle(
           fontSize: 18,
           color: Colors.white,
-          fontFamily: 'IndieFlower',
         ),
       ),
     );

@@ -43,7 +43,6 @@ class _AboutWidgetState extends State<AboutWidget> {
             localizations.about,
             style: const TextStyle(
               fontSize: 18,
-              fontFamily: 'IndieFlower',
             ),
           ),
           backgroundColor: Colors.orange[700],

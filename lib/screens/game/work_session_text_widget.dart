@@ -18,7 +18,6 @@ class WordSessionText extends StatelessWidget {
         fontWeight: FontWeight.bold,
         letterSpacing: 2,
         color: Colors.orange[500],
-        fontFamily: 'IndieFlower',
       ),
     );
   }
