@@ -41,6 +41,7 @@ class CategoriesWidget extends StatelessWidget {
               return Padding(
                 padding: EdgeInsets.all(spacing(0.25)),
                 child: Card(
+                  color: Theme.of(context).colorScheme.primary,
                   child: ListTile(
                     onTap: () => loadCategory(context, index),
                     leading: Icon(iconsMap[categories[index].name]), // add an iconName attribute to model
