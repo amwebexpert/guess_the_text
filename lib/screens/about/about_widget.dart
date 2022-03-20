@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guess_the_text/theme/app_bar/app_bar_title.dart';
 
 import 'about_card_widget.dart';
 
@@ -39,10 +40,7 @@ class _AboutWidgetState extends State<AboutWidget> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text(
-            localizations.about,
-            style: Theme.of(context).textTheme.caption,
-          ),
+          title: AppBarTitle(title: localizations.about),
           backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
         ),
         body: Container(

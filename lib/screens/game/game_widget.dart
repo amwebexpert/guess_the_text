@@ -7,6 +7,7 @@ import 'package:guess_the_text/screens/game/game_layout_portrait_widget.dart';
 
 import 'package:guess_the_text/model/word_to_guess.dart';
 import 'package:guess_the_text/services/hangman/hangman_service.dart';
+import 'package:guess_the_text/theme/app_bar/app_bar_title.dart';
 
 import 'app-menu/app_menu.dart';
 
@@ -58,10 +59,7 @@ class _GameWidgetState extends State<GameWidget> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          localizations.appTitle,
-          style: Theme.of(context).textTheme.caption,
-        ),
+        title: AppBarTitle(title: localizations.appTitle),
       ),
       body: OrientationBuilder(builder: (context, orientation) {
         return orientation == Orientation.portrait
