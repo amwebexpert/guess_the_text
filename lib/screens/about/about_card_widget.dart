@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guess_the_text/screens/about/about_app_version_table.dart';
-import 'package:guess_the_text/screens/about/about_platform_info_table.dart';
+import 'package:guess_the_text/screens/about/about_platform_info_table_widget.dart';
 import 'package:guess_the_text/screens/loading/animations.dart';
 import 'package:guess_the_text/theme/text_link.dart';
 import 'package:guess_the_text/theme/theme_utils.dart';

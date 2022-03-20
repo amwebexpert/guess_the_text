@@ -9,7 +9,7 @@ import 'package:guess_the_text/model/word_to_guess.dart';
 import 'package:guess_the_text/services/hangman/hangman_service.dart';
 import 'package:guess_the_text/theme/app_bar/app_bar_title.dart';
 
-import 'app-menu/app_menu.dart';
+import 'app-menu/app_menu_widget.dart';
 
 class GameWidget extends StatefulWidget {
   const GameWidget({Key? key}) : super(key: key);
@@ -61,6 +61,7 @@ class _GameWidgetState extends State<GameWidget> {
       appBar: AppBar(
         title: AppBarTitle(title: localizations.appTitle),
       ),
+      drawer: AppMenu(resetState: reset),
       body: OrientationBuilder(builder: (context, orientation) {
         return orientation == Orientation.portrait
             ? GameLayoutPortraitWidget(
@@ -79,7 +80,6 @@ class _GameWidgetState extends State<GameWidget> {
         onPressed: reset,
         child: const Icon(Icons.refresh),
       ),
-      drawer: AppMenu(resetState: reset),
     );
   }
 }
