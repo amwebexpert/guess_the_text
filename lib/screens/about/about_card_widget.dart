@@ -26,7 +26,7 @@ class AboutCard extends StatelessWidget {
                 title: Text(localizations.appTitle),
                 subtitle: Text(
                   localizations.appSubTitle,
-                  style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                  style: Theme.of(context).textTheme.bodyText2,
                 ),
               ),
               Padding(
@@ -46,7 +46,7 @@ class AboutCard extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(8, 24, 8, 10),
                 child: Text(
                   localizations.appDescription,
-                  style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
               ),
               const Padding(

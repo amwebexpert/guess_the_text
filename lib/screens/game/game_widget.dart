@@ -27,8 +27,8 @@ class _GameWidgetState extends State<GameWidget> {
   void initState() {
     super.initState();
 
-    String newText = service.shuffle().normalized;
-    textToGuess = TextToGuess(characters: newText);
+    final newText = service.shuffle();
+    textToGuess = TextToGuess(characters: newText.normalized, original: newText.original);
   }
 
   void reset() {
@@ -38,9 +38,12 @@ class _GameWidgetState extends State<GameWidget> {
 
     const duration = Duration(milliseconds: 400);
     Timer(duration, () {
-      var newText = service.shuffle().normalized;
-      print('new text $newText');
-      setState(() => ({textToGuess = TextToGuess(characters: newText), isShuffling = false}));
+      final element = service.shuffle();
+      print('new text to guess: ${element.original}');
+      setState(() => ({
+            textToGuess = TextToGuess(characters: element.normalized, original: element.original),
+            isShuffling = false
+          }));
     });
   }
 

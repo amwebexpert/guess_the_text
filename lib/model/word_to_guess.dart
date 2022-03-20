@@ -2,12 +2,13 @@ class TextToGuess {
   static const String stateName = 'hangman';
   static const int maxTrials = 10;
   final String characters;
+  final String original;
 
   late List<String> chars;
   List<String> charsTried = [];
   int badTrialCount = 0;
 
-  TextToGuess({required this.characters}) {
+  TextToGuess({required this.characters, required this.original}) {
     chars = characters.split('');
   }
 
