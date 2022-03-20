@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guess_the_text/services/hangman/hangman_service.dart';
 import 'package:guess_the_text/services/hangman/model/api_about.dart';
+import 'package:guess_the_text/theme/text_link.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -82,33 +83,26 @@ class _AppVersionTableState extends State<AppVersionTable> {
         DataRow(
           cells: <DataCell>[
             DataCell(Text(localizations.githubProject)),
-            DataCell(
-              InkWell(
-                  child: const Text('Open Source project',
-                      style: TextStyle(decoration: TextDecoration.underline, color: Colors.yellow)),
-                  onTap: () => launch('https://github.com/amwebexpert/guess_the_text')),
+            const DataCell(
+              ThemedTextLink(
+                  displayText: 'Open Source project', hyperlink: 'https://github.com/amwebexpert/guess_the_text'),
             ),
           ],
         ),
         DataRow(
           cells: <DataCell>[
             DataCell(Text(localizations.appAuthorName)),
-            DataCell(
-              InkWell(
-                  child: const Text('André Masson',
-                      style: TextStyle(decoration: TextDecoration.underline, color: Colors.yellow)),
-                  onTap: () => launch('mailto:amwebexpert@gmail.com')),
+            const DataCell(
+              ThemedTextLink(displayText: 'André Masson', hyperlink: 'mailto:amwebexpert@gmail.com'),
             ),
           ],
         ),
         DataRow(
           cells: <DataCell>[
             DataCell(Text(localizations.appAuthorProfile)),
-            DataCell(
-              InkWell(
-                  child: const Text('linkedin.com/in/amwebexpert',
-                      style: TextStyle(decoration: TextDecoration.underline, color: Colors.yellow)),
-                  onTap: () => launch('https://www.linkedin.com/in/amwebexpert')),
+            const DataCell(
+              ThemedTextLink(
+                  displayText: 'linkedin.com/in/amwebexpert', hyperlink: 'https://www.linkedin.com/in/amwebexpert'),
             ),
           ],
         ),
