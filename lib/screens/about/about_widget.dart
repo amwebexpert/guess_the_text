@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guess_the_text/theme/app_bar/app_bar_title.dart';
+import 'package:guess_the_text/theme/theme_utils.dart';
 
 import 'about_card_widget.dart';
 
@@ -51,9 +52,9 @@ class _AboutWidgetState extends State<AboutWidget> {
           child: AnimatedOpacity(
             opacity: isVisible ? 1.0 : 0.0,
             duration: const Duration(milliseconds: 1000),
-            child: const Padding(
-              padding: EdgeInsets.all(24.0),
-              child: AboutCard(),
+            child: Padding(
+              padding: EdgeInsets.all(spacing(3)),
+              child: const AboutCard(),
             ),
           ),
         ));

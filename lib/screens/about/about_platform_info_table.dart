@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guess_the_text/services/device/device_info_service.dart';
+import 'package:guess_the_text/theme/theme_utils.dart';
 
 class PlatformInfoTable extends StatefulWidget {
   const PlatformInfoTable({
@@ -32,7 +33,7 @@ class _PlatformInfoTableState extends State<PlatformInfoTable> {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(0, 16, 0, 16),
+          padding: EdgeInsets.symmetric(vertical: spacing(2)),
           child: Text(
             localizations.deviceInfo,
             style: Theme.of(context).textTheme.bodyText2,
@@ -48,11 +49,11 @@ class _PlatformInfoTableState extends State<PlatformInfoTable> {
             children: info.keys.toList().where((element) => !hiddenDeviceProperties.contains(element)).map((key) {
               return TableRow(children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(spacing(1)),
                   child: Text(key),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(spacing(1)),
                   child: Text(
                     info[key]?.toString() ?? '',
                   ),

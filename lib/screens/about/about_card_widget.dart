@@ -4,6 +4,7 @@ import 'package:guess_the_text/screens/about/about_app_version_table.dart';
 import 'package:guess_the_text/screens/about/about_platform_info_table.dart';
 import 'package:guess_the_text/screens/loading/animations.dart';
 import 'package:guess_the_text/theme/text_link.dart';
+import 'package:guess_the_text/theme/theme_utils.dart';
 import 'package:lottie/lottie.dart';
 
 class AboutCard extends StatelessWidget {
@@ -16,7 +17,7 @@ class AboutCard extends StatelessWidget {
     return Card(
       clipBehavior: Clip.antiAlias,
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(spacing(2)),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -29,7 +30,7 @@ class AboutCard extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(spacing(1)),
                 child: SizedBox(
                     width: 200,
                     child: Center(
@@ -41,15 +42,15 @@ class AboutCard extends StatelessWidget {
                   hyperlink: 'https://amw-hangman-api.herokuapp.com/privacy-policy.html'),
               const AppVersionTable(),
               Padding(
-                padding: const EdgeInsets.fromLTRB(8, 24, 8, 10),
+                padding: EdgeInsets.fromLTRB(spacing(1), spacing(3), spacing(1), spacing(1.25)),
                 child: Text(
                   localizations.appDescription,
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: PlatformInfoTable(),
+              Padding(
+                padding: EdgeInsets.all(spacing(1)),
+                child: const PlatformInfoTable(),
               ),
             ],
           ),
