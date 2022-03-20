@@ -5,7 +5,6 @@ import 'package:guess_the_text/screens/about/about_platform_info_table.dart';
 import 'package:guess_the_text/screens/loading/animations.dart';
 import 'package:guess_the_text/theme/text_link.dart';
 import 'package:lottie/lottie.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class AboutCard extends StatelessWidget {
   const AboutCard({Key? key}) : super(key: key);
@@ -15,7 +14,6 @@ class AboutCard extends StatelessWidget {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
 
     return Card(
-      color: Theme.of(context).colorScheme.secondaryContainer,
       clipBehavior: Clip.antiAlias,
       child: Padding(
         padding: const EdgeInsets.all(16.0),

@@ -12,7 +12,10 @@ class ThemedTextLink extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => InkWell(
-      child: Text(displayText, style: const TextStyle(decoration: TextDecoration.underline, color: Colors.yellow)),
-      onTap: () => launch(hyperlink));
+  Widget build(BuildContext context) {
+    return InkWell(
+        child: Text(displayText,
+            style: TextStyle(decoration: TextDecoration.underline, color: Theme.of(context).colorScheme.primary)),
+        onTap: () => launch(hyperlink));
+  }
 }

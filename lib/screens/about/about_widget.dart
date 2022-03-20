@@ -41,7 +41,6 @@ class _AboutWidgetState extends State<AboutWidget> {
     return Scaffold(
         appBar: AppBar(
           title: AppBarTitle(title: localizations.about),
-          backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
         ),
         body: Container(
           decoration: const BoxDecoration(

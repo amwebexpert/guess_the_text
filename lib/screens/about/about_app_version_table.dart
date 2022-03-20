@@ -4,7 +4,6 @@ import 'package:guess_the_text/services/hangman/hangman_service.dart';
 import 'package:guess_the_text/services/hangman/model/api_about.dart';
 import 'package:guess_the_text/theme/text_link.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class AppVersionTable extends StatefulWidget {
   const AppVersionTable({
