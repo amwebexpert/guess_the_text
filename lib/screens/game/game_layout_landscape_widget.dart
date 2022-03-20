@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guess_the_text/model/word_to_guess.dart';
 import 'package:guess_the_text/screens/game/game_bottom_widhet.dart';
-import 'package:guess_the_text/screens/game/game_top_widget.dart';
+import 'package:guess_the_text/screens/game/text_to_guess_area_widget.dart';
 
 class GameLayoutLandscapeWidget extends StatelessWidget {
   final TextToGuess textToGuess;
@@ -21,7 +21,7 @@ class GameLayoutLandscapeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        GameTopWidget(textToGuess: textToGuess, isShuffling: isShuffling),
+        TextToGuessArea(textToGuess: textToGuess, isShuffling: isShuffling),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),

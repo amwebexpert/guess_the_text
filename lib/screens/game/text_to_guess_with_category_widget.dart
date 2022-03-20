@@ -3,10 +3,10 @@ import 'package:guess_the_text/model/word_to_guess.dart';
 import 'package:guess_the_text/screens/game/text_to_guess_template_widget.dart';
 import 'package:guess_the_text/services/hangman/hangman_service.dart';
 
-class WordSessionText extends StatelessWidget {
+class TextToGuessWithCategory extends StatelessWidget {
   final TextToGuess textToGuess;
 
-  const WordSessionText({Key? key, required this.textToGuess}) : super(key: key);
+  const TextToGuessWithCategory({Key? key, required this.textToGuess}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

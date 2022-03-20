@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guess_the_text/model/word_to_guess.dart';
 import 'package:guess_the_text/screens/game/letters_widget.dart';
-import 'package:guess_the_text/screens/game/work_session_conclusion_widget.dart';
+import 'package:guess_the_text/screens/game/game_session_conclusion_widget.dart';
 
 class GameBottomWidget extends StatelessWidget {
   final TextToGuess textToGuess;
@@ -12,7 +12,7 @@ class GameBottomWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (textToGuess.isGameOver()) {
-      return WordSessionConclusion(textToGuess: textToGuess);
+      return GameSessionConclusion(textToGuess: textToGuess);
     }
 
     return LettersWidget(textToGuess: textToGuess, onLetterPressed: tryLetter);

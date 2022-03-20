@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:guess_the_text/model/word_to_guess.dart';
 import 'package:guess_the_text/screens/game/text_to_guess_template_widget.dart';
 
-class WordSessionConclusion extends StatelessWidget {
+class GameSessionConclusion extends StatelessWidget {
   final TextToGuess textToGuess;
 
-  const WordSessionConclusion({Key? key, required this.textToGuess}) : super(key: key);
+  const GameSessionConclusion({Key? key, required this.textToGuess}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

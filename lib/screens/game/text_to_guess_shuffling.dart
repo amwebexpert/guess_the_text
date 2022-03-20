@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart' as spinner;
 
-class WordSessionTextLoading extends StatelessWidget {
-  const WordSessionTextLoading({
+class TextToGuessShuffling extends StatelessWidget {
+  const TextToGuessShuffling({
     Key? key,
   }) : super(key: key);
 
