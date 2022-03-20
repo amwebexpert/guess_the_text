@@ -26,6 +26,7 @@ class GameLayoutLandscapeWidget extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
                 Flexible(flex: 3, child: GameBottomWidget(textToGuess: textToGuess, tryLetter: tryLetter)),
                 Flexible(flex: 2, child: Image.asset(currentStateImg)),

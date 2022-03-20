@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guess_the_text/model/word_to_guess.dart';
-import 'package:guess_the_text/screens/game/work_session_text_loading_widjet.dart';
+import 'package:guess_the_text/screens/game/work_session_text_loading_widget.dart';
 import 'package:guess_the_text/screens/game/work_session_text_widget.dart';
 
 class GameTopWidget extends StatelessWidget {
@@ -15,6 +15,6 @@ class GameTopWidget extends StatelessWidget {
       return const WordSessionTextLoading();
     }
 
-    return WordSessionText(textToGuess: textToGuess, isHiddenMode: true);
+    return WordSessionText(textToGuess: textToGuess);
   }
 }

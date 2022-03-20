@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guess_the_text/model/word_to_guess.dart';
-import 'package:guess_the_text/screens/game/work_session_text_widget.dart';
+import 'package:guess_the_text/screens/game/text_to_guess_template_widget.dart';
 
 class WordSessionConclusion extends StatelessWidget {
   final TextToGuess textToGuess;
@@ -12,17 +12,22 @@ class WordSessionConclusion extends StatelessWidget {
     String gameOverImage = "assets/images/${textToGuess.gameOverImage()}.png";
     MaterialColor color = textToGuess.isGameOverWithSuccess() ? Colors.green : Colors.red;
 
-    return Column(
-      children: [
-        SizedBox(
-          width: 140,
-          child: Image.asset(
-            gameOverImage,
-            color: color,
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: 140,
+            child: Image.asset(
+              gameOverImage,
+              color: color,
+            ),
           ),
-        ),
-        WordSessionText(textToGuess: textToGuess, isHiddenMode: false),
-      ],
+          TextToGuessTemplate(
+            text: textToGuess.original,
+          ),
+        ],
+      ),
     );
   }
 }
