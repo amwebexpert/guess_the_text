@@ -36,6 +36,7 @@ class _HangmanAppState extends State<HangmanApp> {
           '/': (context) => const LoadingWidget(),
           '/game': (context) => const GameWidget(),
           '/categories': (context) => const CategoriesWidget(),
+          '/preferences': (context) => const AboutWidget(),
           '/about': (context) => const AboutWidget(),
         },
       );

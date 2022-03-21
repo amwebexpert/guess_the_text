@@ -66,6 +66,22 @@ class AppMenu extends StatelessWidget {
           const Divider(
             thickness: 2,
           ),
+          ListTile(
+            visualDensity: VisualDensity.compact,
+            leading: Icon(
+              iconsMap['preferences'],
+            ),
+            title: Text(
+              localizations.about,
+            ),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/preferences');
+            },
+          ),
+          const Divider(
+            thickness: 2,
+          ),
         ],
       ),
     );
