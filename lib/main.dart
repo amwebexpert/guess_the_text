@@ -7,7 +7,7 @@ import 'package:guess_the_text/screens/categories/categories_widget.dart';
 import 'package:guess_the_text/screens/game/game_layout_widget.dart';
 import 'package:guess_the_text/screens/loading/loading_widget.dart';
 import 'package:guess_the_text/screens/about/about_widget.dart';
-import 'package:guess_the_text/screens/preferences/preferences_widget.dart';
+import 'package:guess_the_text/screens/settings/settings_widget.dart';
 import 'package:guess_the_text/store/preferences.dart';
 import 'package:guess_the_text/theme/app_theme.dart';
 
@@ -37,7 +37,7 @@ class _HangmanAppState extends State<HangmanApp> {
           '/': (context) => const LoadingWidget(),
           '/game': (context) => const GameWidget(),
           '/categories': (context) => const CategoriesWidget(),
-          '/preferences': (context) => const PreferencesWidget(),
+          '/preferences': (context) => const SettingsWidget(),
           '/about': (context) => const AboutWidget(),
         },
       );

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:guess_the_text/theme/app_bar/app_bar_title_widget.dart';
 
-class PreferencesWidget extends StatefulWidget {
-  const PreferencesWidget({Key? key}) : super(key: key);
+class SettingsWidget extends StatefulWidget {
+  const SettingsWidget({Key? key}) : super(key: key);
 
   @override
-  _PreferencesWidgetState createState() => _PreferencesWidgetState();
+  _SettingsWidgetState createState() => _SettingsWidgetState();
 }
 
-class _PreferencesWidgetState extends State<PreferencesWidget> {
+class _SettingsWidgetState extends State<SettingsWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
