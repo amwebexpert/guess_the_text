@@ -21,7 +21,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const AppBarTitle(title: 'Preferences'),
+        title: AppBarTitle(title: localizations.preferences),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(vertical: spacing(1)),
