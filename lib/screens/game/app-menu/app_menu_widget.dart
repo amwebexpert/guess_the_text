@@ -12,7 +12,7 @@ class AppMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AppLocalizations localizations = AppLocalizations.of(context)!;
+    final AppLocalizations localizations = AppLocalizations.of(context)!;
     final bool isDark = Theme.of(context).colorScheme.brightness == Brightness.dark;
 
     return Drawer(
