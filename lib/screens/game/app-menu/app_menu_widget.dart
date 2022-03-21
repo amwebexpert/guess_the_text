@@ -72,7 +72,7 @@ class AppMenu extends StatelessWidget {
               iconsMap['preferences'],
             ),
             title: Text(
-              localizations.about,
+              localizations.preferences,
             ),
             onTap: () {
               Navigator.pop(context);
