@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guess_the_text/theme/app_bar/app_bar_title_widget.dart';
 
 class SettingsWidget extends StatefulWidget {
@@ -11,9 +12,11 @@ class SettingsWidget extends StatefulWidget {
 class _SettingsWidgetState extends State<SettingsWidget> {
   @override
   Widget build(BuildContext context) {
+    final String title = AppLocalizations.of(context)!.preferences;
+
     return Scaffold(
       appBar: AppBar(
-        title: const AppBarTitle(title: 'Preferences'),
+        title: AppBarTitle(title: title),
       ),
       body: const Text('test'),
     );
