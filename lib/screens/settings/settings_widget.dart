@@ -12,11 +12,11 @@ class SettingsWidget extends StatefulWidget {
 class _SettingsWidgetState extends State<SettingsWidget> {
   @override
   Widget build(BuildContext context) {
-    final String title = AppLocalizations.of(context)!.preferences;
+    final AppLocalizations localizations = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
-        title: AppBarTitle(title: title),
+        title: AppBarTitle(title: localizations.preferences + '.'),
       ),
       body: const Text('test'),
     );
