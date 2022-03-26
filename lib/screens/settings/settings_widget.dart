@@ -44,6 +44,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
         child: Column(
           children: <Widget>[
             ListTile(
+              leading: const Icon(Icons.language),
+              title: Text(localizations.prefLanguage),
+            ),
+            ListTile(
               dense: true,
               title: Text(
                 localizations.prefLangFr,
@@ -71,6 +75,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                 onChanged: changeLanguage,
               ),
             ),
+            const Divider(),
           ],
         ),
       ),
