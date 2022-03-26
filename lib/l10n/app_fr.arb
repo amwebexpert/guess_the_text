@@ -19,6 +19,9 @@
   "prefLangEn": "English",
   "prefLangFr": "Français",
   "prefLanguage": "Langue d'affichage",
+  "prefThemeBrightness": "Luminosité du thème",
+  "prefThemeBrightnessDark": "Thème foncé",
+  "prefThemeBrightnessLight": "Thème clair",
   "preferences": "Préférences",
   "privacyPolicy": "Politique de confidentialité"
 }

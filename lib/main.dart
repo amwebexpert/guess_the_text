@@ -31,7 +31,7 @@ class _HangmanAppState extends State<HangmanApp> {
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         locale: preferences.locale,
-        theme: themeDataDark,
+        theme: preferences.isDarkTheme ? themeDataDark : themeDataLight,
         initialRoute: '/',
         routes: {
           '/': (context) => const LoadingWidget(),

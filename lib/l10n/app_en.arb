@@ -19,6 +19,9 @@
   "prefLangEn": "English",
   "prefLangFr": "Français",
   "prefLanguage": "Application language",
+  "prefThemeBrightness": "Theme Brightness",
+  "prefThemeBrightnessDark": "Dark theme",
+  "prefThemeBrightnessLight": "Light theme",
   "preferences": "Preferences",
   "privacyPolicy": "Privacy policy"
 }
