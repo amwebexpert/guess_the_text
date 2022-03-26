@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guess_the_text/model/language.dart';
-import 'package:guess_the_text/store/preferences.dart';
+import 'package:guess_the_text/store/settings_store.dart';
 import 'package:guess_the_text/theme/app_bar/app_bar_title_widget.dart';
 import 'package:guess_the_text/theme/theme_utils.dart';
 

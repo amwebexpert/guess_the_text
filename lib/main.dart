@@ -8,7 +8,7 @@ import 'package:guess_the_text/screens/game/game_layout_widget.dart';
 import 'package:guess_the_text/screens/loading/loading_widget.dart';
 import 'package:guess_the_text/screens/about/about_widget.dart';
 import 'package:guess_the_text/screens/settings/settings_widget.dart';
-import 'package:guess_the_text/store/preferences.dart';
+import 'package:guess_the_text/store/settings_store.dart';
 import 'package:guess_the_text/theme/app_theme.dart';
 
 void main() => runApp(const HangmanApp());
