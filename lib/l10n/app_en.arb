@@ -16,6 +16,9 @@
   "githubProject": "GitHub",
   "platform_key": "Information",
   "platform_value": "Value",
+  "prefLangEn": "English",
+  "prefLangFr": "Français",
+  "prefLanguage": "Application language",
   "preferences": "Preferences",
   "privacyPolicy": "Privacy policy"
 }

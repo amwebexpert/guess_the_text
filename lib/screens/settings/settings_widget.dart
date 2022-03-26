@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guess_the_text/model/language.dart';
+import 'package:guess_the_text/store/preferences.dart';
 import 'package:guess_the_text/theme/app_bar/app_bar_title_widget.dart';
 import 'package:guess_the_text/theme/theme_utils.dart';
-
-enum SingingCharacter { french, english }
 
 class SettingsWidget extends StatefulWidget {
   const SettingsWidget({Key? key}) : super(key: key);
@@ -13,7 +13,23 @@ class SettingsWidget extends StatefulWidget {
 }
 
 class _SettingsWidgetState extends State<SettingsWidget> {
-  SingingCharacter? _character = SingingCharacter.french;
+  final PreferencesStore preferences = PreferencesStore();
+  late AppLanguage? _language;
+
+  @override
+  void initState() {
+    super.initState();
+    _language = codesToLanguageMap[preferences.locale.languageCode];
+  }
+
+  void changeLanguage(AppLanguage? language) {
+    if (language != null) {
+      setState(() {
+        _language = language;
+      });
+      preferences.changeLocale([language]);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,45 +46,29 @@ class _SettingsWidgetState extends State<SettingsWidget> {
             ListTile(
               dense: true,
               title: Text(
-                'Lafayette',
+                localizations.prefLangFr,
                 style: Theme.of(context).textTheme.bodyText1,
               ),
-              onTap: () {
-                setState(() {
-                  _character = SingingCharacter.french;
-                });
-              },
-              leading: Radio<SingingCharacter>(
-                value: SingingCharacter.french,
+              onTap: () => changeLanguage(AppLanguage.french),
+              leading: Radio<AppLanguage>(
+                value: AppLanguage.french,
                 activeColor: Theme.of(context).colorScheme.primary,
-                groupValue: _character,
-                onChanged: (SingingCharacter? value) {
-                  setState(() {
-                    _character = value;
-                  });
-                },
+                groupValue: _language,
+                onChanged: changeLanguage,
               ),
             ),
             ListTile(
               dense: true,
               title: Text(
-                'Thomas Jefferson',
+                localizations.prefLangEn,
                 style: Theme.of(context).textTheme.bodyText1,
               ),
-              onTap: () {
-                setState(() {
-                  _character = SingingCharacter.english;
-                });
-              },
-              leading: Radio<SingingCharacter>(
-                value: SingingCharacter.english,
+              onTap: () => changeLanguage(AppLanguage.english),
+              leading: Radio<AppLanguage>(
+                value: AppLanguage.english,
                 activeColor: Theme.of(context).colorScheme.primary,
-                groupValue: _character,
-                onChanged: (SingingCharacter? value) {
-                  setState(() {
-                    _character = value;
-                  });
-                },
+                groupValue: _language,
+                onChanged: changeLanguage,
               ),
             ),
           ],

@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:guess_the_text/model/language.dart';
 import 'package:mobx/mobx.dart';
 
 class PreferencesStore {
@@ -14,17 +15,23 @@ class PreferencesStore {
 
   // actions ()
   late Action toggleLocale;
+  late Action changeLocale;
 
   factory PreferencesStore() => _instance;
 
   PreferencesStore._privateConstructor() {
     toggleLocale = Action(_toggleLocale);
+    changeLocale = Action(_changeLocale);
+  }
+
+  void _changeLocale(AppLanguage newLanguage) {
+    _locale.value = languageToLocaleMap[newLanguage]!;
   }
 
   void _toggleLocale() {
     String actualLanguageCode = locale.languageCode;
     String newLanguageCode = locale.languageCode == 'en' ? 'fr' : 'en';
     print("Locale [$actualLanguageCode] ==> [$newLanguageCode]");
-    _locale.value = Locale(newLanguageCode);
+    _locale.value = languageToLocaleMap[newLanguageCode]!;
   }
 }
