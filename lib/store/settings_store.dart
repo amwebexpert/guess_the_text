@@ -14,24 +14,15 @@ class PreferencesStore {
   Locale get locale => _locale.value;
 
   // actions ()
-  late Action toggleLocale;
   late Action changeLocale;
 
   factory PreferencesStore() => _instance;
 
   PreferencesStore._privateConstructor() {
-    toggleLocale = Action(_toggleLocale);
     changeLocale = Action(_changeLocale);
   }
 
   void _changeLocale(AppLanguage newLanguage) {
     _locale.value = languageToLocaleMap[newLanguage]!;
-  }
-
-  void _toggleLocale() {
-    String actualLanguageCode = locale.languageCode;
-    String newLanguageCode = locale.languageCode == 'en' ? 'fr' : 'en';
-    print("Locale [$actualLanguageCode] ==> [$newLanguageCode]");
-    _locale.value = languageToLocaleMap[newLanguageCode]!;
   }
 }
