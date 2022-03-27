@@ -1,6 +1,6 @@
 enum SharedPreferenceKey {
   appLanguage,
-  appThemeBrightness,
+  appIsThemeDark,
 }
 
 List<String> getAllSharedPreferenceKeys() {

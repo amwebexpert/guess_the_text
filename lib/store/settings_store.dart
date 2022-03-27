@@ -29,7 +29,7 @@ class PreferencesStore {
     _locale = Observable(languageToLocaleMap[appLanguage]!, name: 'appLocale');
 
     _isDarkTheme =
-        Observable(sp.getBool(SharedPreferenceKey.appThemeBrightness.name, defaultValue: true), name: 'isDarkTheme');
+        Observable(sp.getBool(SharedPreferenceKey.appIsThemeDark.name, defaultValue: true), name: 'isDarkTheme');
 
     changeLocale = Action(_changeLocale);
     toggleTheme = Action(_toggleTheme);
@@ -44,6 +44,6 @@ class PreferencesStore {
   void _toggleTheme() {
     final bool newValue = !_isDarkTheme.value;
     _isDarkTheme.value = newValue;
-    SharedPreferencesService().setBool(SharedPreferenceKey.appThemeBrightness.name, newValue);
+    SharedPreferencesService().setBool(SharedPreferenceKey.appIsThemeDark.name, newValue);
   }
 }
