@@ -1,18 +1,11 @@
 import 'dart:ui';
 
-enum AppLanguage { french, english }
+enum AppLanguage { fr, en }
 
-const Map<AppLanguage, Locale> languageToLocaleMap = {
-  AppLanguage.english: Locale('en'),
-  AppLanguage.french: Locale('fr'),
-};
+final supportedLanguages = AppLanguage.values.asNameMap().entries.map((e) => e.key).toList();
 
-const Map<AppLanguage, String> languageToCodeMap = {
-  AppLanguage.english: 'en',
-  AppLanguage.french: 'fr',
-};
+final Map<String, AppLanguage> codesToLanguageMap = AppLanguage.values.asNameMap();
 
-const Map<String, AppLanguage> codesToLanguageMap = {
-  'en': AppLanguage.english,
-  'fr': AppLanguage.french,
-};
+final Map<AppLanguage, String> languageToCodeMap = codesToLanguageMap.map((value, key) => MapEntry(key, value));
+
+final Map<String, Locale> languageToLocaleMap = {for (var v in supportedLanguages) v: Locale(v)};

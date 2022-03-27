@@ -55,9 +55,9 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                   localizations.prefLangFr,
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
-                onTap: () => changeLanguage(AppLanguage.french),
+                onTap: () => changeLanguage(AppLanguage.fr),
                 leading: Radio<AppLanguage>(
-                  value: AppLanguage.french,
+                  value: AppLanguage.fr,
                   activeColor: Theme.of(context).colorScheme.primary,
                   groupValue: _language,
                   onChanged: changeLanguage,
@@ -69,9 +69,9 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                   localizations.prefLangEn,
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
-                onTap: () => changeLanguage(AppLanguage.english),
+                onTap: () => changeLanguage(AppLanguage.en),
                 leading: Radio<AppLanguage>(
-                  value: AppLanguage.english,
+                  value: AppLanguage.en,
                   activeColor: Theme.of(context).colorScheme.primary,
                   groupValue: _language,
                   onChanged: changeLanguage,

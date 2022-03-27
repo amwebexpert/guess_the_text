@@ -1,5 +1,7 @@
 import 'package:flutter_mobx/flutter_mobx.dart';
 
+import 'package:flutter_spinkit/flutter_spinkit.dart' as spinner;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -8,6 +10,7 @@ import 'package:guess_the_text/screens/game/game_layout_widget.dart';
 import 'package:guess_the_text/screens/loading/loading_widget.dart';
 import 'package:guess_the_text/screens/about/about_widget.dart';
 import 'package:guess_the_text/screens/settings/settings_widget.dart';
+import 'package:guess_the_text/services/storage/shared_preferences.services.dart';
 import 'package:guess_the_text/store/settings_store.dart';
 import 'package:guess_the_text/theme/app_theme.dart';
 
@@ -21,17 +24,32 @@ class HangmanApp extends StatefulWidget {
 }
 
 class _HangmanAppState extends State<HangmanApp> {
-  final PreferencesStore preferences = PreferencesStore();
+  bool isLoadingSharedPreferences = true;
+
+  @override
+  void initState() {
+    super.initState();
+
+    SharedPreferencesService().init().then((_) {
+      setState(() {
+        isLoadingSharedPreferences = false;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    if (isLoadingSharedPreferences) {
+      return const SizedBox.shrink();
+    }
+
     return Observer(builder: (BuildContext context) {
       return MaterialApp(
         // debugShowCheckedModeBanner: false, // uncomment to take screen captures without the banner
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        locale: preferences.locale,
-        theme: preferences.isDarkTheme ? themeDataDark : themeDataLight,
+        locale: PreferencesStore().locale,
+        theme: PreferencesStore().isDarkTheme ? themeDataDark : themeDataLight,
         initialRoute: '/',
         routes: {
           '/': (context) => const LoadingWidget(),
