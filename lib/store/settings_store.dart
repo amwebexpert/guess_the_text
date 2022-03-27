@@ -8,6 +8,7 @@ import 'package:mobx/mobx.dart';
 
 class PreferencesStore {
   static final PreferencesStore _instance = PreferencesStore._privateConstructor();
+  final sp = SharedPreferencesService();
 
   late final Observable<bool> _isDarkTheme;
   late final Observable<Locale> _locale;
@@ -23,7 +24,6 @@ class PreferencesStore {
   factory PreferencesStore() => _instance;
 
   PreferencesStore._privateConstructor() {
-    final sp = SharedPreferencesService();
     final String platformLanguageCode = Locale(Platform.localeName.split('_')[0]).languageCode;
     final String appLanguage = sp.getString(SharedPreferenceKey.appLanguage.name, defaultValue: platformLanguageCode);
     _locale = Observable(languageToLocaleMap[appLanguage]!, name: 'appLocale');
@@ -38,12 +38,12 @@ class PreferencesStore {
   void _changeLocale(AppLanguage newLanguage) {
     final languageCode = languageToCodeMap[newLanguage];
     _locale.value = languageToLocaleMap[languageCode]!;
-    SharedPreferencesService().setString(SharedPreferenceKey.appLanguage.name, languageToCodeMap[newLanguage]!);
+    sp.setString(SharedPreferenceKey.appLanguage.name, languageToCodeMap[newLanguage]!);
   }
 
   void _toggleTheme() {
     final bool newValue = !_isDarkTheme.value;
     _isDarkTheme.value = newValue;
-    SharedPreferencesService().setBool(SharedPreferenceKey.appIsThemeDark.name, newValue);
+    sp.setBool(SharedPreferenceKey.appIsThemeDark.name, newValue);
   }
 }
