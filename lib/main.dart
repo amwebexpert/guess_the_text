@@ -11,7 +11,7 @@ import 'package:guess_the_text/screens/loading/loading_widget.dart';
 import 'package:guess_the_text/screens/about/about_widget.dart';
 import 'package:guess_the_text/screens/settings/settings_widget.dart';
 import 'package:guess_the_text/services/storage/shared_preferences.services.dart';
-import 'package:guess_the_text/store/settings_store.dart';
+import 'package:guess_the_text/store/preferences_store.dart';
 import 'package:guess_the_text/theme/app_theme.dart';
 
 void main() => runApp(const HangmanApp());
@@ -44,12 +44,14 @@ class _HangmanAppState extends State<HangmanApp> {
     }
 
     return Observer(builder: (BuildContext context) {
+      final PreferencesStore preferencesStore = PreferencesStore();
+
       return MaterialApp(
         // debugShowCheckedModeBanner: false, // uncomment to take screen captures without the banner
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        locale: PreferencesStore().locale,
-        theme: PreferencesStore().isDarkTheme ? themeDataDark : themeDataLight,
+        locale: preferencesStore.locale,
+        theme: preferencesStore.isDarkTheme ? themeDataDark : themeDataLight,
         initialRoute: '/',
         routes: {
           '/': (context) => const LoadingWidget(),
