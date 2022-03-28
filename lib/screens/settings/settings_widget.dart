@@ -15,20 +15,17 @@ class SettingsWidget extends StatefulWidget {
 
 class _SettingsWidgetState extends State<SettingsWidget> {
   final PreferencesStore preferences = PreferencesStore();
-  late AppLanguage? _language;
 
-  @override
-  void initState() {
-    super.initState();
-    _language = codesToLanguageMap[preferences.locale.languageCode];
+  void themeBrightnessChanged(bool? isDark) {
+    if (isDark != preferences.isDarkTheme) {
+      preferences.toggleTheme();
+    }
   }
 
-  void changeLanguage(AppLanguage? language) {
-    if (language != null) {
-      setState(() {
-        _language = language;
-      });
-      preferences.changeLocale([language]);
+  void changeLanguage(AppLanguage? selectedLanguage) {
+    final AppLanguage? language = codesToLanguageMap[preferences.locale.languageCode];
+    if (selectedLanguage != language) {
+      preferences.changeLocale([selectedLanguage]);
     }
   }
 
@@ -59,7 +56,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                 leading: Radio<AppLanguage>(
                   value: AppLanguage.fr,
                   activeColor: Theme.of(context).colorScheme.primary,
-                  groupValue: _language,
+                  groupValue: codesToLanguageMap[preferences.locale.languageCode],
                   onChanged: changeLanguage,
                 ),
               ),
@@ -73,7 +70,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                 leading: Radio<AppLanguage>(
                   value: AppLanguage.en,
                   activeColor: Theme.of(context).colorScheme.primary,
-                  groupValue: _language,
+                  groupValue: codesToLanguageMap[preferences.locale.languageCode],
                   onChanged: changeLanguage,
                 ),
               ),
@@ -88,12 +85,12 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                   localizations.prefThemeBrightnessLight,
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
-                onTap: preferences.toggleTheme,
+                onTap: () => themeBrightnessChanged(false),
                 leading: Radio<bool>(
                   value: false,
                   activeColor: Theme.of(context).colorScheme.primary,
                   groupValue: preferences.isDarkTheme,
-                  onChanged: (_) => preferences.toggleTheme(),
+                  onChanged: themeBrightnessChanged,
                 ),
               ),
               ListTile(
@@ -102,12 +99,12 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                   localizations.prefThemeBrightnessDark,
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
-                onTap: preferences.toggleTheme,
+                onTap: () => themeBrightnessChanged(true),
                 leading: Radio<bool>(
                   value: true,
                   activeColor: Theme.of(context).colorScheme.primary,
                   groupValue: preferences.isDarkTheme,
-                  onChanged: (_) => preferences.toggleTheme(),
+                  onChanged: themeBrightnessChanged,
                 ),
               ),
               const Divider(),

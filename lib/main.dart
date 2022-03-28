@@ -40,7 +40,7 @@ class _HangmanAppState extends State<HangmanApp> {
   @override
   Widget build(BuildContext context) {
     if (isLoadingSharedPreferences) {
-      return const SizedBox.shrink();
+      return const SizedBox.shrink(); // TODO loading spinner or animation
     }
 
     return Observer(builder: (BuildContext context) {
