@@ -10,12 +10,10 @@ Deployed on:
 
 ## Roadmap
 
-- Use custom Theme and customize Typography (headline6, bodyText2, ...) https://docs.flutter.dev/cookbook/design/themes
 - Add ability to (input modal) add any text_to_guess on the fly
+- MobX Store annotations via the mobx_codegen package
 - Check support for spaces and dash characters
 - Apply Flutter Cookbook official site section patterns
-- Preferences page & shared preferences
-- Dark theme mode
 - Example of Stack layout
 - Animations: Tweens, Physic-based
 - Icon of app inside the appBar
@@ -24,16 +22,19 @@ Deployed on:
 
 ## Completed so far
 
--	Scroll view, list view, Drawer menu
--	I18n management
--	Orientation locking
--	Lottie animations
--	Background images
--	Conditional layout depending on device orientation
--	State management with MobX
--	Factory pattern to create services singleton
--	Async API services
--	FadeIn animation
+- Scroll view, list view, Drawer menu
+- I18n management
+- Orientation locking
+- Lottie animations
+- Background images
+- Conditional layout depending on device orientation
+- State management with MobX
+- Factory pattern to create services singleton
+- Async API services
+- FadeIn animation
+- Use custom Theme and customize Typography (headline6, bodyText2, ...) https://docs.flutter.dev/cookbook/design/themes
+- Preferences page & shared preferences
+- Dark theme mode
 
 
 ## Usefull command lines
