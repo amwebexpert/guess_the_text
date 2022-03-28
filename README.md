@@ -11,6 +11,10 @@ Deployed on:
 ## Roadmap
 
 - Add ability to (input modal) add any text_to_guess on the fly
+- SVG images instead of PNG
+- precacheImage images (flickering issue for landscape mode) possible solutions:
+  - https://stackoverflow.com/a/51343954/704681
+  - Animation that iterates through all hangman images
 - MobX Store annotations via the mobx_codegen package
 - Check support for spaces and dash characters
 - Apply Flutter Cookbook official site section patterns
