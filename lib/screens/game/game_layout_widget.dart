@@ -55,7 +55,7 @@ class _GameWidgetState extends State<GameWidget> {
   @override
   Widget build(BuildContext context) {
     AppLocalizations localizations = AppLocalizations.of(context)!;
-    String currentStateImg = "assets/images/${textToGuess.currentStateImage()}.png";
+    String currentStateImg = "assets/images/${textToGuess.currentStateImage()}.svg";
 
     return Scaffold(
       appBar: AppBar(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:guess_the_text/model/word_to_guess.dart';
 import 'package:guess_the_text/screens/game/text_to_guess_template_widget.dart';
 
@@ -9,7 +10,7 @@ class GameSessionConclusion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String gameOverImage = "assets/images/${textToGuess.gameOverImage()}.png";
+    String gameOverImage = "assets/images/${textToGuess.gameOverImage()}.svg";
     MaterialColor color = textToGuess.isGameOverWithSuccess() ? Colors.green : Colors.red;
 
     return Center(
@@ -18,7 +19,8 @@ class GameSessionConclusion extends StatelessWidget {
         children: [
           SizedBox(
             width: 140,
-            child: Image.asset(
+            height: 140,
+            child: SvgPicture.asset(
               gameOverImage,
               color: color,
             ),

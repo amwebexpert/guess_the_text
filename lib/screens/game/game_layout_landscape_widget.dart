@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:guess_the_text/model/word_to_guess.dart';
 import 'package:guess_the_text/screens/game/game_interaction_panel_widget.dart';
 import 'package:guess_the_text/screens/game/text_to_guess_panel_widget.dart';
@@ -29,7 +30,7 @@ class GameLayoutLandscapeWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
                 Flexible(flex: 3, child: GameBottomWidget(textToGuess: textToGuess, tryLetter: tryLetter)),
-                Flexible(flex: 2, child: Image.asset(currentStateImg)),
+                Flexible(flex: 2, child: SvgPicture.asset(currentStateImg)),
               ],
             ),
           ),

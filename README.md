@@ -11,7 +11,6 @@ Deployed on:
 ## Roadmap
 
 - Add ability to (input modal) add any text_to_guess on the fly
-- SVG images instead of PNG
 - precacheImage images (flickering issue for landscape mode) possible solutions:
   - https://stackoverflow.com/a/51343954/704681
   - Animation that iterates through all hangman images
@@ -29,7 +28,8 @@ Deployed on:
 - Scroll view, list view, Drawer menu
 - I18n management
 - Orientation locking
-- Lottie animations
+- Lottie animations while loading
+- Prefer SVG images over PNG
 - Background images
 - Conditional layout depending on device orientation
 - State management with MobX
