@@ -1,15 +1,16 @@
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:guess_the_text/utils/animations.dart';
 
-import 'package:flutter_spinkit/flutter_spinkit.dart' as spinner;
+import 'package:lottie/lottie.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:guess_the_text/screens/categories/categories_widget.dart';
 import 'package:guess_the_text/screens/game/game_layout_widget.dart';
-import 'package:guess_the_text/screens/loading/loading_widget.dart';
 import 'package:guess_the_text/screens/about/about_widget.dart';
 import 'package:guess_the_text/screens/settings/settings_widget.dart';
+import 'package:guess_the_text/services/hangman/hangman_service.dart';
 import 'package:guess_the_text/services/storage/shared_preferences.services.dart';
 import 'package:guess_the_text/store/preferences_store.dart';
 import 'package:guess_the_text/theme/app_theme.dart';
@@ -29,18 +30,26 @@ class _HangmanAppState extends State<HangmanApp> {
   @override
   void initState() {
     super.initState();
+    loadData();
+  }
 
-    SharedPreferencesService().init().then((_) {
-      setState(() {
-        isLoadingSharedPreferences = false;
-      });
+  void loadData() async {
+    final HangmanService service = HangmanService();
+
+    await Future.wait([service.loadCategories(), SharedPreferencesService().init()]);
+    await service.loadData();
+
+    setState(() {
+      isLoadingSharedPreferences = false;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     if (isLoadingSharedPreferences) {
-      return const SizedBox.shrink(); // TODO loading spinner or animation
+      return Center(
+        child: Lottie.asset(getAnimationPath()),
+      );
     }
 
     return Observer(builder: (BuildContext context) {
@@ -52,9 +61,8 @@ class _HangmanAppState extends State<HangmanApp> {
         supportedLocales: AppLocalizations.supportedLocales,
         locale: preferencesStore.locale,
         theme: preferencesStore.isDarkTheme ? themeDataDark : themeDataLight,
-        initialRoute: '/',
+        initialRoute: '/game',
         routes: {
-          '/': (context) => const LoadingWidget(),
           '/game': (context) => const GameWidget(),
           '/categories': (context) => const CategoriesWidget(),
           '/preferences': (context) => const SettingsWidget(),
