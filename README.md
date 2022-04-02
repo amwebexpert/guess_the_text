@@ -11,9 +11,6 @@ Deployed on:
 ## Roadmap
 
 - Add ability to (input modal) add any text_to_guess on the fly
-- precacheImage images (flickering issue for landscape mode) possible solutions:
-  - https://stackoverflow.com/a/51343954/704681
-  - Animation that iterates through all hangman images
 - MobX Store annotations via the mobx_codegen package
 - Check support for spaces and dash characters
 - Apply Flutter Cookbook official site section patterns
@@ -35,7 +32,7 @@ Deployed on:
 - State management with MobX
 - Factory pattern to create services singleton
 - Async API services
-- FadeIn animation
+- Example of a FadeIn animation
 - Use custom Theme and customize Typography (headline6, bodyText2, ...) https://docs.flutter.dev/cookbook/design/themes
 - Preferences page & shared preferences
 - Dark theme mode
