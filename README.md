@@ -55,8 +55,8 @@ Deployed on:
 - https://docs.flutter.dev/deployment/android
 - https://github.com/flutter/flutter/issues/64334
 
-    flutter clean,
-    flutter pub get,
+    flutter clean
+    flutter pub get
     flutter build appbundle --release --no-tree-shake-icons
 
 ## Start Flutter app on Simulator or a specific device
