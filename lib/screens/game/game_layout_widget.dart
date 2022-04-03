@@ -7,6 +7,7 @@ import 'package:guess_the_text/screens/game/game_layout_portrait_widget.dart';
 
 import 'package:guess_the_text/model/word_to_guess.dart';
 import 'package:guess_the_text/services/hangman/hangman_service.dart';
+import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:guess_the_text/theme/app_bar/app_bar_title_widget.dart';
 
 import 'app-menu/app_menu_widget.dart';
@@ -20,8 +21,8 @@ class GameWidget extends StatefulWidget {
 
 class _GameWidgetState extends State<GameWidget> {
   final HangmanService service = HangmanService();
+  final LoggerService logger = LoggerService();
   late TextToGuess textToGuess;
-  Map data = {};
   bool isShuffling = false;
 
   @override
@@ -40,7 +41,7 @@ class _GameWidgetState extends State<GameWidget> {
     const duration = Duration(milliseconds: 400);
     Timer(duration, () {
       final element = service.shuffle();
-      print('new text to guess: ${element.original}');
+      logger.info('new text to guess: ${element.original}');
       setState(() => ({
             textToGuess = TextToGuess(characters: element.normalized, original: element.original),
             isShuffling = false

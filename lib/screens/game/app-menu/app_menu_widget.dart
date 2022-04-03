@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:guess_the_text/utils/icon_utils.dart';
 
 class AppMenu extends StatelessWidget {
@@ -12,6 +13,7 @@ class AppMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final LoggerService logger = LoggerService();
     final AppLocalizations localizations = AppLocalizations.of(context)!;
     final bool isDark = Theme.of(context).colorScheme.brightness == Brightness.dark;
 
@@ -41,7 +43,7 @@ class AppMenu extends StatelessWidget {
               Navigator.pop(context);
               Navigator.pushNamed(context, '/categories').then((value) {
                 if (value != null) {
-                  print('new category: $value');
+                  logger.info('new category: $value');
                   resetState();
                 }
               });
