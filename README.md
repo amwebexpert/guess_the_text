@@ -1,6 +1,10 @@
 # guess_the_text
 
-Words guess game app in Flutter
+Words guess game app in `Flutter`
+
+Free mobile application originally created to learn the `Flutter` framework in my spare time.
+
+The goal is to learn a technology at the same time as providing a fun and scalable educational tool. The source code of this application is available and may also serve as a learning base for training sessions in `Dart` programming with `Flutter`!
 
 Deployed on:
 - [Google Play](https://play.google.com/store/apps/details?id=com.amwebexpert.app.guessthetext.guess_the_text)
@@ -11,7 +15,6 @@ Deployed on:
 ## Roadmap
 
 - Add ability to (input modal) add any text_to_guess on the fly
-- MobX Store annotations via the mobx_codegen package
 - Check support for spaces and dash characters
 - Apply Flutter Cookbook official site section patterns
 - Example of Stack layout
@@ -30,6 +33,7 @@ Deployed on:
 - Background images
 - Conditional layout depending on device orientation
 - State management with MobX
+- MobX Store annotations via the mobx_codegen package
 - Factory pattern to create services singleton
 - Async API services
 - Example of a FadeIn animation
@@ -49,6 +53,10 @@ Deployed on:
     flutter clean
     flutter pub get
     flutter run
+
+## MobX re-generate .g.dart store files
+
+    flutter packages pub run build_runner build
 
 ## Build & Publish to Google Play
 

@@ -1,19 +1,16 @@
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:guess_the_text/utils/animations.dart';
-
-import 'package:lottie/lottie.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:guess_the_text/screens/about/about_widget.dart';
 import 'package:guess_the_text/screens/categories/categories_widget.dart';
 import 'package:guess_the_text/screens/game/game_layout_widget.dart';
-import 'package:guess_the_text/screens/about/about_widget.dart';
 import 'package:guess_the_text/screens/settings/settings_widget.dart';
 import 'package:guess_the_text/services/hangman/hangman_service.dart';
 import 'package:guess_the_text/services/storage/shared_preferences.services.dart';
-import 'package:guess_the_text/store/preferences_store.dart';
+import 'package:guess_the_text/store/settings/settings.store.dart';
 import 'package:guess_the_text/theme/app_theme.dart';
+import 'package:guess_the_text/utils/animations.dart';
+import 'package:lottie/lottie.dart';
 
 void main() => runApp(const HangmanApp());
 
@@ -53,14 +50,14 @@ class _HangmanAppState extends State<HangmanApp> {
     }
 
     return Observer(builder: (BuildContext context) {
-      final PreferencesStore preferencesStore = PreferencesStore();
+      final SettingsStore settingsStore = SettingsStore();
 
       return MaterialApp(
         // debugShowCheckedModeBanner: false, // uncomment to take screen captures without the banner
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        locale: preferencesStore.locale,
-        theme: preferencesStore.isDarkTheme ? themeDataDark : themeDataLight,
+        locale: settingsStore.locale,
+        theme: settingsStore.isDarkTheme ? themeDataDark : themeDataLight,
         initialRoute: '/game',
         routes: {
           '/game': (context) => const GameWidget(),

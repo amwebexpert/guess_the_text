@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:guess_the_text/model/language.dart';
-import 'package:guess_the_text/store/preferences_store.dart';
+import 'package:guess_the_text/store/settings/settings.store.dart';
 import 'package:guess_the_text/theme/app_bar/app_bar_title_widget.dart';
 import 'package:guess_the_text/theme/theme_utils.dart';
 
@@ -14,18 +14,18 @@ class SettingsWidget extends StatefulWidget {
 }
 
 class _SettingsWidgetState extends State<SettingsWidget> {
-  final PreferencesStore preferences = PreferencesStore();
+  final SettingsStore settings = SettingsStore();
 
   void themeBrightnessChanged(bool? isDark) {
-    if (isDark != preferences.isDarkTheme) {
-      preferences.toggleTheme();
+    if (isDark != settings.isDarkTheme) {
+      settings.toggleTheme();
     }
   }
 
   void changeLanguage(AppLanguage? selectedLanguage) {
-    final AppLanguage? language = codesToLanguageMap[preferences.locale.languageCode];
+    final AppLanguage? language = codesToLanguageMap[settings.locale.languageCode];
     if (selectedLanguage != language) {
-      preferences.changeLocale([selectedLanguage]);
+      settings.changeLocale(selectedLanguage);
     }
   }
 
@@ -56,7 +56,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                 leading: Radio<AppLanguage>(
                   value: AppLanguage.fr,
                   activeColor: Theme.of(context).colorScheme.primary,
-                  groupValue: codesToLanguageMap[preferences.locale.languageCode],
+                  groupValue: codesToLanguageMap[settings.locale.languageCode],
                   onChanged: changeLanguage,
                 ),
               ),
@@ -70,13 +70,13 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                 leading: Radio<AppLanguage>(
                   value: AppLanguage.en,
                   activeColor: Theme.of(context).colorScheme.primary,
-                  groupValue: codesToLanguageMap[preferences.locale.languageCode],
+                  groupValue: codesToLanguageMap[settings.locale.languageCode],
                   onChanged: changeLanguage,
                 ),
               ),
               const Divider(),
               ListTile(
-                leading: Icon(preferences.isDarkTheme ? Icons.nightlight : Icons.sunny),
+                leading: Icon(settings.isDarkTheme ? Icons.nightlight : Icons.sunny),
                 title: Text(localizations.prefThemeBrightness),
               ),
               ListTile(
@@ -89,7 +89,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                 leading: Radio<bool>(
                   value: false,
                   activeColor: Theme.of(context).colorScheme.primary,
-                  groupValue: preferences.isDarkTheme,
+                  groupValue: settings.isDarkTheme,
                   onChanged: themeBrightnessChanged,
                 ),
               ),
@@ -103,7 +103,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                 leading: Radio<bool>(
                   value: true,
                   activeColor: Theme.of(context).colorScheme.primary,
-                  groupValue: preferences.isDarkTheme,
+                  groupValue: settings.isDarkTheme,
                   onChanged: themeBrightnessChanged,
                 ),
               ),
