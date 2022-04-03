@@ -15,6 +15,8 @@ class TextsService {
   static const String apiPathCategories = '/api/v1/categories';
   static const String apiPathAbout = '/api/v1/about';
 
+  List<ApiCategory> _categories = [];
+
   factory TextsService() => _instance;
   TextsService._privateConstructor();
 
@@ -31,16 +33,21 @@ class TextsService {
     }
   }
 
-  Future<List<ApiCategory>> loadCategories(String categoryUuid) async {
+  Future<List<ApiCategory>> getCategories() async {
+    if (_categories.isNotEmpty) {
+      return _categories;
+    }
+
     Uri url = Uri.https(hostName, apiPathCategories);
 
     http.Response response = await _callApi(url);
     List<dynamic> array = convert.jsonDecode(response.body);
 
-    return array.map((it) => ApiCategory.fromJson(it)).toList();
+    _categories = array.map((it) => ApiCategory.fromJson(it)).toList();
+    return _categories;
   }
 
-  Future<List<ApiText>> loadData(String categoryUuid) async {
+  Future<List<ApiText>> getTexts(String categoryUuid) async {
     String entriesUrl = '$apiPathCategories/$categoryUuid/texts';
     Uri url = Uri.https(hostName, entriesUrl);
 
