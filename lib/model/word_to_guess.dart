@@ -8,7 +8,7 @@ class TextToGuess {
   List<String> charsTried = [];
   int badTrialCount = 0;
 
-  TextToGuess({required this.characters, required this.original}) {
+  TextToGuess({this.characters = '', this.original = ''}) {
     chars = characters.split('');
   }
 
