@@ -50,6 +50,7 @@ abstract class SettingsStoreBase with Store {
 
     final languageCode = languageToCodeMap[newLanguage];
     locale = languageToLocaleMap[languageCode]!;
+    // TODO handle this promise catchError
     sp.setString(SharedPreferenceKey.appLanguage.name, languageToCodeMap[newLanguage]!);
   }
 
@@ -57,6 +58,7 @@ abstract class SettingsStoreBase with Store {
   void toggleTheme() {
     final bool newValue = !isDarkTheme;
     isDarkTheme = newValue;
+    // TODO handle this promise catchError
     sp.setBool(SharedPreferenceKey.appIsThemeDark.name, newValue);
   }
 }
