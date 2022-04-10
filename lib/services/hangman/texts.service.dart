@@ -15,7 +15,10 @@ class TextsService {
   static const String apiPathCategories = '/api/v1/categories';
   static const String apiPathAbout = '/api/v1/about';
 
+  // internal service cache
   List<ApiCategory> _categories = [];
+  String _lastCategoryUuid = '';
+  List<ApiText> _texts = [];
 
   factory TextsService() => _instance;
   TextsService._privateConstructor();
@@ -48,13 +51,21 @@ class TextsService {
   }
 
   Future<List<ApiText>> getTexts(String categoryUuid) async {
+    if (_lastCategoryUuid == categoryUuid) {
+      return _texts;
+    }
+
     String entriesUrl = '$apiPathCategories/$categoryUuid/texts';
     Uri url = Uri.https(hostName, entriesUrl);
 
     http.Response response = await _callApi(url);
     List<dynamic> array = convert.jsonDecode(response.body);
 
-    return array.map((it) => ApiText.fromJson(it)).toList();
+    // memoize text items
+    _lastCategoryUuid = categoryUuid;
+    _texts = array.map((it) => ApiText.fromJson(it)).toList();
+
+    return _texts;
   }
 
   Future<http.Response> _callApi(Uri url) async {
