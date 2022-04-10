@@ -5,7 +5,8 @@ import 'package:guess_the_text/screens/about/about_widget.dart';
 import 'package:guess_the_text/screens/categories/categories_widget.dart';
 import 'package:guess_the_text/screens/game/game_layout_widget.dart';
 import 'package:guess_the_text/screens/settings/settings_widget.dart';
-import 'package:guess_the_text/services/hangman/hangman_service.dart';
+import 'package:guess_the_text/services/hangman/model/api_category.dart';
+import 'package:guess_the_text/services/hangman/texts.service.dart';
 import 'package:guess_the_text/services/storage/shared_preferences.services.dart';
 import 'package:guess_the_text/store/settings/settings.store.dart';
 import 'package:guess_the_text/theme/app_theme.dart';
@@ -22,7 +23,7 @@ class HangmanApp extends StatefulWidget {
 }
 
 class _HangmanAppState extends State<HangmanApp> {
-  bool isLoadingSharedPreferences = true;
+  bool isAppLoading = true;
 
   @override
   void initState() {
@@ -31,19 +32,20 @@ class _HangmanAppState extends State<HangmanApp> {
   }
 
   void loadData() async {
-    final HangmanService service = HangmanService();
+    final TextsService textsService = TextsService();
 
-    await Future.wait([service.loadCategories(), SharedPreferencesService().init()]);
-    await service.loadData();
+    await Future.wait([textsService.getCategories(), SharedPreferencesService().init()]);
+    List<ApiCategory> categories = await textsService.getCategories();
+    await textsService.getTexts(categories.first.uuid);
 
     setState(() {
-      isLoadingSharedPreferences = false;
+      isAppLoading = false;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    if (isLoadingSharedPreferences) {
+    if (isAppLoading) {
       return Center(
         child: Lottie.asset(getAnimationPath()),
       );

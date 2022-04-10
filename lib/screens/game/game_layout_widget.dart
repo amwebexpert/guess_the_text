@@ -1,13 +1,10 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:guess_the_text/screens/game/game_layout_landscape_widget.dart';
 import 'package:guess_the_text/screens/game/game_layout_portrait_widget.dart';
-
-import 'package:guess_the_text/model/word_to_guess.dart';
-import 'package:guess_the_text/services/hangman/hangman_service.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
+import 'package:guess_the_text/store/game/game.store.dart';
 import 'package:guess_the_text/theme/app_bar/app_bar_title_widget.dart';
 
 import 'app-menu/app_menu_widget.dart';
@@ -20,67 +17,40 @@ class GameWidget extends StatefulWidget {
 }
 
 class _GameWidgetState extends State<GameWidget> {
-  final HangmanService service = HangmanService();
   final LoggerService logger = LoggerService();
-  late TextToGuess textToGuess;
-  bool isShuffling = false;
-
-  @override
-  void initState() {
-    super.initState();
-
-    final newText = service.shuffle();
-    textToGuess = TextToGuess(characters: newText.normalized, original: newText.original);
-  }
-
-  void reset() {
-    setState(() {
-      isShuffling = true;
-    });
-
-    const duration = Duration(milliseconds: 400);
-    Timer(duration, () {
-      final element = service.shuffle();
-      logger.info('new text to guess: ${element.original}');
-      setState(() => ({
-            textToGuess = TextToGuess(characters: element.normalized, original: element.original),
-            isShuffling = false
-          }));
-    });
-  }
-
-  void tryLetter(String c) {
-    setState(() => textToGuess.tryChar(c: c));
-  }
+  final GameStore gameStore = GameStore();
 
   @override
   Widget build(BuildContext context) {
-    AppLocalizations localizations = AppLocalizations.of(context)!;
-    String currentStateImg = "assets/images/${textToGuess.currentStateImage()}.svg";
+    final AppLocalizations localizations = AppLocalizations.of(context)!;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: AppBarTitle(title: localizations.appTitle),
-      ),
-      drawer: AppMenu(resetState: reset),
-      body: OrientationBuilder(builder: (context, orientation) {
-        return orientation == Orientation.portrait
-            ? GameLayoutPortraitWidget(
-                textToGuess: textToGuess,
-                tryLetter: tryLetter,
-                isShuffling: isShuffling,
-                currentStateImg: currentStateImg)
-            : GameLayoutLandscapeWidget(
-                textToGuess: textToGuess,
-                tryLetter: tryLetter,
-                isShuffling: isShuffling,
-                currentStateImg: currentStateImg);
-      }),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
-      floatingActionButton: FloatingActionButton(
-        onPressed: reset,
-        child: const Icon(Icons.refresh),
-      ),
-    );
+    return Observer(builder: (BuildContext context) {
+      logger.info('GameWidget build ${gameStore.interactions}');
+
+      return Scaffold(
+        appBar: AppBar(
+          title: AppBarTitle(title: localizations.appTitle),
+        ),
+        drawer: AppMenu(resetState: gameStore.shuffle),
+        body: OrientationBuilder(builder: (context, orientation) {
+          return orientation == Orientation.portrait
+              ? GameLayoutPortraitWidget(
+                  textToGuess: gameStore.textToGuess,
+                  tryLetter: gameStore.tryLetter,
+                  isShuffling: gameStore.isLoading,
+                  currentStateImg: gameStore.currentStateImg)
+              : GameLayoutLandscapeWidget(
+                  textToGuess: gameStore.textToGuess,
+                  tryLetter: gameStore.tryLetter,
+                  isShuffling: gameStore.isLoading,
+                  currentStateImg: gameStore.currentStateImg);
+        }),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
+        floatingActionButton: FloatingActionButton(
+          onPressed: gameStore.shuffle,
+          child: const Icon(Icons.refresh),
+        ),
+      );
+    });
   }
 }

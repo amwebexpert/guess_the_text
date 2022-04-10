@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:guess_the_text/services/hangman/hangman_service.dart';
 import 'package:guess_the_text/services/hangman/model/api_about.dart';
+import 'package:guess_the_text/services/hangman/texts.service.dart';
 import 'package:guess_the_text/theme/text_link.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
@@ -23,7 +23,7 @@ class _AppVersionTableState extends State<AppVersionTable> {
   void initState() {
     super.initState();
 
-    HangmanService().getAboutInfo().then((value) => {
+    TextsService().getAboutInfo().then((value) => {
           setState(() {
             apiAbout = value;
           })

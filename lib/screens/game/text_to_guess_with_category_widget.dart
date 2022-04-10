@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:guess_the_text/model/word_to_guess.dart';
 import 'package:guess_the_text/screens/game/text_to_guess_template_widget.dart';
-import 'package:guess_the_text/services/hangman/hangman_service.dart';
+import 'package:guess_the_text/store/game/game.store.dart';
 
 class TextToGuessWithCategory extends StatelessWidget {
   final TextToGuess textToGuess;
@@ -36,11 +37,13 @@ class CategoryLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String categoryName = HangmanService().currentCategoryName();
+    final GameStore gameStore = GameStore();
 
-    return Text(
-      categoryName,
-      style: Theme.of(context).textTheme.bodyText2,
-    );
+    return Observer(builder: (BuildContext context) {
+      return Text(
+        gameStore.currentCategory.name,
+        style: Theme.of(context).textTheme.bodyText2,
+      );
+    });
   }
 }
