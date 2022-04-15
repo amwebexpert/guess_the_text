@@ -34,11 +34,7 @@ class _GameWidgetState extends State<GameWidget> {
         drawer: AppMenu(resetState: gameStore.shuffle),
         body: OrientationBuilder(builder: (context, orientation) {
           return orientation == Orientation.portrait
-              ? GameLayoutPortraitWidget(
-                  textToGuess: gameStore.textToGuess,
-                  tryLetter: gameStore.tryLetter,
-                  isShuffling: gameStore.isLoading,
-                  currentStateImg: gameStore.currentStateImg)
+              ? GameLayoutPortraitWidget()
               : GameLayoutLandscapeWidget(
                   textToGuess: gameStore.textToGuess,
                   tryLetter: gameStore.tryLetter,
