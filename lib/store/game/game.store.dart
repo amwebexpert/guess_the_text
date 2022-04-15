@@ -25,9 +25,6 @@ abstract class GameStoreBase with Store {
   final TextsService textsService = TextsService();
 
   @observable
-  int interactions = 0;
-
-  @observable
   bool isLoading = false;
 
   @observable
@@ -60,13 +57,11 @@ abstract class GameStoreBase with Store {
     ApiText apiText = texts.elementAt(i);
     textToGuess = TextToGuess(characters: apiText.normalized, original: apiText.original);
     logger.info('shuffled text: ${textToGuess.characters}');
-    interactions++;
   }
 
   @action
   void tryLetter(String c) {
-    textToGuess.tryChar(c: c);
-    interactions++;
+    textToGuess = textToGuess.tryChar(c: c);
   }
 
   @computed

@@ -19,8 +19,6 @@ class GameWidget extends StatelessWidget {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
 
     return Observer(builder: (BuildContext context) {
-      logger.info('GameWidget build ${gameStore.interactions}');
-
       return Scaffold(
         appBar: AppBar(
           title: AppBarTitle(title: localizations.appTitle),

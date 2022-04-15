@@ -12,17 +12,27 @@ class TextToGuess {
     chars = characters.split('');
   }
 
-  bool tryChar({required String c}) {
-    if (!charsTried.contains(c)) {
-      charsTried.add(c);
+  factory TextToGuess.from(TextToGuess original) {
+    TextToGuess clone = TextToGuess(characters: original.characters, original: original.original);
+
+    clone.charsTried = original.charsTried;
+    clone.badTrialCount = original.badTrialCount;
+
+    return clone;
+  }
+
+  TextToGuess tryChar({required String c}) {
+    TextToGuess mutation = TextToGuess.from(this);
+
+    if (!mutation.charsTried.contains(c)) {
+      mutation.charsTried.add(c);
     }
 
-    bool ok = chars.contains(c);
-    if (!ok) {
-      badTrialCount++;
+    if (!mutation.chars.contains(c)) {
+      mutation.badTrialCount++;
     }
 
-    return ok;
+    return mutation;
   }
 
   String currentStateImage() {

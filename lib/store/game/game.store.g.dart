@@ -17,21 +17,6 @@ mixin _$GameStore on GameStoreBase, Store {
           name: 'GameStoreBase.currentStateImg'))
       .value;
 
-  final _$interactionsAtom = Atom(name: 'GameStoreBase.interactions');
-
-  @override
-  int get interactions {
-    _$interactionsAtom.reportRead();
-    return super.interactions;
-  }
-
-  @override
-  set interactions(int value) {
-    _$interactionsAtom.reportWrite(value, super.interactions, () {
-      super.interactions = value;
-    });
-  }
-
   final _$isLoadingAtom = Atom(name: 'GameStoreBase.isLoading');
 
   @override
@@ -81,9 +66,9 @@ mixin _$GameStore on GameStoreBase, Store {
       AsyncAction('GameStoreBase.selectCategory');
 
   @override
-  Future<void> selectCategory(dynamic categoryUuid) {
+  Future<void> selectCategory(ApiCategory selected) {
     return _$selectCategoryAsyncAction
-        .run(() => super.selectCategory(categoryUuid));
+        .run(() => super.selectCategory(selected));
   }
 
   final _$shuffleAsyncAction = AsyncAction('GameStoreBase.shuffle');
@@ -110,7 +95,6 @@ mixin _$GameStore on GameStoreBase, Store {
   @override
   String toString() {
     return '''
-interactions: ${interactions},
 isLoading: ${isLoading},
 currentCategory: ${currentCategory},
 textToGuess: ${textToGuess},
