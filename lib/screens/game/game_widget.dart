@@ -9,19 +9,13 @@ import 'package:guess_the_text/theme/app_bar/app_bar_title_widget.dart';
 
 import 'app-menu/app_menu_widget.dart';
 
-class GameWidget extends StatefulWidget {
+class GameWidget extends StatelessWidget {
   const GameWidget({Key? key}) : super(key: key);
 
   @override
-  _GameWidgetState createState() => _GameWidgetState();
-}
-
-class _GameWidgetState extends State<GameWidget> {
-  final LoggerService logger = LoggerService();
-  final GameStore gameStore = GameStore();
-
-  @override
   Widget build(BuildContext context) {
+    final LoggerService logger = LoggerService();
+    final GameStore gameStore = GameStore();
     final AppLocalizations localizations = AppLocalizations.of(context)!;
 
     return Observer(builder: (BuildContext context) {
