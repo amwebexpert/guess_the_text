@@ -3,7 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:guess_the_text/screens/about/about_widget.dart';
 import 'package:guess_the_text/screens/categories/categories_widget.dart';
-import 'package:guess_the_text/screens/game/game_layout_widget.dart';
+import 'package:guess_the_text/screens/game/game_widget.dart';
 import 'package:guess_the_text/screens/settings/settings_widget.dart';
 import 'package:guess_the_text/services/hangman/model/api_category.dart';
 import 'package:guess_the_text/services/hangman/texts.service.dart';
