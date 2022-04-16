@@ -13,7 +13,7 @@ class GameBottomWidget extends StatelessWidget {
 
     return Observer(builder: (BuildContext context) {
       if (gameStore.textToGuess.isGameOver()) {
-        return GameSessionConclusion(textToGuess: gameStore.textToGuess);
+        return const GameSessionConclusion();
       }
 
       return LettersWidget(textToGuess: gameStore.textToGuess, onLetterPressed: gameStore.tryLetter);

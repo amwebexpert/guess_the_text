@@ -23,7 +23,9 @@ class GameWidget extends StatelessWidget {
         ),
         drawer: AppMenu(resetState: gameStore.shuffle),
         body: OrientationBuilder(builder: (context, orientation) {
-          return orientation == Orientation.portrait ? GameLayoutPortraitWidget() : GameLayoutLandscapeWidget();
+          return orientation == Orientation.portrait
+              ? const GameLayoutPortraitWidget()
+              : const GameLayoutLandscapeWidget();
         }),
         floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
         floatingActionButton: FloatingActionButton(

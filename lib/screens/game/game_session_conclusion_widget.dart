@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:guess_the_text/model/word_to_guess.dart';
 import 'package:guess_the_text/screens/game/text_to_guess_template_widget.dart';
+import 'package:guess_the_text/store/game/game.store.dart';
 
 class GameSessionConclusion extends StatelessWidget {
-  final TextToGuess textToGuess;
-
-  const GameSessionConclusion({Key? key, required this.textToGuess}) : super(key: key);
+  const GameSessionConclusion({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    String gameOverImage = "assets/images/${textToGuess.gameOverImage()}.svg";
-    MaterialColor color = textToGuess.isGameOverWithSuccess() ? Colors.green : Colors.red;
+    final GameStore gameStore = GameStore();
+
+    String gameOverImage = "assets/images/${gameStore.textToGuess.gameOverImage()}.svg";
+    MaterialColor color = gameStore.textToGuess.isGameOverWithSuccess() ? Colors.green : Colors.red;
 
     return Center(
       child: Column(
@@ -26,7 +26,7 @@ class GameSessionConclusion extends StatelessWidget {
             ),
           ),
           TextToGuessTemplate(
-            text: textToGuess.original,
+            text: gameStore.textToGuess.original,
           ),
         ],
       ),

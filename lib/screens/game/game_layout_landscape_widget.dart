@@ -6,12 +6,12 @@ import 'package:guess_the_text/screens/game/text_to_guess_panel_widget.dart';
 import 'package:guess_the_text/store/game/game.store.dart';
 
 class GameLayoutLandscapeWidget extends StatelessWidget {
-  final GameStore gameStore = GameStore();
-
-  GameLayoutLandscapeWidget({Key? key}) : super(key: key);
+  const GameLayoutLandscapeWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final GameStore gameStore = GameStore();
+
     return Observer(builder: (BuildContext context) {
       return Column(
         children: [
