@@ -24,21 +24,6 @@ mixin _$GameStore on GameStoreBase, Store {
               name: 'GameStoreBase.gameOverImage'))
           .value;
 
-  final _$isLoadingAtom = Atom(name: 'GameStoreBase.isLoading');
-
-  @override
-  bool get isLoading {
-    _$isLoadingAtom.reportRead();
-    return super.isLoading;
-  }
-
-  @override
-  set isLoading(bool value) {
-    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
-      super.isLoading = value;
-    });
-  }
-
   final _$currentCategoryAtom = Atom(name: 'GameStoreBase.currentCategory');
 
   @override
@@ -102,7 +87,6 @@ mixin _$GameStore on GameStoreBase, Store {
   @override
   String toString() {
     return '''
-isLoading: ${isLoading},
 currentCategory: ${currentCategory},
 textToGuess: ${textToGuess},
 currentStateImg: ${currentStateImg},

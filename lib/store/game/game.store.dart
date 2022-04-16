@@ -25,9 +25,6 @@ abstract class GameStoreBase with Store {
   final TextsService textsService = TextsService();
 
   @observable
-  bool isLoading = false;
-
-  @observable
   ApiCategory currentCategory = ApiCategory();
 
   @observable
