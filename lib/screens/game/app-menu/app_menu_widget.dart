@@ -4,11 +4,11 @@ import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:guess_the_text/utils/icon_utils.dart';
 
 class AppMenu extends StatelessWidget {
-  final Function() resetState;
+  final Function(BuildContext context) onAdhocTextMenuPress;
 
   const AppMenu({
     Key? key,
-    required this.resetState,
+    required this.onAdhocTextMenuPress,
   }) : super(key: key);
 
   @override
@@ -41,11 +41,22 @@ class AppMenu extends StatelessWidget {
             title: Text(localizations.categories, style: Theme.of(context).textTheme.bodyText1),
             onTap: () {
               Navigator.pop(context);
-              Navigator.pushNamed(context, '/categories').then((value) {
-                if (value != null) {
-                  logger.info('new category: $value');
-                  resetState();
-                }
+              Navigator.pushNamed(context, '/categories');
+            },
+          ),
+          const Divider(
+            thickness: 2,
+          ),
+          ListTile(
+            visualDensity: VisualDensity.compact,
+            leading: Icon(
+              iconsMap['adhoc'],
+            ),
+            title: Text(localizations.adhocText, style: Theme.of(context).textTheme.bodyText1),
+            onTap: () {
+              Navigator.pop(context);
+              onAdhocTextMenuPress(context).then((text) {
+                logger.info('Adhoc text to guess, out of Alert dialog: $text');
               });
             },
           ),

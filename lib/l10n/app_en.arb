@@ -1,5 +1,9 @@
 {
   "about": "About this app",
+  "actionCancel": "Cancel",
+  "actionOK": "OK",
+  "adhocText": "Free text input",
+  "adhocTextHint": "Word to guess",
   "appAuthorName": "Author",
   "appAuthorProfile": "Profile",
   "appBackendName": "BE Api name",

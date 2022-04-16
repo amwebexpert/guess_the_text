@@ -1,5 +1,9 @@
 {
   "about": "À propos de l'app",
+  "actionCancel": "Annuler",
+  "actionOK": "OK",
+  "adhocText": "Texte libre",
+  "adhocTextHint": "Mot à deviner",
   "appAuthorName": "Auteur",
   "appAuthorProfile": "Profile",
   "appBackendName": "Serveur BE",

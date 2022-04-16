@@ -61,9 +61,29 @@ abstract class GameStoreBase with Store {
     textToGuess = textToGuess.tryChar(c: c);
   }
 
+  @action
+  void adhocText(String newText) {
+    currentCategory = ApiCategory(uuid: 'adhoc', name: 'Texte libre');
+    final normalized = removeDiacritics(newText).toUpperCase();
+    textToGuess = TextToGuess(characters: normalized, original: newText);
+    logger.info('ADHOC text: ${textToGuess.characters}');
+  }
+
   @computed
   String get currentStateImg => "assets/images/${textToGuess.currentStateImage()}.svg";
 
   @computed
   String get gameOverImage => "assets/images/${textToGuess.gameOverImage()}.svg";
+}
+
+String removeDiacritics(String original) {
+  const withDia = 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž';
+  const withoutDia = 'AAAAAAaaaaaaOOOOOOOooooooEEEEeeeeeCcDIIIIiiiiUUUUuuuuNnSsYyyZz';
+
+  String str = original;
+  for (int i = 0; i < withDia.length; i++) {
+    str = str.replaceAll(withDia[i], withoutDia[i]);
+  }
+
+  return str;
 }

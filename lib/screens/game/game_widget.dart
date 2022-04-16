@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guess_the_text/screens/game/game_adhoc_text_to_guess.dart';
 import 'package:guess_the_text/screens/game/game_layout_landscape_widget.dart';
 import 'package:guess_the_text/screens/game/game_layout_portrait_widget.dart';
 import 'package:guess_the_text/store/game/game.store.dart';
@@ -20,13 +21,16 @@ class _GameWidgetState extends State<GameWidget> {
   final GameStore gameStore = GameStore();
   bool isShuffling = false;
 
-  void shuffle() {
-    setState(() => {isShuffling = true});
-    gameStore.shuffle();
-
-    Timer(const Duration(milliseconds: 400), () {
-      setState(() => {isShuffling = false});
-    });
+  void shuffle(BuildContext context) {
+    if (gameStore.currentCategory.uuid == 'adhoc') {
+      showAdhocTextDialog(context);
+    } else {
+      setState(() => {isShuffling = true});
+      gameStore.shuffle();
+      Timer(const Duration(milliseconds: 400), () {
+        setState(() => {isShuffling = false});
+      });
+    }
   }
 
   @override
@@ -37,7 +41,7 @@ class _GameWidgetState extends State<GameWidget> {
       appBar: AppBar(
         title: AppBarTitle(title: localizations.appTitle),
       ),
-      drawer: AppMenu(resetState: shuffle),
+      drawer: const AppMenu(onAdhocTextMenuPress: showAdhocTextDialog),
       body: OrientationBuilder(builder: (context, orientation) {
         return orientation == Orientation.portrait
             ? GameLayoutPortraitWidget(isShuffling: isShuffling)
@@ -45,7 +49,7 @@ class _GameWidgetState extends State<GameWidget> {
       }),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       floatingActionButton: FloatingActionButton(
-        onPressed: shuffle,
+        onPressed: () => shuffle(context),
         child: const Icon(Icons.refresh),
       ),
     );
