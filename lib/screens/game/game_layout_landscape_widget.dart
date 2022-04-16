@@ -15,7 +15,7 @@ class GameLayoutLandscapeWidget extends StatelessWidget {
     return Observer(builder: (BuildContext context) {
       return Column(
         children: [
-          TextToGuessArea(textToGuess: gameStore.textToGuess, isShuffling: gameStore.isLoading),
+          const TextToGuessArea(),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
