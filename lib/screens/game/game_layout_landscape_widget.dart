@@ -22,9 +22,7 @@ class GameLayoutLandscapeWidget extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  Flexible(
-                      flex: 3,
-                      child: GameBottomWidget(textToGuess: gameStore.textToGuess, tryLetter: gameStore.tryLetter)),
+                  const Flexible(flex: 3, child: GameBottomWidget()),
                   Flexible(flex: 2, child: SvgPicture.asset(gameStore.currentStateImg)),
                 ],
               ),

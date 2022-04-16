@@ -19,7 +19,7 @@ class GameLayoutPortraitWidget extends StatelessWidget {
           children: <Widget>[
             const TextToGuessArea(),
             Expanded(child: SvgPicture.asset(gameStore.currentStateImg)),
-            GameBottomWidget(textToGuess: gameStore.textToGuess, tryLetter: gameStore.tryLetter),
+            const GameBottomWidget(),
           ],
         ),
       );
