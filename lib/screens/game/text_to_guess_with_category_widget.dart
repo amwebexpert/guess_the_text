@@ -8,25 +8,22 @@ class TextToGuessWithCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final GameStore gameStore = GameStore();
     final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
 
-    return Observer(builder: (BuildContext context) {
-      return isPortrait
-          ? Column(
-              children: [
-                const CategoryLabel(),
-                TextToGuessTemplate(text: gameStore.textToGuess.wordGame()),
-              ],
-            )
-          : Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                TextToGuessTemplate(text: gameStore.textToGuess.wordGame()),
-                const CategoryLabel(),
-              ],
-            );
-    });
+    return isPortrait
+        ? Column(
+            children: const [
+              CategoryLabel(),
+              TextToGuessTemplate(),
+            ],
+          )
+        : Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: const [
+              TextToGuessTemplate(),
+              CategoryLabel(),
+            ],
+          );
   }
 }
 
