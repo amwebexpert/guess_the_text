@@ -9,9 +9,7 @@ class GameSessionConclusion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final GameStore gameStore = GameStore();
-
-    String gameOverImage = "assets/images/${gameStore.textToGuess.gameOverImage()}.svg";
-    MaterialColor color = gameStore.textToGuess.isGameOverWithSuccess() ? Colors.green : Colors.red;
+    final MaterialColor color = gameStore.textToGuess.isGameOverWithSuccess() ? Colors.green : Colors.red;
 
     return Center(
       child: Column(
@@ -21,7 +19,7 @@ class GameSessionConclusion extends StatelessWidget {
             width: 140,
             height: 140,
             child: SvgPicture.asset(
-              gameOverImage,
+              gameStore.gameOverImage,
               color: color,
             ),
           ),

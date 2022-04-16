@@ -16,6 +16,13 @@ mixin _$GameStore on GameStoreBase, Store {
           () => super.currentStateImg,
           name: 'GameStoreBase.currentStateImg'))
       .value;
+  Computed<String>? _$gameOverImageComputed;
+
+  @override
+  String get gameOverImage =>
+      (_$gameOverImageComputed ??= Computed<String>(() => super.gameOverImage,
+              name: 'GameStoreBase.gameOverImage'))
+          .value;
 
   final _$isLoadingAtom = Atom(name: 'GameStoreBase.isLoading');
 
@@ -98,7 +105,8 @@ mixin _$GameStore on GameStoreBase, Store {
 isLoading: ${isLoading},
 currentCategory: ${currentCategory},
 textToGuess: ${textToGuess},
-currentStateImg: ${currentStateImg}
+currentStateImg: ${currentStateImg},
+gameOverImage: ${gameOverImage}
     ''';
   }
 }
