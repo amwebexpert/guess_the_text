@@ -22,9 +22,9 @@ class _GameWidgetState extends State<GameWidget> {
 
   void shuffle() {
     setState(() => {isShuffling = true});
+    gameStore.shuffle();
 
     Timer(const Duration(milliseconds: 400), () {
-      gameStore.shuffle();
       setState(() => {isShuffling = false});
     });
   }
