@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:guess_the_text/screens/game/game_adhoc_text_to_guess.dart';
 import 'package:guess_the_text/screens/game/game_layout_landscape_widget.dart';
 import 'package:guess_the_text/screens/game/game_layout_portrait_widget.dart';
+import 'package:guess_the_text/screens/game/edit_text_to_guess_widget.dart';
 import 'package:guess_the_text/store/game/game.store.dart';
 import 'package:guess_the_text/theme/app_bar/app_bar_title_widget.dart';
 
@@ -23,7 +23,7 @@ class _GameWidgetState extends State<GameWidget> {
 
   void shuffle(BuildContext context) {
     if (gameStore.currentCategory.uuid == 'adhoc') {
-      showAdhocTextDialog(context);
+      showDialog(context: context, builder: (context) => const EditTextToGuessDialog());
     } else {
       setState(() => {isShuffling = true});
       gameStore.shuffle();
@@ -31,6 +31,10 @@ class _GameWidgetState extends State<GameWidget> {
         setState(() => {isShuffling = false});
       });
     }
+  }
+
+  showAdhocTextDialog(BuildContext context) {
+    showDialog(context: context, builder: (context) => const EditTextToGuessDialog());
   }
 
   @override
@@ -41,7 +45,7 @@ class _GameWidgetState extends State<GameWidget> {
       appBar: AppBar(
         title: AppBarTitle(title: localizations.appTitle),
       ),
-      drawer: const AppMenu(onAdhocTextMenuPress: showAdhocTextDialog),
+      drawer: AppMenu(onAdhocTextMenuPress: showAdhocTextDialog),
       body: OrientationBuilder(builder: (context, orientation) {
         return orientation == Orientation.portrait
             ? GameLayoutPortraitWidget(isShuffling: isShuffling)

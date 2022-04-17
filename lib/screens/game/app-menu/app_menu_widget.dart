@@ -55,9 +55,7 @@ class AppMenu extends StatelessWidget {
             title: Text(localizations.adhocText, style: Theme.of(context).textTheme.bodyText1),
             onTap: () {
               Navigator.pop(context);
-              onAdhocTextMenuPress(context).then((text) {
-                logger.info('Adhoc text to guess, out of Alert dialog: $text');
-              });
+              onAdhocTextMenuPress(context);
             },
           ),
           const Divider(

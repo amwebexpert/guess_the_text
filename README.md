@@ -17,6 +17,7 @@ Deployed on:
 - Add ability to (input modal) add any text_to_guess on the fly
 - Check support for spaces and dash characters
 - Apply Flutter Cookbook official site section patterns
+- Explore FutureBuilder for aync widget building pattern (https://stackoverflow.com/a/51983699/704681)
 - Example of Stack layout
 - Animations: Tweens, Physic-based
 - Icon of app inside the appBar
