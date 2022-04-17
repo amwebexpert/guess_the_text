@@ -13,6 +13,7 @@ class _EditTextToGuessDialogState extends State<EditTextToGuessDialog> {
   final GameStore gameStore = GameStore();
   final TextEditingController textFieldController = TextEditingController();
   bool isTextHidden = true;
+  bool isTextEmpty = true;
 
   void toggleHidden() {
     setState(() {
@@ -30,20 +31,25 @@ class _EditTextToGuessDialogState extends State<EditTextToGuessDialog> {
     Navigator.pop(context);
   }
 
+  void onTextUpdated(String value) {
+    setState(() {
+      isTextEmpty = textFieldController.text.trim().isEmpty;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
+    final Widget icon = isTextHidden ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off);
+    final suffixIcon = IconButton(onPressed: toggleHidden, icon: icon);
 
     return AlertDialog(
       title: Text(localizations.adhocText),
       content: TextField(
         controller: textFieldController,
+        onChanged: onTextUpdated,
         obscureText: isTextHidden,
-        decoration: InputDecoration(
-            hintText: localizations.adhocTextHint,
-            suffixIcon: IconButton(
-                onPressed: toggleHidden,
-                icon: isTextHidden ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off))),
+        decoration: InputDecoration(hintText: localizations.adhocTextHint, suffixIcon: suffixIcon),
       ),
       actions: <Widget>[
         TextButton(
@@ -52,7 +58,7 @@ class _EditTextToGuessDialogState extends State<EditTextToGuessDialog> {
         ),
         ElevatedButton(
           child: Text(localizations.actionOK),
-          onPressed: onConfirm,
+          onPressed: isTextEmpty ? null : onConfirm,
         ),
       ],
     );
