@@ -37,7 +37,7 @@ class _AboutWidgetState extends State<AboutWidget> {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
-    const String backgroundImage = 'assets/images/background-pexels-pixabay-461940.jpg';
+    const String backgroundImage = 'assets/images/backgrounds/background-pexels-pixabay-461940.jpg';
 
     return Scaffold(
         appBar: AppBar(

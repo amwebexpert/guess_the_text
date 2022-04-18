@@ -82,6 +82,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/images/
+    - assets/images/backgrounds/
     - assets/fonts/
     - assets/animations/loading/
 
