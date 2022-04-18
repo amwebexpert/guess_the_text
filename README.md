@@ -14,7 +14,10 @@ Deployed on:
 
 ## Roadmap
 
-- Add ability to (input modal) add any text_to_guess on the fly
+- Add new categories like:
+  - [Countries and capitals](https://www.atlas-monde.net/tous-les-pays/)
+  - [USA States](https://en.wikipedia.org/wiki/U.S._state)
+  - [Liste des langues](https://www.axl.cefan.ulaval.ca/Langues/2vital_expansion_tablo1.htm)
 - Check support for spaces and dash characters
 - Apply Flutter Cookbook official site section patterns
 - Explore FutureBuilder for aync widget building pattern (https://stackoverflow.com/a/51983699/704681)
@@ -26,6 +29,7 @@ Deployed on:
 
 ## Completed so far
 
+- Add ability to (input modal) add any text_to_guess on the fly
 - Scroll view, list view, Drawer menu
 - I18n management
 - Orientation locking
@@ -113,7 +117,8 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+## Troubleshothing
 
-## Multiple git repository
-
-- https://stackoverflow.com/questions/3225862/multiple-github-accounts-ssh-config
+- [Your Code installation appears to be corrupt. Please reinstall](https://stackoverflow.com/a/57712635/704681)
+- [Multiple git repository](https://stackoverflow.com/questions/3225862/multiple-github-accounts-ssh-config)
+- 

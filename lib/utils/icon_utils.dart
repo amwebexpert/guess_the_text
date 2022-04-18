@@ -8,4 +8,5 @@ const Map<String, IconData> iconsMap = {
   'refresh': Icons.refresh,
   'animaux': Icons.pets,
   'transport': Icons.local_taxi,
+  'couleurs': Icons.color_lens,
 };
