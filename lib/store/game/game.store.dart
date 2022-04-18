@@ -62,8 +62,8 @@ abstract class GameStoreBase with Store {
   }
 
   @action
-  void adhocText(String newText) {
-    currentCategory = ApiCategory(uuid: 'adhoc', name: 'Texte libre');
+  void adhocText(String newText, String categoryName) {
+    currentCategory = ApiCategory(uuid: 'adhoc', name: categoryName, isCustom: true);
     final normalized = removeDiacritics(newText).toUpperCase();
     textToGuess = TextToGuess(characters: normalized, original: newText);
     logger.info('ADHOC text: ${textToGuess.characters}');

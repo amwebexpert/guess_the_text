@@ -21,9 +21,9 @@ class _EditTextToGuessDialogState extends State<EditTextToGuessDialog> {
     });
   }
 
-  void onConfirm() {
+  void onConfirm(String categoryName) {
     Navigator.pop(context);
-    gameStore.adhocText(textFieldController.text);
+    gameStore.adhocText(textFieldController.text.trim(), categoryName);
     textFieldController.text = '';
   }
 
@@ -58,7 +58,7 @@ class _EditTextToGuessDialogState extends State<EditTextToGuessDialog> {
         ),
         ElevatedButton(
           child: Text(localizations.actionOK),
-          onPressed: isTextEmpty ? null : onConfirm,
+          onPressed: isTextEmpty ? null : () => onConfirm(localizations.adhocText),
         ),
       ],
     );

@@ -3,14 +3,16 @@ class ApiCategory {
   final String uuid;
   final String langCode;
   final String name;
+  final bool isCustom;
 
-  ApiCategory({this.id = 0, this.uuid = '', this.langCode = '', this.name = ''});
+  ApiCategory({this.id = 0, this.uuid = '', this.langCode = '', this.name = '', this.isCustom = false});
 
   factory ApiCategory.fromJson(Map<String, dynamic> json) => ApiCategory(
       id: json['id'] as int,
       uuid: json['uuid'] as String,
       langCode: json['langcode'] as String,
-      name: json['name'] as String);
+      name: json['name'] as String,
+      isCustom: false);
 
   @override
   String toString() {

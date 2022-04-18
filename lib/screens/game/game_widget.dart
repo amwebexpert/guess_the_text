@@ -22,7 +22,7 @@ class _GameWidgetState extends State<GameWidget> {
   bool isShuffling = false;
 
   void shuffle(BuildContext context) {
-    if (gameStore.currentCategory.uuid == 'adhoc') {
+    if (gameStore.currentCategory.isCustom) {
       showDialog(context: context, builder: (context) => const EditTextToGuessDialog());
     } else {
       setState(() => {isShuffling = true});
