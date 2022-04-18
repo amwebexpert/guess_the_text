@@ -45,7 +45,10 @@ class _EditTextToGuessDialogState extends State<EditTextToGuessDialog> {
 
     return AlertDialog(
       title: Text(localizations.adhocText),
-      content: TextField(
+      content: TextFormField(
+        autofocus: true,
+        enableSuggestions: false,
+        autocorrect: false,
         controller: textFieldController,
         onChanged: onTextUpdated,
         obscureText: isTextHidden,
