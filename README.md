@@ -71,7 +71,7 @@ Deployed on:
 
 Some URLs to test:
 
-- [public/index.html](public/index.html)
+- [https://amwebexpert.github.io/guess_the_text/](https://amwebexpert.github.io/guess_the_text/)
 
 
 ## MobX re-generate .g.dart store files
