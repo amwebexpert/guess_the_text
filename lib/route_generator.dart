@@ -28,7 +28,7 @@ Route? onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const AboutWidget());
 
     default:
-      logger.error('Invalid navigation', settings);
+      logger.error('Invalid navigation', settings.name);
       return MaterialPageRoute(builder: (context) => const GameWidget());
   }
 }

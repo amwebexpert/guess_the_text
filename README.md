@@ -45,6 +45,7 @@ Deployed on:
 - Use custom Theme and customize Typography (headline6, bodyText2, ...) https://docs.flutter.dev/cookbook/design/themes
 - Preferences page & shared preferences
 - Dark theme mode
+- Deep link navigation for both platforms
 
 
 ## Usefull command lines
@@ -58,6 +59,13 @@ Deployed on:
     flutter clean
     flutter pub get
     flutter run
+
+## Deap links on platforms
+    xcrun simctl openurl booted guessTheText://com.amwebexpert.app.guessthetext/about
+    xcrun simctl openurl booted guessTheText://com.amwebexpert.app.guessthetext/settings
+
+    adb shell am start -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "guessTheText://com.amwebexpert.app.guessthetext/about"
+    adb shell am start -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "guessTheText://com.amwebexpert.app.guessthetext/settings"
 
 ## MobX re-generate .g.dart store files
 

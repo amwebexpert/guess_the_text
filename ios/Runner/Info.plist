@@ -52,5 +52,18 @@
 		<false/>
 		<key>UIStatusBarHidden</key>
 		<false/>
+		<key>FlutterDeepLinkingEnabled</key>
+		<true/>
+		<key>CFBundleURLTypes</key>
+		<array>
+			<dict>
+				<key>CFBundleURLName</key>
+				<string>com.amwebexpert.app.guessthetext</string>
+				<key>CFBundleURLSchemes</key>
+				<array>
+					<string>guessTheText</string>
+				</array>
+			</dict>
+		</array>
 	</dict>
 </plist>
