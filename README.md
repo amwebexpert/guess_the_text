@@ -10,6 +10,7 @@ Deployed on:
 - [Google Play](https://play.google.com/store/apps/details?id=com.amwebexpert.app.guessthetext.guess_the_text)
 - App Store
   - Not yet, will need to create an account and fill in all the forms and go through the approval process
+- [Privacy Policy](https://amwebexpert.github.io/guess_the_text/)
 
 
 ## Roadmap
@@ -66,13 +67,6 @@ Deployed on:
 
     adb shell am start -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "guessTheText://com.amwebexpert.app.guessthetext/about"
     adb shell am start -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "guessTheText://com.amwebexpert.app.guessthetext/settings"
-
-### Web deap links
-
-Some URLs to test:
-
-- [https://amwebexpert.github.io/guess_the_text/](https://amwebexpert.github.io/guess_the_text/)
-
 
 ## MobX re-generate .g.dart store files
 
