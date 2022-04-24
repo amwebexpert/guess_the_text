@@ -62,22 +62,6 @@ class AppMenu extends StatelessWidget {
           ListTile(
             visualDensity: VisualDensity.compact,
             leading: Icon(
-              iconsMap['info'],
-            ),
-            title: Text(
-              localizations.about,
-            ),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, '/about');
-            },
-          ),
-          const Divider(
-            thickness: 2,
-          ),
-          ListTile(
-            visualDensity: VisualDensity.compact,
-            leading: Icon(
               iconsMap['preferences'],
             ),
             title: Text(
@@ -86,6 +70,22 @@ class AppMenu extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
               Navigator.pushNamed(context, '/settings');
+            },
+          ),
+          const Divider(
+            thickness: 2,
+          ),
+          ListTile(
+            visualDensity: VisualDensity.compact,
+            leading: Icon(
+              iconsMap['info'],
+            ),
+            title: Text(
+              localizations.about,
+            ),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/about');
             },
           ),
           const Divider(
