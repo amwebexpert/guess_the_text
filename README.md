@@ -70,7 +70,10 @@ Deployed on:
 ### Web deap links
 
 - [guessTheText://com.amwebexpert.app.guessthetext/game?paramName=paramValue](guessTheText://com.amwebexpert.app.guessthetext/about)
-- <a href="guessTheText://com.amwebexpert.app.guessthetext/about">guessTheText://com.amwebexpert.app.guessthetext/about</a>
+
+<div>
+  <a href="guessTheText://com.amwebexpert.app.guessthetext/about">guessTheText://com.amwebexpert.app.guessthetext/about</a>
+</div>
 
 ## MobX re-generate .g.dart store files
 
