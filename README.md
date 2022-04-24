@@ -68,7 +68,9 @@ Deployed on:
     adb shell am start -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "guessTheText://com.amwebexpert.app.guessthetext/settings"
 
 ### Web deap links
-    [guessTheText://com.amwebexpert.app.guessthetext/game?paramName=paramValue](guessTheText://com.amwebexpert.app.guessthetext/about)
+
+- [guessTheText://com.amwebexpert.app.guessthetext/game?paramName=paramValue](guessTheText://com.amwebexpert.app.guessthetext/about)
+- <a href="guessTheText://com.amwebexpert.app.guessthetext/about">guessTheText://com.amwebexpert.app.guessthetext/about</a>
 
 ## MobX re-generate .g.dart store files
 
