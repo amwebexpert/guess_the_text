@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guess_the_text/store/game/game.store.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 class EditTextToGuessDialog extends StatefulWidget {
   const EditTextToGuessDialog({Key? key}) : super(key: key);
@@ -27,8 +28,9 @@ class _EditTextToGuessDialogState extends State<EditTextToGuessDialog> {
     textFieldController.text = '';
   }
 
-  void onCancel() {
+  Future<void> onCancel() async {
     Navigator.pop(context);
+    // String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode('#ff6666', 'Cancel', true, ScanMode.DEFAULT);
   }
 
   void onTextUpdated(String value) {

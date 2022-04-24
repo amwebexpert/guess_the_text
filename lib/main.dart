@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:guess_the_text/route_generator.dart';
 import 'package:guess_the_text/screens/about/about_widget.dart';
 import 'package:guess_the_text/screens/categories/categories_widget.dart';
 import 'package:guess_the_text/screens/game/game_widget.dart';
@@ -60,13 +61,8 @@ class _HangmanAppState extends State<HangmanApp> {
         supportedLocales: AppLocalizations.supportedLocales,
         locale: settingsStore.locale,
         theme: settingsStore.isDarkTheme ? themeDataDark : themeDataLight,
-        initialRoute: '/game',
-        routes: {
-          '/game': (context) => const GameWidget(),
-          '/categories': (context) => const CategoriesWidget(),
-          '/preferences': (context) => const SettingsWidget(),
-          '/about': (context) => const AboutWidget(),
-        },
+        initialRoute: '/',
+        onGenerateRoute: onGenerateRoute,
       );
     });
   }
