@@ -67,6 +67,9 @@ Deployed on:
     adb shell am start -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "guessTheText://com.amwebexpert.app.guessthetext/about"
     adb shell am start -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "guessTheText://com.amwebexpert.app.guessthetext/settings"
 
+### Web deap links
+    [guessTheText://com.amwebexpert.app.guessthetext/game?paramName=paramValue](guessTheText://com.amwebexpert.app.guessthetext/about)
+
 ## MobX re-generate .g.dart store files
 
     flutter packages pub run build_runner build
