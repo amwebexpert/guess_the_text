@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:guess_the_text/screens/about/about_widget.dart';
 import 'package:guess_the_text/screens/categories/categories_widget.dart';
 import 'package:guess_the_text/screens/game/game_widget.dart';
+import 'package:guess_the_text/screens/game/on_the_fly_chalenge_qr.dart';
 import 'package:guess_the_text/screens/game/on_the_fly_chalenge_widget.dart';
 import 'package:guess_the_text/screens/settings/settings_widget.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
@@ -20,7 +21,7 @@ Route? onGenerateRoute(RouteSettings settings) {
       if (!uriLink.hasQuery) {
         return MaterialPageRoute(builder: (_) => const GameWidget());
       }
-      return MaterialPageRoute(builder: (_) => OnTheFlyChalengeWidget(queryParameters: uriLink.queryParameters));
+      return MaterialPageRoute(builder: (_) => OnTheFlyChalengeQrWidget(queryParameters: uriLink.queryParameters));
 
     case '/categories':
       return MaterialPageRoute(builder: (_) => const CategoriesWidget());
