@@ -62,11 +62,17 @@ Deployed on:
     flutter run
 
 ## Deap links on platforms
+
+### iOS
     xcrun simctl openurl booted guessTheText://com.amwebexpert.app.guessthetext/about
     xcrun simctl openurl booted guessTheText://com.amwebexpert.app.guessthetext/settings
 
+### Android
     adb shell am start -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "guessTheText://com.amwebexpert.app.guessthetext/about"
     adb shell am start -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "guessTheText://com.amwebexpert.app.guessthetext/settings"
+
+We can also install a generic deep link opener application like this one:
+    https://play.google.com/store/apps/details?id=org.thewheatfield.android.deeplinks
 
 ## MobX re-generate .g.dart store files
 
