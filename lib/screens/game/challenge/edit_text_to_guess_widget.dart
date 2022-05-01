@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:guess_the_text/model/on_the_fly_chalenge.dart';
 import 'package:guess_the_text/store/game/game.store.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 class EditTextToGuessDialog extends StatefulWidget {
   const EditTextToGuessDialog({Key? key}) : super(key: key);

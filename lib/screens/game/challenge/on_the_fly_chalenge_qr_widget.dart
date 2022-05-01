@@ -5,8 +5,7 @@ import 'package:barcode/barcode.dart';
 import 'package:guess_the_text/model/on_the_fly_chalenge.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:guess_the_text/store/settings/settings.store.dart';
-
-import '../../theme/theme_utils.dart';
+import 'package:guess_the_text/theme/theme_utils.dart';
 
 class OnTheFlyChalengeQrWidget extends StatelessWidget {
   final OnTheFlyChalenge onTheFlyChalenge;
