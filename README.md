@@ -47,6 +47,8 @@ Deployed on:
 - Preferences page & shared preferences
 - Dark theme mode
 - Deep link navigation for both platforms
+- [barcode generator](https://pub.dev/packages/barcode) to create a text to guess challenge
+- [barcode scanner](https://pub.dev/packages/flutter_barcode_scanner) feature to accept (scan) challenge
 
 
 ## Usefull command lines
