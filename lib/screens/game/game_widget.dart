@@ -23,17 +23,27 @@ class GameWidget extends StatefulWidget {
 class _GameWidgetState extends State<GameWidget> {
   final GameStore gameStore = GameStore();
   final LoggerService logger = LoggerService();
-  bool isShuffling = false;
+  bool isWorking = false;
 
   void shuffle(BuildContext context) {
     if (gameStore.currentCategory.isCustom) {
       showDialog(context: context, builder: (context) => const EditTextToGuessDialog());
     } else {
-      setState(() => {isShuffling = true});
-      gameStore.shuffle();
+      _delayedWork(gameStore.shuffle);
+    }
+  }
+
+  void _delayedWork(Function work) {
+    try {
+      setState(() => {isWorking = true});
+      work();
       Timer(const Duration(milliseconds: 400), () {
-        setState(() => {isShuffling = false});
+        setState(() => {isWorking = false});
       });
+    } catch (e) {
+      logger.error('QR Code scan error', e);
+    } finally {
+      setState(() => {isWorking = false});
     }
   }
 
@@ -43,19 +53,13 @@ class _GameWidgetState extends State<GameWidget> {
 
   void scanQR(BuildContext context) async {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
+    final String jsonChallenge =
+        await FlutterBarcodeScanner.scanBarcode('#ff6666', localizations.actionCancel, true, ScanMode.DEFAULT);
 
-    try {
-      final String jsonChallenge =
-          await FlutterBarcodeScanner.scanBarcode('#ff6666', localizations.actionCancel, true, ScanMode.DEFAULT);
-      final OnTheFlyChalenge onTheFlyChallenge = OnTheFlyChalenge.fromJsonString(jsonChallenge);
-      setState(() => {isShuffling = true});
+    _delayedWork(() {
+      final OnTheFlyChalenge onTheFlyChallenge = OnTheFlyChalenge.fromJson(jsonChallenge);
       gameStore.adhocText(onTheFlyChallenge.text, localizations.adhocText);
-      Timer(const Duration(milliseconds: 400), () {
-        setState(() => {isShuffling = false});
-      });
-    } catch (e) {
-      logger.error('QR Code scan error', e);
-    }
+    });
   }
 
   @override
@@ -69,8 +73,8 @@ class _GameWidgetState extends State<GameWidget> {
       drawer: AppMenu(onAdhocTextMenuPress: showAdhocTextDialog, onAdhocQRscan: scanQR),
       body: OrientationBuilder(builder: (context, orientation) {
         return orientation == Orientation.portrait
-            ? GameLayoutPortraitWidget(isShuffling: isShuffling)
-            : GameLayoutLandscapeWidget(isShuffling: isShuffling);
+            ? GameLayoutPortraitWidget(isShuffling: isWorking)
+            : GameLayoutLandscapeWidget(isShuffling: isWorking);
       }),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       floatingActionButton: FloatingActionButton(
