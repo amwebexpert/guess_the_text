@@ -89,6 +89,12 @@ We can also install a generic deep link opener application like this one:
     flutter pub get
     flutter build appbundle --release --no-tree-shake-icons
 
+### Git tag
+    git commit -m"feature: my super feature"
+    git push
+    git tag <my-super-tag>
+    git push origin --tags
+
 ## Start Flutter app on Simulator or a specific device
 
     open -a Simulator
