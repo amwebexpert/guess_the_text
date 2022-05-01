@@ -53,8 +53,11 @@ class _GameWidgetState extends State<GameWidget> {
 
   void scanQR(BuildContext context) async {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
+    final cancelLabel = localizations.actionCancel;
+    const lineColor = '#ff6666';
+    const isShowFlashIcon = true;
     final String jsonChallenge =
-        await FlutterBarcodeScanner.scanBarcode('#ff6666', localizations.actionCancel, true, ScanMode.DEFAULT);
+        await FlutterBarcodeScanner.scanBarcode(lineColor, cancelLabel, isShowFlashIcon, ScanMode.DEFAULT);
 
     _delayedWork(() {
       final OnTheFlyChalenge onTheFlyChallenge = OnTheFlyChalenge.fromJson(jsonChallenge);

@@ -35,6 +35,11 @@ class _HangmanAppState extends State<HangmanApp> {
     List<ApiCategory> categories = await textsService.getCategories();
     await textsService.getTexts(categories.first.uuid);
 
+    // If the widget was removed from the tree while the asynchronous call was in flight
+    if (!mounted) {
+      return;
+    }
+
     setState(() {
       isAppLoading = false;
     });
