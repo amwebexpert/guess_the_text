@@ -23,7 +23,7 @@ class GameWidget extends StatefulWidget {
 class _GameWidgetState extends State<GameWidget> {
   final GameStore gameStore = GameStore();
   final LoggerService logger = LoggerService();
-  bool isWorking = false;
+  bool isLoading = false;
 
   void shuffle(BuildContext context) {
     if (gameStore.currentCategory.isCustom) {
@@ -35,15 +35,15 @@ class _GameWidgetState extends State<GameWidget> {
 
   void _delayedWork(Function work) {
     try {
-      setState(() => {isWorking = true});
+      setState(() => {isLoading = true});
       work();
       Timer(const Duration(milliseconds: 400), () {
-        setState(() => {isWorking = false});
+        setState(() => {isLoading = false});
       });
     } catch (e) {
       logger.error('QR Code scan error', e);
     } finally {
-      setState(() => {isWorking = false});
+      setState(() => {isLoading = false});
     }
   }
 
@@ -76,8 +76,8 @@ class _GameWidgetState extends State<GameWidget> {
       drawer: AppMenu(onAdhocTextMenuPress: showAdhocTextDialog, onAdhocQRscan: scanQR),
       body: OrientationBuilder(builder: (context, orientation) {
         return orientation == Orientation.portrait
-            ? GameLayoutPortraitWidget(isShuffling: isWorking)
-            : GameLayoutLandscapeWidget(isShuffling: isWorking);
+            ? GameLayoutPortraitWidget(isLoading: isLoading)
+            : GameLayoutLandscapeWidget(isLoading: isLoading);
       }),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       floatingActionButton: FloatingActionButton(

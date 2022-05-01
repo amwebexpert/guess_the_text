@@ -6,8 +6,8 @@ import 'package:guess_the_text/screens/game/text_to_guess_panel_widget.dart';
 import 'package:guess_the_text/store/game/game.store.dart';
 
 class GameLayoutLandscapeWidget extends StatelessWidget {
-  final bool isShuffling;
-  const GameLayoutLandscapeWidget({Key? key, required this.isShuffling}) : super(key: key);
+  final bool isLoading;
+  const GameLayoutLandscapeWidget({Key? key, required this.isLoading}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class GameLayoutLandscapeWidget extends StatelessWidget {
     return Observer(builder: (BuildContext context) {
       return Column(
         children: [
-          TextToGuessArea(isShuffling: isShuffling),
+          TextToGuessArea(isLoading: isLoading),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
