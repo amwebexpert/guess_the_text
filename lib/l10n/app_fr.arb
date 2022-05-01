@@ -1,8 +1,10 @@
 {
   "about": "À propos de l'app",
   "actionCancel": "Annuler",
+  "actionClose": "Fermer",
+  "actionGenerateQR": "Code QR",
   "actionOK": "OK",
-  "adhocText": "Texte libre",
+  "adhocText": "Créer un défi",
   "adhocTextHint": "Mot à deviner",
   "appAuthorName": "Auteur",
   "appAuthorProfile": "Profile",
@@ -10,6 +12,7 @@
   "appBackendVersion": "Version API",
   "appBuildNumber": "Build #",
   "appDescription": "Application mobile gratuite crée à la base pour apprendre le framework Flutter dans mes temps libres.\n\nL'objectif est d'apprendre une technologie en même temps que de fournir un outil d'apprentissage amusant et évolutif. Le code source de cette application sera également disponible sous peu pour éventuellement servir de base d'apprentissage pour des sessions de formation en programmation Dart avec Flutter!",
+  "appMenuReadChalenge": "Accepter le défi",
   "appSubTitle": "Jeu éducatif sur les mots et les phrases",
   "appTitle": "Devinez le texte",
   "appVersion": "Version",
@@ -27,5 +30,7 @@
   "prefThemeBrightnessDark": "Thème foncé",
   "prefThemeBrightnessLight": "Thème clair",
   "preferences": "Préférences",
-  "privacyPolicy": "Politique de confidentialité"
+  "privacyPolicy": "Politique de confidentialité",
+  "qrCodeInstructions": "Votre advesaire doit installer l'application et utiliser le menu pour numériser le code QR",
+  "qrCodeReadInstructions": "Vous devez installer et utiliser l'application pour lire le code QR et le récupérer de votre adversaire !"
 }

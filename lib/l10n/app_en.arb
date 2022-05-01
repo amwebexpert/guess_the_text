@@ -1,8 +1,10 @@
 {
   "about": "About this app",
   "actionCancel": "Cancel",
+  "actionClose": "Close",
+  "actionGenerateQR": "QR Code",
   "actionOK": "OK",
-  "adhocText": "Free text input",
+  "adhocText": "Create a challenge",
   "adhocTextHint": "Word to guess",
   "appAuthorName": "Author",
   "appAuthorProfile": "Profile",
@@ -10,6 +12,7 @@
   "appBackendVersion": "API version",
   "appBuildNumber": "Build #",
   "appDescription": "Free mobile application originally created to learn the Flutter framework in my spare time.\n\nThe goal is to learn a technology at the same time as providing a fun and scalable educational tool. The source code of this application will also be available shortly to eventually serve as a learning base for training sessions in Dart programming with Flutter!",
+  "appMenuReadChalenge": "Accept challenge",
   "appSubTitle": "Educational game about words and sentences",
   "appTitle": "Guess the text",
   "appVersion": "Version",
@@ -27,5 +30,7 @@
   "prefThemeBrightnessDark": "Dark theme",
   "prefThemeBrightnessLight": "Light theme",
   "preferences": "Preferences",
-  "privacyPolicy": "Privacy policy"
+  "privacyPolicy": "Privacy policy",
+  "qrCodeInstructions": "Ask the other player to scan the QR code by installing the application and using the QR code scan menu option",
+  "qrCodeReadInstructions": "You must install and use the app to read the QR code and retrieve it from your opponent!"
 }

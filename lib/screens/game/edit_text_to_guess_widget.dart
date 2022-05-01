@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guess_the_text/model/on_the_fly_chalenge.dart';
 import 'package:guess_the_text/store/game/game.store.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
@@ -22,15 +23,20 @@ class _EditTextToGuessDialogState extends State<EditTextToGuessDialog> {
     });
   }
 
+  void onGenerateQR() {
+    Navigator.pop(context);
+    Navigator.pushNamed(context, '/onTheFlyChalenge', arguments: OnTheFlyChalenge(text: textFieldController.text));
+    textFieldController.text = '';
+  }
+
   void onConfirm(String categoryName) {
     Navigator.pop(context);
     gameStore.adhocText(textFieldController.text.trim(), categoryName);
     textFieldController.text = '';
   }
 
-  Future<void> onCancel() async {
+  void onCancel() {
     Navigator.pop(context);
-    // String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode('#ff6666', 'Cancel', true, ScanMode.DEFAULT);
   }
 
   void onTextUpdated(String value) {
@@ -64,6 +70,10 @@ class _EditTextToGuessDialogState extends State<EditTextToGuessDialog> {
         ElevatedButton(
           child: Text(localizations.actionOK),
           onPressed: isTextEmpty ? null : () => onConfirm(localizations.adhocText),
+        ),
+        ElevatedButton(
+          child: Text(localizations.actionGenerateQR),
+          onPressed: isTextEmpty ? null : onGenerateQR,
         ),
       ],
     );

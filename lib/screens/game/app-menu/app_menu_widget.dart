@@ -4,10 +4,12 @@ import 'package:guess_the_text/utils/icon_utils.dart';
 
 class AppMenu extends StatelessWidget {
   final Function(BuildContext context) onAdhocTextMenuPress;
+  final Function(BuildContext context) onAdhocQRscan;
 
   const AppMenu({
     Key? key,
     required this.onAdhocTextMenuPress,
+    required this.onAdhocQRscan,
   }) : super(key: key);
 
   @override
@@ -54,6 +56,20 @@ class AppMenu extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
               onAdhocTextMenuPress(context);
+            },
+          ),
+          const Divider(
+            thickness: 2,
+          ),
+          ListTile(
+            visualDensity: VisualDensity.compact,
+            leading: Icon(
+              iconsMap['adhocScan'],
+            ),
+            title: Text(localizations.appMenuReadChalenge, style: Theme.of(context).textTheme.bodyText1),
+            onTap: () {
+              Navigator.pop(context);
+              onAdhocQRscan(context);
             },
           ),
           const Divider(
