@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:guess_the_text/app_error_widget.dart';
 import 'package:guess_the_text/route_generator.dart';
 import 'package:guess_the_text/services/hangman/model/api_category.dart';
 import 'package:guess_the_text/services/hangman/texts.service.dart';
@@ -10,7 +11,10 @@ import 'package:guess_the_text/theme/app_theme.dart';
 import 'package:guess_the_text/utils/animations.dart';
 import 'package:lottie/lottie.dart';
 
-void main() => runApp(const HangmanApp());
+void main() {
+  ErrorWidget.builder = (FlutterErrorDetails details) => AppErrorWidget(details: details);
+  runApp(const HangmanApp());
+}
 
 class HangmanApp extends StatefulWidget {
   const HangmanApp({Key? key}) : super(key: key);
