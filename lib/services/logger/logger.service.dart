@@ -1,3 +1,7 @@
+import 'dart:developer';
+
+import 'package:flutter/foundation.dart';
+
 class LoggerService {
   static final LoggerService _instance = LoggerService._privateConstructor();
 
@@ -5,12 +9,13 @@ class LoggerService {
   LoggerService._privateConstructor();
 
   void info(String message) {
-    // ignore: avoid_print
-    print(message);
+    log(message, time: DateTime.now(), name: 'INFO');
+    if (kDebugMode) {
+      print(message);
+    }
   }
 
   void error(String message, dynamic error) {
-    // ignore: avoid_print
-    print('ERROR. $message: ${error.toString()}');
+    log(message, time: DateTime.now(), name: 'ERROR', error: error.toString());
   }
 }

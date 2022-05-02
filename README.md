@@ -27,6 +27,7 @@ Deployed on:
 - Icon of app inside the appBar
 - Start loading with in-app storage, and in background download other categories
 - flutter build web (c.f. result in build/web/index.html)
+- usage of LayoutBuilder to know available space (landscape mode)
 
 ## Completed so far
 
@@ -62,6 +63,10 @@ Deployed on:
     flutter clean
     flutter pub get
     flutter run
+
+## Usefull VSCode tools
+
+    Command-Shift-P > Dard: Open DevTools Network Page
 
 ## Deap links on platforms
 
