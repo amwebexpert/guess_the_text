@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guess_the_text/model/on_the_fly_chalenge.dart';
+import 'package:guess_the_text/model/on_the_fly_challenge.dart';
 import 'package:guess_the_text/store/game/game.store.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -24,7 +24,7 @@ class _EditTextToGuessDialogState extends State<EditTextToGuessDialog> {
 
   void onGenerateQR() {
     Navigator.pop(context);
-    Navigator.pushNamed(context, '/onTheFlyChalenge', arguments: OnTheFlyChalenge(text: textFieldController.text));
+    Navigator.pushNamed(context, '/onTheFlyChallenge', arguments: OnTheFlyChallenge(text: textFieldController.text));
     textFieldController.text = '';
   }
 

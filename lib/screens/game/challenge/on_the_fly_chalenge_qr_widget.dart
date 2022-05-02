@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:barcode/barcode.dart';
-import 'package:guess_the_text/model/on_the_fly_chalenge.dart';
+import 'package:guess_the_text/model/on_the_fly_challenge.dart';
 import 'package:guess_the_text/screens/game/challenge/constants.dart';
 import 'package:guess_the_text/store/settings/settings.store.dart';
 import 'package:guess_the_text/theme/theme_utils.dart';
 
 class OnTheFlyChalengeQrWidget extends StatelessWidget {
-  final OnTheFlyChalenge onTheFlyChalenge;
-  const OnTheFlyChalengeQrWidget({Key? key, required this.onTheFlyChalenge}) : super(key: key);
+  final OnTheFlyChallenge onTheFlyChallenge;
+  const OnTheFlyChalengeQrWidget({Key? key, required this.onTheFlyChallenge}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final SettingsStore settingsStore = SettingsStore();
     final AppLocalizations localizations = AppLocalizations.of(context)!;
 
-    final jsonChallenge = onTheFlyChalenge.toJson();
+    final jsonChallenge = onTheFlyChallenge.toJson();
     final qrCode = Barcode.qrCode();
     final qrCodeImage = qrCode.toSvg(jsonChallenge,
         width: qrCodeDefaultSquareSize,

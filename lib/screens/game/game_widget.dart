@@ -5,7 +5,7 @@ import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guess_the_text/screens/game/game_layout_landscape_widget.dart';
 import 'package:guess_the_text/screens/game/game_layout_portrait_widget.dart';
-import 'package:guess_the_text/model/on_the_fly_chalenge.dart';
+import 'package:guess_the_text/model/on_the_fly_challenge.dart';
 import 'package:guess_the_text/screens/game/challenge/edit_text_to_guess_widget.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:guess_the_text/store/game/game.store.dart';
@@ -60,7 +60,7 @@ class _GameWidgetState extends State<GameWidget> {
         await FlutterBarcodeScanner.scanBarcode(lineColor, cancelLabel, isShowFlashIcon, ScanMode.DEFAULT);
 
     _delayedWork(() {
-      final OnTheFlyChalenge onTheFlyChallenge = OnTheFlyChalenge.fromJson(jsonChallenge);
+      final OnTheFlyChallenge onTheFlyChallenge = OnTheFlyChallenge.fromJson(jsonChallenge);
       gameStore.adhocText(onTheFlyChallenge.text, localizations.adhocText);
     });
   }
