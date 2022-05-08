@@ -42,7 +42,6 @@ class _GameWidgetState extends State<GameWidget> {
       });
     } catch (e) {
       logger.error('QR Code scan error', e);
-    } finally {
       setState(() => {isLoading = false});
     }
   }

@@ -64,15 +64,17 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
           child: ListView.builder(
               itemCount: categories.length,
               itemBuilder: (context, index) {
+                final ApiCategory category = categories[index];
+
                 return Padding(
                   padding: EdgeInsets.all(spacing(0.25)),
                   child: Card(
                     color: Theme.of(context).colorScheme.primary,
                     child: ListTile(
-                      onTap: () => selectCategory(categories[index], context),
-                      leading: Icon(iconsMap[categories[index].name]), // add an iconName attribute to model
+                      onTap: () => selectCategory(category, context),
+                      leading: Icon(iconsMap[category.name]), // add an iconName attribute to model
                       title: Text(
-                        categories[index].name,
+                        category.name,
                         style: Theme.of(context).textTheme.bodyText1,
                       ),
                     ),
