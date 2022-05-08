@@ -4,7 +4,7 @@ class TextToGuess {
   final String characters;
   final String original;
 
-  late List<String> chars;
+  late final List<String> chars;
   List<String> charsTried = [];
   int badTrialCount = 0;
 
@@ -35,7 +35,7 @@ class TextToGuess {
     return mutation;
   }
 
-  String currentStateImage() {
+  String currentStateName() {
     int stateNumber = badTrialCount + 1;
     if (stateNumber > maxTrials) {
       stateNumber = maxTrials;
@@ -45,7 +45,7 @@ class TextToGuess {
     return "$stateName-$stateNumberPadded";
   }
 
-  String gameOverImage() {
+  String gameOverConclusionName() {
     return isGameOverWithSuccess() ? 'success' : 'fail';
   }
 

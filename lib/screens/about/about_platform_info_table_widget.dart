@@ -19,7 +19,7 @@ class _PlatformInfoTableState extends State<PlatformInfoTable> {
   void initState() {
     super.initState();
 
-    DeviceInfoService().loadInfo().then((info) {
+    DeviceInfoService().loadAboutDeviceInfo().then((info) {
       setState(() {
         this.info = info;
       });
@@ -46,7 +46,7 @@ class _PlatformInfoTableState extends State<PlatformInfoTable> {
               1: FlexColumnWidth(),
             },
             defaultVerticalAlignment: TableCellVerticalAlignment.top,
-            children: info.keys.toList().where((element) => !hiddenDeviceProperties.contains(element)).map((key) {
+            children: info.keys.toList().map((key) {
               return TableRow(children: [
                 Padding(
                   padding: EdgeInsets.all(spacing(1)),

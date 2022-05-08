@@ -51,7 +51,7 @@ class _AboutWidgetState extends State<AboutWidget> {
           )),
           child: AnimatedOpacity(
             opacity: isVisible ? 1.0 : 0.0,
-            duration: const Duration(milliseconds: 1000),
+            duration: const Duration(milliseconds: 800),
             child: Padding(
               padding: EdgeInsets.all(spacing(3)),
               child: const AboutCard(),

@@ -70,10 +70,10 @@ abstract class GameStoreBase with Store {
   }
 
   @computed
-  String get currentStateImg => "assets/images/${textToGuess.currentStateImage()}.svg";
+  String get currentStateImg => "assets/images/${textToGuess.currentStateName()}.svg";
 
   @computed
-  String get gameOverImage => "assets/images/${textToGuess.gameOverImage()}.svg";
+  String get gameOverImage => "assets/images/${textToGuess.gameOverConclusionName()}.svg";
 }
 
 String removeDiacritics(String original) {

@@ -7,6 +7,8 @@ import 'package:mobx/mobx.dart';
 import 'package:guess_the_text/services/storage/shared_preferences.enum.dart';
 import 'package:guess_the_text/services/storage/shared_preferences.services.dart';
 
+import '../../services/logger/logger.service.dart';
+
 // Include generated file
 part 'settings.store.g.dart';
 
@@ -21,13 +23,14 @@ class SettingsStore extends SettingsStoreBase with _$SettingsStore {
 
 // The store-class
 abstract class SettingsStoreBase with Store {
+  final LoggerService logger = LoggerService();
   final sp = SharedPreferencesService();
 
   @observable
   late bool isDarkTheme = false;
 
   @observable
-  late Locale locale = Locale(AppLanguage.en.name);
+  late Locale locale = defaultAppLocale;
 
   SettingsStoreBase() {
     locale = _initLocale();
@@ -37,7 +40,7 @@ abstract class SettingsStoreBase with Store {
   Locale _initLocale() {
     final String platformLanguageCode = Locale(Platform.localeName.split('_')[0]).languageCode;
     final String appLanguage = sp.getString(SharedPreferenceKey.appLanguage.name, defaultValue: platformLanguageCode);
-    return languageToLocaleMap[appLanguage] ?? Locale(AppLanguage.en.name);
+    return languageToLocaleMap[appLanguage] ?? defaultAppLocale;
   }
 
   bool _initDarkTheme() => sp.getBool(SharedPreferenceKey.appIsThemeDark.name, defaultValue: true);
@@ -50,15 +53,19 @@ abstract class SettingsStoreBase with Store {
 
     final languageCode = languageToCodeMap[newLanguage];
     locale = languageToLocaleMap[languageCode]!;
-    // TODO handle this promise catchError
-    sp.setString(SharedPreferenceKey.appLanguage.name, languageToCodeMap[newLanguage]!);
+    sp.setString(SharedPreferenceKey.appLanguage.name, languageToCodeMap[newLanguage]!).onError((error, stackTrace) {
+      logger.error("Can't store shared preference ${SharedPreferenceKey.appLanguage}", error, stackTrace);
+      return false;
+    });
   }
 
   @action
   void toggleTheme() {
     final bool newValue = !isDarkTheme;
     isDarkTheme = newValue;
-    // TODO handle this promise catchError
-    sp.setBool(SharedPreferenceKey.appIsThemeDark.name, newValue);
+    sp.setBool(SharedPreferenceKey.appIsThemeDark.name, newValue).onError((error, stackTrace) {
+      logger.error("Can't store shared preference ${SharedPreferenceKey.appIsThemeDark}", error, stackTrace);
+      return false;
+    });
   }
 }

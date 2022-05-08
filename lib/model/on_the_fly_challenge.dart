@@ -2,18 +2,15 @@ import 'dart:convert' as convert;
 
 class OnTheFlyChallenge {
   final String text;
-  late String data;
+  late final String data;
 
   OnTheFlyChallenge({this.text = ''}) {
     data = convert.base64.encode(convert.utf8.encode(text));
   }
 
-  String toJson() => convert.json.encode({
+  String toJson(String localizedInstructions) => convert.json.encode({
         'data': data,
-        'instructions-fr':
-            "Vous devez installer et utiliser l'application pour lire le code QR et le récupérer de votre adversaire !",
-        'instructions-en':
-            'You must install and use the app menu to read the QR code and retrieve challenge from your opponent!',
+        'instructions': localizedInstructions,
       });
 
   static OnTheFlyChallenge fromJson(String jsonString) {
@@ -23,8 +20,8 @@ class OnTheFlyChallenge {
       return OnTheFlyChallenge();
     }
 
-    final base64data = jsonMap['data']!;
-    final decodedText = convert.utf8.decode(convert.base64.decode(base64data));
+    final String base64data = jsonMap['data']!;
+    final String decodedText = convert.utf8.decode(convert.base64.decode(base64data));
     return OnTheFlyChallenge(text: decodedText);
   }
 }

@@ -3,6 +3,4 @@ enum SharedPreferenceKey {
   appIsThemeDark,
 }
 
-List<String> getAllSharedPreferenceKeys() {
-  return SharedPreferenceKey.values.map((e) => e.name).toList();
-}
+List<String> getAllSharedPreferenceKeys() => SharedPreferenceKey.values.map((e) => e.name).toList();

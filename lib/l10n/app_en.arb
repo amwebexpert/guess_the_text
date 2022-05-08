@@ -32,5 +32,5 @@
   "preferences": "Preferences",
   "privacyPolicy": "Privacy policy",
   "qrCodeInstructions": "Ask the other player to scan the QR code by installing the application and using the QR code scan menu option",
-  "qrCodeReadInstructions": "You must install and use the app to read the QR code and retrieve it from your opponent!"
+  "qrCodeReadInstructions": "You must install and use the app menu to read the QR code and retrieve challenge from your opponent!"
 }

@@ -16,9 +16,9 @@ class OnTheFlyChalengeQrWidget extends StatelessWidget {
     final SettingsStore settingsStore = SettingsStore();
     final AppLocalizations localizations = AppLocalizations.of(context)!;
 
-    final jsonChallenge = onTheFlyChallenge.toJson();
-    final qrCode = Barcode.qrCode();
-    final qrCodeImage = qrCode.toSvg(jsonChallenge,
+    final String jsonChallenge = onTheFlyChallenge.toJson(localizations.qrCodeReadInstructions);
+    final Barcode qrCode = Barcode.qrCode();
+    final String qrCodeImage = qrCode.toSvg(jsonChallenge,
         width: qrCodeDefaultSquareSize,
         height: qrCodeDefaultSquareSize,
         color: settingsStore.isDarkTheme ? darkModeQrColor : lightModeQrColor);

@@ -21,8 +21,14 @@ class DeviceInfoService {
   DeviceInfoService._privateConstructor();
 
   Future<Map<String, dynamic>> loadInfo() async {
-    final deviceInfo = await deviceInfoPlugin.deviceInfo;
-    final rawMap = deviceInfo.toMap();
+    final BaseDeviceInfo deviceInfo = await deviceInfoPlugin.deviceInfo;
+    return deviceInfo.toMap();
+  }
+
+  Future<Map<String, dynamic>> loadAboutDeviceInfo() async {
+    final Map<String, dynamic> rawMap = await loadInfo();
+    rawMap.removeWhere((key, value) => hiddenDeviceProperties.contains(key));
+
     return SplayTreeMap.from(rawMap, (a, b) => a.compareTo(b));
   }
 }
