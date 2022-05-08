@@ -1,4 +1,5 @@
 import 'dart:convert' as convert;
+import 'dart:io';
 
 import 'package:guess_the_text/services/hangman/model/api_about.dart';
 import 'package:guess_the_text/services/hangman/model/api_category.dart';
@@ -32,6 +33,7 @@ class TextsService {
 
       return ApiAbout.fromJson(body);
     } catch (e) {
+      logger.error('About request failed', e);
       return ApiAbout();
     }
   }
@@ -44,7 +46,7 @@ class TextsService {
     Uri url = Uri.https(hostName, apiPathCategories);
 
     http.Response response = await _callApi(url);
-    List<dynamic> array = convert.jsonDecode(response.body);
+    List array = convert.jsonDecode(response.body);
 
     _categories = array.map((it) => ApiCategory.fromJson(it)).toList();
     return _categories;
@@ -59,7 +61,7 @@ class TextsService {
     Uri url = Uri.https(hostName, entriesUrl);
 
     http.Response response = await _callApi(url);
-    List<dynamic> array = convert.jsonDecode(response.body);
+    List array = convert.jsonDecode(response.body);
 
     // memoize text items
     _lastCategoryUuid = categoryUuid;
@@ -82,11 +84,12 @@ class TextsService {
   }
 
   http.Response _validateApiResponse(http.Response response) {
-    if (response.statusCode == 200) {
+    if (response.statusCode == HttpStatus.ok) {
       return response;
     }
 
-    logger.error('Request failed with status', response.statusCode);
-    throw Exception('Request failed with status: ${response.statusCode}.');
+    const message = 'Request failed with status';
+    logger.error(message, response.statusCode);
+    throw Exception('$message : ${response.statusCode}.');
   }
 }

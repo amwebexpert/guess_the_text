@@ -11,8 +11,7 @@ class ApiCategory {
       id: json['id'] as int,
       uuid: json['uuid'] as String,
       langCode: json['langcode'] as String,
-      name: json['name'] as String,
-      isCustom: false);
+      name: json['name'] as String);
 
   @override
   String toString() {
