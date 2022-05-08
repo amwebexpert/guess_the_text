@@ -53,8 +53,8 @@ abstract class SettingsStoreBase with Store {
 
     final languageCode = languageToCodeMap[newLanguage];
     locale = languageToLocaleMap[languageCode]!;
-    sp.setString(SharedPreferenceKey.appLanguage.name, languageToCodeMap[newLanguage]!).onError((error, stackTrace) {
-      logger.error("Can't store shared preference ${SharedPreferenceKey.appLanguage}", error, stackTrace);
+    sp.setString(SharedPreferenceKey.appLanguage.name, languageToCodeMap[newLanguage]!).onError((e, stackTrace) {
+      logger.error("Can't write preference ${SharedPreferenceKey.appLanguage}", e, stackTrace: stackTrace);
       return false;
     });
   }
@@ -63,8 +63,8 @@ abstract class SettingsStoreBase with Store {
   void toggleTheme() {
     final bool newValue = !isDarkTheme;
     isDarkTheme = newValue;
-    sp.setBool(SharedPreferenceKey.appIsThemeDark.name, newValue).onError((error, stackTrace) {
-      logger.error("Can't store shared preference ${SharedPreferenceKey.appIsThemeDark}", error, stackTrace);
+    sp.setBool(SharedPreferenceKey.appIsThemeDark.name, newValue).onError((e, stackTrace) {
+      logger.error("Can't write preference ${SharedPreferenceKey.appIsThemeDark}", e, stackTrace: stackTrace);
       return false;
     });
   }

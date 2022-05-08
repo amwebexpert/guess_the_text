@@ -3,6 +3,7 @@ import 'package:guess_the_text/services/hangman/model/api_category.dart';
 import 'package:guess_the_text/services/hangman/model/api_text.dart';
 import 'package:guess_the_text/services/hangman/texts.service.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
+import 'package:guess_the_text/utils/string.extensions.dart';
 import 'package:mobx/mobx.dart';
 
 import 'dart:math';
@@ -64,7 +65,7 @@ abstract class GameStoreBase with Store {
   @action
   void adhocText(String newText, String categoryName) {
     currentCategory = ApiCategory(uuid: 'adhoc', name: categoryName, isCustom: true);
-    final normalized = removeDiacritics(newText).toUpperCase();
+    final normalized = newText.removeDiacritics().toUpperCase();
     textToGuess = TextToGuess(characters: normalized, original: newText);
     logger.info('ADHOC text: ${textToGuess.characters}');
   }
@@ -74,16 +75,4 @@ abstract class GameStoreBase with Store {
 
   @computed
   String get gameOverImage => "assets/images/${textToGuess.gameOverConclusionName()}.svg";
-}
-
-String removeDiacritics(String original) {
-  const withDia = 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž';
-  const withoutDia = 'AAAAAAaaaaaaOOOOOOOooooooEEEEeeeeeCcDIIIIiiiiUUUUuuuuNnSsYyyZz';
-
-  String str = original;
-  for (int i = 0; i < withDia.length; i++) {
-    str = str.replaceAll(withDia[i], withoutDia[i]);
-  }
-
-  return str;
 }

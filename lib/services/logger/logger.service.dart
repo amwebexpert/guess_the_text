@@ -15,7 +15,7 @@ class LoggerService {
     }
   }
 
-  void error(String message, dynamic error, StackTrace? stackTrace) {
+  void error(String message, dynamic error, {StackTrace? stackTrace}) {
     log(message, time: DateTime.now(), name: 'ERROR', error: error.toString(), stackTrace: stackTrace);
   }
 }
