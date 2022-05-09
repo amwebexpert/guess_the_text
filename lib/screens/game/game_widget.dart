@@ -10,6 +10,7 @@ import 'package:guess_the_text/screens/game/challenge/edit_text_to_guess_widget.
 import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:guess_the_text/store/game/game.store.dart';
 import 'package:guess_the_text/theme/app_bar/app_bar_title_widget.dart';
+import 'package:guess_the_text/utils/string.extensions.dart';
 
 import 'app-menu/app_menu_widget.dart';
 
@@ -58,9 +59,13 @@ class _GameWidgetState extends State<GameWidget> {
     final String jsonChallenge =
         await FlutterBarcodeScanner.scanBarcode(lineColor, cancelLabel, isShowFlashIcon, ScanMode.DEFAULT);
 
+    if (jsonChallenge.isBlank) {
+      return;
+    }
+
     _delayedWork(() {
       final OnTheFlyChallenge onTheFlyChallenge = OnTheFlyChallenge.fromJson(jsonChallenge);
-      gameStore.adhocText(onTheFlyChallenge.text, localizations.adhocText);
+      gameStore.adhocText(onTheFlyChallenge.text, localizations.adhocTextHint);
     });
   }
 

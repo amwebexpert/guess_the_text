@@ -10,4 +10,8 @@ extension StringUtils on String {
 
     return str;
   }
+
+  bool get isBlank => isEmpty || trim().isEmpty;
+
+  bool get isNotBlank => !isBlank;
 }

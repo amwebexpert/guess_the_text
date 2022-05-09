@@ -24,28 +24,31 @@ class OnTheFlyChalengeQrWidget extends StatelessWidget {
         color: settingsStore.isDarkTheme ? darkModeQrColor : lightModeQrColor);
 
     return SafeArea(
-      child: Padding(
-        padding: EdgeInsets.all(spacing(2)),
-        child: Center(
-          child: Column(
-            children: [
-              Text(
-                localizations.actionGenerateQR,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headline4,
-              ),
-              SizedBox(height: spacing(1)),
-              Text(
-                localizations.qrCodeInstructions,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyText1,
-              ),
-              Expanded(child: SvgPicture.string(qrCodeImage)),
-              ElevatedButton(
-                child: Text(localizations.actionClose),
-                onPressed: () => Navigator.pop(context),
-              ),
-            ],
+      child: Container(
+        color: settingsStore.isDarkTheme ? Colors.black : Colors.white,
+        child: Padding(
+          padding: EdgeInsets.all(spacing(2)),
+          child: Center(
+            child: Column(
+              children: [
+                Text(
+                  localizations.actionGenerateQR,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headline4,
+                ),
+                SizedBox(height: spacing(1)),
+                Text(
+                  localizations.qrCodeInstructions,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+                Expanded(child: SvgPicture.string(qrCodeImage)),
+                ElevatedButton(
+                  child: Text(localizations.actionClose),
+                  onPressed: () => Navigator.pop(context),
+                ),
+              ],
+            ),
           ),
         ),
       ),

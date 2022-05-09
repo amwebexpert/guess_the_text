@@ -71,8 +71,8 @@ abstract class GameStoreBase with Store {
   }
 
   @computed
-  String get currentStateImg => "assets/images/${textToGuess.currentStateName()}.svg";
+  String get currentStateImg => 'assets/images/${textToGuess.currentStateName()}.svg';
 
   @computed
-  String get gameOverImage => "assets/images/${textToGuess.gameOverConclusionName()}.svg";
+  String get gameOverImage => 'assets/images/${textToGuess.gameOverConclusionName()}.svg';
 }
