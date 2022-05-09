@@ -57,15 +57,17 @@ class _HangmanAppState extends State<HangmanApp> {
       );
     }
 
-    return Observer(builder: (BuildContext context) {
-      final SettingsStore settingsStore = SettingsStore();
+    final SettingsStore settingsStore = SettingsStore();
 
+    return Observer(builder: (BuildContext context) {
       return MaterialApp(
         // debugShowCheckedModeBanner: false, // uncomment to take screen captures without the banner
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         locale: settingsStore.locale,
-        theme: settingsStore.isDarkTheme ? themeDataDark : themeDataLight,
+        theme: themeDataLight,
+        darkTheme: themeDataDark,
+        themeMode: settingsStore.isDarkTheme ? ThemeMode.dark : ThemeMode.light,
         initialRoute: '/',
         onGenerateRoute: onGenerateRoute,
       );

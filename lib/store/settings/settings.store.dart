@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:flutter/scheduler.dart';
 import 'package:guess_the_text/model/language.dart';
 import 'package:mobx/mobx.dart';
 
@@ -27,7 +28,7 @@ abstract class SettingsStoreBase with Store {
   final sp = SharedPreferencesService();
 
   @observable
-  late bool isDarkTheme = false;
+  late bool isDarkTheme = true;
 
   @observable
   late Locale locale = defaultAppLocale;
@@ -43,7 +44,10 @@ abstract class SettingsStoreBase with Store {
     return languageToLocaleMap[appLanguage] ?? defaultAppLocale;
   }
 
-  bool _initDarkTheme() => sp.getBool(SharedPreferenceKey.appIsThemeDark.name, defaultValue: true);
+  bool _initDarkTheme() {
+    final platformThemeMode = SchedulerBinding.instance!.window.platformBrightness;
+    return sp.getBool(SharedPreferenceKey.appIsThemeDark.name, defaultValue: platformThemeMode == Brightness.dark);
+  }
 
   @action
   void changeLocale(AppLanguage? newLanguage) {
