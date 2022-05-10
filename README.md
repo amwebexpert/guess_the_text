@@ -67,6 +67,10 @@ Deployed on:
 ## Usefull command lines for unit and integration tests
 
     flutter test -r expanded
+
+### Mockito
+    https://docs.flutter.dev/cookbook/testing/unit/mocking
+    flutter pub run build_runner build
     flutter pub run build_runner build --delete-conflicting-outputs
 
 ## Usefull VSCode tools
