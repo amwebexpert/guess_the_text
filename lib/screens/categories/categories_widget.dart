@@ -5,7 +5,7 @@ import 'package:guess_the_text/services/hangman/texts.service.dart';
 import 'package:guess_the_text/store/game/game.store.dart';
 import 'package:guess_the_text/theme/app_bar/app_bar_title_widget.dart';
 import 'package:guess_the_text/theme/theme_utils.dart';
-import 'package:guess_the_text/utils/animations.dart';
+import 'package:guess_the_text/utils/animation.utils.dart';
 
 import 'package:guess_the_text/utils/icon_utils.dart';
 import 'package:guess_the_text/utils/randomizer.dart';
