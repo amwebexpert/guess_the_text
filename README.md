@@ -96,6 +96,11 @@ We can also install a generic deep link opener application like this one:
     flutter pub get
     flutter run
 
+or, within VSCode:
+
+    Dart: Restart Analysis Server
+
+
 ## Build & Publish to Google Play
 
 - https://docs.flutter.dev/deployment/android
