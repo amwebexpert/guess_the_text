@@ -70,6 +70,7 @@ flutter_icons:
 
 # The following section is specific to Flutter.
 flutter:
+  # Enable generation of localized Strings from arb files.
   generate: true
 
   # The following line ensures that the Material Icons font is

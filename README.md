@@ -63,7 +63,11 @@ Deployed on:
     flutter clean
     flutter pub get
     flutter run
+
+## Usefull command lines for unit and integration tests
+
     flutter test -r expanded
+    flutter pub run build_runner build --delete-conflicting-outputs
 
 ## Usefull VSCode tools
 
@@ -85,6 +89,12 @@ We can also install a generic deep link opener application like this one:
 ## MobX re-generate .g.dart store files
 
     flutter packages pub run build_runner build
+
+## i18n re-generage .g.dart localization files
+
+    flutter clean
+    flutter pub get
+    flutter run
 
 ## Build & Publish to Google Play
 
