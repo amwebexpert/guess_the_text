@@ -5,6 +5,7 @@ import 'package:guess_the_text/screens/about/about_platform_info_table_widget.da
 import 'package:guess_the_text/utils/animations.dart';
 import 'package:guess_the_text/theme/text_link.dart';
 import 'package:guess_the_text/theme/theme_utils.dart';
+import 'package:guess_the_text/utils/randomizer.dart';
 import 'package:lottie/lottie.dart';
 
 class AboutCard extends StatelessWidget {
@@ -34,7 +35,7 @@ class AboutCard extends StatelessWidget {
                 child: SizedBox(
                     width: 200,
                     child: Center(
-                      child: Lottie.asset(getAnimationPath()),
+                      child: Lottie.asset(AnimationUtils(Randomizer()).getAnimationPath()),
                     )),
               ),
               ThemedTextLink(

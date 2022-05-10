@@ -8,6 +8,7 @@ import 'package:guess_the_text/theme/theme_utils.dart';
 import 'package:guess_the_text/utils/animations.dart';
 
 import 'package:guess_the_text/utils/icon_utils.dart';
+import 'package:guess_the_text/utils/randomizer.dart';
 import 'package:lottie/lottie.dart';
 
 class CategoriesWidget extends StatefulWidget {
@@ -47,7 +48,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
   Widget build(BuildContext context) {
     if (isAppLoading) {
       return Center(
-        child: Lottie.asset(getAnimationPath()),
+        child: Lottie.asset(AnimationUtils(Randomizer()).getAnimationPath()),
       );
     }
 

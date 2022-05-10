@@ -9,6 +9,7 @@ import 'package:guess_the_text/services/storage/shared_preferences.services.dart
 import 'package:guess_the_text/store/settings/settings.store.dart';
 import 'package:guess_the_text/theme/app_theme.dart';
 import 'package:guess_the_text/utils/animations.dart';
+import 'package:guess_the_text/utils/randomizer.dart';
 import 'package:lottie/lottie.dart';
 
 void main() {
@@ -53,7 +54,7 @@ class _HangmanAppState extends State<HangmanApp> {
   Widget build(BuildContext context) {
     if (isAppLoading) {
       return Center(
-        child: Lottie.asset(getAnimationPath()),
+        child: Lottie.asset(AnimationUtils(Randomizer()).getAnimationPath()),
       );
     }
 

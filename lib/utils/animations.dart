@@ -1,4 +1,4 @@
-import 'dart:math';
+import 'package:guess_the_text/utils/randomizer.dart';
 
 const List<String> animationNames = [
   '23486-reading-a-book',
@@ -20,7 +20,22 @@ const List<String> animationNames = [
 
 const animationsPath = 'assets/animations/loading/';
 
-String getAnimationPath() {
-  int i = Random(DateTime.now().millisecondsSinceEpoch).nextInt(animationNames.length);
-  return animationsPath + animationNames[i] + '.json';
+class AnimationUtils {
+  static AnimationUtils? _instance;
+
+  late final Randomizer _randomizer;
+
+  factory AnimationUtils(Randomizer randomizer) {
+    // assign only if the assigned-to variable is null
+    _instance ??= AnimationUtils._privateConstructor(randomizer);
+
+    return _instance!;
+  }
+
+  AnimationUtils._privateConstructor(this._randomizer);
+
+  String getAnimationPath() {
+    int i = _randomizer.nextInt(animationNames.length);
+    return animationsPath + animationNames[i] + '.json';
+  }
 }
