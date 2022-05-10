@@ -2,30 +2,36 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:guess_the_text/utils/string.extensions.dart';
 
 void main() {
-  group('isBlank / isNotBlank', () {
-    var inputsToExpected = {
+  group('blank attribute extensions', () {
+    const Map<String, bool> testCases = {
       '': true,
       ' ': true,
       '    ': true,
       '  Chuck  ': false,
       'Norris': false,
     };
-    inputsToExpected.forEach((input, expected) {
-      test('should return $expected for input "$input"', () {
+
+    testCases.forEach((input, expected) {
+      test('"$input".isBlank should return $expected', () {
         expect(input.isBlank, expected);
+      });
+
+      test('"$input".isNotBlank should return ${!expected}', () {
         expect(input.isNotBlank, !expected);
       });
     });
   });
+
   group('removeDiacritics', () {
-    var inputsToExpected = {
+    const Map<String, String> testCases = {
       '': '',
       ' ': ' ',
       '  Chuck Norris ': '  Chuck Norris ',
       'é': 'e',
       withDia: withoutDia,
     };
-    inputsToExpected.forEach((input, expected) {
+
+    testCases.forEach((input, expected) {
       test('should return "$expected" for input "$input"', () {
         expect(input.removeDiacritics(), expected);
       });
