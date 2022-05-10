@@ -41,8 +41,8 @@ class TextToGuess {
       stateNumber = maxTrials;
     }
 
-    String stateNumberPadded = "$stateNumber".padLeft(2, '0');
-    return "$stateName-$stateNumberPadded";
+    String stateNumberPadded = '$stateNumber'.padLeft(2, '0');
+    return '$stateName-$stateNumberPadded';
   }
 
   String gameOverConclusionName() {

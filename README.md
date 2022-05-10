@@ -63,6 +63,7 @@ Deployed on:
     flutter clean
     flutter pub get
     flutter run
+    flutter test -r expanded
 
 ## Usefull VSCode tools
 
