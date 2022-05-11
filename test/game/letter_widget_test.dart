@@ -7,7 +7,7 @@ void main() {
   const letter = 'B';
   final letterFinder = find.text(letter);
   final buttonFinder = find.byKey(const Key('button_$letter'));
-  final textToGuess = TextToGuess(characters: 'Hello', original: 'Hello');
+  final textToGuess = TextToGuess(characters: 'CHUCK', original: 'Chuck');
 
   Widget wrapper(Widget widget) => MaterialApp(home: widget);
 
@@ -48,6 +48,7 @@ void main() {
   });
 
   testWidgets("Should disable the letter's button", (WidgetTester tester) async {
+    // given
     final textToGuessWithLetterAlreadyTried = textToGuess.tryChar(c: letter);
 
     // when
