@@ -45,7 +45,8 @@ class LettersWidget extends StatelessWidget {
       alignment: WrapAlignment.center,
       spacing: 1,
       children: letters
-          .map((c) => LetterWidget(letter: c, textToGuess: textToGuess, onLetterPressed: onLetterPressed))
+          .map((c) =>
+              LetterWidget(letter: c, isButtonEnable: !textToGuess.isCharTried(c), onLetterPressed: onLetterPressed))
           .toList(),
     );
   }

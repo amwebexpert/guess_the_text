@@ -45,6 +45,10 @@ class TextToGuess {
     return '$stateName-$stateNumberPadded';
   }
 
+  bool isCharTried(String c) {
+    return charsTried.contains(c);
+  }
+
   String gameOverConclusionName() {
     return isGameOverWithSuccess() ? 'success' : 'fail';
   }

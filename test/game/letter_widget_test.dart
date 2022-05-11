@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:guess_the_text/model/word_to_guess.dart';
 import 'package:guess_the_text/screens/game/letter_widget.dart';
 
 void main() {
   const letter = 'B';
   final letterFinder = find.text(letter);
   final buttonFinder = find.byKey(const Key('button_$letter'));
-  final textToGuess = TextToGuess(characters: 'CHUCK', original: 'Chuck');
 
   Widget wrapper(Widget widget) => MaterialApp(home: widget);
 
@@ -19,7 +17,7 @@ void main() {
     await tester.pumpWidget(wrapper(LetterWidget(
       letter: letter,
       onLetterPressed: (_) {},
-      textToGuess: textToGuess,
+      isButtonEnable: true,
     )));
 
     // then
@@ -37,7 +35,7 @@ void main() {
         expect(label, letter);
         isCallbackCalled = true;
       },
-      textToGuess: textToGuess,
+      isButtonEnable: true,
     )));
 
     // when
@@ -49,13 +47,13 @@ void main() {
 
   testWidgets("Should disable the letter's button", (WidgetTester tester) async {
     // given
-    final textToGuessWithLetterAlreadyTried = textToGuess.tryChar(c: letter);
+    const isButtonEnable = false;
 
     // when
     await tester.pumpWidget(wrapper(LetterWidget(
       letter: letter,
       onLetterPressed: (_) {},
-      textToGuess: textToGuessWithLetterAlreadyTried,
+      isButtonEnable: isButtonEnable,
     )));
 
     // then
