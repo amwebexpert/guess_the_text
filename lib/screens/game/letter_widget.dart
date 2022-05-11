@@ -14,6 +14,7 @@ class LetterWidget extends StatelessWidget {
     bool isLetterConsumed = textToGuess.charsTried.contains(letter);
 
     return ElevatedButton(
+      key: Key('button_$letter'),
       onPressed: isLetterConsumed ? null : () => onLetterPressed(letter),
       child: Text(
         letter,
