@@ -23,7 +23,7 @@ const animationsPath = 'assets/animations/loading/';
 class AnimationUtils {
   static AnimationUtils? _instance;
 
-  late final Randomizer _randomizer;
+  final Randomizer _randomizer;
 
   factory AnimationUtils(Randomizer randomizer) {
     // assign only if the assigned-to variable is null
