@@ -28,6 +28,7 @@ Deployed on:
 - Start loading with in-app storage, and in background download other categories
 - flutter build web (c.f. result in build/web/index.html)
 - usage of LayoutBuilder to know available space (landscape mode)
+- e2e tests (called "integration tests" by Flutter team https://docs.flutter.dev/cookbook/testing/integration/introduction)
 
 ## Completed so far
 
@@ -42,6 +43,7 @@ Deployed on:
 - State management with MobX
 - MobX Store annotations via the mobx_codegen package
 - Factory pattern to create services singleton
+- Testing and code coverage: unit, mocks, widget
 - Async API services
 - Example of a FadeIn animation
 - Use custom Theme and customize Typography (headline6, bodyText2, ...) https://docs.flutter.dev/cookbook/design/themes
