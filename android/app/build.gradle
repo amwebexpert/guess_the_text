@@ -50,7 +50,7 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.amwebexpert.app.guessthetext.guess_the_text"
-        minSdkVersion flutter.minSdkVersion
+        minSdkVersion 21 // https://stackoverflow.com/a/60158352/704681
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName

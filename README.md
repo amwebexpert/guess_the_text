@@ -75,6 +75,10 @@ Deployed on:
     flutter test integration_test/app_test.dart
     flutter test integration_test
 
+#### Start headless android emulator before running e2e tests
+    emulator -list-avds
+    emulator -avd  Pixel_5_API_29 -no-audio -no-window
+
 - https://docs.flutter.dev/testing/integration-tests
 - [e2e demo recording here](docs/recordings/e2e-tests-demo-flutter.mov)
 
