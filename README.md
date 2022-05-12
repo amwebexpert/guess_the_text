@@ -43,7 +43,7 @@ Deployed on:
 - State management with MobX
 - MobX Store annotations via the mobx_codegen package
 - Factory pattern to create services singleton
-- Testing and code coverage: unit, mocks, widget
+- Testing and code coverage: unit, mocks, widget, e2e
 - Async API services
 - Example of a FadeIn animation
 - Use custom Theme and customize Typography (headline6, bodyText2, ...) https://docs.flutter.dev/cookbook/design/themes
@@ -66,14 +66,26 @@ Deployed on:
     flutter pub get
     flutter run
 
-## Usefull command lines for unit and integration tests
+## Usefull command lines for unit, widget and integration tests
 
     flutter test -r expanded
 
+### e2e
+
+    flutter test integration_test/app_test.dart
+    flutter test integration_test
+
+- https://docs.flutter.dev/testing/integration-tests
+- [e2e demo recording here](docs/recordings/e2e-tests-demo-flutter.mov)
+
+
 ### Mockito
-    https://docs.flutter.dev/cookbook/testing/unit/mocking
+
     flutter pub run build_runner build
     flutter pub run build_runner build --delete-conflicting-outputs
+
+- https://docs.flutter.dev/cookbook/testing/unit/mocking
+
 
 ## Usefull VSCode tools
 
