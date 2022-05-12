@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -13,7 +14,9 @@ import 'package:guess_the_text/utils/randomizer.dart';
 import 'package:lottie/lottie.dart';
 
 void main() {
-  ErrorWidget.builder = (FlutterErrorDetails details) => AppErrorWidget(details: details);
+  if (!kDebugMode) {
+    ErrorWidget.builder = (FlutterErrorDetails details) => AppErrorWidget(details: details);
+  }
   runApp(const HangmanApp());
 }
 

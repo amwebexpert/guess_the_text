@@ -87,6 +87,7 @@ class _GameWidgetState extends State<GameWidget> {
       floatingActionButton: FloatingActionButton(
         onPressed: () => shuffle(context),
         child: const Icon(Icons.refresh),
+        tooltip: 'Shuffle', // TODO translate me i18n
       ),
     );
   }
