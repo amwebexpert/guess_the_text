@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:guess_the_text/screens/game/game_interaction_panel_widget.dart';
-import 'package:guess_the_text/screens/game/text_to_guess_panel_widget.dart';
+import 'package:guess_the_text/screens/game/game_interaction_panel.widget.dart';
+import 'package:guess_the_text/screens/game/text_to_guess_panel.widget.dart';
 import 'package:guess_the_text/store/game/game.store.dart';
 
 class GameLayoutLandscapeWidget extends StatelessWidget {

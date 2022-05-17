@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guess_the_text/model/word_to_guess.model.dart';
 
-import 'letter_widget.dart';
+import 'letter.widget.dart';
 
 class LettersWidget extends StatelessWidget {
   static const List<String> letters = [

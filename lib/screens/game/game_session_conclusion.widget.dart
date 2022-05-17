@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:guess_the_text/screens/game/text_to_guess_template_widget.dart';
+import 'package:guess_the_text/screens/game/text_to_guess_template.widget.dart';
 import 'package:guess_the_text/store/game/game.store.dart';
 
 class GameSessionConclusion extends StatelessWidget {
