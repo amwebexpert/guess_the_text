@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guess_the_text/model/on_the_fly_challenge.model.dart';
+import 'package:guess_the_text/features/game/challenge/on_the_fly_challenge.model.dart';
 import 'package:guess_the_text/features/about/about.screen.dart';
 import 'package:guess_the_text/features/categories/categories.screen.dart';
 import 'package:guess_the_text/features/game/challenge/on_the_fly_chalenge_qr_widget.dart';
