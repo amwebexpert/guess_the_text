@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guess_the_text/services/hangman/model/api_category.model.dart';
 import 'package:guess_the_text/services/hangman/texts.service.dart';
-import 'package:guess_the_text/store/game/game.store.dart';
+import 'package:guess_the_text/features/game/game.store.dart';
 import 'package:guess_the_text/theme/theme.utils.dart';
 import 'package:guess_the_text/utils/animation.utils.dart';
 

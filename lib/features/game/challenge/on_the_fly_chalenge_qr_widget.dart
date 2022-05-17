@@ -3,9 +3,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:barcode/barcode.dart';
 import 'package:guess_the_text/model/on_the_fly_challenge.model.dart';
-import 'package:guess_the_text/screens/game/challenge/constants.dart';
-import 'package:guess_the_text/store/settings/settings.store.dart';
+import 'package:guess_the_text/features/settings/settings.store.dart';
 import 'package:guess_the_text/theme/theme.utils.dart';
+
+import 'qrcode.constants.dart';
 
 class OnTheFlyChalengeQrWidget extends StatelessWidget {
   final OnTheFlyChallenge onTheFlyChallenge;

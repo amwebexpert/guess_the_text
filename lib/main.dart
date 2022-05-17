@@ -7,7 +7,7 @@ import 'package:guess_the_text/route_generator.dart';
 import 'package:guess_the_text/services/hangman/model/api_category.model.dart';
 import 'package:guess_the_text/services/hangman/texts.service.dart';
 import 'package:guess_the_text/services/storage/shared_preferences.services.dart';
-import 'package:guess_the_text/store/settings/settings.store.dart';
+import 'package:guess_the_text/features/settings/settings.store.dart';
 import 'package:guess_the_text/theme/app.theme.dart';
 import 'package:guess_the_text/utils/animation.utils.dart';
 import 'package:guess_the_text/utils/randomizer.utils.dart';

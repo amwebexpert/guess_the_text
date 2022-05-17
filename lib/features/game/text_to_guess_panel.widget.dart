@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:guess_the_text/screens/game/text_to_guess_shuffling.widget.dart';
-import 'package:guess_the_text/screens/game/text_to_guess_with_category.widget.dart';
+
+import 'text_to_guess_shuffling.widget.dart';
+import 'text_to_guess_with_category.widget.dart';
 
 class TextToGuessArea extends StatelessWidget {
   final bool isLoading;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guess_the_text/model/on_the_fly_challenge.model.dart';
-import 'package:guess_the_text/store/game/game.store.dart';
+import 'package:guess_the_text/features/game/game.store.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EditTextToGuessDialog extends StatefulWidget {

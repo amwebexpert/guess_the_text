@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:guess_the_text/screens/about/app_version_table.widget.dart';
-import 'package:guess_the_text/screens/about/platform_info_table.widget.dart';
 import 'package:guess_the_text/utils/animation.utils.dart';
 import 'package:guess_the_text/widgets/text_link.widget.dart';
 import 'package:guess_the_text/theme/theme.utils.dart';
 import 'package:guess_the_text/utils/randomizer.utils.dart';
 import 'package:lottie/lottie.dart';
+
+import 'app_version_table.widget.dart';
+import 'platform_info_table.widget.dart';
 
 class AboutCard extends StatelessWidget {
   const AboutCard({Key? key}) : super(key: key);
