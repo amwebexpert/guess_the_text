@@ -1,4 +1,4 @@
-import 'package:guess_the_text/features/game/word_to_guess.model.dart';
+import 'package:guess_the_text/features/game/text_to_guess.model.dart';
 import 'package:guess_the_text/features/categories/api_category.model.dart';
 import 'package:guess_the_text/features/game/api_text.model.dart';
 import 'package:guess_the_text/features/game/api_texts.service.dart';
