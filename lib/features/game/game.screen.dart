@@ -6,7 +6,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guess_the_text/features/game/game_layout_landscape.widget.dart';
 import 'package:guess_the_text/features/game/game_layout_portrait.widget.dart';
 import 'package:guess_the_text/features/game/challenge/on_the_fly_challenge.model.dart';
-import 'package:guess_the_text/features/game/challenge/edit_text_to_guess_widget.dart';
+import 'package:guess_the_text/features/game/challenge/edit_text_to_guess.widget.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
 import 'package:guess_the_text/widgets/app_bar_title.widget.dart';
