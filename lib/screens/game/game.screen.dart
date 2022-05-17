@@ -12,7 +12,7 @@ import 'package:guess_the_text/store/game/game.store.dart';
 import 'package:guess_the_text/widgets/app_bar_title.widget.dart';
 import 'package:guess_the_text/utils/extensions/string.extensions.dart';
 
-import 'app-menu/app_menu_widget.dart';
+import '../../widgets/app_menu.widget.dart';
 
 class GameWidget extends StatefulWidget {
   const GameWidget({Key? key}) : super(key: key);
