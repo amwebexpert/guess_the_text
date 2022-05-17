@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:guess_the_text/services/hangman/model/api_category.dart';
+import 'package:guess_the_text/services/hangman/model/api_category.model.dart';
 import 'package:guess_the_text/services/hangman/texts.service.dart';
 import 'package:guess_the_text/store/game/game.store.dart';
-import 'package:guess_the_text/theme/app_bar/app_bar_title_widget.dart';
-import 'package:guess_the_text/theme/theme_utils.dart';
+import 'package:guess_the_text/theme/theme.utils.dart';
 import 'package:guess_the_text/utils/animation.utils.dart';
 
-import 'package:guess_the_text/utils/icon_utils.dart';
-import 'package:guess_the_text/utils/randomizer.dart';
+import 'package:guess_the_text/utils/icon.utils.dart';
+import 'package:guess_the_text/utils/randomizer.utils.dart';
+import 'package:guess_the_text/widgets/app_bar_title.widget.dart';
 import 'package:lottie/lottie.dart';
 
 class CategoriesWidget extends StatefulWidget {
@@ -48,7 +48,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
   Widget build(BuildContext context) {
     if (isAppLoading) {
       return Center(
-        child: Lottie.asset(AnimationUtils(Randomizer()).getAnimationPath()),
+        child: Lottie.asset(AnimationUtils(RandomizerUtils()).getAnimationPath()),
       );
     }
 

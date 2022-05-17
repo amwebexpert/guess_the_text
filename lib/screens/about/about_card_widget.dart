@@ -3,9 +3,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guess_the_text/screens/about/about_app_version_table_widget.dart';
 import 'package:guess_the_text/screens/about/about_platform_info_table_widget.dart';
 import 'package:guess_the_text/utils/animation.utils.dart';
-import 'package:guess_the_text/theme/text_link.dart';
-import 'package:guess_the_text/theme/theme_utils.dart';
-import 'package:guess_the_text/utils/randomizer.dart';
+import 'package:guess_the_text/widgets/text_link.widget.dart';
+import 'package:guess_the_text/theme/theme.utils.dart';
+import 'package:guess_the_text/utils/randomizer.utils.dart';
 import 'package:lottie/lottie.dart';
 
 class AboutCard extends StatelessWidget {
@@ -35,7 +35,7 @@ class AboutCard extends StatelessWidget {
                 child: SizedBox(
                     width: 200,
                     child: Center(
-                      child: Lottie.asset(AnimationUtils(Randomizer()).getAnimationPath()),
+                      child: Lottie.asset(AnimationUtils(RandomizerUtils()).getAnimationPath()),
                     )),
               ),
               ThemedTextLink(

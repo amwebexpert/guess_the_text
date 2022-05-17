@@ -1,9 +1,9 @@
-import 'package:guess_the_text/model/word_to_guess.dart';
-import 'package:guess_the_text/services/hangman/model/api_category.dart';
-import 'package:guess_the_text/services/hangman/model/api_text.dart';
+import 'package:guess_the_text/model/word_to_guess.model.dart';
+import 'package:guess_the_text/services/hangman/model/api_category.model.dart';
+import 'package:guess_the_text/services/hangman/model/api_text.model.dart';
 import 'package:guess_the_text/services/hangman/texts.service.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
-import 'package:guess_the_text/utils/string.extensions.dart';
+import 'package:guess_the_text/utils/extensions/string.extensions.dart';
 import 'package:mobx/mobx.dart';
 
 import 'dart:math';

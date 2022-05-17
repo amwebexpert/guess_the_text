@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/scheduler.dart';
-import 'package:guess_the_text/model/language.dart';
+import 'package:guess_the_text/utils/language.utils.dart';
 import 'package:mobx/mobx.dart';
 
 import 'package:guess_the_text/services/storage/shared_preferences.enum.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:guess_the_text/services/device/device_info_service.dart';
-import 'package:guess_the_text/theme/theme_utils.dart';
+import 'package:guess_the_text/services/device/device_info.service.dart';
+import 'package:guess_the_text/theme/theme.utils.dart';
 
 class PlatformInfoTable extends StatefulWidget {
   const PlatformInfoTable({

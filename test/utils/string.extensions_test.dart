@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:guess_the_text/utils/string.extensions.dart';
+import 'package:guess_the_text/utils/extensions/string.extensions.dart';
 
 void main() {
   group('blank attribute extensions', () {

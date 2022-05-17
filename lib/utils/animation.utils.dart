@@ -1,4 +1,4 @@
-import 'package:guess_the_text/utils/randomizer.dart';
+import 'package:guess_the_text/utils/randomizer.utils.dart';
 
 const List<String> animationNames = [
   '23486-reading-a-book',
@@ -23,9 +23,9 @@ const animationsPath = 'assets/animations/loading/';
 class AnimationUtils {
   static AnimationUtils? _instance;
 
-  final Randomizer _randomizer;
+  final RandomizerUtils _randomizer;
 
-  factory AnimationUtils(Randomizer randomizer) {
+  factory AnimationUtils(RandomizerUtils randomizer) {
     // assign only if the assigned-to variable is null
     _instance ??= AnimationUtils._privateConstructor(randomizer);
 
