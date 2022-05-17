@@ -1,7 +1,7 @@
 import 'package:guess_the_text/model/word_to_guess.model.dart';
-import 'package:guess_the_text/services/hangman/model/api_category.model.dart';
-import 'package:guess_the_text/services/hangman/model/api_text.model.dart';
-import 'package:guess_the_text/services/hangman/texts.service.dart';
+import 'package:guess_the_text/features/categories/api_category.model.dart';
+import 'package:guess_the_text/features/game/api_text.model.dart';
+import 'package:guess_the_text/features/game/api_texts.service.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:guess_the_text/utils/extensions/string.extensions.dart';
 import 'package:mobx/mobx.dart';

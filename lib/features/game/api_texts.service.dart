@@ -1,12 +1,12 @@
 import 'dart:convert' as convert;
 import 'dart:io';
 
-import 'package:guess_the_text/services/hangman/model/api_about.model.dart';
-import 'package:guess_the_text/services/hangman/model/api_category.model.dart';
+import 'package:guess_the_text/features/about/api_about.model.dart';
+import 'package:guess_the_text/features/categories/api_category.model.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:http/http.dart' as http;
 
-import 'model/api_text.model.dart';
+import 'api_text.model.dart';
 
 class TextsService {
   static final TextsService _instance = TextsService._privateConstructor();
