@@ -3,7 +3,8 @@ import 'package:guess_the_text/utils/extensions/string.extensions.dart';
 
 void main() {
   group('blank attribute extensions', () {
-    const Map<String, bool> testCases = {
+    const Map<String?, bool> testCases = {
+      null: true,
       '': true,
       ' ': true,
       '    ': true,

@@ -1,9 +1,13 @@
 const withDia = 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž';
 const withoutDia = 'AAAAAAaaaaaaOOOOOOOooooooEEEEeeeeeCcDIIIIiiiiUUUUuuuuNnSsYyyZz';
 
-extension StringUtils on String {
-  String removeDiacritics() {
-    String str = this;
+extension StringUtils on String? {
+  String? removeDiacritics() {
+    if (this == null) {
+      return null;
+    }
+
+    String str = this!;
     for (int i = 0; i < withDia.length; i++) {
       str = str.replaceAll(withDia[i], withoutDia[i]);
     }
@@ -11,7 +15,7 @@ extension StringUtils on String {
     return str;
   }
 
-  bool get isBlank => isEmpty || trim().isEmpty;
+  bool get isBlank => this == null || this!.isEmpty || this!.trim().isEmpty;
 
   bool get isNotBlank => !isBlank;
 }
