@@ -28,30 +28,57 @@ Deployed on:
 - Start loading with in-app storage, and in background download other categories
 - flutter build web (c.f. result in build/web/index.html)
 - usage of LayoutBuilder to know available space (landscape mode)
-- e2e tests (called "integration tests" by Flutter team https://docs.flutter.dev/cookbook/testing/integration/introduction)
 
 ## Completed so far
 
-- Add ability to (input modal) add any text_to_guess on the fly
+### Look & Feel and out of the box components
+
+- Create a Theme and customize Typography (headline6, bodyText2, ...) https://docs.flutter.dev/cookbook/design/themes
+- Dark theme mode
+- Flexible is a built-in widget in flutter which controls how a child of base flex widgets that are Row, Column, and Flex will fill the space available to it
+- The Expanded widget in flutter is shorthand of Flexible with the default fit of FlexFit
 - Scroll view, list view, Drawer menu
-- I18n management
-- Orientation locking
 - Lottie animations while loading
 - Prefer SVG images over PNG
 - Background images
+- Add ability to (input modal) add any text_to_guess on the fly
+- Orientation locking
 - Conditional layout depending on device orientation
+- Example of a FadeIn animation
+
+### I18N
+
+- I18n configurations
+- Plugin labels maintenance
+- Re-generate ARB (application resource bundle) & Dart: Analysis server
+
+### State management
+
+- setState & InheritedWidget (similar to useState, useContext)
 - State management with MobX
 - MobX Store annotations via the mobx_codegen package
-- Factory pattern to create services singleton
-- Testing and code coverage: unit, mocks, widget, e2e
-- Async API services
-- Example of a FadeIn animation
-- Use custom Theme and customize Typography (headline6, bodyText2, ...) https://docs.flutter.dev/cookbook/design/themes
 - Preferences page & shared preferences
-- Dark theme mode
-- Deep link navigation for both platforms
+
+### Tests automation
+
+- e2e tests (called "integration tests" by Flutter team https://docs.flutter.dev/cookbook/testing/integration/introduction)
+- Testing and code coverage: unit, mocks, widget, e2e
+
+### Dart language
+
+- Modern, functionnal programming, assign fonction to var, deconstruction, named parameters, mixins, elvis operator et bang (? et !), double elvis operator (??), late, etc.
+- https://medium.com/flutter-community/the-ultimate-javascript-vs-dart-syntax-guide-2f7d8ad8bde6
+- Async API services
+- Factory pattern to create services singleton
+- Power of Dart extensions
+- JSON serialization
+- Clone vs copy(...) with adjusted params
+
+### Others
+
 - [barcode generator](https://pub.dev/packages/barcode) to create a text to guess challenge
 - [barcode scanner](https://pub.dev/packages/flutter_barcode_scanner) feature to accept (scan) challenge
+- Deep link navigation for both platforms
 
 
 ## Usefull command lines
