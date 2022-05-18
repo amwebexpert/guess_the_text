@@ -19,13 +19,13 @@ class TextToGuessWithCategory extends StatelessWidget {
           ? Column(
               children: [
                 const CategoryLabel(),
-                TextToGuessTemplate(text: text),
+                TextToGuessTemplate(text: text, isAnimated: false),
               ],
             )
           : Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                TextToGuessTemplate(text: text),
+                TextToGuessTemplate(text: text, isAnimated: false),
                 const CategoryLabel(),
               ],
             );

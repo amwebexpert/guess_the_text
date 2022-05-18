@@ -67,16 +67,19 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
               itemBuilder: (context, index) {
                 final ApiCategory category = categories[index];
 
-                return Padding(
-                  padding: EdgeInsets.all(spacing(0.25)),
-                  child: Card(
-                    color: Theme.of(context).colorScheme.primary,
-                    child: ListTile(
-                      onTap: () => selectCategory(category, context),
-                      leading: Icon(iconsMap[category.name]), // add an iconName attribute to model
-                      title: Text(
-                        category.name,
-                        style: Theme.of(context).textTheme.bodyText1,
+                return Opacity(
+                  opacity: 0.9,
+                  child: Padding(
+                    padding: EdgeInsets.all(spacing(0.25)),
+                    child: Card(
+                      color: Theme.of(context).colorScheme.primary,
+                      child: ListTile(
+                        onTap: () => selectCategory(category, context),
+                        leading: Icon(iconsMap[category.name]), // add an iconName attribute to model
+                        title: Text(
+                          category.name,
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
                       ),
                     ),
                   ),

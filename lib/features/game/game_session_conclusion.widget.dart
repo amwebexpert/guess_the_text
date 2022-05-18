@@ -23,7 +23,7 @@ class GameSessionConclusion extends StatelessWidget {
               color: color,
             ),
           ),
-          TextToGuessTemplate(text: gameStore.textToGuess.original),
+          TextToGuessTemplate(text: gameStore.textToGuess.original, isAnimated: true),
         ],
       ),
     );

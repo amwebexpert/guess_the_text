@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const _fontFamily = 'IndieFlower';
+const appFontFamily = 'IndieFlower';
 
 const _textTheme = TextTheme(
   headline1: TextStyle(fontSize: 48.0),
@@ -19,13 +19,13 @@ const _textTheme = TextTheme(
 final themeDataDark = ThemeData(
   colorScheme: ColorScheme.fromSwatch(
       primarySwatch: Colors.orange, accentColor: Colors.orange[700], brightness: Brightness.dark),
-  fontFamily: _fontFamily,
+  fontFamily: appFontFamily,
   textTheme: _textTheme,
 );
 
 final themeDataLight = ThemeData(
   colorScheme: ColorScheme.fromSwatch(
       primarySwatch: Colors.orange, accentColor: Colors.orange[700], brightness: Brightness.light),
-  fontFamily: _fontFamily,
+  fontFamily: appFontFamily,
   textTheme: _textTheme,
 );

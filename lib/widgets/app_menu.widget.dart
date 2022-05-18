@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guess_the_text/utils/icon.utils.dart';
+import 'package:guess_the_text/widgets/menu_logo.widget.dart';
 
 class AppMenu extends StatelessWidget {
   final Function(BuildContext context) onAdhocTextMenuPress;
@@ -25,14 +26,7 @@ class AppMenu extends StatelessWidget {
         // Important: Remove any padding from the ListView.
         padding: EdgeInsets.zero,
         children: [
-          DrawerHeader(
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    invertColors: isDark,
-                    fit: BoxFit.contain,
-                    image: const AssetImage('assets/images/drawer-header.png'))),
-            child: const Text(''),
-          ),
+          MenuLogo(isDark: isDark),
           ListTile(
             visualDensity: VisualDensity.compact,
             leading: Icon(
