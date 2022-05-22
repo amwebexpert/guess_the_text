@@ -15,14 +15,16 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 
-/// A class which mocks [Randomizer].
+/// A class which mocks [RandomizerUtils].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockRandomizer extends _i1.Mock implements _i2.RandomizerUtils {
-  MockRandomizer() {
+class MockRandomizerUtils extends _i1.Mock implements _i2.RandomizerUtils {
+  MockRandomizerUtils() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  int nextInt(int? max) => (super.noSuchMethod(Invocation.method(#nextInt, [max]), returnValue: 0) as int);
+  int nextInt(int? max) =>
+      (super.noSuchMethod(Invocation.method(#nextInt, [max]), returnValue: 0)
+          as int);
 }
