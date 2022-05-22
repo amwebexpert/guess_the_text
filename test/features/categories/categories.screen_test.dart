@@ -10,7 +10,7 @@ import 'package:mockito/mockito.dart';
 import '../../mocks/categories.mocks.dart';
 import 'categories.screen_test.mocks.dart';
 
-// Annotation which generates the *.mocks.dart library and the Mock class.
+// Annotation which generates the *.mocks.dart library and the Mock classes
 @GenerateMocks([TextsService, GameStore])
 void main() {
   final mockTextsService = MockTextsService();
