@@ -12,9 +12,9 @@ void main() {
   group('getAnimationPath', () {
     test('should return expected image path', () {
       // given
-      final mockRandom = MockRandomizerUtils();
-      when(mockRandom.nextInt(any)).thenReturn(5);
-      final AnimationUtils animationUtils = AnimationUtils(mockRandom);
+      final mockRandomizerUtils = MockRandomizerUtils();
+      when(mockRandomizerUtils.nextInt(any)).thenReturn(5);
+      final AnimationUtils animationUtils = AnimationUtils(mockRandomizerUtils);
 
       // when
       final result = animationUtils.getAnimationPath();

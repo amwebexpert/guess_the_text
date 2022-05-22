@@ -49,6 +49,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
   Widget build(BuildContext context) {
     if (isAppLoading) {
       return Center(
+        key: const Key('categories_loading'),
         child: Lottie.asset(AnimationUtils(RandomizerUtils()).getAnimationPath()),
       );
     }
