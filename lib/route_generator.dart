@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:guess_the_text/features/game/api_texts.service.dart';
 import 'package:guess_the_text/features/game/challenge/on_the_fly_challenge.model.dart';
 import 'package:guess_the_text/features/about/about.screen.dart';
 import 'package:guess_the_text/features/categories/categories.screen.dart';
 import 'package:guess_the_text/features/game/challenge/on_the_fly_chalenge_qr.widget.dart';
 import 'package:guess_the_text/features/game/challenge/on_the_fly_chalenge.widget.dart';
 import 'package:guess_the_text/features/game/game.screen.dart';
+import 'package:guess_the_text/features/game/game.store.dart';
 import 'package:guess_the_text/features/settings/settings.screen.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
 
@@ -25,7 +27,7 @@ Route? onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => OnTheFlyChalengeWidget(queryParameters: uriLink.queryParameters));
 
     case '/categories':
-      return MaterialPageRoute(builder: (_) => const CategoriesWidget());
+      return MaterialPageRoute(builder: (_) => CategoriesWidget(textsService: TextsService(), gameStore: GameStore()));
 
     case '/onTheFlyChallenge':
       return MaterialPageRoute(

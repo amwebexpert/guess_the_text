@@ -12,15 +12,16 @@ import 'package:guess_the_text/widgets/app_bar_title.widget.dart';
 import 'package:lottie/lottie.dart';
 
 class CategoriesWidget extends StatefulWidget {
-  const CategoriesWidget({Key? key}) : super(key: key);
+  final TextsService textsService;
+  final GameStore gameStore;
+
+  const CategoriesWidget({Key? key, required this.textsService, required this.gameStore}) : super(key: key);
 
   @override
   State<CategoriesWidget> createState() => _CategoriesWidgetState();
 }
 
 class _CategoriesWidgetState extends State<CategoriesWidget> {
-  final TextsService textsService = TextsService();
-  final GameStore gameStore = GameStore();
   static const String backgroundImage = 'assets/images/backgrounds/background-pexels-pixabay-461940.jpg';
 
   bool isAppLoading = true;
@@ -33,14 +34,14 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
   }
 
   void loadData() async {
-    categories = await textsService.getCategories();
+    categories = await widget.textsService.getCategories();
     setState(() {
       isAppLoading = false;
     });
   }
 
   void selectCategory(ApiCategory category, BuildContext context) async {
-    await gameStore.selectCategory(category);
+    await widget.gameStore.selectCategory(category);
     Navigator.pop(context);
   }
 
