@@ -47,6 +47,7 @@ dependencies:
   flutter_barcode_scanner: ^2.0.0
   barcode: ^2.2.0
   animated_text_kit: ^4.2.1
+  get_it: ^7.2.0
 
 dev_dependencies:
   integration_test:

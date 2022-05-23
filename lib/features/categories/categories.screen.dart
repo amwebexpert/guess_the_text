@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guess_the_text/dep.injection.container.dart';
 import 'package:guess_the_text/features/categories/api_category.model.dart';
 import 'package:guess_the_text/features/game/api_texts.service.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
@@ -7,15 +8,11 @@ import 'package:guess_the_text/theme/theme.utils.dart';
 import 'package:guess_the_text/utils/animation.utils.dart';
 
 import 'package:guess_the_text/utils/icon.utils.dart';
-import 'package:guess_the_text/utils/randomizer.utils.dart';
 import 'package:guess_the_text/widgets/app_bar_title.widget.dart';
 import 'package:lottie/lottie.dart';
 
 class CategoriesWidget extends StatefulWidget {
-  final TextsService textsService;
-  final GameStore gameStore;
-
-  const CategoriesWidget({Key? key, required this.textsService, required this.gameStore}) : super(key: key);
+  const CategoriesWidget({Key? key}) : super(key: key);
 
   @override
   State<CategoriesWidget> createState() => _CategoriesWidgetState();
@@ -23,6 +20,10 @@ class CategoriesWidget extends StatefulWidget {
 
 class _CategoriesWidgetState extends State<CategoriesWidget> {
   static const String backgroundImage = 'assets/images/backgrounds/background-pexels-pixabay-461940.jpg';
+
+  final TextsService textsService = serviceLocator.get();
+  final GameStore gameStore = serviceLocator.get();
+  final AnimationUtils animationUtils = serviceLocator.get();
 
   bool isAppLoading = true;
   List<ApiCategory> categories = [];
@@ -34,14 +35,14 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
   }
 
   void loadData() async {
-    categories = await widget.textsService.getCategories();
+    categories = await textsService.getCategories();
     setState(() {
       isAppLoading = false;
     });
   }
 
   void selectCategory(ApiCategory category, BuildContext context) async {
-    await widget.gameStore.selectCategory(category);
+    await gameStore.selectCategory(category);
     Navigator.pop(context);
   }
 
@@ -50,7 +51,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
     if (isAppLoading) {
       return Center(
         key: const Key('categories_loading'),
-        child: Lottie.asset(AnimationUtils(RandomizerUtils()).getAnimationPath()),
+        child: Lottie.asset(animationUtils.getAnimationPath()),
       );
     }
 

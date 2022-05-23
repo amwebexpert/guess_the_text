@@ -2,11 +2,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:guess_the_text/dep.injection.container.dart';
 import 'package:guess_the_text/widgets/app_error.widget.dart';
 import 'package:guess_the_text/route_generator.dart';
 import 'package:guess_the_text/features/categories/api_category.model.dart';
 import 'package:guess_the_text/features/game/api_texts.service.dart';
-import 'package:guess_the_text/services/storage/shared_preferences.services.dart';
 import 'package:guess_the_text/features/settings/settings.store.dart';
 import 'package:guess_the_text/theme/app.theme.dart';
 import 'package:guess_the_text/utils/animation.utils.dart';
@@ -37,9 +37,9 @@ class _HangmanAppState extends State<HangmanApp> {
   }
 
   void loadData() async {
-    final TextsService textsService = TextsService();
+    final serviceLocator = await initServiceLocator();
+    final TextsService textsService = serviceLocator.get<TextsService>();
 
-    await Future.wait([textsService.getCategories(), SharedPreferencesService().init()]);
     List<ApiCategory> categories = await textsService.getCategories();
     await textsService.getTexts(categories.first.uuid);
 
