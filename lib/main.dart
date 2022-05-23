@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:guess_the_text/dep.injection.container.dart';
+import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/widgets/app_error.widget.dart';
 import 'package:guess_the_text/route_generator.dart';
 import 'package:guess_the_text/features/categories/api_category.model.dart';

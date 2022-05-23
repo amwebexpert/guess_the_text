@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:guess_the_text/dep.injection.container.dart';
+import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/features/categories/api_category.model.dart';
 import 'package:guess_the_text/features/game/api_texts.service.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
