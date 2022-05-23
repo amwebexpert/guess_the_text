@@ -3,14 +3,15 @@ import 'dart:io';
 
 import 'package:guess_the_text/features/about/api_about.model.dart';
 import 'package:guess_the_text/features/categories/api_category.model.dart';
+import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:http/http.dart' as http;
 
 import 'api_text.model.dart';
 
 class TextsService {
+  final LoggerService logger = serviceLocator.get();
   static final TextsService _instance = TextsService._privateConstructor();
-  final LoggerService logger = LoggerService();
 
   static const String hostName = 'amw-hangman-api.herokuapp.com';
   static const String apiPathCategories = '/api/v1/categories';

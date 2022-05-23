@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/scheduler.dart';
+import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/utils/language.utils.dart';
 import 'package:mobx/mobx.dart';
 
@@ -24,8 +25,8 @@ class SettingsStore extends SettingsStoreBase with _$SettingsStore {
 
 // The store-class
 abstract class SettingsStoreBase with Store {
-  final LoggerService logger = LoggerService();
-  final sp = SharedPreferencesService();
+  final LoggerService logger = serviceLocator.get();
+  final SharedPreferencesService sp = serviceLocator.get();
 
   @observable
   late bool isDarkTheme = true;

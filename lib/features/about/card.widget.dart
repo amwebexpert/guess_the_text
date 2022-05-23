@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/utils/animation.utils.dart';
 import 'package:guess_the_text/widgets/text_link.widget.dart';
 import 'package:guess_the_text/theme/theme.utils.dart';
-import 'package:guess_the_text/utils/randomizer.utils.dart';
 import 'package:lottie/lottie.dart';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
@@ -16,6 +16,7 @@ class AboutCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AnimationUtils animationUtils = serviceLocator.get();
     final AppLocalizations localizations = AppLocalizations.of(context)!;
 
     return Opacity(
@@ -52,7 +53,7 @@ class AboutCard extends StatelessWidget {
                   child: SizedBox(
                       width: 200,
                       child: Center(
-                        child: Lottie.asset(AnimationUtils(RandomizerUtils()).getAnimationPath()),
+                        child: Lottie.asset(animationUtils.getAnimationPath()),
                       )),
                 ),
                 ThemedTextLink(

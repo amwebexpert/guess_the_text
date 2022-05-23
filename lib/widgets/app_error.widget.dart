@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
 
 class AppErrorWidget extends StatelessWidget {
@@ -8,7 +9,7 @@ class AppErrorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final LoggerService logger = LoggerService();
+    final LoggerService logger = serviceLocator.get();
     logger.error(details.exception.toString(), details.stack);
 
     return const Material(

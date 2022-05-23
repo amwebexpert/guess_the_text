@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:guess_the_text/features/game/challenge/on_the_fly_challenge.model.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guess_the_text/service.locator.dart';
 
 class EditTextToGuessDialog extends StatefulWidget {
   const EditTextToGuessDialog({Key? key}) : super(key: key);
@@ -11,8 +12,9 @@ class EditTextToGuessDialog extends StatefulWidget {
 }
 
 class _EditTextToGuessDialogState extends State<EditTextToGuessDialog> {
-  final GameStore gameStore = GameStore();
+  final GameStore gameStore = serviceLocator.get();
   final TextEditingController textFieldController = TextEditingController();
+
   bool isTextHidden = true;
   bool isTextEmpty = true;
 

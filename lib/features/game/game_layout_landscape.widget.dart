@@ -4,15 +4,16 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:guess_the_text/features/game/game_interaction_panel.widget.dart';
 import 'package:guess_the_text/features/game/text_to_guess_panel.widget.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
+import 'package:guess_the_text/service.locator.dart';
 
 class GameLayoutLandscapeWidget extends StatelessWidget {
+  final GameStore gameStore = serviceLocator.get();
+
   final bool isLoading;
-  const GameLayoutLandscapeWidget({Key? key, required this.isLoading}) : super(key: key);
+  GameLayoutLandscapeWidget({Key? key, required this.isLoading}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final GameStore gameStore = GameStore();
-
     return Observer(builder: (BuildContext context) {
       return Column(
         children: [

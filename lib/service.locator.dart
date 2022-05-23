@@ -7,6 +7,8 @@ import 'package:guess_the_text/services/storage/shared_preferences.services.dart
 import 'package:guess_the_text/utils/animation.utils.dart';
 import 'package:guess_the_text/utils/randomizer.utils.dart';
 
+import 'features/settings/settings.store.dart';
+
 final serviceLocator = GetIt.instance;
 
 Future<GetIt> initServiceLocator() async {
@@ -19,6 +21,7 @@ Future<GetIt> initServiceLocator() async {
   serviceLocator.registerLazySingleton<DeviceInfoService>(() => DeviceInfoService());
   serviceLocator.registerLazySingleton<TextsService>(() => TextsService());
   serviceLocator.registerLazySingleton<GameStore>(() => GameStore());
+  serviceLocator.registerLazySingleton<SettingsStore>(() => SettingsStore());
 
   serviceLocator.registerLazySingleton<RandomizerUtils>(() => RandomizerUtils());
   serviceLocator.registerLazySingleton<AnimationUtils>(() => AnimationUtils(serviceLocator.get<RandomizerUtils>()));

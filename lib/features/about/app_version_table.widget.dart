@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guess_the_text/features/about/api_about.model.dart';
 import 'package:guess_the_text/features/game/api_texts.service.dart';
+import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/widgets/text_link.widget.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
@@ -15,6 +16,8 @@ class AppVersionTable extends StatefulWidget {
 }
 
 class _AppVersionTableState extends State<AppVersionTable> {
+  final TextsService textsService = serviceLocator.get();
+
   String appVersion = '';
   String appBuildNumber = '';
   ApiAbout apiAbout = ApiAbout();
@@ -23,7 +26,7 @@ class _AppVersionTableState extends State<AppVersionTable> {
   void initState() {
     super.initState();
 
-    TextsService().getAboutInfo().then((value) => {
+    textsService.getAboutInfo().then((value) => {
           setState(() {
             apiAbout = value;
           })

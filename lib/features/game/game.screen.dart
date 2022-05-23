@@ -7,6 +7,7 @@ import 'package:guess_the_text/features/game/game_layout_landscape.widget.dart';
 import 'package:guess_the_text/features/game/game_layout_portrait.widget.dart';
 import 'package:guess_the_text/features/game/challenge/on_the_fly_challenge.model.dart';
 import 'package:guess_the_text/features/game/challenge/edit_text_to_guess.widget.dart';
+import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
 import 'package:guess_the_text/widgets/app_bar_title.widget.dart';
@@ -24,8 +25,9 @@ class GameWidget extends StatefulWidget {
 }
 
 class _GameWidgetState extends State<GameWidget> {
-  final GameStore gameStore = GameStore();
-  final LoggerService logger = LoggerService();
+  final GameStore gameStore = serviceLocator.get();
+  final LoggerService logger = serviceLocator.get();
+
   bool isLoading = false;
 
   void shuffle(BuildContext context) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/services/device/device_info.service.dart';
 import 'package:guess_the_text/theme/theme.utils.dart';
 
@@ -13,13 +14,14 @@ class PlatformInfoTable extends StatefulWidget {
 }
 
 class _PlatformInfoTableState extends State<PlatformInfoTable> {
+  final DeviceInfoService deviceInfoService = serviceLocator.get();
   Map<String, dynamic> info = {};
 
   @override
   void initState() {
     super.initState();
 
-    DeviceInfoService().loadAboutDeviceInfo().then((info) {
+    deviceInfoService.loadAboutDeviceInfo().then((info) {
       setState(() {
         this.info = info;
       });

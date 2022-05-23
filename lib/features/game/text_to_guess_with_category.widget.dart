@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
+import 'package:guess_the_text/service.locator.dart';
 
 import 'text_to_guess_template.widget.dart';
 
@@ -9,7 +10,7 @@ class TextToGuessWithCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final GameStore gameStore = GameStore();
+    final GameStore gameStore = serviceLocator.get();
     final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
 
     return Observer(builder: (BuildContext context) {
@@ -18,7 +19,7 @@ class TextToGuessWithCategory extends StatelessWidget {
       return isPortrait
           ? Column(
               children: [
-                const CategoryLabel(),
+                CategoryLabel(),
                 TextToGuessTemplate(text: text, isAnimated: false),
               ],
             )
@@ -26,7 +27,7 @@ class TextToGuessWithCategory extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 TextToGuessTemplate(text: text, isAnimated: false),
-                const CategoryLabel(),
+                CategoryLabel(),
               ],
             );
     });
@@ -34,14 +35,14 @@ class TextToGuessWithCategory extends StatelessWidget {
 }
 
 class CategoryLabel extends StatelessWidget {
-  const CategoryLabel({
+  final GameStore gameStore = serviceLocator.get();
+
+  CategoryLabel({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final GameStore gameStore = GameStore();
-
     return Observer(builder: (BuildContext context) {
       return Text(
         gameStore.currentCategory.name,

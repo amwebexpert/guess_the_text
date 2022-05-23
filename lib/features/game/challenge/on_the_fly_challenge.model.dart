@@ -22,6 +22,7 @@ class OnTheFlyChallenge {
 
     final String base64data = jsonMap['data']!;
     final String decodedText = convert.utf8.decode(convert.base64.decode(base64data));
+
     return OnTheFlyChallenge(text: decodedText);
   }
 }

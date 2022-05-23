@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:barcode/barcode.dart';
 import 'package:guess_the_text/features/game/challenge/on_the_fly_challenge.model.dart';
 import 'package:guess_the_text/features/settings/settings.store.dart';
+import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/theme/theme.utils.dart';
 
 import 'qrcode.constants.dart';
@@ -14,7 +15,7 @@ class OnTheFlyChalengeQrWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final SettingsStore settingsStore = SettingsStore();
+    final SettingsStore settingsStore = serviceLocator.get();
     final AppLocalizations localizations = AppLocalizations.of(context)!;
 
     final String jsonChallenge = onTheFlyChallenge.toJson(localizations.qrCodeReadInstructions);
