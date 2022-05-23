@@ -14,7 +14,6 @@ class TextToGuessTemplate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO put this inside app.theme.dart as a factory with context
     final textStyle = TextStyle(
       fontSize: 36,
       fontFamily: appFontFamily,
