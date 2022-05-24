@@ -6,6 +6,7 @@ import 'package:guess_the_text/features/categories/api_category.model.dart';
 import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:http/http.dart' as http;
+import 'package:guess_the_text/utils/extensions/string.extensions.dart';
 
 import 'api_text.model.dart';
 
@@ -54,6 +55,10 @@ class TextsService {
   }
 
   Future<List<ApiText>> getTexts(String categoryUuid) async {
+    if (categoryUuid.isBlank) {
+      return [];
+    }
+
     if (_lastCategoryUuid == categoryUuid) {
       return _texts;
     }

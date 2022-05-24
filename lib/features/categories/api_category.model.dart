@@ -7,6 +7,8 @@ class ApiCategory {
 
   ApiCategory({this.id = 0, this.uuid = '', this.langCode = '', this.name = '', this.isCustom = false});
 
+  bool get isEmpty => id == 0;
+
   factory ApiCategory.fromJson(Map<String, dynamic> json) => ApiCategory(
       id: json['id'] as int,
       uuid: json['uuid'] as String,
