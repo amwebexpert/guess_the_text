@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guess_the_text/features/categories/category.widget.dart';
 import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/features/categories/api_category.model.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
 import 'package:guess_the_text/theme/theme.utils.dart';
 
-import 'package:guess_the_text/utils/icon.utils.dart';
 import 'package:guess_the_text/widgets/app_bar_title.widget.dart';
 
 class CategoriesListWidget extends StatelessWidget {
@@ -34,27 +34,7 @@ class CategoriesListWidget extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: spacing(1)),
           child: ListView.builder(
               itemCount: categories.length,
-              itemBuilder: (context, index) {
-                final ApiCategory category = categories[index];
-
-                return Opacity(
-                  opacity: 0.9,
-                  child: Padding(
-                    padding: EdgeInsets.all(spacing(0.25)),
-                    child: Card(
-                      color: Theme.of(context).colorScheme.primary,
-                      child: ListTile(
-                        onTap: () => selectCategory(category, context),
-                        leading: Icon(iconsMap[category.name]), // add an iconName attribute to model
-                        title: Text(
-                          category.name,
-                          style: Theme.of(context).textTheme.bodyText1,
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              }),
+              itemBuilder: (context, index) => CategoryWidget(category: categories[index])),
         ),
       ),
     );
