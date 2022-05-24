@@ -19,27 +19,54 @@ class CategoriesWidget extends StatefulWidget {
 }
 
 class _CategoriesWidgetState extends State<CategoriesWidget> {
-  static const String backgroundImage = 'assets/images/backgrounds/background-pexels-pixabay-461940.jpg';
-
   final TextsService textsService = serviceLocator.get();
-  final GameStore gameStore = serviceLocator.get();
-  final AnimationUtils animationUtils = serviceLocator.get();
 
-  bool isAppLoading = true;
-  List<ApiCategory> categories = [];
+  late Future<List<ApiCategory>> categoriesFuture;
 
   @override
   void initState() {
     super.initState();
-    loadData();
+    categoriesFuture = textsService.getCategories();
   }
 
-  void loadData() async {
-    categories = await textsService.getCategories();
-    setState(() {
-      isAppLoading = false;
-    });
+  @override
+  Widget build(BuildContext context) => FutureBuilder<List<ApiCategory>>(
+      future: categoriesFuture,
+      builder: ((context, snapshot) {
+        if (snapshot.hasError) {
+          return const LoadingErrorWidget();
+        } else if (snapshot.hasData) {
+          return CategoriesListWidget(categories: snapshot.data!);
+        } else {
+          return const CategoriesLoadingWidget();
+        }
+      }));
+}
+
+class LoadingErrorWidget extends StatelessWidget {
+  const LoadingErrorWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text(
+        'error_loading_categories', // TODO Localize me
+        style: Theme.of(context).textTheme.bodyText1, // TODO error style?
+      ),
+    );
   }
+}
+
+class CategoriesListWidget extends StatelessWidget {
+  static const String backgroundImage = 'assets/images/backgrounds/background-pexels-pixabay-461940.jpg';
+
+  final GameStore gameStore = serviceLocator.get();
+
+  CategoriesListWidget({Key? key, required this.categories}) : super(key: key);
+
+  final List<ApiCategory> categories;
 
   void selectCategory(ApiCategory category, BuildContext context) async {
     await gameStore.selectCategory(category);
@@ -48,18 +75,9 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isAppLoading) {
-      return Center(
-        key: const Key('categories_loading'),
-        child: Lottie.asset(animationUtils.getAnimationPath()),
-      );
-    }
-
-    final AppLocalizations localizations = AppLocalizations.of(context)!;
-
     return Scaffold(
       appBar: AppBar(
-        title: AppBarTitle(title: localizations.categories),
+        title: AppBarTitle(title: AppLocalizations.of(context)!.categories),
       ),
       body: Container(
         decoration: const BoxDecoration(image: DecorationImage(image: AssetImage(backgroundImage), fit: BoxFit.cover)),
@@ -90,6 +108,20 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
               }),
         ),
       ),
+    );
+  }
+}
+
+class CategoriesLoadingWidget extends StatelessWidget {
+  const CategoriesLoadingWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final AnimationUtils animationUtils = serviceLocator.get();
+
+    return Center(
+      key: const Key('categories_loading'),
+      child: Lottie.asset(animationUtils.getAnimationPath()),
     );
   }
 }

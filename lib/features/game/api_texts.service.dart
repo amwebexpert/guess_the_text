@@ -41,8 +41,10 @@ class TextsService {
 
   Future<List<ApiCategory>> getCategories() async {
     if (_categories.isNotEmpty) {
-      return _categories;
+      // return _categories;
     }
+
+    await Future.delayed(const Duration(milliseconds: 500));
 
     Uri url = Uri.https(hostName, apiPathCategories);
 
