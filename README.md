@@ -34,7 +34,6 @@ List of demonstrated elements inside the codebase, divided by categories:
   - [Liste des langues](https://www.axl.cefan.ulaval.ca/Langues/2vital_expansion_tablo1.htm)
 - Check support for spaces and dash characters
 - Apply Flutter Cookbook official site section patterns
-- Explore FutureBuilder for aync widget building pattern (https://stackoverflow.com/a/51983699/704681)
 - Example of Stack layout
 - Animations: Tweens, Physic-based
 - Icon of app inside the appBar

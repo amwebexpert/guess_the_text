@@ -16,6 +16,7 @@ List of demonstrated elements inside the codebase, divided by categories
 - Orientation locking
 - Conditional layout depending on device orientation
 - Example of a FadeIn animation
+- FutureBuilder for aync widget building pattern (https://stackoverflow.com/a/51983699/704681)
 
 ### I18N
 
@@ -27,6 +28,7 @@ List of demonstrated elements inside the codebase, divided by categories
 
 - Simple out of the box state management (setState similar to React.useState)
 - Not demonstrated: InheritedWidget similar to React useContext because we've picked MobX (see below)
+- FutureBuilder for aync widget building pattern (https://stackoverflow.com/a/51983699/704681)
 - State management with MobX
 - MobX Store annotations via the mobx_codegen package
 - Preferences page
