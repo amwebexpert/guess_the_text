@@ -1,7 +1,5 @@
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-
 class LoggerService {
   static final LoggerService _instance = LoggerService._privateConstructor();
 
@@ -10,9 +8,6 @@ class LoggerService {
 
   void info(String message) {
     log(message, time: DateTime.now(), name: 'INFO');
-    if (kDebugMode) {
-      print(message);
-    }
   }
 
   void error(String message, dynamic error, {StackTrace? stackTrace}) {

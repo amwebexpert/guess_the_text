@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -7,6 +5,7 @@ import 'package:guess_the_text/features/game/game_layout_landscape.widget.dart';
 import 'package:guess_the_text/features/game/game_layout_portrait.widget.dart';
 import 'package:guess_the_text/features/game/challenge/on_the_fly_challenge.model.dart';
 import 'package:guess_the_text/features/game/challenge/edit_text_to_guess.widget.dart';
+import 'package:guess_the_text/features/game/text.to.guess.ui.store.dart';
 import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
@@ -26,28 +25,15 @@ class GameWidget extends StatefulWidget {
 
 class _GameWidgetState extends State<GameWidget> {
   final GameStore gameStore = serviceLocator.get();
+  final TextToGuessUIStore textToGuessUIStore = serviceLocator.get();
   final LoggerService logger = serviceLocator.get();
-
-  bool isLoading = false;
 
   void shuffle(BuildContext context) {
     if (gameStore.currentCategory.isCustom) {
       showDialog(context: context, builder: (context) => const EditTextToGuessDialog());
     } else {
-      _delayedWork(gameStore.shuffle);
-    }
-  }
-
-  void _delayedWork(Function work) {
-    try {
-      setState(() => {isLoading = true});
-      work();
-      Timer(const Duration(milliseconds: 400), () {
-        setState(() => {isLoading = false});
-      });
-    } catch (e) {
-      logger.error('QR Code scan error', e);
-      setState(() => {isLoading = false});
+      textToGuessUIStore.shuffle(milliseconds: 400);
+      gameStore.shuffle();
     }
   }
 
@@ -67,10 +53,9 @@ class _GameWidgetState extends State<GameWidget> {
       return;
     }
 
-    _delayedWork(() {
-      final OnTheFlyChallenge onTheFlyChallenge = OnTheFlyChallenge.fromJson(jsonChallenge);
-      gameStore.adhocText(onTheFlyChallenge.text, localizations.adhocTextHint);
-    });
+    textToGuessUIStore.shuffle(milliseconds: 400);
+    final OnTheFlyChallenge onTheFlyChallenge = OnTheFlyChallenge.fromJson(jsonChallenge);
+    gameStore.adhocText(onTheFlyChallenge.text, localizations.adhocTextHint);
   }
 
   @override
@@ -84,8 +69,8 @@ class _GameWidgetState extends State<GameWidget> {
       drawer: AppMenu(onAdhocTextMenuPress: showAdhocTextDialog, onAdhocQRscan: scanQR),
       body: OrientationBuilder(builder: (context, orientation) {
         return orientation == Orientation.portrait
-            ? GameLayoutPortraitWidget(isLoading: isLoading)
-            : GameLayoutLandscapeWidget(isLoading: isLoading);
+            ? GameLayoutPortraitWidget(isLoading: textToGuessUIStore.isShuffling)
+            : GameLayoutLandscapeWidget(isLoading: textToGuessUIStore.isShuffling);
       }),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       floatingActionButton: FloatingActionButton(
