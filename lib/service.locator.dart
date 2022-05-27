@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:guess_the_text/features/game/api_texts.service.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
+import 'package:guess_the_text/services/qr/qr.code.service.dart';
 import 'package:guess_the_text/store/fixed.delay.spinner.store.dart';
 import 'package:guess_the_text/services/device/device_info.service.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
@@ -24,6 +25,8 @@ Future<GetIt> initServiceLocator() async {
   serviceLocator.registerLazySingleton<GameStore>(() => GameStore());
   serviceLocator.registerLazySingleton<FixedDelaySpinnerStore>(() => FixedDelaySpinnerStore());
   serviceLocator.registerLazySingleton<SettingsStore>(() => SettingsStore());
+
+  serviceLocator.registerLazySingleton<QrCodeService>(() => QrCodeService());
 
   serviceLocator.registerLazySingleton<RandomizerUtils>(() => RandomizerUtils());
   serviceLocator.registerLazySingleton<AnimationUtils>(() => AnimationUtils(serviceLocator.get<RandomizerUtils>()));
