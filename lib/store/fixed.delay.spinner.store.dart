@@ -11,17 +11,19 @@ class FixedDelaySpinnerStore extends _FixedDelaySpinnerStoreBase with _$FixedDel
 // The store-class
 abstract class _FixedDelaySpinnerStoreBase with Store {
   @observable
-  ObservableFuture<void>? _spinFuture;
+  ObservableFuture<void>? _spinObservableFuture;
 
   @action
   Future<void> spin({required int milliseconds}) async {
     final duration = Duration(milliseconds: milliseconds);
-    _spinFuture = ObservableFuture(Future<void>.delayed(duration));
-    await _spinFuture!;
+    Future<void> spinFuture = Future.delayed(duration);
+    _spinObservableFuture = ObservableFuture(spinFuture);
+
+    await _spinObservableFuture!;
   }
 
   @computed
-  StoreState get state => fromFuture(_spinFuture?.status);
+  StoreState get state => fromFuture(_spinObservableFuture?.status);
 
   @computed
   bool get isLoading => state == StoreState.loading;

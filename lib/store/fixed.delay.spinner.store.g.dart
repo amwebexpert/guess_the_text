@@ -24,19 +24,21 @@ mixin _$FixedDelaySpinnerStore on _FixedDelaySpinnerStoreBase, Store {
               name: '_FixedDelaySpinnerStoreBase.isLoading'))
           .value;
 
-  late final _$_spinFutureAtom =
-      Atom(name: '_FixedDelaySpinnerStoreBase._spinFuture', context: context);
+  late final _$_spinObservableFutureAtom = Atom(
+      name: '_FixedDelaySpinnerStoreBase._spinObservableFuture',
+      context: context);
 
   @override
-  ObservableFuture<void>? get _spinFuture {
-    _$_spinFutureAtom.reportRead();
-    return super._spinFuture;
+  ObservableFuture<void>? get _spinObservableFuture {
+    _$_spinObservableFutureAtom.reportRead();
+    return super._spinObservableFuture;
   }
 
   @override
-  set _spinFuture(ObservableFuture<void>? value) {
-    _$_spinFutureAtom.reportWrite(value, super._spinFuture, () {
-      super._spinFuture = value;
+  set _spinObservableFuture(ObservableFuture<void>? value) {
+    _$_spinObservableFutureAtom.reportWrite(value, super._spinObservableFuture,
+        () {
+      super._spinObservableFuture = value;
     });
   }
 
