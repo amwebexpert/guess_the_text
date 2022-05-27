@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:guess_the_text/features/game/api_texts.service.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
-import 'package:guess_the_text/features/game/text.to.guess.ui.store.dart';
+import 'package:guess_the_text/store/fixed.delay.spinner.store.dart';
 import 'package:guess_the_text/services/device/device_info.service.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:guess_the_text/services/storage/shared_preferences.services.dart';
@@ -22,7 +22,7 @@ Future<GetIt> initServiceLocator() async {
   serviceLocator.registerLazySingleton<DeviceInfoService>(() => DeviceInfoService());
   serviceLocator.registerLazySingleton<TextsService>(() => TextsService());
   serviceLocator.registerLazySingleton<GameStore>(() => GameStore());
-  serviceLocator.registerLazySingleton<TextToGuessUIStore>(() => TextToGuessUIStore());
+  serviceLocator.registerLazySingleton<FixedDelaySpinnerStore>(() => FixedDelaySpinnerStore());
   serviceLocator.registerLazySingleton<SettingsStore>(() => SettingsStore());
 
   serviceLocator.registerLazySingleton<RandomizerUtils>(() => RandomizerUtils());

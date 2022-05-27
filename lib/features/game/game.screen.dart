@@ -5,10 +5,10 @@ import 'package:guess_the_text/features/game/game_layout_landscape.widget.dart';
 import 'package:guess_the_text/features/game/game_layout_portrait.widget.dart';
 import 'package:guess_the_text/features/game/challenge/on_the_fly_challenge.model.dart';
 import 'package:guess_the_text/features/game/challenge/edit_text_to_guess.widget.dart';
-import 'package:guess_the_text/features/game/text.to.guess.ui.store.dart';
 import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
+import 'package:guess_the_text/store/fixed.delay.spinner.store.dart';
 import 'package:guess_the_text/widgets/app_bar_title.widget.dart';
 import 'package:guess_the_text/utils/extensions/string.extensions.dart';
 
@@ -25,14 +25,14 @@ class GameWidget extends StatefulWidget {
 
 class _GameWidgetState extends State<GameWidget> {
   final GameStore gameStore = serviceLocator.get();
-  final TextToGuessUIStore textToGuessUIStore = serviceLocator.get();
+  final FixedDelaySpinnerStore fixedDelaySpinnerStore = serviceLocator.get();
   final LoggerService logger = serviceLocator.get();
 
   void shuffle(BuildContext context) {
     if (gameStore.currentCategory.isCustom) {
       showDialog(context: context, builder: (context) => const EditTextToGuessDialog());
     } else {
-      textToGuessUIStore.shuffle(milliseconds: 400);
+      fixedDelaySpinnerStore.spin(milliseconds: 400);
       gameStore.shuffle();
     }
   }
@@ -53,7 +53,7 @@ class _GameWidgetState extends State<GameWidget> {
       return;
     }
 
-    textToGuessUIStore.shuffle(milliseconds: 2000);
+    fixedDelaySpinnerStore.spin(milliseconds: 2000);
     final OnTheFlyChallenge onTheFlyChallenge = OnTheFlyChallenge.fromJson(jsonChallenge);
     gameStore.adhocText(onTheFlyChallenge.text, localizations.adhocTextHint);
   }
