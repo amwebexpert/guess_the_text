@@ -1,3 +1,4 @@
+import 'package:barcode/barcode.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:guess_the_text/utils/extensions/string.extensions.dart';
 
@@ -16,5 +17,11 @@ class QrCodeService {
         await FlutterBarcodeScanner.scanBarcode(lineColor, cancelLabel, isShowFlashIcon, ScanMode.DEFAULT);
 
     return jsonChallenge.isBlank ? '' : jsonChallenge;
+  }
+
+  String generateSvgQrCode({required String text, required int color, double size = 400}) {
+    final Barcode qrCode = Barcode.qrCode();
+
+    return qrCode.toSvg(text, width: size, height: size, color: color);
   }
 }
