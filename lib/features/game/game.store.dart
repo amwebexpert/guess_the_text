@@ -13,10 +13,10 @@ import 'dart:math';
 part 'game.store.g.dart';
 
 // This is the class used by rest of the codebase
-class GameStore extends GameStoreBase with _$GameStore {}
+class GameStore extends _GameStoreBase with _$GameStore {}
 
 // The store-class
-abstract class GameStoreBase with Store {
+abstract class _GameStoreBase with Store {
   final LoggerService logger = serviceLocator.get();
   final TextsService textsService = serviceLocator.get();
 
@@ -26,7 +26,7 @@ abstract class GameStoreBase with Store {
   @observable
   TextToGuess textToGuess = TextToGuess();
 
-  GameStoreBase() {
+  _GameStoreBase() {
     _initialize();
   }
 

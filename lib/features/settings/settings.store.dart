@@ -15,10 +15,10 @@ import '../../services/logger/logger.service.dart';
 part 'settings.store.g.dart';
 
 // This is the class used by rest of the codebase
-class SettingsStore extends SettingsStoreBase with _$SettingsStore {}
+class SettingsStore extends _SettingsStoreBase with _$SettingsStore {}
 
 // The store-class
-abstract class SettingsStoreBase with Store {
+abstract class _SettingsStoreBase with Store {
   final LoggerService logger = serviceLocator.get();
   final SharedPreferencesService sp = serviceLocator.get();
 
@@ -28,7 +28,7 @@ abstract class SettingsStoreBase with Store {
   @observable
   late Locale locale = defaultAppLocale;
 
-  SettingsStoreBase() {
+  _SettingsStoreBase() {
     locale = _initLocale();
     isDarkTheme = _initDarkTheme();
   }

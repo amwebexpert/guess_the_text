@@ -8,9 +8,9 @@ part of 'settings.store.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$SettingsStore on SettingsStoreBase, Store {
+mixin _$SettingsStore on _SettingsStoreBase, Store {
   late final _$isDarkThemeAtom =
-      Atom(name: 'SettingsStoreBase.isDarkTheme', context: context);
+      Atom(name: '_SettingsStoreBase.isDarkTheme', context: context);
 
   @override
   bool get isDarkTheme {
@@ -26,7 +26,7 @@ mixin _$SettingsStore on SettingsStoreBase, Store {
   }
 
   late final _$localeAtom =
-      Atom(name: 'SettingsStoreBase.locale', context: context);
+      Atom(name: '_SettingsStoreBase.locale', context: context);
 
   @override
   Locale get locale {
@@ -41,28 +41,28 @@ mixin _$SettingsStore on SettingsStoreBase, Store {
     });
   }
 
-  late final _$SettingsStoreBaseActionController =
-      ActionController(name: 'SettingsStoreBase', context: context);
+  late final _$_SettingsStoreBaseActionController =
+      ActionController(name: '_SettingsStoreBase', context: context);
 
   @override
   void changeLocale(AppLanguage? newLanguage) {
-    final _$actionInfo = _$SettingsStoreBaseActionController.startAction(
-        name: 'SettingsStoreBase.changeLocale');
+    final _$actionInfo = _$_SettingsStoreBaseActionController.startAction(
+        name: '_SettingsStoreBase.changeLocale');
     try {
       return super.changeLocale(newLanguage);
     } finally {
-      _$SettingsStoreBaseActionController.endAction(_$actionInfo);
+      _$_SettingsStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void toggleTheme() {
-    final _$actionInfo = _$SettingsStoreBaseActionController.startAction(
-        name: 'SettingsStoreBase.toggleTheme');
+    final _$actionInfo = _$_SettingsStoreBaseActionController.startAction(
+        name: '_SettingsStoreBase.toggleTheme');
     try {
       return super.toggleTheme();
     } finally {
-      _$SettingsStoreBaseActionController.endAction(_$actionInfo);
+      _$_SettingsStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
