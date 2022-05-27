@@ -28,9 +28,10 @@ List of demonstrated elements inside the codebase, divided by categories
 
 - Simple out of the box state management (setState similar to React.useState)
 - Not demonstrated: InheritedWidget similar to React useContext because we've picked MobX (see below)
-- FutureBuilder for aync widget building pattern (https://stackoverflow.com/a/51983699/704681)
 - State management with MobX
 - MobX Store annotations via the mobx_codegen package
+- FutureBuilder for aync widget building pattern (https://stackoverflow.com/a/51983699/704681)
+- MobX reaction and disposers
 - Preferences page
 - Local storage using Shared Preferences
 

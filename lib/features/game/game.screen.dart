@@ -9,8 +9,10 @@ import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
 import 'package:guess_the_text/services/qr/qr.code.service.dart';
 import 'package:guess_the_text/store/fixed.delay.spinner.store.dart';
+import 'package:guess_the_text/store/store.state.enum.dart';
 import 'package:guess_the_text/widgets/app_bar_title.widget.dart';
 import 'package:guess_the_text/utils/extensions/string.extensions.dart';
+import 'package:mobx/mobx.dart';
 
 import '../../widgets/app_menu.widget.dart';
 import 'game_layout_landscape.widget.dart';
@@ -28,6 +30,27 @@ class _GameWidgetState extends State<GameWidget> {
   final QrCodeService qrCodeService = serviceLocator.get();
   final FixedDelaySpinnerStore spinnerStore = serviceLocator.get();
   final LoggerService logger = serviceLocator.get();
+
+  List<ReactionDisposer> disposers = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    final ReactionDisposer disposer = reaction((_) => spinnerStore.state, (StoreState storeState) {
+      logger.info('Example of a reaction on spinnerStore.state change $storeState');
+    });
+    disposers.add(disposer);
+  }
+
+  @override
+  void dispose() {
+    for (var disposer in disposers) {
+      disposer();
+    }
+
+    super.dispose();
+  }
 
   void shuffle(BuildContext context) {
     if (gameStore.currentCategory.isCustom) {
