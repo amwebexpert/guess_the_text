@@ -19,13 +19,13 @@ class OnTheFlyChalengeQrWidget extends StatelessWidget {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
 
     final String jsonChallenge = onTheFlyChallenge.toJson(localizations.qrCodeReadInstructions);
-    Colors.black.toString();
-    final String qrCodeImage =
-        qrCodeService.generateSvgQrCode(text: jsonChallenge, color: settingsStore.isDarkTheme ? 0xffffff : 0x000000);
+    final color = settingsStore.isDarkTheme ? Colors.black : Colors.white;
+    final qrCodeColor = color.value;
+    final String qrCodeImage = qrCodeService.generateSvgQrCode(text: jsonChallenge, color: qrCodeColor);
 
     return SafeArea(
       child: Container(
-        color: settingsStore.isDarkTheme ? Colors.black : Colors.white,
+        color: color,
         child: Padding(
           padding: EdgeInsets.all(spacing(2)),
           child: Center(
