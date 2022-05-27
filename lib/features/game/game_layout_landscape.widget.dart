@@ -2,22 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:guess_the_text/features/game/game_interaction_panel.widget.dart';
+import 'package:guess_the_text/features/game/text.to.guess.ui.store.dart';
 import 'package:guess_the_text/features/game/text_to_guess_panel.widget.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
 import 'package:guess_the_text/service.locator.dart';
+import 'package:guess_the_text/store/store.state.enum.dart';
 
 class GameLayoutLandscapeWidget extends StatelessWidget {
   final GameStore gameStore = serviceLocator.get();
+  final TextToGuessUIStore textToGuessUIStore = serviceLocator.get();
 
-  final bool isLoading;
-  GameLayoutLandscapeWidget({Key? key, required this.isLoading}) : super(key: key);
+  GameLayoutLandscapeWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (BuildContext context) {
       return Column(
         children: [
-          TextToGuessArea(isLoading: isLoading),
+          TextToGuessArea(isLoading: textToGuessUIStore.state == StoreState.loading),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),

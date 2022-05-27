@@ -13,11 +13,6 @@ class CategoryWidget extends StatelessWidget {
 
   CategoryWidget({Key? key, required this.category}) : super(key: key);
 
-  void selectCategory(ApiCategory category, BuildContext context) async {
-    await gameStore.selectCategory(category);
-    Navigator.pop(context);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Opacity(
@@ -27,7 +22,10 @@ class CategoryWidget extends StatelessWidget {
         child: Card(
           color: Theme.of(context).colorScheme.primary,
           child: ListTile(
-            onTap: () => selectCategory(category, context),
+            onTap: () {
+              gameStore.selectCategory(category);
+              Navigator.pop(context);
+            },
             leading: Icon(iconsMap[category.name]), // add an iconName attribute to model
             title: Text(
               category.name,

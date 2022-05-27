@@ -53,7 +53,7 @@ class _GameWidgetState extends State<GameWidget> {
       return;
     }
 
-    textToGuessUIStore.shuffle(milliseconds: 400);
+    textToGuessUIStore.shuffle(milliseconds: 2000);
     final OnTheFlyChallenge onTheFlyChallenge = OnTheFlyChallenge.fromJson(jsonChallenge);
     gameStore.adhocText(onTheFlyChallenge.text, localizations.adhocTextHint);
   }
@@ -68,15 +68,13 @@ class _GameWidgetState extends State<GameWidget> {
       ),
       drawer: AppMenu(onAdhocTextMenuPress: showAdhocTextDialog, onAdhocQRscan: scanQR),
       body: OrientationBuilder(builder: (context, orientation) {
-        return orientation == Orientation.portrait
-            ? GameLayoutPortraitWidget(isLoading: textToGuessUIStore.isShuffling)
-            : GameLayoutLandscapeWidget(isLoading: textToGuessUIStore.isShuffling);
+        return orientation == Orientation.portrait ? GameLayoutPortraitWidget() : GameLayoutLandscapeWidget();
       }),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       floatingActionButton: FloatingActionButton(
         onPressed: () => shuffle(context),
-        child: const Icon(Icons.refresh),
-        tooltip: 'Shuffle', // TODO translate me i18n
+        tooltip: 'Shuffle',
+        child: const Icon(Icons.refresh), // TODO translate me i18n
       ),
     );
   }

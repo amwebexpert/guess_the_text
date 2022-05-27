@@ -6,51 +6,35 @@ part of 'text.to.guess.ui.store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$TextToGuessUIStore on TextToGuessUIStoreBase, Store {
+mixin _$TextToGuessUIStore on _TextToGuessUIStoreBase, Store {
   Computed<StoreState>? _$stateComputed;
 
   @override
   StoreState get state =>
       (_$stateComputed ??= Computed<StoreState>(() => super.state,
-              name: 'TextToGuessUIStoreBase.state'))
+              name: '_TextToGuessUIStoreBase.state'))
           .value;
 
   late final _$_shuffleFutureAtom =
-      Atom(name: 'TextToGuessUIStoreBase._shuffleFuture', context: context);
+      Atom(name: '_TextToGuessUIStoreBase._shuffleFuture', context: context);
 
   @override
-  ObservableFuture<void>? get _shuffleFuture {
+  ObservableFuture<bool>? get _shuffleFuture {
     _$_shuffleFutureAtom.reportRead();
     return super._shuffleFuture;
   }
 
   @override
-  set _shuffleFuture(ObservableFuture<void>? value) {
+  set _shuffleFuture(ObservableFuture<bool>? value) {
     _$_shuffleFutureAtom.reportWrite(value, super._shuffleFuture, () {
       super._shuffleFuture = value;
     });
   }
 
-  late final _$isShufflingAtom =
-      Atom(name: 'TextToGuessUIStoreBase.isShuffling', context: context);
-
-  @override
-  bool get isShuffling {
-    _$isShufflingAtom.reportRead();
-    return super.isShuffling;
-  }
-
-  @override
-  set isShuffling(bool value) {
-    _$isShufflingAtom.reportWrite(value, super.isShuffling, () {
-      super.isShuffling = value;
-    });
-  }
-
   late final _$shuffleAsyncAction =
-      AsyncAction('TextToGuessUIStoreBase.shuffle', context: context);
+      AsyncAction('_TextToGuessUIStoreBase.shuffle', context: context);
 
   @override
   Future<void> shuffle({required int milliseconds}) {
@@ -61,7 +45,6 @@ mixin _$TextToGuessUIStore on TextToGuessUIStoreBase, Store {
   @override
   String toString() {
     return '''
-isShuffling: ${isShuffling},
 state: ${state}
     ''';
   }

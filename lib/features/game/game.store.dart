@@ -13,13 +13,7 @@ import 'dart:math';
 part 'game.store.g.dart';
 
 // This is the class used by rest of the codebase
-class GameStore extends GameStoreBase with _$GameStore {
-  static final GameStore _instance = GameStore._privateConstructor();
-
-  factory GameStore() => _instance;
-
-  GameStore._privateConstructor() : super();
-}
+class GameStore extends GameStoreBase with _$GameStore {}
 
 // The store-class
 abstract class GameStoreBase with Store {

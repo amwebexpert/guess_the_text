@@ -8,7 +8,7 @@ class EditTextToGuessDialog extends StatefulWidget {
   const EditTextToGuessDialog({Key? key}) : super(key: key);
 
   @override
-  _EditTextToGuessDialogState createState() => _EditTextToGuessDialogState();
+  State<EditTextToGuessDialog> createState() => _EditTextToGuessDialogState();
 }
 
 class _EditTextToGuessDialogState extends State<EditTextToGuessDialog> {
@@ -65,16 +65,16 @@ class _EditTextToGuessDialogState extends State<EditTextToGuessDialog> {
       ),
       actions: <Widget>[
         TextButton(
-          child: Text(localizations.actionCancel),
           onPressed: onCancel,
+          child: Text(localizations.actionCancel),
         ),
         ElevatedButton(
-          child: Text(localizations.actionOK),
           onPressed: isTextEmpty ? null : () => onConfirm(localizations.adhocText),
+          child: Text(localizations.actionOK),
         ),
         ElevatedButton(
-          child: Text(localizations.actionGenerateQR),
           onPressed: isTextEmpty ? null : onGenerateQR,
+          child: Text(localizations.actionGenerateQR),
         ),
       ],
     );

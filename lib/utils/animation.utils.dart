@@ -36,6 +36,6 @@ class AnimationUtils {
 
   String getAnimationPath() {
     int i = _randomizer.nextInt(animationNames.length);
-    return animationsPath + animationNames[i] + '.json';
+    return '$animationsPath${animationNames[i]}.json';
   }
 }

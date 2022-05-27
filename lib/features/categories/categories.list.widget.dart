@@ -17,11 +17,6 @@ class CategoriesListWidget extends StatelessWidget {
 
   final List<ApiCategory> categories;
 
-  void selectCategory(ApiCategory category, BuildContext context) async {
-    await gameStore.selectCategory(category);
-    Navigator.pop(context);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

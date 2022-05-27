@@ -6,30 +6,18 @@ import 'package:mobx/mobx.dart';
 part 'text.to.guess.ui.store.g.dart';
 
 // This is the class used by rest of the codebase
-class TextToGuessUIStore extends TextToGuessUIStoreBase with _$TextToGuessUIStore {
-  static final TextToGuessUIStore _instance = TextToGuessUIStore._privateConstructor();
-
-  factory TextToGuessUIStore() => _instance;
-
-  TextToGuessUIStore._privateConstructor() : super();
-}
+class TextToGuessUIStore extends _TextToGuessUIStoreBase with _$TextToGuessUIStore {}
 
 // The store-class
-abstract class TextToGuessUIStoreBase with Store {
+abstract class _TextToGuessUIStoreBase with Store {
   @observable
-  late ObservableFuture<void>? _shuffleFuture;
-
-  @observable
-  bool isShuffling = false;
+  ObservableFuture<bool>? _shuffleFuture;
 
   @action
   Future<void> shuffle({required int milliseconds}) async {
-    _shuffleFuture = ObservableFuture(_shuffleDelay(milliseconds: milliseconds));
-    await _shuffleFuture;
+    _shuffleFuture = ObservableFuture(Future<bool>.delayed(Duration(milliseconds: milliseconds), () => true));
+    await _shuffleFuture!;
   }
-
-  Future<void> _shuffleDelay({required int milliseconds}) async =>
-      Future<void>.delayed(Duration(microseconds: milliseconds));
 
   @computed
   StoreState get state => fromFuture(_shuffleFuture?.status);

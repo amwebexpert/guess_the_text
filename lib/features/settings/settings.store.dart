@@ -15,13 +15,7 @@ import '../../services/logger/logger.service.dart';
 part 'settings.store.g.dart';
 
 // This is the class used by rest of the codebase
-class SettingsStore extends SettingsStoreBase with _$SettingsStore {
-  static final SettingsStore _instance = SettingsStore._privateConstructor();
-
-  factory SettingsStore() => _instance;
-
-  SettingsStore._privateConstructor() : super();
-}
+class SettingsStore extends SettingsStoreBase with _$SettingsStore {}
 
 // The store-class
 abstract class SettingsStoreBase with Store {
@@ -46,7 +40,7 @@ abstract class SettingsStoreBase with Store {
   }
 
   bool _initDarkTheme() {
-    final platformThemeMode = SchedulerBinding.instance!.window.platformBrightness;
+    final platformThemeMode = SchedulerBinding.instance.window.platformBrightness;
     return sp.getBool(SharedPreferenceKey.appIsThemeDark.name, defaultValue: platformThemeMode == Brightness.dark);
   }
 
