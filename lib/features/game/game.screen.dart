@@ -25,14 +25,14 @@ class GameWidget extends StatefulWidget {
 
 class _GameWidgetState extends State<GameWidget> {
   final GameStore gameStore = serviceLocator.get();
-  final FixedDelaySpinnerStore fixedDelaySpinnerStore = serviceLocator.get();
+  final FixedDelaySpinnerStore spinnerStore = serviceLocator.get();
   final LoggerService logger = serviceLocator.get();
 
   void shuffle(BuildContext context) {
     if (gameStore.currentCategory.isCustom) {
       showDialog(context: context, builder: (context) => const EditTextToGuessDialog());
     } else {
-      fixedDelaySpinnerStore.spin(milliseconds: 400);
+      spinnerStore.spin(milliseconds: 400);
       gameStore.shuffle();
     }
   }
@@ -53,7 +53,7 @@ class _GameWidgetState extends State<GameWidget> {
       return;
     }
 
-    fixedDelaySpinnerStore.spin(milliseconds: 2000);
+    spinnerStore.spin(milliseconds: 2000);
     final OnTheFlyChallenge onTheFlyChallenge = OnTheFlyChallenge.fromJson(jsonChallenge);
     gameStore.adhocText(onTheFlyChallenge.text, localizations.adhocTextHint);
   }

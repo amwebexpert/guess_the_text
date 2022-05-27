@@ -9,7 +9,7 @@ import 'package:guess_the_text/store/fixed.delay.spinner.store.dart';
 
 class GameLayoutPortraitWidget extends StatelessWidget {
   final GameStore gameStore = serviceLocator.get();
-  final FixedDelaySpinnerStore fixedDelaySpinnerStore = serviceLocator.get();
+  final FixedDelaySpinnerStore spinnerStore = serviceLocator.get();
 
   GameLayoutPortraitWidget({Key? key}) : super(key: key);
 
@@ -20,7 +20,7 @@ class GameLayoutPortraitWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            TextToGuessArea(isLoading: fixedDelaySpinnerStore.isLoading),
+            TextToGuessArea(isLoading: spinnerStore.isLoading),
             Expanded(child: SvgPicture.asset(gameStore.currentStateImg)),
             const GameBottomWidget(),
           ],

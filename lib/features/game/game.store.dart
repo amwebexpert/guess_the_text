@@ -38,7 +38,6 @@ abstract class GameStoreBase with Store {
 
   @action
   Future<void> selectCategory(ApiCategory selected) async {
-    // @see also ObservableFuture, see https://mobx.netlify.app/api/action/
     currentCategory = selected;
     await shuffle();
   }

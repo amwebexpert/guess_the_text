@@ -9,7 +9,7 @@ import 'package:guess_the_text/store/fixed.delay.spinner.store.dart';
 
 class GameLayoutLandscapeWidget extends StatelessWidget {
   final GameStore gameStore = serviceLocator.get();
-  final FixedDelaySpinnerStore fixedDelaySpinnerStore = serviceLocator.get();
+  final FixedDelaySpinnerStore spinnerStore = serviceLocator.get();
 
   GameLayoutLandscapeWidget({Key? key}) : super(key: key);
 
@@ -18,7 +18,7 @@ class GameLayoutLandscapeWidget extends StatelessWidget {
     return Observer(builder: (BuildContext context) {
       return Column(
         children: [
-          TextToGuessArea(isLoading: fixedDelaySpinnerStore.isLoading),
+          TextToGuessArea(isLoading: spinnerStore.isLoading),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
