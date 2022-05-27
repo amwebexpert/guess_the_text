@@ -61,7 +61,7 @@ class _HangmanAppState extends State<HangmanApp> {
       );
     }
 
-    final SettingsStore settingsStore = SettingsStore();
+    final SettingsStore settingsStore = serviceLocator.get<SettingsStore>();
 
     return Observer(builder: (BuildContext context) {
       return MaterialApp(
