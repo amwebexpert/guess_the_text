@@ -5,7 +5,8 @@
 import 'dart:async' as _i8;
 
 import 'package:guess_the_text/features/about/api.about.model.dart' as _i3;
-import 'package:guess_the_text/features/categories/api.category.model.dart' as _i5;
+import 'package:guess_the_text/features/categories/api.category.model.dart'
+    as _i5;
 import 'package:guess_the_text/features/game/api.text.model.dart' as _i9;
 import 'package:guess_the_text/features/game/api.texts.service.dart' as _i4;
 import 'package:guess_the_text/features/game/game.store.dart' as _i10;
@@ -46,17 +47,23 @@ class MockTextsService extends _i1.Mock implements _i4.TextsService {
 
   @override
   _i2.LoggerService get logger =>
-      (super.noSuchMethod(Invocation.getter(#logger), returnValue: _FakeLoggerService_0()) as _i2.LoggerService);
+      (super.noSuchMethod(Invocation.getter(#logger),
+          returnValue: _FakeLoggerService_0()) as _i2.LoggerService);
   @override
-  _i8.Future<_i3.ApiAbout> getAboutInfo() => (super.noSuchMethod(Invocation.method(#getAboutInfo, []),
-      returnValue: Future<_i3.ApiAbout>.value(_FakeApiAbout_1())) as _i8.Future<_i3.ApiAbout>);
+  _i8.Future<_i3.ApiAbout> getAboutInfo() =>
+      (super.noSuchMethod(Invocation.method(#getAboutInfo, []),
+              returnValue: Future<_i3.ApiAbout>.value(_FakeApiAbout_1()))
+          as _i8.Future<_i3.ApiAbout>);
   @override
-  _i8.Future<List<_i5.ApiCategory>> getCategories() => (super.noSuchMethod(Invocation.method(#getCategories, []),
-      returnValue: Future<List<_i5.ApiCategory>>.value(<_i5.ApiCategory>[])) as _i8.Future<List<_i5.ApiCategory>>);
+  _i8.Future<List<_i5.ApiCategory>> getCategories() => (super.noSuchMethod(
+          Invocation.method(#getCategories, []),
+          returnValue: Future<List<_i5.ApiCategory>>.value(<_i5.ApiCategory>[]))
+      as _i8.Future<List<_i5.ApiCategory>>);
   @override
   _i8.Future<List<_i9.ApiText>> getTexts(String? categoryUuid) =>
       (super.noSuchMethod(Invocation.method(#getTexts, [categoryUuid]),
-          returnValue: Future<List<_i9.ApiText>>.value(<_i9.ApiText>[])) as _i8.Future<List<_i9.ApiText>>);
+              returnValue: Future<List<_i9.ApiText>>.value(<_i9.ApiText>[]))
+          as _i8.Future<List<_i9.ApiText>>);
 }
 
 /// A class which mocks [GameStore].
@@ -69,39 +76,56 @@ class MockGameStore extends _i1.Mock implements _i10.GameStore {
 
   @override
   _i2.LoggerService get logger =>
-      (super.noSuchMethod(Invocation.getter(#logger), returnValue: _FakeLoggerService_0()) as _i2.LoggerService);
+      (super.noSuchMethod(Invocation.getter(#logger),
+          returnValue: _FakeLoggerService_0()) as _i2.LoggerService);
   @override
   _i4.TextsService get textsService =>
-      (super.noSuchMethod(Invocation.getter(#textsService), returnValue: _FakeTextsService_2()) as _i4.TextsService);
+      (super.noSuchMethod(Invocation.getter(#textsService),
+          returnValue: _FakeTextsService_2()) as _i4.TextsService);
   @override
   _i5.ApiCategory get currentCategory =>
-      (super.noSuchMethod(Invocation.getter(#currentCategory), returnValue: _FakeApiCategory_3()) as _i5.ApiCategory);
+      (super.noSuchMethod(Invocation.getter(#currentCategory),
+          returnValue: _FakeApiCategory_3()) as _i5.ApiCategory);
   @override
   set currentCategory(_i5.ApiCategory? _currentCategory) =>
-      super.noSuchMethod(Invocation.setter(#currentCategory, _currentCategory), returnValueForMissingStub: null);
+      super.noSuchMethod(Invocation.setter(#currentCategory, _currentCategory),
+          returnValueForMissingStub: null);
   @override
   _i6.TextToGuess get textToGuess =>
-      (super.noSuchMethod(Invocation.getter(#textToGuess), returnValue: _FakeTextToGuess_4()) as _i6.TextToGuess);
+      (super.noSuchMethod(Invocation.getter(#textToGuess),
+          returnValue: _FakeTextToGuess_4()) as _i6.TextToGuess);
   @override
   set textToGuess(_i6.TextToGuess? _textToGuess) =>
-      super.noSuchMethod(Invocation.setter(#textToGuess, _textToGuess), returnValueForMissingStub: null);
+      super.noSuchMethod(Invocation.setter(#textToGuess, _textToGuess),
+          returnValueForMissingStub: null);
   @override
-  String get currentStateImg => (super.noSuchMethod(Invocation.getter(#currentStateImg), returnValue: '') as String);
+  String get currentStateImg =>
+      (super.noSuchMethod(Invocation.getter(#currentStateImg), returnValue: '')
+          as String);
   @override
-  String get gameOverImage => (super.noSuchMethod(Invocation.getter(#gameOverImage), returnValue: '') as String);
+  String get gameOverImage =>
+      (super.noSuchMethod(Invocation.getter(#gameOverImage), returnValue: '')
+          as String);
   @override
   _i7.ReactiveContext get context =>
-      (super.noSuchMethod(Invocation.getter(#context), returnValue: _FakeReactiveContext_5()) as _i7.ReactiveContext);
+      (super.noSuchMethod(Invocation.getter(#context),
+          returnValue: _FakeReactiveContext_5()) as _i7.ReactiveContext);
   @override
   _i8.Future<void> selectCategory(_i5.ApiCategory? selected) =>
       (super.noSuchMethod(Invocation.method(#selectCategory, [selected]),
-          returnValue: Future<void>.value(), returnValueForMissingStub: Future<void>.value()) as _i8.Future<void>);
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i8.Future<void>);
   @override
-  _i8.Future<void> shuffle() => (super.noSuchMethod(Invocation.method(#shuffle, []),
-      returnValue: Future<void>.value(), returnValueForMissingStub: Future<void>.value()) as _i8.Future<void>);
+  _i8.Future<void> shuffle() =>
+      (super.noSuchMethod(Invocation.method(#shuffle, []),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i8.Future<void>);
   @override
-  void tryLetter(String? c) => super.noSuchMethod(Invocation.method(#tryLetter, [c]), returnValueForMissingStub: null);
+  void tryLetter(String? c) =>
+      super.noSuchMethod(Invocation.method(#tryLetter, [c]),
+          returnValueForMissingStub: null);
   @override
   void adhocText(String? newText, String? categoryName) =>
-      super.noSuchMethod(Invocation.method(#adhocText, [newText, categoryName]), returnValueForMissingStub: null);
+      super.noSuchMethod(Invocation.method(#adhocText, [newText, categoryName]),
+          returnValueForMissingStub: null);
 }
