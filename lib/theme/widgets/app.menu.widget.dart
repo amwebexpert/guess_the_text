@@ -4,13 +4,13 @@ import 'package:guess_the_text/utils/icon.utils.dart';
 import 'package:guess_the_text/theme/widgets/menu.logo.widget.dart';
 
 class AppMenu extends StatelessWidget {
-  final Function(BuildContext context) onAdhocTextMenuPress;
-  final Function(BuildContext context) onAdhocQRscan;
+  final Function(BuildContext context) onCreateChallengePress;
+  final Function(BuildContext context) onAcceptChallengePress;
 
   const AppMenu({
     Key? key,
-    required this.onAdhocTextMenuPress,
-    required this.onAdhocQRscan,
+    required this.onCreateChallengePress,
+    required this.onAcceptChallengePress,
   }) : super(key: key);
 
   @override
@@ -48,7 +48,7 @@ class AppMenu extends StatelessWidget {
             title: Text(localizations.adhocText, style: Theme.of(context).textTheme.bodyText1),
             onTap: () {
               Navigator.pop(context);
-              onAdhocTextMenuPress(context);
+              onCreateChallengePress(context);
             },
           ),
           const Divider(
@@ -62,7 +62,7 @@ class AppMenu extends StatelessWidget {
             title: Text(localizations.appMenuReadChalenge, style: Theme.of(context).textTheme.bodyText1),
             onTap: () {
               Navigator.pop(context);
-              onAdhocQRscan(context);
+              onAcceptChallengePress(context);
             },
           ),
           const Divider(

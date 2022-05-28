@@ -13,7 +13,7 @@ class QrCodeService {
     final String data =
         await FlutterBarcodeScanner.scanBarcode(lineColor, cancelLabel, isShowFlashIcon, ScanMode.DEFAULT);
 
-    return data.isBlank ? '' : data;
+    return data.isBlank || data == '-1' ? '' : data;
   }
 
   String generateSvg({required String text, required int color, double size = 400}) {

@@ -12,6 +12,7 @@ import 'package:guess_the_text/store/fixed.delay.spinner.store.dart';
 import 'package:guess_the_text/store/store.state.enum.dart';
 import 'package:guess_the_text/theme/widgets/app.bar.title.widget.dart';
 import 'package:guess_the_text/theme/widgets/app.menu.widget.dart';
+import 'package:guess_the_text/theme/widgets/snackbar/snackbar.info.widget.dart';
 import 'package:guess_the_text/utils/extensions/string.extensions.dart';
 import 'package:mobx/mobx.dart';
 
@@ -54,22 +55,27 @@ class _GameWidgetState extends State<GameWidget> {
 
   void shuffle(BuildContext context) {
     if (gameStore.currentCategory.isCustom) {
-      showAdhocTextDialog(context);
+      onCreateChallengePress(context);
     } else {
       spinnerStore.spin(milliseconds: 400);
       gameStore.shuffle();
     }
   }
 
-  void showAdhocTextDialog(BuildContext context) {
+  void onCreateChallengePress(BuildContext context) {
     showDialog(context: context, builder: (context) => const EditTextToGuessDialog());
   }
 
-  void scanQR(BuildContext context) async {
+  void onAcceptChallengePress(BuildContext context) async {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
     final String jsonChallenge = await qrCodeService.scan(cancelLabel: localizations.actionCancel);
 
     if (jsonChallenge.isBlank) {
+      ScaffoldMessenger.of(super.context).showSnackBar(const SnackBar(
+        content: SnackbarInfoWidget(message: 'qr code reading cancelled'), // TODO Translate me
+        duration: Duration(seconds: 2),
+      ));
+
       return;
     }
 
@@ -86,7 +92,7 @@ class _GameWidgetState extends State<GameWidget> {
       appBar: AppBar(
         title: AppBarTitle(title: localizations.appTitle),
       ),
-      drawer: AppMenu(onAdhocTextMenuPress: showAdhocTextDialog, onAdhocQRscan: scanQR),
+      drawer: AppMenu(onCreateChallengePress: onCreateChallengePress, onAcceptChallengePress: onAcceptChallengePress),
       body: OrientationBuilder(builder: (context, orientation) {
         return orientation == Orientation.portrait ? GameLayoutPortraitWidget() : GameLayoutLandscapeWidget();
       }),
