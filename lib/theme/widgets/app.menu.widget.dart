@@ -16,7 +16,6 @@ class AppMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
-    final bool isDark = Theme.of(context).colorScheme.brightness == Brightness.dark;
 
     return Drawer(
       // Add a ListView to the drawer. This ensures the user can scroll
@@ -26,7 +25,7 @@ class AppMenu extends StatelessWidget {
         // Important: Remove any padding from the ListView.
         padding: EdgeInsets.zero,
         children: [
-          MenuLogo(isDark: isDark),
+          const MenuLogo(),
           ListTile(
             visualDensity: VisualDensity.compact,
             leading: Icon(

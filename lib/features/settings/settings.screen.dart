@@ -37,6 +37,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
+    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
 
     return Observer(builder: (context) {
       return Scaffold(
@@ -46,8 +47,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
         body: Container(
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage(settings.isDarkTheme ? backgroundImageDark : backgroundImageLight),
-                  fit: BoxFit.cover)),
+                  image: AssetImage(isDarkTheme ? backgroundImageDark : backgroundImageLight), fit: BoxFit.cover)),
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: spacing(1)),
             child: Column(
@@ -86,7 +86,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                 ),
                 const Divider(),
                 ListTile(
-                  leading: Icon(settings.isDarkTheme ? Icons.nightlight : Icons.sunny),
+                  leading: Icon(isDarkTheme ? Icons.nightlight : Icons.sunny),
                   title: Text(localizations.prefThemeBrightness),
                 ),
                 ListTile(
@@ -99,7 +99,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                   leading: Radio<bool>(
                     value: false,
                     activeColor: Theme.of(context).colorScheme.primary,
-                    groupValue: settings.isDarkTheme,
+                    groupValue: isDarkTheme,
                     onChanged: themeBrightnessChanged,
                   ),
                 ),
@@ -113,7 +113,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                   leading: Radio<bool>(
                     value: true,
                     activeColor: Theme.of(context).colorScheme.primary,
-                    groupValue: settings.isDarkTheme,
+                    groupValue: isDarkTheme,
                     onChanged: themeBrightnessChanged,
                   ),
                 ),
