@@ -1,4 +1,4 @@
-import 'package:guess_the_text/features/categories/api_category.model.dart';
+import 'package:guess_the_text/features/categories/api.category.model.dart';
 
 final mockAnimalCategory = ApiCategory(
   id: 1,

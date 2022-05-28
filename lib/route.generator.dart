@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:guess_the_text/features/about/about.screen.dart';
 import 'package:guess_the_text/features/categories/categories.screen.dart';
-import 'package:guess_the_text/features/game/challenge/on_the_fly_chalenge.widget.dart';
-import 'package:guess_the_text/features/game/challenge/on_the_fly_chalenge_qr.widget.dart';
-import 'package:guess_the_text/features/game/challenge/on_the_fly_challenge.model.dart';
+import 'package:guess_the_text/features/game/challenge/on.the.fly.chalenge.widget.dart';
+import 'package:guess_the_text/features/game/challenge/on.the.fly.chalenge.qr.widget.dart';
+import 'package:guess_the_text/features/game/challenge/on.the.fly.challenge.model.dart';
 import 'package:guess_the_text/features/game/game.screen.dart';
 import 'package:guess_the_text/features/settings/settings.screen.dart';
 import 'package:guess_the_text/service.locator.dart';

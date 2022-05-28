@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guess_the_text/utils/icon.utils.dart';
-import 'package:guess_the_text/widgets/menu_logo.widget.dart';
+import 'package:guess_the_text/theme/widgets/menu.logo.widget.dart';
 
 class AppMenu extends StatelessWidget {
   final Function(BuildContext context) onAdhocTextMenuPress;

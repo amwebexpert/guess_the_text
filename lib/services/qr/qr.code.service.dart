@@ -9,17 +9,14 @@ class QrCodeService {
 
   QrCodeService._privateConstructor();
 
-  Future<String> scanQR({required String cancelLabel}) async {
-    const lineColor = '#ff6666';
-    const isShowFlashIcon = true;
-
-    final String jsonChallenge =
+  Future<String> scan({required String cancelLabel, String lineColor = '#ff6666', bool isShowFlashIcon = true}) async {
+    final String data =
         await FlutterBarcodeScanner.scanBarcode(lineColor, cancelLabel, isShowFlashIcon, ScanMode.DEFAULT);
 
-    return jsonChallenge.isBlank ? '' : jsonChallenge;
+    return data.isBlank ? '' : data;
   }
 
-  String generateSvgQrCode({required String text, required int color, double size = 400}) {
+  String generateSvg({required String text, required int color, double size = 400}) {
     final Barcode qrCode = Barcode.qrCode();
 
     return qrCode.toSvg(text, width: size, height: size, color: color);

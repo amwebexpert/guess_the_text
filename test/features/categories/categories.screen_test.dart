@@ -3,7 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
 import 'package:guess_the_text/features/categories/categories.screen.dart';
-import 'package:guess_the_text/features/game/api_texts.service.dart';
+import 'package:guess_the_text/features/game/api.texts.service.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
 import 'package:guess_the_text/utils/animation.utils.dart';
 import 'package:guess_the_text/utils/randomizer.utils.dart';

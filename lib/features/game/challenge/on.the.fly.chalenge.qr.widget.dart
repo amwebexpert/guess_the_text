@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:guess_the_text/features/game/challenge/on_the_fly_challenge.model.dart';
+import 'package:guess_the_text/features/game/challenge/on.the.fly.challenge.model.dart';
 import 'package:guess_the_text/features/settings/settings.store.dart';
 import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/services/qr/qr.code.service.dart';
@@ -21,7 +21,7 @@ class OnTheFlyChalengeQrWidget extends StatelessWidget {
     final String jsonChallenge = onTheFlyChallenge.toJson(localizations.qrCodeReadInstructions);
     final color = settingsStore.isDarkTheme ? Colors.black : Colors.white;
     final qrCodeColor = settingsStore.isDarkTheme ? Colors.white.value : Colors.black.value;
-    final String qrCodeImage = qrCodeService.generateSvgQrCode(text: jsonChallenge, color: qrCodeColor);
+    final String qrCodeImage = qrCodeService.generateSvg(text: jsonChallenge, color: qrCodeColor);
 
     return SafeArea(
       child: Container(

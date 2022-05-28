@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guess_the_text/features/game/text_to_guess.model.dart';
+import 'package:guess_the_text/features/game/text.to.guess.model.dart';
 
 import 'letter.widget.dart';
 

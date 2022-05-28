@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:guess_the_text/widgets/app_bar_title.widget.dart';
 import 'package:guess_the_text/theme/theme.utils.dart';
+import 'package:guess_the_text/theme/widgets/app.bar.title.widget.dart';
 
 import 'card.widget.dart';
 

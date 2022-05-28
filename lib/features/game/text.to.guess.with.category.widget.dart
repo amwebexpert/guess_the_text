@@ -3,7 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
 import 'package:guess_the_text/service.locator.dart';
 
-import 'text_to_guess_template.widget.dart';
+import 'text.to.guess.template.widget.dart';
 
 class TextToGuessWithCategory extends StatelessWidget {
   const TextToGuessWithCategory({Key? key}) : super(key: key);

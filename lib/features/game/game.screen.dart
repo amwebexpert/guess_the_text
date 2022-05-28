@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:guess_the_text/features/game/game_layout_landscape.widget.dart';
-import 'package:guess_the_text/features/game/game_layout_portrait.widget.dart';
-import 'package:guess_the_text/features/game/challenge/on_the_fly_challenge.model.dart';
-import 'package:guess_the_text/features/game/challenge/edit_text_to_guess.widget.dart';
+import 'package:guess_the_text/features/game/game.layout.landscape.widget.dart';
+import 'package:guess_the_text/features/game/game.layout.portrait.widget.dart';
+import 'package:guess_the_text/features/game/challenge/on.the.fly.challenge.model.dart';
+import 'package:guess_the_text/features/game/challenge/edit.text.to.guess.widget.dart';
 import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
 import 'package:guess_the_text/services/qr/qr.code.service.dart';
 import 'package:guess_the_text/store/fixed.delay.spinner.store.dart';
 import 'package:guess_the_text/store/store.state.enum.dart';
-import 'package:guess_the_text/widgets/app_bar_title.widget.dart';
+import 'package:guess_the_text/theme/widgets/app.bar.title.widget.dart';
+import 'package:guess_the_text/theme/widgets/app.menu.widget.dart';
 import 'package:guess_the_text/utils/extensions/string.extensions.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../widgets/app_menu.widget.dart';
-import 'game_layout_landscape.widget.dart';
-import 'game_layout_portrait.widget.dart';
+import 'game.layout.landscape.widget.dart';
+import 'game.layout.portrait.widget.dart';
 
 class GameWidget extends StatefulWidget {
   const GameWidget({Key? key}) : super(key: key);
@@ -67,7 +67,7 @@ class _GameWidgetState extends State<GameWidget> {
 
   void scanQR(BuildContext context) async {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
-    final String jsonChallenge = await qrCodeService.scanQR(cancelLabel: localizations.actionCancel);
+    final String jsonChallenge = await qrCodeService.scan(cancelLabel: localizations.actionCancel);
 
     if (jsonChallenge.isBlank) {
       return;

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guess_the_text/features/categories/category.widget.dart';
 import 'package:guess_the_text/service.locator.dart';
-import 'package:guess_the_text/features/categories/api_category.model.dart';
+import 'package:guess_the_text/features/categories/api.category.model.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
 import 'package:guess_the_text/theme/theme.utils.dart';
 
-import 'package:guess_the_text/widgets/app_bar_title.widget.dart';
+import 'package:guess_the_text/theme/widgets/app.bar.title.widget.dart';
 
 class CategoriesListWidget extends StatelessWidget {
   static const String backgroundImage = 'assets/images/backgrounds/background-pexels-pixabay-461940.jpg';
