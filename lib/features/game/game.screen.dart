@@ -71,9 +71,9 @@ class _GameWidgetState extends State<GameWidget> {
     final String jsonChallenge = await qrCodeService.scan(cancelLabel: localizations.actionCancel);
 
     if (jsonChallenge.isBlank) {
-      ScaffoldMessenger.of(super.context).showSnackBar(const SnackBar(
-        content: SnackbarInfoWidget(message: 'qr code reading cancelled'), // TODO Translate me
-        duration: Duration(seconds: 2),
+      ScaffoldMessenger.of(super.context).showSnackBar(SnackBar(
+        content: SnackbarInfoWidget(message: localizations.acceptChallengeCancelled),
+        duration: const Duration(seconds: 2),
       ));
 
       return;

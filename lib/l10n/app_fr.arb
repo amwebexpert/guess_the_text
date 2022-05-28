@@ -1,5 +1,6 @@
 {
   "about": "À propos de l'app",
+  "acceptChallengeCancelled": "Lecture de code QR annulée",
   "actionCancel": "Annuler",
   "actionClose": "Fermer",
   "actionGenerateQR": "Code QR",
