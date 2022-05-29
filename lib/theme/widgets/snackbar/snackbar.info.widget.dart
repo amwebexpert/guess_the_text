@@ -12,7 +12,7 @@ class SnackbarInfoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Icon(snackbarIcons[type], color: Colors.orange),
+        Icon(snackbarIcons[type], color: Theme.of(context).colorScheme.secondary),
         Padding(
           padding: EdgeInsets.only(left: spacing(1)),
           child: Text(message),
