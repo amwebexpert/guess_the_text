@@ -12,7 +12,8 @@ import 'package:guess_the_text/store/fixed.delay.spinner.store.dart';
 import 'package:guess_the_text/store/store.state.enum.dart';
 import 'package:guess_the_text/theme/widgets/app.bar.title.widget.dart';
 import 'package:guess_the_text/theme/widgets/app.menu.widget.dart';
-import 'package:guess_the_text/theme/widgets/snackbar/snackbar.info.widget.dart';
+import 'package:guess_the_text/theme/widgets/snackbar/snackbar.model.dart';
+import 'package:guess_the_text/theme/widgets/snackbar/snackbar.utils.dart';
 import 'package:guess_the_text/utils/extensions/string.extensions.dart';
 import 'package:mobx/mobx.dart';
 
@@ -71,11 +72,7 @@ class _GameWidgetState extends State<GameWidget> {
     final String jsonChallenge = await qrCodeService.scan(cancelLabel: localizations.actionCancel);
 
     if (jsonChallenge.isBlank) {
-      ScaffoldMessenger.of(super.context).showSnackBar(SnackBar(
-        content: SnackbarInfoWidget(message: localizations.acceptChallengeCancelled),
-        duration: const Duration(seconds: 2),
-      ));
-
+      showAppSnackbar(context: super.context, message: localizations.acceptChallengeCancelled, type: SnackbarType.info);
       return;
     }
 
