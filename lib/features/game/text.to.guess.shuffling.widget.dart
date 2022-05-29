@@ -9,7 +9,7 @@ class TextToGuessShuffling extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 24, 0, 22),
+      padding: const EdgeInsets.symmetric(vertical: 14),
       child: spinner.SpinKitWave(color: Theme.of(context).colorScheme.primary, size: 30),
     );
   }
