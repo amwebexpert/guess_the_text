@@ -54,25 +54,25 @@ class _GameWidgetState extends State<GameWidget> {
     super.dispose();
   }
 
-  void shuffle(BuildContext context) {
+  void shuffle() {
     if (gameStore.currentCategory.isCustom) {
-      onCreateChallengePress(context);
+      onCreateChallengePress();
     } else {
       spinnerStore.spin(milliseconds: 400);
       gameStore.shuffle();
     }
   }
 
-  void onCreateChallengePress(BuildContext context) {
+  void onCreateChallengePress() {
     showDialog(context: context, builder: (context) => const EditTextToGuessDialog());
   }
 
-  void onAcceptChallengePress(BuildContext context) async {
+  void onAcceptChallengePress() async {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
     final String jsonChallenge = await qrCodeService.scan(cancelLabel: localizations.actionCancel);
 
     if (jsonChallenge.isBlank) {
-      showAppSnackbar(context: super.context, message: localizations.acceptChallengeCancelled, type: SnackbarType.info);
+      showAppSnackbar(context: context, message: localizations.acceptChallengeCancelled, type: SnackbarType.info);
       return;
     }
 
@@ -95,7 +95,7 @@ class _GameWidgetState extends State<GameWidget> {
       }),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       floatingActionButton: FloatingActionButton(
-        onPressed: () => shuffle(context),
+        onPressed: shuffle,
         tooltip: 'Shuffle',
         child: const Icon(Icons.refresh), // TODO translate me i18n
       ),
