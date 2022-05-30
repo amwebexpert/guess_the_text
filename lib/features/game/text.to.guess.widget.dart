@@ -4,8 +4,8 @@ import 'package:guess_the_text/features/game/text.to.guess.panel.widget.dart';
 import 'package:guess_the_text/features/game/text.to.guess.shuffling.widget.dart';
 import 'package:guess_the_text/theme/app.theme.dart';
 
-class TextToGuessTemplate extends StatelessWidget {
-  const TextToGuessTemplate({
+class TextToGuessWidget extends StatelessWidget {
+  const TextToGuessWidget({
     Key? key,
     required this.text,
     required this.isAnimated,

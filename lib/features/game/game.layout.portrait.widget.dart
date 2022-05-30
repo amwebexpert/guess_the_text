@@ -3,7 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:guess_the_text/features/game/game.interaction.panel.widget.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
-import 'package:guess_the_text/features/game/text.to.guess.template.widget.dart';
+import 'package:guess_the_text/features/game/text.to.guess.widget.dart';
 import 'package:guess_the_text/features/game/category.widget.dart';
 import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/store/fixed.delay.spinner.store.dart';
@@ -43,7 +43,7 @@ class TextToGuessPanel extends StatelessWidget {
       return Column(
         children: [
           const CategoryWidget(),
-          TextToGuessTemplate(
+          TextToGuessWidget(
               text: gameStore.textToGuess.wordGame(), isAnimated: false, isLoading: spinnerStore.isLoading),
         ],
       );
