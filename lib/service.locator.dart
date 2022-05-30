@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:guess_the_text/documents.repository.dart';
 import 'package:guess_the_text/features/game/api.texts.service.dart';
-import 'package:guess_the_text/features/game/game.storage.service.dart';
+import 'package:guess_the_text/features/game/game.played.items.storage.service.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
 import 'package:guess_the_text/services/qr/qr.code.service.dart';
 import 'package:guess_the_text/store/fixed.delay.spinner.store.dart';
@@ -26,9 +26,9 @@ Future<GetIt> initServiceLocator() async {
   await documentsRepository.init();
   serviceLocator.registerSingleton<DocumentsRepository>(documentsRepository);
 
-  final gameStorageService = GameStorageService();
+  final gameStorageService = GamePlayedItemsStorageService();
   await gameStorageService.init();
-  serviceLocator.registerSingleton<GameStorageService>(gameStorageService);
+  serviceLocator.registerSingleton<GamePlayedItemsStorageService>(gameStorageService);
 
   serviceLocator.registerLazySingleton<DeviceInfoService>(() => DeviceInfoService());
   serviceLocator.registerLazySingleton<TextsService>(() => TextsService());

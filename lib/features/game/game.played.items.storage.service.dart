@@ -6,8 +6,8 @@ import 'package:sembast/sembast.dart';
 import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
 
-class GameStorageService {
-  static final GameStorageService _instance = GameStorageService._privateConstructor();
+class GamePlayedItemsStorageService {
+  static final GamePlayedItemsStorageService _instance = GamePlayedItemsStorageService._privateConstructor();
 
   final LoggerService logger = serviceLocator.get();
   final Database db = serviceLocator.get<DocumentsRepository>().db;
@@ -15,28 +15,19 @@ class GameStorageService {
   // implementation note: a Set<String> instead of a List<Object> would have been better here, but it is not (yet) supported by Sembast
   late final StoreRef<String, List<Object?>> playedItemsStore;
 
-  factory GameStorageService() => _instance;
-  GameStorageService._privateConstructor();
+  factory GamePlayedItemsStorageService() => _instance;
+  GamePlayedItemsStorageService._privateConstructor();
 
   Future<void> init() async {
     playedItemsStore = StoreRef('played_items_store');
     final count = await playedItemsStore.count(db);
-    logger.info('GameStorageService contains: $count categories');
-    await clearPlayedItemsStore();
-    final count2 = await playedItemsStore.count(db);
-    logger.info('GameStorageService contains: $count2 categories');
+    logger.info('Storage "${playedItemsStore.name}" elements count: $count.');
 
-    // Examples
-    await addPlayedItem('expressions françaises', 'déjà vue');
-    await addPlayedItem('expressions françaises', 'mélange bonheur');
     await addPlayedItems(
         'english expressions', ['already seen', 'mixed happiness', 'Been there, done that', 'Never mind']);
 
-    var elements = await getPlayedItems('expressions françaises');
-    logger.info('GameStorageService elements: $elements');
-
     var elements2 = await getPlayedItems('english expressions');
-    logger.info('GameStorageService english expressions: $elements2');
+    logger.info('english expressions::: $elements2');
   }
 
   Future<void> addPlayedItems(String categoryUuid, List<String> newItems) async {
@@ -56,19 +47,19 @@ class GameStorageService {
     await record.put(db, items);
   }
 
-  Future<void> clearPlayedItems(String categoryUuid) async {
+  Future<List<String>> getPlayedItems(String categoryUuid) async {
+    final record = playedItemsStore.record(categoryUuid);
+    final List items = (await record.get(db) ?? []);
+    return items.map((e) => e.toString()).toList();
+  }
+
+  Future<void> clearCategoryPlayedItems(String categoryUuid) async {
     final record = playedItemsStore.record(categoryUuid);
     await record.delete(db);
   }
 
-  Future<List<dynamic>> getPlayedItems(String categoryUuid) async {
-    final record = playedItemsStore.record(categoryUuid);
-    final List items = (await record.get(db) ?? []);
-    return items;
-  }
-
-  Future<void> clearPlayedItemsStore() async {
+  Future<void> clearAllPlayedItems() async {
     final count = await playedItemsStore.delete(db);
-    logger.info('GameStorageService deleted: $count categories');
+    logger.info('Removing: $count categories');
   }
 }
