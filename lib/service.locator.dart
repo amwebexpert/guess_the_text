@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:guess_the_text/documents.repository.dart';
 import 'package:guess_the_text/features/game/api.texts.service.dart';
 import 'package:guess_the_text/features/game/game.storage.service.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
@@ -20,6 +21,10 @@ Future<GetIt> initServiceLocator() async {
   final sharedPreferencesService = SharedPreferencesService();
   await sharedPreferencesService.init();
   serviceLocator.registerSingleton<SharedPreferencesService>(sharedPreferencesService);
+
+  final documentsRepository = DocumentsRepository();
+  await documentsRepository.init();
+  serviceLocator.registerSingleton<DocumentsRepository>(documentsRepository);
 
   final gameStorageService = GameStorageService();
   await gameStorageService.init();
