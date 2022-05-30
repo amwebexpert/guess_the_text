@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:guess_the_text/features/game/api.texts.service.dart';
+import 'package:guess_the_text/features/game/game.storage.service.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
 import 'package:guess_the_text/services/qr/qr.code.service.dart';
 import 'package:guess_the_text/store/fixed.delay.spinner.store.dart';
@@ -18,7 +19,11 @@ Future<GetIt> initServiceLocator() async {
 
   final sharedPreferencesService = SharedPreferencesService();
   await sharedPreferencesService.init();
-  serviceLocator.registerLazySingleton<SharedPreferencesService>(() => sharedPreferencesService);
+  serviceLocator.registerSingleton<SharedPreferencesService>(sharedPreferencesService);
+
+  final gameStorageService = GameStorageService();
+  await gameStorageService.init();
+  serviceLocator.registerSingleton<GameStorageService>(gameStorageService);
 
   serviceLocator.registerLazySingleton<DeviceInfoService>(() => DeviceInfoService());
   serviceLocator.registerLazySingleton<TextsService>(() => TextsService());
