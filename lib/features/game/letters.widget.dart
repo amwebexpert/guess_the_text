@@ -33,7 +33,7 @@ class LettersWidget extends StatelessWidget {
     'Z'
   ];
 
-  final void Function(String c) onLetterPressed;
+  final Future<void> Function(String c) onLetterPressed;
   final TextToGuess textToGuess;
 
   const LettersWidget({Key? key, required this.textToGuess, required this.onLetterPressed}) : super(key: key);

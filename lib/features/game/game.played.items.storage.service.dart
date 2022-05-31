@@ -22,29 +22,26 @@ class GamePlayedItemsStorageService {
     playedItemsStore = StoreRef('played_items_store');
     final count = await playedItemsStore.count(db);
     logger.info('Storage "${playedItemsStore.name}" elements count: $count.');
-
-    await addPlayedItems(
-        'english expressions', ['already seen', 'mixed happiness', 'Been there, done that', 'Never mind']);
-
-    var elements2 = await getPlayedItems('english expressions');
-    logger.info('english expressions::: $elements2');
   }
 
-  Future<void> addPlayedItems(String categoryUuid, List<String> newItems) async {
+  Future<List<String>> addPlayedItems(String categoryUuid, List<String> newItems) async {
     final record = playedItemsStore.record(categoryUuid);
     final List existingItems = (await record.get(db) ?? []);
     final List items = existingItems.toSet().toList();
     items.addAll(newItems);
 
     await record.put(db, items);
+    return items.map((e) => e.toString()).toList();
   }
 
-  Future<void> addPlayedItem(String categoryUuid, String item) async {
+  Future<List<String>> addPlayedItem(String categoryUuid, String item) async {
     final record = playedItemsStore.record(categoryUuid);
     final List existingItems = (await record.get(db) ?? []);
     final List items = existingItems.toSet().toList();
     items.add(item);
     await record.put(db, items);
+
+    return items.map((e) => e.toString()).toList();
   }
 
   Future<List<String>> getPlayedItems(String categoryUuid) async {
