@@ -40,9 +40,8 @@ List of demonstrated elements inside the codebase, divided by categories:
 - Start loading with in-app storage, and in background download other categories
 - flutter build web (c.f. result in build/web/index.html)
 - usage of LayoutBuilder to know available space (landscape mode)
-- Sembast solution (NoSQL database)
-- SQLite
-- Local files
+- SQLite for creating custom lists
+- Local files storage example
 
 
 ## Usefull VSCode commands

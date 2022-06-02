@@ -56,6 +56,23 @@ mixin _$GameStore on _GameStoreBase, Store {
     });
   }
 
+  late final _$currentCategoryPlayedItemsAtom =
+      Atom(name: '_GameStoreBase.currentCategoryPlayedItems', context: context);
+
+  @override
+  List<String> get currentCategoryPlayedItems {
+    _$currentCategoryPlayedItemsAtom.reportRead();
+    return super.currentCategoryPlayedItems;
+  }
+
+  @override
+  set currentCategoryPlayedItems(List<String> value) {
+    _$currentCategoryPlayedItemsAtom
+        .reportWrite(value, super.currentCategoryPlayedItems, () {
+      super.currentCategoryPlayedItems = value;
+    });
+  }
+
   late final _$selectCategoryAsyncAction =
       AsyncAction('_GameStoreBase.selectCategory', context: context);
 
@@ -73,19 +90,16 @@ mixin _$GameStore on _GameStoreBase, Store {
     return _$shuffleAsyncAction.run(() => super.shuffle());
   }
 
-  late final _$_GameStoreBaseActionController =
-      ActionController(name: '_GameStoreBase', context: context);
+  late final _$tryLetterAsyncAction =
+      AsyncAction('_GameStoreBase.tryLetter', context: context);
 
   @override
-  void tryLetter(String c) {
-    final _$actionInfo = _$_GameStoreBaseActionController.startAction(
-        name: '_GameStoreBase.tryLetter');
-    try {
-      return super.tryLetter(c);
-    } finally {
-      _$_GameStoreBaseActionController.endAction(_$actionInfo);
-    }
+  Future<void> tryLetter(String c) {
+    return _$tryLetterAsyncAction.run(() => super.tryLetter(c));
   }
+
+  late final _$_GameStoreBaseActionController =
+      ActionController(name: '_GameStoreBase', context: context);
 
   @override
   void adhocText(String newText, String categoryName) {
@@ -103,6 +117,7 @@ mixin _$GameStore on _GameStoreBase, Store {
     return '''
 currentCategory: ${currentCategory},
 textToGuess: ${textToGuess},
+currentCategoryPlayedItems: ${currentCategoryPlayedItems},
 currentStateImg: ${currentStateImg},
 gameOverImage: ${gameOverImage}
     ''';

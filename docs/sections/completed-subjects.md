@@ -33,7 +33,11 @@ List of demonstrated elements inside the codebase, divided by categories
 - FutureBuilder for aync widget building pattern (https://stackoverflow.com/a/51983699/704681)
 - MobX reaction and disposers
 - Preferences page
-- Local storage using Shared Preferences
+
+### Local storages
+
+- Local storage using [Shared Preferences](https://pub.dev/packages/shared_preferences) for user settings
+- Usage of NoSQL database [Sembast solution](https://pub.dev/packages/sembast) to persisted guessed texts
 
 ### Dependencies injection (a.k.a. inversion of control IoC, Service locator)
 

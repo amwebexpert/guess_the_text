@@ -33,7 +33,7 @@ class _GameWidgetState extends State<GameWidget> {
   final FixedDelaySpinnerStore spinnerStore = serviceLocator.get();
   final LoggerService logger = serviceLocator.get();
 
-  List<ReactionDisposer> disposers = [];
+  final List<ReactionDisposer> disposers = [];
 
   @override
   void initState() {
