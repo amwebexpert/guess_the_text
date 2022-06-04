@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guess_the_text/features/game/game.fab.widget.dart';
 import 'package:guess_the_text/features/game/game.layout.landscape.widget.dart';
 import 'package:guess_the_text/features/game/game.layout.portrait.widget.dart';
 import 'package:guess_the_text/features/game/challenge/on.the.fly.challenge.model.dart';
@@ -94,11 +95,7 @@ class _GameWidgetState extends State<GameWidget> {
         return orientation == Orientation.portrait ? GameLayoutPortraitWidget() : GameLayoutLandscapeWidget();
       }),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
-      floatingActionButton: FloatingActionButton(
-        onPressed: shuffle,
-        tooltip: 'Shuffle',
-        child: const Icon(Icons.refresh), // TODO translate me i18n
-      ),
+      floatingActionButton: GameFabWidget(onPressed: shuffle),
     );
   }
 }
