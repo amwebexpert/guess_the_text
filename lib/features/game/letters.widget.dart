@@ -68,10 +68,15 @@ class _LettersWidgetState extends State<LettersWidget> with SingleTickerProvider
     // link animation to spinnerStore state change
     final ReactionDisposer disposer = reaction((_) => spinnerStore.state, (StoreState storeState) {
       if (storeState == StoreState.loading) {
-        animController.reverse();
+        animController.reverse(from: 1);
       }
     });
     disposers.add(disposer);
+
+    // start animation once the initial state is loaded
+    Future.delayed(const Duration(milliseconds: 100), () {
+      animController.reverse(from: 1);
+    });
   }
 
   @override
