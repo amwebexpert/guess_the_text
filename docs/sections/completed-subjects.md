@@ -49,6 +49,12 @@ List of demonstrated elements inside the codebase, divided by categories
 - e2e tests (called "integration tests" by Flutter team https://docs.flutter.dev/cookbook/testing/integration/introduction)
 - Testing and code coverage: unit, mocks, widget, e2e
 
+### Animations
+
+- AnimationController with SingleTickerProviderStateMixin
+- Tween and TweenSequence
+- RotationTransition, AnimatedOpacity
+
 ### Dart language
 
 - Modern, functionnal programming, assign fonction to var, deconstruction, named parameters, mixins, elvis operator et bang (? et !), double elvis operator (??), late, etc.
