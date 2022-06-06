@@ -35,6 +35,8 @@ class TextToGuess {
     return mutation;
   }
 
+  String get welcomeState => '$stateName-happy';
+
   String currentStateName() {
     int stateNumber = badTrialCount + 1;
     if (stateNumber > maxTrials) {

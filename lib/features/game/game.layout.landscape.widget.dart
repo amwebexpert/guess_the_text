@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:guess_the_text/features/game/game.image.widget.dart';
 import 'package:guess_the_text/features/game/game.interaction.panel.widget.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
 import 'package:guess_the_text/features/game/text_to_guess/text.to.guess.widget.dart';
@@ -25,9 +25,9 @@ class GameLayoutLandscapeWidget extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  const Flexible(flex: 3, child: GameBottomWidget()),
-                  Flexible(flex: 2, child: SvgPicture.asset(gameStore.currentStateImg)),
+                children: const <Widget>[
+                  Flexible(flex: 3, child: GameBottomWidget()),
+                  Flexible(flex: 2, child: GameImageWidget()),
                 ],
               ),
             ),

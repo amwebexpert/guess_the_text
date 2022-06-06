@@ -97,6 +97,8 @@ abstract class _GameStoreBase with Store {
     logger.info('ADHOC text: ${textToGuess.characters}');
   }
 
+  String get welcomeState => 'assets/images/${textToGuess.welcomeState}.svg';
+
   @computed
   String get currentStateImg => 'assets/images/${textToGuess.currentStateName()}.svg';
 
