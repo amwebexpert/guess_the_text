@@ -54,6 +54,7 @@ List of demonstrated elements inside the codebase, divided by categories
 - AnimationController with SingleTickerProviderStateMixin
 - Tween and TweenSequence
 - RotationTransition, AnimatedOpacity
+- Example of Staggered animations through CurvedAnimation and intervals
 
 ### Dart language
 
