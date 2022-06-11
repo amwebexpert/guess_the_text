@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:guess_the_text/features/settings/hero.settings.widget.dart';
 import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/theme/theme.utils.dart';
 import 'package:guess_the_text/utils/language.utils.dart';
@@ -52,6 +53,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
             padding: EdgeInsets.symmetric(vertical: spacing(1)),
             child: Column(
               children: <Widget>[
+                HeroSettingsWidget(),
                 ListTile(
                   leading: const Icon(Icons.language),
                   title: Text(localizations.prefLanguage),
