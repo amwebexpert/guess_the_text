@@ -103,7 +103,7 @@ Adjust the semversion of `pubspec.yaml` first, then generate the binary
 
     flutter clean
     flutter pub get
-    flutter build appbundle --release --no-tree-shake-icons
+    flutter build appbundle --release
 
 Tag creation commands
 
