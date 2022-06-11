@@ -21,14 +21,18 @@ class _GameImageIntroWidgetState extends State<GameImageIntroWidget> with Single
   void initState() {
     super.initState();
 
-    animController = AnimationController(duration: const Duration(milliseconds: 2500), vsync: this);
+    animController = AnimationController(duration: const Duration(milliseconds: 4000), vsync: this);
     animController.addListener(() {
       setState(() {});
     });
 
-    scaleAnimation = Tween<double>(begin: 0.0, end: 1.0)
-        .chain(CurveTween(curve: Curves.decelerate))
-        .animate(CurvedAnimation(parent: animController, curve: const Interval(0, .75)));
+    scaleAnimation = TweenSequence(
+      [
+        TweenSequenceItem(tween: Tween<double>(begin: 0, end: 1.25), weight: 1.0),
+        TweenSequenceItem(tween: Tween<double>(begin: 1.25, end: 1.0), weight: 1.0),
+      ],
+    ).animate(CurvedAnimation(parent: animController, curve: const Interval(0, .75)));
+
     fadeAnimation = Tween<double>(begin: 1, end: 0)
         .chain(CurveTween(curve: Curves.ease))
         .animate(CurvedAnimation(parent: animController, curve: const Interval(.75, 1)));
