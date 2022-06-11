@@ -56,6 +56,7 @@ List of demonstrated elements inside the codebase, divided by categories
 - RotationTransition, AnimatedOpacity
 - Example of Staggered animations through CurvedAnimation and intervals
 - Re-use animation through a behavioral wrapper widget with a child attribute
+- [Hero animations](https://docs.flutter.dev/development/ui/animations/hero-animations)
 
 ### Dart language
 
