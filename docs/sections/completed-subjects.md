@@ -55,6 +55,7 @@ List of demonstrated elements inside the codebase, divided by categories
 - Tween and TweenSequence
 - RotationTransition, AnimatedOpacity
 - Example of Staggered animations through CurvedAnimation and intervals
+- Re-use animation through a behavioral wrapper widget with a child attribute
 
 ### Dart language
 
