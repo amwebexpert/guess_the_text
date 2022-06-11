@@ -5,8 +5,18 @@ const welcomeImage = 'assets/images/hangman-happy.svg';
 class HorizontalSlideIntroWidget extends StatefulWidget {
   final Widget child;
   final void Function()? onAnimationComplete;
+  final Duration duration;
+  final Offset offsetStart;
+  final Offset offsetEnd;
 
-  const HorizontalSlideIntroWidget({Key? key, required this.child, this.onAnimationComplete}) : super(key: key);
+  const HorizontalSlideIntroWidget(
+      {Key? key,
+      required this.child,
+      this.onAnimationComplete,
+      this.duration = const Duration(seconds: 2),
+      this.offsetStart = const Offset(1, -0.25),
+      this.offsetEnd = const Offset(0, 0)})
+      : super(key: key);
 
   @override
   State<HorizontalSlideIntroWidget> createState() => _HorizontalSlideIntroWidgetState();
@@ -20,12 +30,12 @@ class _HorizontalSlideIntroWidgetState extends State<HorizontalSlideIntroWidget>
   void initState() {
     super.initState();
 
-    animController = AnimationController(duration: const Duration(milliseconds: 4000), vsync: this);
+    animController = AnimationController(duration: widget.duration, vsync: this);
     animController.addListener(() {
       setState(() {});
     });
 
-    slideAnim = Tween<Offset>(begin: const Offset(1, -0.25), end: const Offset(0, 0))
+    slideAnim = Tween<Offset>(begin: widget.offsetStart, end: widget.offsetEnd)
         .chain(CurveTween(curve: Curves.ease))
         .animate(animController);
 

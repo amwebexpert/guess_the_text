@@ -14,7 +14,8 @@ class CardHeaderAnimation extends StatelessWidget {
     return SizedBox(
         width: 200,
         child: Center(
-          child: HorizontalSlideIntroWidget(child: Lottie.asset(animationUtils.getAnimationPath())),
+          child: HorizontalSlideIntroWidget(
+              duration: const Duration(seconds: 6), child: Lottie.asset(animationUtils.getAnimationPath())),
         ));
   }
 }
