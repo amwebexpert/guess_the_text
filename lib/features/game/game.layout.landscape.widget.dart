@@ -9,32 +9,27 @@ import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/store/fixed.delay.spinner.store.dart';
 
 class GameLayoutLandscapeWidget extends StatelessWidget {
-  final GameStore gameStore = serviceLocator.get();
-  final FixedDelaySpinnerStore spinnerStore = serviceLocator.get();
-
-  GameLayoutLandscapeWidget({Key? key}) : super(key: key);
+  const GameLayoutLandscapeWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Observer(builder: (BuildContext context) {
-      return Column(
-        children: [
-          const TextToGuessPanel(),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const <Widget>[
-                  Flexible(flex: 3, child: GameBottomWidget()),
-                  Flexible(flex: 2, child: GameImageWidget()),
-                ],
-              ),
+    return Column(
+      children: [
+        const TextToGuessPanel(),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: const <Widget>[
+                Flexible(flex: 3, child: GameBottomWidget()),
+                Flexible(flex: 2, child: GameImageWidget()),
+              ],
             ),
           ),
-        ],
-      );
-    });
+        ),
+      ],
+    );
   }
 }
 

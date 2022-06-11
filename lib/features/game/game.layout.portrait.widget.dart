@@ -9,23 +9,19 @@ import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/store/fixed.delay.spinner.store.dart';
 
 class GameLayoutPortraitWidget extends StatelessWidget {
-  final FixedDelaySpinnerStore spinnerStore = serviceLocator.get();
-
-  GameLayoutPortraitWidget({Key? key}) : super(key: key);
+  const GameLayoutPortraitWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Observer(builder: (BuildContext context) {
-      return Center(
-        child: Column(
-          children: const <Widget>[
-            TextToGuessPanel(),
-            Expanded(child: GameImageWidget()),
-            GameBottomWidget(),
-          ],
-        ),
-      );
-    });
+    return Center(
+      child: Column(
+        children: const <Widget>[
+          TextToGuessPanel(),
+          Expanded(child: GameImageWidget()),
+          GameBottomWidget(),
+        ],
+      ),
+    );
   }
 }
 
