@@ -70,8 +70,11 @@ class AppMenu extends StatelessWidget {
           ),
           ListTile(
             visualDensity: VisualDensity.compact,
-            leading: Icon(
-              iconsMap['preferences'],
+            leading: Hero(
+              tag: 'preferences',
+              child: Icon(
+                iconsMap['preferences'],
+              ),
             ),
             title: Text(
               localizations.preferences,
