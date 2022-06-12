@@ -3,10 +3,11 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "version.json": "6fc64f3755093ccebad7226c42d2fd3a",
-"index.html": "01f5ef97970a3d1463ce04bc57bca0cd",
-"/": "01f5ef97970a3d1463ce04bc57bca0cd",
-"main.dart.js": "9700b4ffdc47958e13af816789254304",
+  "version.json": "51ff6a37bacc069ad44f6671a570460d",
+"index.html": "62a976917632695108492bc83b217c2e",
+"/": "62a976917632695108492bc83b217c2e",
+"main.dart.js": "d627f83db7800e99d2c3570507d193cd",
+"flutter.js": "0816e65a103ba8ba51b174eeeeb2cb67",
 "favicon.png": "2d9cacf839d7619705624ea318d55b7a",
 "icons/Icon-192.png": "2aaef2422b9bb9c1ca8ddc0033615e94",
 "icons/Icon-maskable-192.png": "2aaef2422b9bb9c1ca8ddc0033615e94",
@@ -51,7 +52,11 @@ const RESOURCES = {
 "assets/assets/animations/loading/35235-reading.json": "d3fbdc3bd0acfa5bbf87b1899423d9b8",
 "assets/assets/animations/loading/87735-distance-learning.json": "06fea034aa0f17d01a3143d54bb05e6a",
 "assets/assets/animations/loading/80356-online-learning.json": "176e184d3d194e7e598035cdce3f8eef",
-"assets/assets/animations/loading/79657-child-learning.json": "67e16b9c673491d27ea98104f408637e"
+"assets/assets/animations/loading/79657-child-learning.json": "67e16b9c673491d27ea98104f408637e",
+"canvaskit/canvaskit.js": "c2b4e5f3d7a3d82aed024e7249a78487",
+"canvaskit/profiling/canvaskit.js": "ae2949af4efc61d28a4a80fffa1db900",
+"canvaskit/profiling/canvaskit.wasm": "95e736ab31147d1b2c7b25f11d4c32cd",
+"canvaskit/canvaskit.wasm": "4b83d89d9fecbea8ca46f2f760c5a9ba"
 };
 
 // The application shell files that are downloaded before a service worker can
