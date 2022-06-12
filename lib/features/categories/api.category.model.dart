@@ -3,9 +3,11 @@ class ApiCategory {
   final String uuid;
   final String langCode;
   final String name;
+  final String iconName;
   final bool isCustom;
 
-  ApiCategory({this.id = 0, this.uuid = '', this.langCode = '', this.name = '', this.isCustom = false});
+  ApiCategory(
+      {this.id = 0, this.uuid = '', this.langCode = '', this.name = '', this.iconName = '', this.isCustom = false});
 
   bool get isEmpty => id == 0;
 
@@ -13,10 +15,11 @@ class ApiCategory {
       id: json['id'] as int,
       uuid: json['uuid'] as String,
       langCode: json['langcode'] as String,
-      name: json['name'] as String);
+      name: json['name'] as String,
+      iconName: json['iconname'] as String);
 
   @override
   String toString() {
-    return '{ $id, $langCode , $name }';
+    return '{ $id, $langCode, $name, $iconName }';
   }
 }
