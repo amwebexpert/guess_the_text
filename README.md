@@ -102,6 +102,18 @@ List of demonstrated elements inside the codebase, divided by categories:
 
     flutter create --platforms=web,macos .
 
+## Build & Publish Webapp
+
+Adjust the semversion of `pubspec.yaml` first, then generate the binary
+
+    flutter clean
+    flutter pub get
+    flutter build web --release --base-href=/guess_the_text/
+
+- [Build and release a web app](https://docs.flutter.dev/deployment/web)
+
+then the webapp will be available under `/build/web` folder
+
 ## Build & Publish to Google Play
 
 Adjust the semversion of `pubspec.yaml` first, then generate the binary
