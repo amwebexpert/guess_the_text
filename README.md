@@ -32,7 +32,6 @@ List of demonstrated elements inside the codebase, divided by categories:
   - [Countries and capitals](https://www.atlas-monde.net/tous-les-pays/)
   - [USA States](https://en.wikipedia.org/wiki/U.S._state)
   - [Liste des langues](https://www.axl.cefan.ulaval.ca/Langues/2vital_expansion_tablo1.htm)
-- Check support for spaces and dash characters
 - Apply Flutter Cookbook official site section patterns
 - Example of Stack layout
 - Start loading with in-app storage, and in background download other categories

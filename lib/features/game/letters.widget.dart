@@ -34,7 +34,9 @@ class LettersWidget extends StatefulWidget {
     'W',
     'X',
     'Y',
-    'Z'
+    'Z',
+    ' ',
+    '-',
   ];
 
   final Future<void> Function(String c) onLetterPressed;
