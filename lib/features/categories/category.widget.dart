@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:guess_the_text/features/categories/category.icons.map.dart';
 import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/features/categories/api.category.model.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
 import 'package:guess_the_text/theme/theme.utils.dart';
-
-import 'package:guess_the_text/utils/icon.utils.dart';
 
 class CategoryWidget extends StatelessWidget {
   final GameStore gameStore = serviceLocator.get();
@@ -26,7 +25,7 @@ class CategoryWidget extends StatelessWidget {
               gameStore.selectCategory(category);
               Navigator.pop(context);
             },
-            leading: Icon(iconsMap[category.name]), // add an iconName attribute to model
+            leading: Icon(categoryIcons[category.iconName]),
             title: Text(
               category.name,
               style: Theme.of(context).textTheme.bodyText1,
