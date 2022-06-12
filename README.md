@@ -26,25 +26,6 @@ List of demonstrated elements inside the codebase, divided by categories:
 
 - [Covered subjects by categories](docs/sections/completed-subjects.md)
 
-## Roadmap
-
-- Add new categories like:
-  - [Countries and capitals](https://www.atlas-monde.net/tous-les-pays/)
-  - [Languages](https://www.axl.cefan.ulaval.ca/Langues/2vital_expansion_tablo1.htm)
-- Apply Flutter Cookbook official site section patterns
-- Example of Stack layout
-- Start loading with in-app storage, and in background download other categories
-- flutter build web (c.f. result in build/web/index.html)
-- SQLite for creating custom lists
-- Local files storage example
-- add Linux target platform
-- add MacOS target platform
-- write instructions for starting backend on localhost
-- .env configurations for local and production
-- feature to allow user to provide the full response inside a text box
-- add a configurable timer
-- record stats regarding success / failure / global category scores, etc.
-
 
 ## Usefull VSCode commands
 
