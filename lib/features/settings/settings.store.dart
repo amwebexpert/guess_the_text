@@ -1,5 +1,5 @@
-import 'dart:io';
 import 'dart:ui';
+import 'package:universal_io/io.dart';
 
 import 'package:flutter/scheduler.dart';
 import 'package:guess_the_text/service.locator.dart';

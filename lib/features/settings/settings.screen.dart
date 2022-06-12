@@ -39,6 +39,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
   Widget build(BuildContext context) {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
     final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    final screenSize = MediaQuery.of(context).size;
 
     return Observer(builder: (context) {
       return Scaffold(
@@ -46,81 +47,85 @@ class _SettingsWidgetState extends State<SettingsWidget> {
           title: AppBarTitle(title: localizations.preferences),
         ),
         body: Container(
+          width: screenSize.width,
+          height: screenSize.height,
           decoration: BoxDecoration(
               image: DecorationImage(
                   image: AssetImage(isDarkTheme ? backgroundImageDark : backgroundImageLight), fit: BoxFit.cover)),
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: spacing(1)),
-            child: Column(
-              children: <Widget>[
-                HeroSettingsWidget(),
-                ListTile(
-                  leading: const Icon(Icons.language),
-                  title: Text(localizations.prefLanguage),
-                ),
-                ListTile(
-                  dense: true,
-                  title: Text(
-                    localizations.prefLangFr,
-                    style: Theme.of(context).textTheme.bodyText1,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: spacing(1)),
+              child: Column(
+                children: <Widget>[
+                  HeroSettingsWidget(),
+                  ListTile(
+                    leading: const Icon(Icons.language),
+                    title: Text(localizations.prefLanguage),
                   ),
-                  onTap: () => changeLanguage(AppLanguage.fr),
-                  leading: Radio<AppLanguage>(
-                    value: AppLanguage.fr,
-                    activeColor: Theme.of(context).colorScheme.primary,
-                    groupValue: codesToLanguageMap[settings.locale.languageCode],
-                    onChanged: changeLanguage,
+                  ListTile(
+                    dense: true,
+                    title: Text(
+                      localizations.prefLangFr,
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                    onTap: () => changeLanguage(AppLanguage.fr),
+                    leading: Radio<AppLanguage>(
+                      value: AppLanguage.fr,
+                      activeColor: Theme.of(context).colorScheme.primary,
+                      groupValue: codesToLanguageMap[settings.locale.languageCode],
+                      onChanged: changeLanguage,
+                    ),
                   ),
-                ),
-                ListTile(
-                  dense: true,
-                  title: Text(
-                    localizations.prefLangEn,
-                    style: Theme.of(context).textTheme.bodyText1,
+                  ListTile(
+                    dense: true,
+                    title: Text(
+                      localizations.prefLangEn,
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                    onTap: () => changeLanguage(AppLanguage.en),
+                    leading: Radio<AppLanguage>(
+                      value: AppLanguage.en,
+                      activeColor: Theme.of(context).colorScheme.primary,
+                      groupValue: codesToLanguageMap[settings.locale.languageCode],
+                      onChanged: changeLanguage,
+                    ),
                   ),
-                  onTap: () => changeLanguage(AppLanguage.en),
-                  leading: Radio<AppLanguage>(
-                    value: AppLanguage.en,
-                    activeColor: Theme.of(context).colorScheme.primary,
-                    groupValue: codesToLanguageMap[settings.locale.languageCode],
-                    onChanged: changeLanguage,
+                  const Divider(),
+                  ListTile(
+                    leading: Icon(isDarkTheme ? Icons.nightlight : Icons.sunny),
+                    title: Text(localizations.prefThemeBrightness),
                   ),
-                ),
-                const Divider(),
-                ListTile(
-                  leading: Icon(isDarkTheme ? Icons.nightlight : Icons.sunny),
-                  title: Text(localizations.prefThemeBrightness),
-                ),
-                ListTile(
-                  dense: true,
-                  title: Text(
-                    localizations.prefThemeBrightnessLight,
-                    style: Theme.of(context).textTheme.bodyText1,
+                  ListTile(
+                    dense: true,
+                    title: Text(
+                      localizations.prefThemeBrightnessLight,
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                    onTap: () => themeBrightnessChanged(false),
+                    leading: Radio<bool>(
+                      value: false,
+                      activeColor: Theme.of(context).colorScheme.primary,
+                      groupValue: isDarkTheme,
+                      onChanged: themeBrightnessChanged,
+                    ),
                   ),
-                  onTap: () => themeBrightnessChanged(false),
-                  leading: Radio<bool>(
-                    value: false,
-                    activeColor: Theme.of(context).colorScheme.primary,
-                    groupValue: isDarkTheme,
-                    onChanged: themeBrightnessChanged,
+                  ListTile(
+                    dense: true,
+                    title: Text(
+                      localizations.prefThemeBrightnessDark,
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                    onTap: () => themeBrightnessChanged(true),
+                    leading: Radio<bool>(
+                      value: true,
+                      activeColor: Theme.of(context).colorScheme.primary,
+                      groupValue: isDarkTheme,
+                      onChanged: themeBrightnessChanged,
+                    ),
                   ),
-                ),
-                ListTile(
-                  dense: true,
-                  title: Text(
-                    localizations.prefThemeBrightnessDark,
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                  onTap: () => themeBrightnessChanged(true),
-                  leading: Radio<bool>(
-                    value: true,
-                    activeColor: Theme.of(context).colorScheme.primary,
-                    groupValue: isDarkTheme,
-                    onChanged: themeBrightnessChanged,
-                  ),
-                ),
-                const Divider(),
-              ],
+                  const Divider(),
+                ],
+              ),
             ),
           ),
         ),

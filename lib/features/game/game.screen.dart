@@ -90,9 +90,13 @@ class _GameWidgetState extends State<GameWidget> {
       appBar: AppBar(
         title: AppBarTitle(title: localizations.appTitle),
       ),
-      drawer: AppMenu(onCreateChallengePress: onCreateChallengePress, onAcceptChallengePress: onAcceptChallengePress),
+      drawer: Drawer(
+          child:
+              AppMenu(onCreateChallengePress: onCreateChallengePress, onAcceptChallengePress: onAcceptChallengePress)),
       body: OrientationBuilder(builder: (context, orientation) {
-        return orientation == Orientation.portrait ? GameLayoutPortraitWidget() : GameLayoutLandscapeWidget();
+        return orientation == Orientation.portrait
+            ? const GameLayoutPortraitWidget()
+            : const GameLayoutLandscapeWidget();
       }),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       floatingActionButton: GameFabWidget(onPressed: shuffle),

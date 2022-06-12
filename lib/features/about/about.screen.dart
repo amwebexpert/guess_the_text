@@ -37,6 +37,7 @@ class _AboutWidgetState extends State<AboutWidget> {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
+    final screenSize = MediaQuery.of(context).size;
     const String backgroundImage = 'assets/images/backgrounds/background-pexels-pixabay-461940.jpg';
 
     return Scaffold(
@@ -44,6 +45,8 @@ class _AboutWidgetState extends State<AboutWidget> {
           title: AppBarTitle(title: localizations.about),
         ),
         body: Container(
+          width: screenSize.width,
+          height: screenSize.height,
           decoration: const BoxDecoration(
               image: DecorationImage(
             image: AssetImage(backgroundImage),

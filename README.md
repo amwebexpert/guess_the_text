@@ -96,6 +96,11 @@ List of demonstrated elements inside the codebase, divided by categories:
 
     flutter packages pub run build_runner build
 
+### Platforms support
+
+- [Add support for a new platform](https://stackoverflow.com/a/66214067/704681)
+
+    flutter create --platforms=web,macos .
 
 ## Build & Publish to Google Play
 
@@ -142,4 +147,9 @@ Tag creation commands
 - `app_localizations.dart` / `AppLocalizations` generated i18n artefacts not found
   - Command-Shift-P > Dart: Restart Analysis Server
   - this will re-detect `.g.dart` localization files
+- CORS issues for web platform support
+  - rm $FLUTTER_HOME/bin/cache/flutter_tools.stamp
+  - code $FLUTTER_HOME/packages/flutter_tools/lib/src/web/chrome.dart
+  - add '--disable-web-security' as per [instructions here](https://stackoverflow.com/a/66879350/704681)
+- [Error: Unsupported operation: Platform._localeName](https://stackoverflow.com/a/69922286/704681)
 - 
