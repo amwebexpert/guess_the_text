@@ -108,6 +108,12 @@ Adjust the semversion of `pubspec.yaml` first, then generate the binary
     flutter pub get
     flutter build web --release --base-href=/guess_the_text/
 
+Update the online demo deployed as GitHub pages by doing this additional step:
+- copy the build result from `/build/web` folder into the `/docs` folder
+- git add .
+- git commit -m"docs: new online demo web release"
+- git push
+
 - [Build and release a web app](https://docs.flutter.dev/deployment/web)
 
 then the webapp will be available under `/build/web` folder
