@@ -114,6 +114,19 @@ Tag creation commands
     git tag <my-super-tag>
     git push origin --tags
 
+# Build & Run Linux build
+
+To create a build for linux, run following command:
+
+    flutter build linux
+
+Flutter will build the application for linux, an executable will be found at following path:
+
+    /build/linux/x64/release/bundle
+
+From there, just run the `guess_the_text` executable to run the build!
+
+
 ## Start Flutter app on Simulator or a specific device
 
     open -a Simulator
