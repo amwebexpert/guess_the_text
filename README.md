@@ -11,7 +11,8 @@ The goal is to learn a technology at the same time as providing a fun and scalab
 - [Google Play](https://play.google.com/store/apps/details?id=com.amwebexpert.app.guessthetext.guess_the_text)
 - App Store
   - Not yet, will need to create an account and fill in all the forms and go through the approval process
-- [Privacy Policy](https://amwebexpert.github.io/guess_the_text/)
+- [Privacy Policy](https://amw-hangman-api.herokuapp.com/privacy-policy.html)
+- [Webapp demo](https://amwebexpert.github.io/guess_the_text/)
 
 
 ## BE Api (deployed on Heroku)
