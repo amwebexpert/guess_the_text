@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guess_the_text/theme/theme.utils.dart';
 import 'package:guess_the_text/theme/widgets/app.bar.title.widget.dart';
+import 'package:guess_the_text/theme/widgets/full.screen.bg.image.widget.dart';
 
 import 'card.widget.dart';
 
@@ -37,21 +38,14 @@ class _AboutWidgetState extends State<AboutWidget> {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
-    final screenSize = MediaQuery.of(context).size;
     const String backgroundImage = 'assets/images/backgrounds/background-pexels-pixabay-461940.jpg';
 
     return Scaffold(
         appBar: AppBar(
           title: AppBarTitle(title: localizations.about),
         ),
-        body: Container(
-          width: screenSize.width,
-          height: screenSize.height,
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-            image: AssetImage(backgroundImage),
-            fit: BoxFit.cover,
-          )),
+        body: FullScreenAssetBackground(
+          assetImagePath: backgroundImage,
           child: AnimatedOpacity(
             opacity: isVisible ? 1.0 : 0.0,
             duration: const Duration(milliseconds: 800),

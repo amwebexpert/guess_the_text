@@ -4,6 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:guess_the_text/features/settings/hero.settings.widget.dart';
 import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/theme/theme.utils.dart';
+import 'package:guess_the_text/theme/widgets/full.screen.bg.image.widget.dart';
 import 'package:guess_the_text/utils/language.utils.dart';
 import 'package:guess_the_text/theme/widgets/app.bar.title.widget.dart';
 
@@ -39,19 +40,14 @@ class _SettingsWidgetState extends State<SettingsWidget> {
   Widget build(BuildContext context) {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
     final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
-    final screenSize = MediaQuery.of(context).size;
 
     return Observer(builder: (context) {
       return Scaffold(
         appBar: AppBar(
           title: AppBarTitle(title: localizations.preferences),
         ),
-        body: Container(
-          width: screenSize.width,
-          height: screenSize.height,
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(isDarkTheme ? backgroundImageDark : backgroundImageLight), fit: BoxFit.cover)),
+        body: FullScreenAssetBackground(
+          assetImagePath: isDarkTheme ? backgroundImageDark : backgroundImageLight,
           child: SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: spacing(1)),

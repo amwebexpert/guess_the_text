@@ -7,6 +7,7 @@ import 'package:guess_the_text/features/game/game.store.dart';
 import 'package:guess_the_text/theme/theme.utils.dart';
 
 import 'package:guess_the_text/theme/widgets/app.bar.title.widget.dart';
+import 'package:guess_the_text/theme/widgets/full.screen.bg.image.widget.dart';
 
 class CategoriesListWidget extends StatelessWidget {
   static const String backgroundImage = 'assets/images/backgrounds/background-pexels-pixabay-461940.jpg';
@@ -23,8 +24,8 @@ class CategoriesListWidget extends StatelessWidget {
       appBar: AppBar(
         title: AppBarTitle(title: AppLocalizations.of(context)!.categories),
       ),
-      body: Container(
-        decoration: const BoxDecoration(image: DecorationImage(image: AssetImage(backgroundImage), fit: BoxFit.cover)),
+      body: FullScreenAssetBackground(
+        assetImagePath: backgroundImage,
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: spacing(1)),
           child: ListView.builder(
