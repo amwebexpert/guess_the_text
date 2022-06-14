@@ -5,6 +5,7 @@ import 'package:guess_the_text/features/game/challenge/on.the.fly.challenge.mode
 import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/services/qr/qr.code.service.dart';
 import 'package:guess_the_text/theme/theme.utils.dart';
+import 'package:guess_the_text/theme/widgets/animations/scaling.intro.widget.dart';
 
 class OnTheFlyChalengeQrWidget extends StatelessWidget {
   final QrCodeService qrCodeService = serviceLocator.get();
@@ -41,7 +42,7 @@ class OnTheFlyChalengeQrWidget extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
-                Expanded(child: SvgPicture.string(qrCodeImage)),
+                Expanded(child: ScalingIntroWidget(child: SvgPicture.string(qrCodeImage))),
                 ElevatedButton(
                   child: Text(localizations.actionClose),
                   onPressed: () => Navigator.pop(context),

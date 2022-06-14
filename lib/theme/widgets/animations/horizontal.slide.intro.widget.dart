@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 const welcomeImage = 'assets/images/hangman-happy.svg';
 
-class HorizontalSlideIntroWidget extends StatefulWidget {
+class SlideIntroWidget extends StatefulWidget {
   final Widget child;
   final void Function()? onAnimationComplete;
   final Duration duration;
   final Offset offsetStart;
   final Offset offsetEnd;
 
-  const HorizontalSlideIntroWidget(
+  const SlideIntroWidget(
       {Key? key,
       required this.child,
       this.onAnimationComplete,
@@ -19,10 +19,10 @@ class HorizontalSlideIntroWidget extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<HorizontalSlideIntroWidget> createState() => _HorizontalSlideIntroWidgetState();
+  State<SlideIntroWidget> createState() => _SlideIntroWidgetState();
 }
 
-class _HorizontalSlideIntroWidgetState extends State<HorizontalSlideIntroWidget> with SingleTickerProviderStateMixin {
+class _SlideIntroWidgetState extends State<SlideIntroWidget> with SingleTickerProviderStateMixin {
   late final AnimationController animController;
   late final Animation<Offset> slideAnim;
 
