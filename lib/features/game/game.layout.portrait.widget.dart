@@ -13,13 +13,17 @@ class GameLayoutPortraitWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: const <Widget>[
-          TextToGuessPanel(),
-          Expanded(child: GameImageWidget()),
-          GameBottomWidget(),
-        ],
+    return SafeArea(
+      top: false,
+      bottom: true,
+      child: Center(
+        child: Column(
+          children: const <Widget>[
+            TextToGuessPanel(),
+            Expanded(child: GameImageWidget()),
+            GameBottomWidget(),
+          ],
+        ),
       ),
     );
   }
