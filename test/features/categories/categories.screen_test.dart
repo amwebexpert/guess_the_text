@@ -29,7 +29,7 @@ void main() {
         GetIt.I.reset(),
       });
 
-  final mockCategories = [mockAnimalCategory, mockTransportCategory];
+  final mockCategories = [mockAnimalCategory, mockTransportCategory, mockColorsCategory, mockUSStatesCategory, mockPlanetsCategory, mockCountriesCategory];
   final spinnerFinder = find.byKey(const Key('categories_loading'));
 
   Widget wrapper(Widget widget) => MaterialApp(
@@ -69,5 +69,28 @@ void main() {
     // then
     expect(find.text(mockAnimalCategory.name), findsOneWidget);
     expect(find.text(mockTransportCategory.name), findsOneWidget);
+    expect(find.text(mockColorsCategory.name), findsOneWidget);
+    expect(find.text(mockUSStatesCategory.name), findsOneWidget);
+    expect(find.text(mockPlanetsCategory.name), findsOneWidget);
+    expect(find.text(mockCountriesCategory.name), findsOneWidget);
+  });
+
+  testWidgets('Should handle the user choice on press', (WidgetTester tester) async {
+    // given
+    when(mockTextsService.getCategories()).thenAnswer((_) => Future.value(mockCategories));
+    when(mockGameStore.selectCategory(any)).thenAnswer((_) => Future.value(null));
+
+    // test
+    await tester.pumpWidget(wrapper(const CategoriesWidget()));
+    await tester.pump(); // wait for the spinner to disappear
+
+    // when
+    verifyNever(mockGameStore.selectCategory(mockAnimalCategory));
+
+    await tester.tap(find.text(mockAnimalCategory.name));
+    await tester.pump(); // wait for the animation to finish
+
+    // then
+    verify(mockGameStore.selectCategory(mockAnimalCategory)).called(1);
   });
 }
