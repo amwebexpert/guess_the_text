@@ -74,4 +74,23 @@ void main() {
     expect(find.text(mockPlanetsCategory.name), findsOneWidget);
     expect(find.text(mockCountriesCategory.name), findsOneWidget);
   });
+
+  testWidgets('Should handle the user choice on press', (WidgetTester tester) async {
+    // given
+    when(mockTextsService.getCategories()).thenAnswer((_) => Future.value(mockCategories));
+    when(mockGameStore.selectCategory(any)).thenAnswer((_) => Future.value(null));
+
+    // test
+    await tester.pumpWidget(wrapper(const CategoriesWidget()));
+    await tester.pump(); // wait for the spinner to disappear
+
+    // when
+    verifyNever(mockGameStore.selectCategory(mockAnimalCategory));
+
+    await tester.tap(find.text(mockAnimalCategory.name));
+    await tester.pump(); // wait for the animation to finish
+
+    // then
+    verify(mockGameStore.selectCategory(mockAnimalCategory)).called(1);
+  });
 }
