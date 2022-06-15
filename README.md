@@ -55,6 +55,22 @@ List of demonstrated elements inside the codebase, divided by categories:
     flutter test integration_test/app_test.dart
     flutter test integration_test
 
+Steps to see test coverage of the project:
+
+    # Generate code coverage (will be located at 'coverage/lcov.info')
+    flutter test --coverage
+
+    # Generate html for test coverage
+    # You will need to have lcov installed (`sudo apt install lcov`, `brew install lcov`)
+    genhtml coverage/lcov.info -o coverage/html
+
+    # Open the html that's generated
+    open coverage/html/index.html
+
+If you want to see test coverage in vscode, take a look at following extensions that can help you out:
+- [Flutter Coverage](https://marketplace.visualstudio.com/items?itemName=Flutterando.flutter-coverage) : Calculates test coverage for flutter
+- [Coverage Gutters](https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters) : Shows you covered and uncovered lines
+
 ### Start headless android emulator before running e2e tests
 
     emulator -list-avds
