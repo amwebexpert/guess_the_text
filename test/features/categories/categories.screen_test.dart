@@ -29,7 +29,7 @@ void main() {
         GetIt.I.reset(),
       });
 
-  final mockCategories = [mockAnimalCategory, mockTransportCategory];
+  final mockCategories = [mockAnimalCategory, mockTransportCategory, mockColorsCategory, mockUSStatesCategory, mockPlanetsCategory, mockCountriesCategory];
   final spinnerFinder = find.byKey(const Key('categories_loading'));
 
   Widget wrapper(Widget widget) => MaterialApp(
@@ -69,5 +69,9 @@ void main() {
     // then
     expect(find.text(mockAnimalCategory.name), findsOneWidget);
     expect(find.text(mockTransportCategory.name), findsOneWidget);
+    expect(find.text(mockColorsCategory.name), findsOneWidget);
+    expect(find.text(mockUSStatesCategory.name), findsOneWidget);
+    expect(find.text(mockPlanetsCategory.name), findsOneWidget);
+    expect(find.text(mockCountriesCategory.name), findsOneWidget);
   });
 }
