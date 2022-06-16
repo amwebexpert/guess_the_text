@@ -15,7 +15,7 @@ class HeroSettingsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Hero(
-      tag: 'preferences',
+      tag: 'app-menu-item-preferences',
       child: buildIcon(context),
       placeholderBuilder: (context, size, child) => buildIcon(context, colorAlpha: 0.70),
       flightShuttleBuilder: (

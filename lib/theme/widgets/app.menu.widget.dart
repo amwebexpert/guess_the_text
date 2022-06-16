@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:guess_the_text/utils/icon.utils.dart';
+import 'package:guess_the_text/theme/widgets/app.menu.item.widget.dart';
 import 'package:guess_the_text/theme/widgets/menu.logo.widget.dart';
 
 class AppMenu extends StatelessWidget {
@@ -23,83 +23,51 @@ class AppMenu extends StatelessWidget {
       shrinkWrap: true,
       children: [
         const MenuLogo(),
-        ListTile(
-          visualDensity: VisualDensity.compact,
-          leading: Icon(
-            iconsMap['categories'],
-          ),
-          title: Text(localizations.categories),
+        MenuItemWidget(
+          titleLabel: localizations.categories,
+          iconName: 'categories',
           onTap: () {
             Navigator.pop(context);
             Navigator.pushNamed(context, '/categories');
           },
         ),
-        const Divider(
-          thickness: 2,
-        ),
-        ListTile(
-          visualDensity: VisualDensity.compact,
-          leading: Icon(
-            iconsMap['adhoc'],
-          ),
-          title: Text(localizations.adhocText),
+        const Divider(thickness: 2),
+        MenuItemWidget(
+          titleLabel: localizations.adhocText,
+          iconName: 'adhoc',
           onTap: () {
             Navigator.pop(context);
             onCreateChallengePress();
           },
         ),
-        const Divider(
-          thickness: 2,
-        ),
-        ListTile(
-          visualDensity: VisualDensity.compact,
-          leading: Icon(
-            iconsMap['adhocScan'],
-          ),
-          title: Text(localizations.appMenuReadChalenge),
+        const Divider(thickness: 2),
+        MenuItemWidget(
+          titleLabel: localizations.appMenuReadChalenge,
+          iconName: 'adhocScan',
           onTap: () {
             Navigator.pop(context);
             onAcceptChallengePress();
           },
         ),
-        const Divider(
-          thickness: 2,
-        ),
-        ListTile(
-          visualDensity: VisualDensity.compact,
-          leading: Hero(
-            tag: 'preferences',
-            child: Icon(
-              iconsMap['preferences'],
-            ),
-          ),
-          title: Text(
-            localizations.preferences,
-          ),
+        const Divider(thickness: 2),
+        MenuItemWidget(
+          titleLabel: localizations.preferences,
+          iconName: 'preferences',
           onTap: () {
             Navigator.pop(context);
             Navigator.pushNamed(context, '/settings');
           },
         ),
-        const Divider(
-          thickness: 2,
-        ),
-        ListTile(
-          visualDensity: VisualDensity.compact,
-          leading: Icon(
-            iconsMap['info'],
-          ),
-          title: Text(
-            localizations.about,
-          ),
+        const Divider(thickness: 2),
+        MenuItemWidget(
+          titleLabel: localizations.about,
+          iconName: 'info',
           onTap: () {
             Navigator.pop(context);
             Navigator.pushNamed(context, '/about');
           },
         ),
-        const Divider(
-          thickness: 2,
-        ),
+        const Divider(thickness: 2),
       ],
     );
   }
