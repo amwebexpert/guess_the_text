@@ -28,7 +28,7 @@ class AppMenu extends StatelessWidget {
           leading: Icon(
             iconsMap['categories'],
           ),
-          title: Text(localizations.categories, style: Theme.of(context).textTheme.bodyText1),
+          title: Text(localizations.categories),
           onTap: () {
             Navigator.pop(context);
             Navigator.pushNamed(context, '/categories');
@@ -42,7 +42,7 @@ class AppMenu extends StatelessWidget {
           leading: Icon(
             iconsMap['adhoc'],
           ),
-          title: Text(localizations.adhocText, style: Theme.of(context).textTheme.bodyText1),
+          title: Text(localizations.adhocText),
           onTap: () {
             Navigator.pop(context);
             onCreateChallengePress();
@@ -56,7 +56,7 @@ class AppMenu extends StatelessWidget {
           leading: Icon(
             iconsMap['adhocScan'],
           ),
-          title: Text(localizations.appMenuReadChalenge, style: Theme.of(context).textTheme.bodyText1),
+          title: Text(localizations.appMenuReadChalenge),
           onTap: () {
             Navigator.pop(context);
             onAcceptChallengePress();
