@@ -17,95 +17,90 @@ class AppMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
 
-    return Drawer(
-      // Add a ListView to the drawer. This ensures the user can scroll
-      // through the options in the drawer if there isn't enough vertical
-      // space to fit everything.
-      child: ListView(
-        // Important: Remove any padding from the ListView.
-        padding: EdgeInsets.zero,
-        shrinkWrap: true,
-        children: [
-          const MenuLogo(),
-          ListTile(
-            visualDensity: VisualDensity.compact,
-            leading: Icon(
-              iconsMap['categories'],
+    return ListView(
+      // Important: Remove any padding from the ListView.
+      padding: EdgeInsets.zero,
+      shrinkWrap: true,
+      children: [
+        const MenuLogo(),
+        ListTile(
+          visualDensity: VisualDensity.compact,
+          leading: Icon(
+            iconsMap['categories'],
+          ),
+          title: Text(localizations.categories, style: Theme.of(context).textTheme.bodyText1),
+          onTap: () {
+            Navigator.pop(context);
+            Navigator.pushNamed(context, '/categories');
+          },
+        ),
+        const Divider(
+          thickness: 2,
+        ),
+        ListTile(
+          visualDensity: VisualDensity.compact,
+          leading: Icon(
+            iconsMap['adhoc'],
+          ),
+          title: Text(localizations.adhocText, style: Theme.of(context).textTheme.bodyText1),
+          onTap: () {
+            Navigator.pop(context);
+            onCreateChallengePress();
+          },
+        ),
+        const Divider(
+          thickness: 2,
+        ),
+        ListTile(
+          visualDensity: VisualDensity.compact,
+          leading: Icon(
+            iconsMap['adhocScan'],
+          ),
+          title: Text(localizations.appMenuReadChalenge, style: Theme.of(context).textTheme.bodyText1),
+          onTap: () {
+            Navigator.pop(context);
+            onAcceptChallengePress();
+          },
+        ),
+        const Divider(
+          thickness: 2,
+        ),
+        ListTile(
+          visualDensity: VisualDensity.compact,
+          leading: Hero(
+            tag: 'preferences',
+            child: Icon(
+              iconsMap['preferences'],
             ),
-            title: Text(localizations.categories, style: Theme.of(context).textTheme.bodyText1),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, '/categories');
-            },
           ),
-          const Divider(
-            thickness: 2,
+          title: Text(
+            localizations.preferences,
           ),
-          ListTile(
-            visualDensity: VisualDensity.compact,
-            leading: Icon(
-              iconsMap['adhoc'],
-            ),
-            title: Text(localizations.adhocText, style: Theme.of(context).textTheme.bodyText1),
-            onTap: () {
-              Navigator.pop(context);
-              onCreateChallengePress();
-            },
+          onTap: () {
+            Navigator.pop(context);
+            Navigator.pushNamed(context, '/settings');
+          },
+        ),
+        const Divider(
+          thickness: 2,
+        ),
+        ListTile(
+          visualDensity: VisualDensity.compact,
+          leading: Icon(
+            iconsMap['info'],
           ),
-          const Divider(
-            thickness: 2,
+          title: Text(
+            localizations.about,
           ),
-          ListTile(
-            visualDensity: VisualDensity.compact,
-            leading: Icon(
-              iconsMap['adhocScan'],
-            ),
-            title: Text(localizations.appMenuReadChalenge, style: Theme.of(context).textTheme.bodyText1),
-            onTap: () {
-              Navigator.pop(context);
-              onAcceptChallengePress();
-            },
-          ),
-          const Divider(
-            thickness: 2,
-          ),
-          ListTile(
-            visualDensity: VisualDensity.compact,
-            leading: Hero(
-              tag: 'preferences',
-              child: Icon(
-                iconsMap['preferences'],
-              ),
-            ),
-            title: Text(
-              localizations.preferences,
-            ),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, '/settings');
-            },
-          ),
-          const Divider(
-            thickness: 2,
-          ),
-          ListTile(
-            visualDensity: VisualDensity.compact,
-            leading: Icon(
-              iconsMap['info'],
-            ),
-            title: Text(
-              localizations.about,
-            ),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, '/about');
-            },
-          ),
-          const Divider(
-            thickness: 2,
-          ),
-        ],
-      ),
+          onTap: () {
+            Navigator.pop(context);
+            Navigator.pushNamed(context, '/about');
+          },
+        ),
+        const Divider(
+          thickness: 2,
+        ),
+      ],
     );
   }
 }
