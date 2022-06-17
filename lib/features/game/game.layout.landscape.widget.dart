@@ -10,8 +10,8 @@ class GameLayoutLandscapeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: const <Widget>[
-        Flexible(flex: 3, child: TextAndKeyboardWidget()),
-        Flexible(flex: 4, child: GameImageWidget()),
+        Flexible(flex: 1, child: TextAndKeyboardWidget()),
+        Flexible(flex: 1, child: GameImageWidget()),
       ],
     );
   }
@@ -27,7 +27,7 @@ class TextAndKeyboardWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: const [
           TextAndCategoryWidget(),
-          GameBottomWidget(),
+          GameInteractionPanelWidget(),
         ],
       ),
     );

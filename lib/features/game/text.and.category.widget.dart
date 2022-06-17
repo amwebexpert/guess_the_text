@@ -14,23 +14,21 @@ class TextAndCategoryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final GameStore gameStore = serviceLocator.get();
     final FixedDelaySpinnerStore spinnerStore = serviceLocator.get();
+    final isColumnLayout = ResponsiveWrapper.of(context).isSmallerThan(MOBILE) ||
+        ResponsiveWrapper.of(context).orientation == Orientation.landscape;
 
     return Observer(builder: (BuildContext context) {
+      final text = gameStore.textToGuess.wordGame();
+
       return ResponsiveRowColumn(
         rowMainAxisAlignment: MainAxisAlignment.spaceAround,
-        layout: ResponsiveWrapper.of(context).isSmallerThan(MOBILE)
-            ? ResponsiveRowColumnType.COLUMN
-            : ResponsiveRowColumnType.ROW,
+        layout: isColumnLayout ? ResponsiveRowColumnType.COLUMN : ResponsiveRowColumnType.ROW,
         children: [
           ResponsiveRowColumnItem(
             rowFlex: 1,
-            child: TextToGuessWidget(
-                text: gameStore.textToGuess.wordGame(), isAnimated: false, isLoading: spinnerStore.isLoading),
+            child: TextToGuessWidget(text: text, isAnimated: false, isLoading: spinnerStore.isLoading),
           ),
-          const ResponsiveRowColumnItem(
-            rowFlex: 1,
-            child: CategoryWidget(),
-          ),
+          const ResponsiveRowColumnItem(rowFlex: 1, child: CategoryWidget()),
         ],
       );
     });

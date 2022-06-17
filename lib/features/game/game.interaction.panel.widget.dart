@@ -5,8 +5,8 @@ import 'package:guess_the_text/features/game/game.session.conclusion.widget.dart
 import 'package:guess_the_text/features/game/game.store.dart';
 import 'package:guess_the_text/service.locator.dart';
 
-class GameBottomWidget extends StatelessWidget {
-  const GameBottomWidget({Key? key}) : super(key: key);
+class GameInteractionPanelWidget extends StatelessWidget {
+  const GameInteractionPanelWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

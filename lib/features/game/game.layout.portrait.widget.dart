@@ -16,7 +16,7 @@ class GameLayoutPortraitWidget extends StatelessWidget {
           children: const <Widget>[
             TextAndCategoryWidget(),
             Expanded(child: GameImageWidget()),
-            GameBottomWidget(),
+            GameInteractionPanelWidget(),
           ],
         ),
       ),
