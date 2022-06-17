@@ -8,22 +8,28 @@ class GameLayoutLandscapeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const TextAndCategoryWidget(),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const <Widget>[
-                Flexible(flex: 1, child: GameBottomWidget()),
-                Flexible(flex: 1, child: GameImageWidget()),
-              ],
-            ),
-          ),
-        ),
+    return Row(
+      children: const <Widget>[
+        Flexible(flex: 3, child: TextAndKeyboardWidget()),
+        Flexible(flex: 4, child: GameImageWidget()),
       ],
+    );
+  }
+}
+
+class TextAndKeyboardWidget extends StatelessWidget {
+  const TextAndKeyboardWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const [
+          TextAndCategoryWidget(),
+          GameBottomWidget(),
+        ],
+      ),
     );
   }
 }
