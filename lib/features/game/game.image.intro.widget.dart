@@ -38,7 +38,9 @@ class _GameImageIntroWidgetState extends State<GameImageIntroWidget> with Single
         .animate(CurvedAnimation(parent: animController, curve: const Interval(.75, 1)));
 
     Future.delayed(const Duration(milliseconds: 300), () {
-      animController.forward(from: 0).then((value) => widget.onAnimationComplete());
+      if (mounted) {
+        animController.forward(from: 0).then((value) => widget.onAnimationComplete());
+      }
     });
   }
 

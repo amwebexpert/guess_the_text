@@ -77,7 +77,9 @@ class _LettersWidgetState extends State<LettersWidget> with SingleTickerProvider
 
     // start animation once the initial state is loaded
     Future.delayed(const Duration(milliseconds: 100), () {
-      animController.reverse(from: 1);
+      if (mounted) {
+        animController.reverse(from: 1);
+      }
     });
   }
 

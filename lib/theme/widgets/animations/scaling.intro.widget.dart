@@ -37,13 +37,18 @@ class _ScalingIntroWidgetState extends State<ScalingIntroWidget> with SingleTick
         .chain(CurveTween(curve: Curves.ease))
         .animate(CurvedAnimation(parent: animController, curve: const Interval(0, 1)));
 
-    Future.delayed(const Duration(milliseconds: 100), () {
-      animController.forward(from: 0).then((value) {
-        if (widget.onAnimationComplete != null) {
-          widget.onAnimationComplete!();
-        }
-      });
-    });
+    Future.delayed(const Duration(milliseconds: 100), () => kickOffAnimation());
+  }
+
+  Future<void> kickOffAnimation() async {
+    if (!mounted) {
+      return;
+    }
+
+    await animController.forward(from: 0);
+    if (widget.onAnimationComplete != null) {
+      widget.onAnimationComplete!();
+    }
   }
 
   @override

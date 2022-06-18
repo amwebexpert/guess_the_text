@@ -23,9 +23,11 @@ class _AboutWidgetState extends State<AboutWidget> {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
     Future.delayed(const Duration(milliseconds: 400), () {
-      setState(() {
-        isVisible = true;
-      });
+      if (mounted) {
+        setState(() {
+          isVisible = true;
+        });
+      }
     });
   }
 
