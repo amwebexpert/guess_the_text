@@ -22,9 +22,11 @@ class _PlatformInfoTableState extends State<PlatformInfoTable> {
     super.initState();
 
     deviceInfoService.loadAboutDeviceInfo().then((info) {
-      setState(() {
-        this.info = info;
-      });
+      if (mounted) {
+        setState(() {
+          this.info = info;
+        });
+      }
     });
   }
 

@@ -18,9 +18,11 @@ class _GameImageWidgetState extends State<GameImageWidget> with SingleTickerProv
   bool isIntroAnimation = true;
 
   void onAnimationComplete() {
-    setState(() {
-      isIntroAnimation = false;
-    });
+    if (mounted) {
+      setState(() {
+        isIntroAnimation = false;
+      });
+    }
   }
 
   @override

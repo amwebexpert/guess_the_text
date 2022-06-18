@@ -27,16 +27,19 @@ class _AppVersionTableState extends State<AppVersionTable> {
     super.initState();
 
     textsService.getAboutInfo().then((value) => {
-          setState(() {
-            apiAbout = value;
-          })
+          if (mounted)
+            setState(() {
+              apiAbout = value;
+            })
         });
 
     PackageInfo.fromPlatform().then((packageInfo) {
-      setState(() {
-        appVersion = packageInfo.version;
-        appBuildNumber = packageInfo.buildNumber;
-      });
+      if (mounted) {
+        setState(() {
+          appVersion = packageInfo.version;
+          appBuildNumber = packageInfo.buildNumber;
+        });
+      }
     });
   }
 
