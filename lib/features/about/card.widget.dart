@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:guess_the_text/features/about/card.app.description.dart';
 import 'package:guess_the_text/features/about/card.header.animation.widget.dart';
 import 'package:guess_the_text/features/about/card.header.widget.dart';
+import 'package:guess_the_text/features/about/platform.screen.info.table.widget.dart';
 import 'package:guess_the_text/features/about/privacy.policy.widget.dart';
 import 'package:guess_the_text/theme/theme.utils.dart';
 
@@ -36,6 +37,10 @@ class AboutCard extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(spacing(1)),
                   child: const PlatformInfoTable(),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(spacing(1)),
+                  child: const PlatformScreenInfoTable(),
                 ),
               ],
             ),
