@@ -6,6 +6,14 @@ Free mobile application originally created to learn the `Flutter` framework in m
 
 The goal is to learn a technology at the same time as providing a fun and scalable educational tool. The source code of this application is available and may also serve as a learning base for training sessions in `Dart` programming with `Flutter`!
 
+## Contributors
+
+We are actually limiting the number of contributors (so dont take that personnaly) since this project:
+- has to refine it's roadmap and goals
+- we are in the process of adding a lot of assets to improve the onboarding process
+- coding conventions have to be defined
+- the developer documentation will be re-structured soon
+
 ## Some screen captures of the implemented features
 
 success | failure | custom chalenge | qr-code
