@@ -39,11 +39,18 @@ class _SlideIntroWidgetState extends State<SlideIntroWidget> with SingleTickerPr
         .chain(CurveTween(curve: Curves.ease))
         .animate(animController);
 
-    Future.delayed(const Duration(milliseconds: 300), () {
-      animController.forward(from: 0).then((value) => {
-            if (widget.onAnimationComplete != null) {widget.onAnimationComplete!()}
-          });
-    });
+    Future.delayed(const Duration(milliseconds: 300), () => kickOffAnimation());
+  }
+
+  Future<void> kickOffAnimation() async {
+    if (!mounted) {
+      return;
+    }
+
+    await animController.forward(from: 0);
+    if (widget.onAnimationComplete != null) {
+      widget.onAnimationComplete!();
+    }
   }
 
   @override
