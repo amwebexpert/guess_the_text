@@ -6,7 +6,14 @@ Free mobile application originally created to learn the `Flutter` framework in m
 
 The goal is to learn a technology at the same time as providing a fun and scalable educational tool. The source code of this application is available and may also serve as a learning base for training sessions in `Dart` programming with `Flutter`!
 
-## Deployed on production:
+## Some screen captures of the implemented features
+
+success | failure | custom chalenge | qr-code
+------- | ---------- | ---------- | ----------
+<img src="store-presence/guess-the-text-03.png" /> | <img src="store-presence/guess-the-text-04.png" /> | <img src="store-presence/create-a-challenge.jpg" /> | <img src="store-presence/qr-code-display.jpg" />
+
+
+## Deployed on production
 
 - [Google Play](https://play.google.com/store/apps/details?id=com.amwebexpert.app.guessthetext.guess_the_text)
 - App Store

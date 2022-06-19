@@ -12,6 +12,7 @@ import 'package:guess_the_text/theme/app.theme.dart';
 import 'package:guess_the_text/utils/animation.utils.dart';
 import 'package:guess_the_text/utils/randomizer.utils.dart';
 import 'package:lottie/lottie.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 void main() {
   if (!kDebugMode) {
@@ -74,6 +75,16 @@ class _HangmanAppState extends State<HangmanApp> {
         themeMode: settingsStore.isDarkTheme ? ThemeMode.dark : ThemeMode.light,
         initialRoute: '/',
         onGenerateRoute: onGenerateRoute,
+        builder: (context, widget) => ResponsiveWrapper.builder(
+          ClampingScrollWrapper.builder(context, widget!),
+          maxWidth: 1200,
+          backgroundColor: Colors.black,
+          breakpoints: const [
+            ResponsiveBreakpoint.resize(576, name: MOBILE),
+            ResponsiveBreakpoint.resize(768, name: TABLET),
+            ResponsiveBreakpoint.resize(992, name: DESKTOP),
+          ],
+        ),
       );
     });
   }

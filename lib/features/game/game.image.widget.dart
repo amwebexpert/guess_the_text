@@ -26,9 +26,15 @@ class _GameImageWidgetState extends State<GameImageWidget> with SingleTickerProv
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (BuildContext context) {
-      return isIntroAnimation
-          ? GameImageIntroWidget(onAnimationComplete: onAnimationComplete)
-          : SvgPicture.asset(gameStore.currentStateImg);
+      return Column(
+        children: [
+          Expanded(
+            child: isIntroAnimation
+                ? GameImageIntroWidget(onAnimationComplete: onAnimationComplete)
+                : SvgPicture.asset(gameStore.currentStateImg, fit: BoxFit.fill),
+          ),
+        ],
+      );
     });
   }
 }

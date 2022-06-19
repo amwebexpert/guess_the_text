@@ -51,6 +51,12 @@ class _GameImageIntroWidgetState extends State<GameImageIntroWidget> with Single
   @override
   Widget build(BuildContext context) {
     return FadeTransition(
-        opacity: fadeAnimation, child: ScaleTransition(scale: scaleAnimation, child: SvgPicture.asset(welcomeImage)));
+        opacity: fadeAnimation,
+        child: ScaleTransition(
+            scale: scaleAnimation,
+            child: SvgPicture.asset(
+              welcomeImage,
+              fit: BoxFit.fill,
+            )));
   }
 }
