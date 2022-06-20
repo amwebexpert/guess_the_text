@@ -95,7 +95,6 @@ class _LettersWidgetState extends State<LettersWidget> with SingleTickerProvider
   }
 
   void onPressed(String c) {
-    animController.forward(from: 0);
     widget.onLetterPressed(c);
   }
 
@@ -104,7 +103,9 @@ class _LettersWidgetState extends State<LettersWidget> with SingleTickerProvider
     return Wrap(
       direction: Axis.horizontal,
       alignment: WrapAlignment.center,
+      runAlignment: WrapAlignment.center,
       spacing: 1,
+      runSpacing: 1,
       children: LettersWidget.letters
           .map(
             (c) => RotationTransition(
