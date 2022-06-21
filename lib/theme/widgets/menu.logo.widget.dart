@@ -8,9 +8,11 @@ class MenuLogo extends StatelessWidget {
     final bool isDark = Theme.of(context).brightness == Brightness.dark;
     final LinearGradient gradient = isDark
         ? const LinearGradient(
-            colors: [Colors.white, Colors.black], begin: Alignment.topCenter, end: Alignment.bottomCenter)
-        : const LinearGradient(
-            colors: [Colors.orange, Colors.white], begin: Alignment.topCenter, end: Alignment.bottomCenter);
+            colors: [Colors.grey, Colors.black], begin: Alignment.topCenter, end: Alignment.bottomCenter)
+        : LinearGradient(
+            colors: [Theme.of(context).colorScheme.primary, Colors.white],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter);
     const assetName = 'assets/images/drawer-header.png';
 
     return DrawerHeader(

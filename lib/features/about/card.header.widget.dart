@@ -40,10 +40,10 @@ class HeaderlineWidget extends StatelessWidget {
             decorationThickness: 1,
             decorationStyle: TextDecorationStyle.dotted,
             shadows: [
-              const Shadow(
-                color: Colors.orange,
+              Shadow(
+                color: Theme.of(context).colorScheme.primary,
                 blurRadius: 2,
-                offset: Offset(1, 1),
+                offset: const Offset(1, 1),
               ),
             ],
           ),
