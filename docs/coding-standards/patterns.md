@@ -4,7 +4,7 @@
 
 Prefer using `Theme.of(context).colorScheme.xxxxxx` for theme related colors
 
-#### :x: Avoid
+#### :x: avoid
 
 ```dart
 return FloatingActionButton(
@@ -14,7 +14,7 @@ return FloatingActionButton(
 );
 ```
 
-#### :white_check_mark: Prefer
+#### :green_check_mark: prefer
 
 ```dart
 return FloatingActionButton(
