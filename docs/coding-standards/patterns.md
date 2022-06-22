@@ -14,7 +14,7 @@ return FloatingActionButton(
 );
 ```
 
-#### :green_check_mark: prefer
+#### :green_check: prefer
 
 ```dart
 return FloatingActionButton(
