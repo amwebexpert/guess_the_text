@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -36,15 +37,23 @@ class PlatformScreenInfoTable extends StatelessWidget {
             DataRow(cells: <DataCell>[const DataCell(Text('Type')), DataCell(Text(screenType))]),
             DataRow(cells: <DataCell>[
               const DataCell(Text('Width')),
-              DataCell(Text('${screen.size.width.toInt()} pixels'))
+              DataCell(Text('${window.physicalSize.width.toInt()} px'))
             ]),
             DataRow(cells: <DataCell>[
               const DataCell(Text('Height')),
-              DataCell(Text('${screen.size.height.toInt()} pixels'))
+              DataCell(Text('${window.physicalSize.height.toInt()} px'))
             ]),
             DataRow(cells: <DataCell>[
               const DataCell(Text('Pixel ratio')),
-              DataCell(Text(screen.devicePixelRatio.toString()))
+              DataCell(Text(window.devicePixelRatio.toString()))
+            ]),
+            DataRow(cells: <DataCell>[
+              const DataCell(Text('Locical width')),
+              DataCell(Text('${screen.size.width.toInt()} px'))
+            ]),
+            DataRow(cells: <DataCell>[
+              const DataCell(Text('Logical height')),
+              DataCell(Text('${screen.size.height.toInt()} px'))
             ]),
             DataRow(cells: <DataCell>[
               const DataCell(Text('Orientation')),

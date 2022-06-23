@@ -29,6 +29,14 @@ success | failure | custom chalenge | qr-code
 - [Privacy Policy](https://amw-hangman-api.herokuapp.com/privacy-policy.html)
 - [Webapp demo](https://amwebexpert.github.io/guess_the_text/)
 
+## Coding standards
+
+Guidelines for developers
+
+* [Structure and naming](./naming.md)
+* [Coding patterns](./patterns.md)
+* [Store](./store.md)
+* [Tests](./tests.md)
 
 ## BE Api (deployed on Heroku)
 
@@ -166,7 +174,6 @@ From there, just run the `guess_the_text` executable to run the build!
     flutter devices
     flutter run -d "iPhone 13"
     flutter run -d "SM A505W"
-
 
 ## Usefull references
 

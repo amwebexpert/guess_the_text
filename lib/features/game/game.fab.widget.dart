@@ -49,7 +49,7 @@ class _GameFabWidgetState extends State<GameFabWidget> with SingleTickerProvider
     return FloatingActionButton(
       onPressed: onPressed,
       tooltip: 'Shuffle', // TODO translate me i18n
-      backgroundColor: Colors.orange.withOpacity(fadingAnim.value),
+      backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(fadingAnim.value),
       child: RotationTransition(turns: rotationAnim, child: const Icon(Icons.refresh)),
     );
   }
