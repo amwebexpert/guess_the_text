@@ -14,7 +14,7 @@ class SlideIntroWidget extends StatefulWidget {
       required this.child,
       this.onAnimationComplete,
       this.duration = const Duration(seconds: 2),
-      this.offsetStart = const Offset(1, -0.25),
+      this.offsetStart = const Offset(-1, -0.25),
       this.offsetEnd = const Offset(0, 0)})
       : super(key: key);
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guess_the_text/service.locator.dart';
-import 'package:guess_the_text/theme/widgets/animations/horizontal.slide.intro.widget.dart';
+import 'package:guess_the_text/theme/widgets/animations/slide.intro.widget.dart';
 import 'package:guess_the_text/utils/animation.utils.dart';
 import 'package:lottie/lottie.dart';
 
