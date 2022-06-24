@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:guess_the_text/features/about/about.screen.dart';
 import 'package:guess_the_text/features/categories/categories.screen.dart';
 import 'package:guess_the_text/features/game/challenge/on.the.fly.chalenge.widget.dart';
-import 'package:guess_the_text/features/game/challenge/on.the.fly.chalenge.qr.widget.dart';
+import 'package:guess_the_text/features/game/challenge/on.the.fly.chalenge.qr.screen.dart';
 import 'package:guess_the_text/features/game/challenge/on.the.fly.challenge.model.dart';
 import 'package:guess_the_text/features/game/game.screen.dart';
 import 'package:guess_the_text/features/settings/settings.screen.dart';
@@ -15,22 +15,23 @@ Route? onGenerateRoute(RouteSettings settings) {
   logger.info('Navigation to ${settings.name}');
   final uriLink = Uri.parse(settings.name ?? '/');
 
+  if (uriLink.hasQuery) {
+    logger.info('Navigation parameters: ${uriLink.queryParameters}');
+  }
+
   switch (uriLink.path) {
     case '/':
       return MaterialPageRoute(builder: (_) => const GameWidget());
 
     case '/game':
-      if (!uriLink.hasQuery) {
-        return MaterialPageRoute(builder: (_) => const GameWidget());
-      }
-      return MaterialPageRoute(builder: (_) => OnTheFlyChalengeWidget(queryParameters: uriLink.queryParameters));
+      return MaterialPageRoute(builder: (_) => const GameWidget());
 
     case '/categories':
       return MaterialPageRoute(builder: (_) => const CategoriesWidget());
 
     case '/onTheFlyChallenge':
       return MaterialPageRoute(
-          builder: (_) => OnTheFlyChalengeQrWidget(
+          builder: (_) => OnTheFlyChalengeQrScreen(
                 onTheFlyChallenge: settings.arguments as OnTheFlyChallenge,
               ));
 
