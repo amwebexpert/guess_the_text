@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:guess_the_text/features/about/card.header.animation.widget.dart';
+import 'package:guess_the_text/theme/theme.utils.dart';
 
 class CardHeaderWidget extends StatelessWidget {
   const CardHeaderWidget({Key? key}) : super(key: key);
@@ -10,13 +12,21 @@ class CardHeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
 
-    return ListTile(
-      leading: const Icon(Icons.info_outline_rounded),
-      title: const HeaderlineWidget(),
-      subtitle: Text(
-        localizations.appSubTitle,
-        style: Theme.of(context).textTheme.bodyText2,
-      ),
+    return Column(
+      children: [
+        ListTile(
+          leading: const Icon(Icons.info_outline_rounded),
+          title: const HeaderlineWidget(),
+          subtitle: Text(
+            localizations.appSubTitle,
+            style: Theme.of(context).textTheme.bodyText2,
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(spacing(1)),
+          child: const CardHeaderAnimation(),
+        ),
+      ],
     );
   }
 }
