@@ -125,6 +125,6 @@ void main() {
     await tester.pump(); // wait for the animation to finish
 
     // then
-    verify(mockNavigatorObserver.didPop(any, any));
+    verify(mockNavigatorObserver.didPop(argThat(isNotNull), any));
   });
 }
