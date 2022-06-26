@@ -1,13 +1,13 @@
 import 'package:guess_the_text/features/categories/api.category.model.dart';
 
-final mockAnimalCategory = ApiCategory(
+final mockAnimalsCategory = ApiCategory(
   id: 1,
   uuid: 'animals-uuid',
   langCode: 'en',
   name: 'animals',
 );
 
-final mockTransportCategory = ApiCategory(
+final mockTransportsCategory = ApiCategory(
   id: 2,
   uuid: 'transports-uuid',
   langCode: 'en',
