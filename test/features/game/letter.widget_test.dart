@@ -40,6 +40,7 @@ void main() {
 
     // when
     await tester.tap(letterFinder, warnIfMissed: true);
+    await tester.pumpAndSettle(); // wait for the animation to finish
 
     // then
     expect(isCallbackCalled, true);

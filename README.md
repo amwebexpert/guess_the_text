@@ -75,6 +75,7 @@ List of demonstrated elements inside the codebase, divided by categories:
 ### unit tests, widget and integration tests, e2e
 
     flutter test -r expanded
+    flutter test -r expanded test/features/game/letter.widget_test.dart
     flutter test integration_test/app_test.dart
     flutter test integration_test
 
