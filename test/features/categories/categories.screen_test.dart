@@ -96,7 +96,7 @@ void main() {
     when(mockTextsService.getCategories()).thenAnswer((_) => Future.value(mockCategories));
     when(mockGameStore.selectCategory(any)).thenAnswer((_) => Future.value(null));
 
-    // test
+    // asserts before acting
     await tester.pumpWidget(wrapper(const CategoriesWidget()));
     await tester.pump(); // wait for the spinner to disappear
 
@@ -114,9 +114,9 @@ void main() {
     // given
     when(mockTextsService.getCategories()).thenAnswer((_) => Future.value(mockCategories));
     when(mockGameStore.selectCategory(any)).thenAnswer((_) => Future.value(null));
-    when(mockNavigatorObserver.didPop(any, any)).thenAnswer((_) => Future.value(null));
+    reset(mockNavigatorObserver);
 
-    // test
+    // asserts before acting
     await tester.pumpWidget(wrapper(const CategoriesWidget()));
     await tester.pump(); // wait for the spinner to disappear
 
@@ -125,6 +125,6 @@ void main() {
     await tester.pump(); // wait for the animation to finish
 
     // then
-    verify(mockNavigatorObserver.didPop(argThat(isNotNull), any));
+    verify(mockNavigatorObserver.didPop(argThat(isNotNull), any)).called(1);
   });
 }
