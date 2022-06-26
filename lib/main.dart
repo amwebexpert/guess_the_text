@@ -77,7 +77,6 @@ class _HangmanAppState extends State<HangmanApp> {
         onGenerateRoute: onGenerateRoute,
         builder: (context, widget) => ResponsiveWrapper.builder(
           ClampingScrollWrapper.builder(context, widget!),
-          maxWidth: 1200,
           backgroundColor: Colors.black,
           breakpoints: const [
             ResponsiveBreakpoint.resize(576, name: MOBILE),
