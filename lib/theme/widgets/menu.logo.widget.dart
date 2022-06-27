@@ -8,8 +8,6 @@ class MenuLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
-    final bool isDark = Theme.of(context).brightness == Brightness.dark;
-    final Color color = isDark ? Colors.white : Colors.black;
     const assetName = 'assets/images/drawer-header.png';
 
     return DrawerHeader(
