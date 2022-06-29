@@ -14,10 +14,18 @@ import '../../mocks/categories.mocks.dart';
 import 'categories.screen_test.mocks.dart';
 
 // Annotation which generates the *.mocks.dart library and the Mock classes
-@GenerateMocks([TextsService, GameStore])
+@GenerateMocks(
+  [TextsService, GameStore],
+  customMocks: [
+    MockSpec<NavigatorObserver>(
+      returnNullOnMissingStub: true,
+    )
+  ],
+)
 void main() {
   final mockTextsService = MockTextsService();
   final mockGameStore = MockGameStore();
+  final mockNavigatorObserver = MockNavigatorObserver();
 
   setUpAll(() {
     GetIt.I.registerSingleton<TextsService>(mockTextsService);
@@ -29,13 +37,21 @@ void main() {
         GetIt.I.reset(),
       });
 
-  final mockCategories = [mockAnimalCategory, mockTransportCategory, mockColorsCategory, mockUSStatesCategory, mockPlanetsCategory, mockCountriesCategory];
+  final mockCategories = [
+    mockAnimalsCategory,
+    mockTransportsCategory,
+    mockColorsCategory,
+    mockUSStatesCategory,
+    mockPlanetsCategory,
+    mockCountriesCategory
+  ];
   final spinnerFinder = find.byKey(const Key('categories_loading'));
 
   Widget wrapper(Widget widget) => MaterialApp(
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: const Locale('en'),
+      navigatorObservers: [mockNavigatorObserver],
       home: widget);
 
   // Define a test. The TestWidgets function also provides a WidgetTester
@@ -67,8 +83,8 @@ void main() {
     await tester.pump(); // wait for the spinner to disappear
 
     // then
-    expect(find.text(mockAnimalCategory.name), findsOneWidget);
-    expect(find.text(mockTransportCategory.name), findsOneWidget);
+    expect(find.text(mockAnimalsCategory.name), findsOneWidget);
+    expect(find.text(mockTransportsCategory.name), findsOneWidget);
     expect(find.text(mockColorsCategory.name), findsOneWidget);
     expect(find.text(mockUSStatesCategory.name), findsOneWidget);
     expect(find.text(mockPlanetsCategory.name), findsOneWidget);
@@ -80,17 +96,35 @@ void main() {
     when(mockTextsService.getCategories()).thenAnswer((_) => Future.value(mockCategories));
     when(mockGameStore.selectCategory(any)).thenAnswer((_) => Future.value(null));
 
-    // test
+    // asserts before acting
     await tester.pumpWidget(wrapper(const CategoriesWidget()));
     await tester.pump(); // wait for the spinner to disappear
 
     // when
-    verifyNever(mockGameStore.selectCategory(mockAnimalCategory));
+    verifyNever(mockGameStore.selectCategory(mockAnimalsCategory));
 
-    await tester.tap(find.text(mockAnimalCategory.name));
+    await tester.tap(find.text(mockAnimalsCategory.name));
     await tester.pump(); // wait for the animation to finish
 
     // then
-    verify(mockGameStore.selectCategory(mockAnimalCategory)).called(1);
+    verify(mockGameStore.selectCategory(mockAnimalsCategory)).called(1);
+  });
+
+  testWidgets('Should navigate back on press', (WidgetTester tester) async {
+    // given
+    when(mockTextsService.getCategories()).thenAnswer((_) => Future.value(mockCategories));
+    when(mockGameStore.selectCategory(any)).thenAnswer((_) => Future.value(null));
+    reset(mockNavigatorObserver);
+
+    // asserts before acting
+    await tester.pumpWidget(wrapper(const CategoriesWidget()));
+    await tester.pump(); // wait for the spinner to disappear
+
+    // when
+    await tester.tap(find.text(mockTransportsCategory.name));
+    await tester.pump(); // wait for the animation to finish
+
+    // then
+    verify(mockNavigatorObserver.didPop(argThat(isNotNull), any)).called(1);
   });
 }

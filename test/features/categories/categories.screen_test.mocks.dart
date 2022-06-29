@@ -4,6 +4,7 @@
 
 import 'dart:async' as _i9;
 
+import 'package:flutter/src/widgets/navigator.dart' as _i12;
 import 'package:guess_the_text/features/about/api.about.model.dart' as _i3;
 import 'package:guess_the_text/features/categories/api.category.model.dart'
     as _i6;
@@ -149,5 +150,42 @@ class MockGameStore extends _i1.Mock implements _i11.GameStore {
   @override
   void adhocText(String? newText, String? categoryName) =>
       super.noSuchMethod(Invocation.method(#adhocText, [newText, categoryName]),
+          returnValueForMissingStub: null);
+}
+
+/// A class which mocks [NavigatorObserver].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockNavigatorObserver extends _i1.Mock implements _i12.NavigatorObserver {
+  @override
+  void didPush(
+          _i12.Route<dynamic>? route, _i12.Route<dynamic>? previousRoute) =>
+      super.noSuchMethod(Invocation.method(#didPush, [route, previousRoute]),
+          returnValueForMissingStub: null);
+  @override
+  void didPop(_i12.Route<dynamic>? route, _i12.Route<dynamic>? previousRoute) =>
+      super.noSuchMethod(Invocation.method(#didPop, [route, previousRoute]),
+          returnValueForMissingStub: null);
+  @override
+  void didRemove(
+          _i12.Route<dynamic>? route, _i12.Route<dynamic>? previousRoute) =>
+      super.noSuchMethod(Invocation.method(#didRemove, [route, previousRoute]),
+          returnValueForMissingStub: null);
+  @override
+  void didReplace(
+          {_i12.Route<dynamic>? newRoute, _i12.Route<dynamic>? oldRoute}) =>
+      super.noSuchMethod(
+          Invocation.method(
+              #didReplace, [], {#newRoute: newRoute, #oldRoute: oldRoute}),
+          returnValueForMissingStub: null);
+  @override
+  void didStartUserGesture(
+          _i12.Route<dynamic>? route, _i12.Route<dynamic>? previousRoute) =>
+      super.noSuchMethod(
+          Invocation.method(#didStartUserGesture, [route, previousRoute]),
+          returnValueForMissingStub: null);
+  @override
+  void didStopUserGesture() =>
+      super.noSuchMethod(Invocation.method(#didStopUserGesture, []),
           returnValueForMissingStub: null);
 }

@@ -40,6 +40,7 @@ void main() {
 
     // when
     await tester.tap(letterFinder, warnIfMissed: true);
+    await tester.pumpAndSettle(); // wait for all the animations end and then pump the frames
 
     // then
     expect(isCallbackCalled, true);
