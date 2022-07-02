@@ -11,12 +11,7 @@ import 'package:guess_the_text/services/logger/logger.service.dart';
 Route? onGenerateRoute(RouteSettings settings) {
   final LoggerService logger = serviceLocator.get();
 
-  logger.info('Navigation to ${settings.name}');
-  final uriLink = Uri.parse(settings.name ?? '/');
-
-  if (uriLink.hasQuery) {
-    logger.info('Navigation parameters: ${uriLink.queryParameters}');
-  }
+  Uri uriLink = extractUri(settings);
 
   switch (uriLink.path) {
     case '/':
@@ -46,4 +41,17 @@ Route? onGenerateRoute(RouteSettings settings) {
       logger.error('Invalid navigation', settings.name);
       return MaterialPageRoute(builder: (_) => const GameWidget());
   }
+}
+
+Uri extractUri(RouteSettings settings) {
+  final LoggerService logger = serviceLocator.get();
+
+  logger.info('Navigation to ${settings.name}');
+  final uriLink = Uri.parse(settings.name ?? '/');
+
+  if (uriLink.hasQuery) {
+    logger.info('Navigation parameters: ${uriLink.queryParameters}');
+  }
+
+  return uriLink;
 }

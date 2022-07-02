@@ -13,49 +13,49 @@ class GameImageIntroWidget extends StatefulWidget {
 }
 
 class _GameImageIntroWidgetState extends State<GameImageIntroWidget> with SingleTickerProviderStateMixin {
-  late final AnimationController animController;
-  late final Animation<double> scaleAnimation;
-  late final Animation<double> fadeAnimation;
+  late final AnimationController _animController;
+  late final Animation<double> _scaleAnimation;
+  late final Animation<double> _fadeAnimation;
 
   @override
   void initState() {
     super.initState();
 
-    animController = AnimationController(duration: const Duration(milliseconds: 4000), vsync: this);
-    animController.addListener(() {
+    _animController = AnimationController(duration: const Duration(milliseconds: 4000), vsync: this);
+    _animController.addListener(() {
       setState(() {});
     });
 
-    scaleAnimation = TweenSequence(
+    _scaleAnimation = TweenSequence(
       [
         TweenSequenceItem(tween: Tween<double>(begin: 0, end: 1.25), weight: 1.0),
         TweenSequenceItem(tween: Tween<double>(begin: 1.25, end: 1.0), weight: 1.0),
       ],
-    ).animate(CurvedAnimation(parent: animController, curve: const Interval(0, .75)));
+    ).animate(CurvedAnimation(parent: _animController, curve: const Interval(0, .75)));
 
-    fadeAnimation = Tween<double>(begin: 1, end: 0)
+    _fadeAnimation = Tween<double>(begin: 1, end: 0)
         .chain(CurveTween(curve: Curves.ease))
-        .animate(CurvedAnimation(parent: animController, curve: const Interval(.75, 1)));
+        .animate(CurvedAnimation(parent: _animController, curve: const Interval(.75, 1)));
 
     Future.delayed(const Duration(milliseconds: 300), () {
       if (mounted) {
-        animController.forward(from: 0).then((value) => widget.onAnimationComplete());
+        _animController.forward(from: 0).then((value) => widget.onAnimationComplete());
       }
     });
   }
 
   @override
   void dispose() {
-    animController.dispose();
+    _animController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return FadeTransition(
-        opacity: fadeAnimation,
+        opacity: _fadeAnimation,
         child: ScaleTransition(
-            scale: scaleAnimation,
+            scale: _scaleAnimation,
             child: SvgPicture.asset(
               welcomeImage,
               fit: BoxFit.fill,

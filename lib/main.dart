@@ -29,7 +29,7 @@ class HangmanApp extends StatefulWidget {
 }
 
 class _HangmanAppState extends State<HangmanApp> {
-  bool isAppLoading = true;
+  bool _isAppLoading = true;
 
   @override
   void initState() {
@@ -50,13 +50,13 @@ class _HangmanAppState extends State<HangmanApp> {
     }
 
     setState(() {
-      isAppLoading = false;
+      _isAppLoading = false;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    if (isAppLoading) {
+    if (_isAppLoading) {
       return Center(
         child: Lottie.asset(AnimationUtils(RandomizerUtils()).getAnimationPath()),
       );

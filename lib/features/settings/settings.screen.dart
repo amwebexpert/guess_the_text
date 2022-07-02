@@ -21,18 +21,18 @@ class _SettingsWidgetState extends State<SettingsWidget> {
   static const String backgroundImageDark = 'assets/images/backgrounds/background-pexels-pixabay-461940.jpg';
   static const String backgroundImageLight = 'assets/images/backgrounds/beach-sun.jpg';
 
-  final SettingsStore settings = serviceLocator.get();
+  final SettingsStore _settings = serviceLocator.get();
 
   void themeBrightnessChanged(bool? isDark) {
-    if (isDark != settings.isDarkTheme) {
-      settings.toggleTheme();
+    if (isDark != _settings.isDarkTheme) {
+      _settings.toggleTheme();
     }
   }
 
   void changeLanguage(AppLanguage? selectedLanguage) {
-    final AppLanguage? language = codesToLanguageMap[settings.locale.languageCode];
+    final AppLanguage? language = codesToLanguageMap[_settings.locale.languageCode];
     if (selectedLanguage != language) {
-      settings.changeLocale(selectedLanguage);
+      _settings.changeLocale(selectedLanguage);
     }
   }
 
@@ -68,7 +68,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     leading: Radio<AppLanguage>(
                       value: AppLanguage.fr,
                       activeColor: Theme.of(context).colorScheme.primary,
-                      groupValue: codesToLanguageMap[settings.locale.languageCode],
+                      groupValue: codesToLanguageMap[_settings.locale.languageCode],
                       onChanged: changeLanguage,
                     ),
                   ),
@@ -82,7 +82,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     leading: Radio<AppLanguage>(
                       value: AppLanguage.en,
                       activeColor: Theme.of(context).colorScheme.primary,
-                      groupValue: codesToLanguageMap[settings.locale.languageCode],
+                      groupValue: codesToLanguageMap[_settings.locale.languageCode],
                       onChanged: changeLanguage,
                     ),
                   ),

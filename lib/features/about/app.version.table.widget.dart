@@ -17,28 +17,28 @@ class AppVersionTable extends StatefulWidget {
 }
 
 class _AppVersionTableState extends State<AppVersionTable> {
-  final TextsService textsService = serviceLocator.get();
+  final TextsService _textsService = serviceLocator.get();
 
-  String appVersion = '';
-  String appBuildNumber = '';
-  ApiAbout apiAbout = ApiAbout();
+  String _appVersion = '';
+  String _appBuildNumber = '';
+  ApiAbout _apiAbout = ApiAbout();
 
   @override
   void initState() {
     super.initState();
 
-    textsService.getAboutInfo().then((value) => {
+    _textsService.getAboutInfo().then((value) => {
           if (mounted)
             setState(() {
-              apiAbout = value;
+              _apiAbout = value;
             })
         });
 
     PackageInfo.fromPlatform().then((packageInfo) {
       if (mounted) {
         setState(() {
-          appVersion = packageInfo.version;
-          appBuildNumber = packageInfo.buildNumber;
+          _appVersion = packageInfo.version;
+          _appBuildNumber = packageInfo.buildNumber;
         });
       }
     });
@@ -68,25 +68,25 @@ class _AppVersionTableState extends State<AppVersionTable> {
             DataRow(
               cells: <DataCell>[
                 DataCell(Text(localizations.appVersion)),
-                DataCell(Text(appVersion)),
+                DataCell(Text(_appVersion)),
               ],
             ),
             DataRow(
               cells: <DataCell>[
                 DataCell(Text(localizations.appBuildNumber)),
-                DataCell(Text(appBuildNumber)),
+                DataCell(Text(_appBuildNumber)),
               ],
             ),
             DataRow(
               cells: <DataCell>[
                 DataCell(Text(localizations.appBackendName)),
-                DataCell(Text(apiAbout.name)),
+                DataCell(Text(_apiAbout.name)),
               ],
             ),
             DataRow(
               cells: <DataCell>[
                 DataCell(Text(localizations.appBackendVersion)),
-                DataCell(Text(apiAbout.version)),
+                DataCell(Text(_apiAbout.version)),
               ],
             ),
             DataRow(

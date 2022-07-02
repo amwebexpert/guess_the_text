@@ -29,26 +29,26 @@ class GameWidget extends StatefulWidget {
 }
 
 class _GameWidgetState extends State<GameWidget> {
-  final GameStore gameStore = serviceLocator.get();
-  final QrCodeService qrCodeService = serviceLocator.get();
-  final FixedDelaySpinnerStore spinnerStore = serviceLocator.get();
-  final LoggerService logger = serviceLocator.get();
+  final GameStore _gameStore = serviceLocator.get();
+  final QrCodeService _qrCodeService = serviceLocator.get();
+  final FixedDelaySpinnerStore _spinnerStore = serviceLocator.get();
+  final LoggerService _logger = serviceLocator.get();
 
-  final List<ReactionDisposer> disposers = [];
+  final List<ReactionDisposer> _disposers = [];
 
   @override
   void initState() {
     super.initState();
 
-    final ReactionDisposer disposer = reaction((_) => spinnerStore.state, (StoreState storeState) {
-      logger.info('Example of a reaction on spinnerStore.state change $storeState');
+    final ReactionDisposer disposer = reaction((_) => _spinnerStore.state, (StoreState storeState) {
+      _logger.info('Example of a reaction on spinnerStore.state change $storeState');
     });
-    disposers.add(disposer);
+    _disposers.add(disposer);
   }
 
   @override
   void dispose() {
-    for (var disposer in disposers) {
+    for (var disposer in _disposers) {
       disposer();
     }
 
@@ -56,11 +56,11 @@ class _GameWidgetState extends State<GameWidget> {
   }
 
   void shuffle() {
-    if (gameStore.currentCategory.isCustom) {
+    if (_gameStore.currentCategory.isCustom) {
       onCreateChallengePress();
     } else {
-      spinnerStore.spin(milliseconds: 400);
-      gameStore.shuffle();
+      _spinnerStore.spin(milliseconds: 400);
+      _gameStore.shuffle();
     }
   }
 
@@ -70,16 +70,16 @@ class _GameWidgetState extends State<GameWidget> {
 
   void onAcceptChallengePress() async {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
-    final String jsonChallenge = await qrCodeService.scan(cancelLabel: localizations.actionCancel);
+    final String jsonChallenge = await _qrCodeService.scan(cancelLabel: localizations.actionCancel);
 
     if (jsonChallenge.isBlank) {
       showAppSnackbar(context: context, message: localizations.acceptChallengeCancelled, type: SnackbarType.info);
       return;
     }
 
-    spinnerStore.spin(milliseconds: 400);
+    _spinnerStore.spin(milliseconds: 400);
     final OnTheFlyChallenge onTheFlyChallenge = OnTheFlyChallenge.fromJson(jsonChallenge);
-    gameStore.adhocText(onTheFlyChallenge.text, localizations.adhocTextHint);
+    _gameStore.adhocText(onTheFlyChallenge.text, localizations.adhocTextHint);
   }
 
   @override

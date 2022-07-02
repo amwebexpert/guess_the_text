@@ -5,7 +5,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 class PlatformScreenInfoTable extends StatelessWidget {
   const PlatformScreenInfoTable({Key? key}) : super(key: key);
 
-  String getScreenType(BuildContext context) => ResponsiveValue(
+  String _getScreenType(BuildContext context) => ResponsiveValue(
         context,
         // TODO Localize me
         defaultValue: 'MOBILE',
@@ -17,7 +17,7 @@ class PlatformScreenInfoTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenType = getScreenType(context);
+    final screenType = _getScreenType(context);
     final screen = MediaQuery.of(context);
 
     return Column(

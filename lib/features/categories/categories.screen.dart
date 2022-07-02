@@ -14,19 +14,19 @@ class CategoriesWidget extends StatefulWidget {
 }
 
 class _CategoriesWidgetState extends State<CategoriesWidget> {
-  final TextsService textsService = serviceLocator.get();
+  final TextsService _textsService = serviceLocator.get();
 
-  late Future<List<ApiCategory>> categoriesFuture;
+  late Future<List<ApiCategory>> _categoriesFuture;
 
   @override
   void initState() {
     super.initState();
-    categoriesFuture = textsService.getCategories();
+    _categoriesFuture = _textsService.getCategories();
   }
 
   @override
   Widget build(BuildContext context) => FutureBuilder<List<ApiCategory>>(
-      future: categoriesFuture,
+      future: _categoriesFuture,
       builder: ((context, snapshot) {
         return snapshot.connectionState == ConnectionState.done
             ? snapshot.hasData

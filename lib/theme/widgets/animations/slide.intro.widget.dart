@@ -23,21 +23,21 @@ class SlideIntroWidget extends StatefulWidget {
 }
 
 class _SlideIntroWidgetState extends State<SlideIntroWidget> with SingleTickerProviderStateMixin {
-  late final AnimationController animController;
-  late final Animation<Offset> slideAnim;
+  late final AnimationController _animController;
+  late final Animation<Offset> _slideAnim;
 
   @override
   void initState() {
     super.initState();
 
-    animController = AnimationController(duration: widget.duration, vsync: this);
-    animController.addListener(() {
+    _animController = AnimationController(duration: widget.duration, vsync: this);
+    _animController.addListener(() {
       setState(() {});
     });
 
-    slideAnim = Tween<Offset>(begin: widget.offsetStart, end: widget.offsetEnd)
+    _slideAnim = Tween<Offset>(begin: widget.offsetStart, end: widget.offsetEnd)
         .chain(CurveTween(curve: Curves.ease))
-        .animate(animController);
+        .animate(_animController);
 
     Future.delayed(const Duration(milliseconds: 300), () => kickOffAnimation());
   }
@@ -47,7 +47,7 @@ class _SlideIntroWidgetState extends State<SlideIntroWidget> with SingleTickerPr
       return;
     }
 
-    await animController.forward(from: 0);
+    await _animController.forward(from: 0);
     if (widget.onAnimationComplete != null) {
       widget.onAnimationComplete!();
     }
@@ -55,12 +55,12 @@ class _SlideIntroWidgetState extends State<SlideIntroWidget> with SingleTickerPr
 
   @override
   void dispose() {
-    animController.dispose();
+    _animController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return SlideTransition(position: slideAnim, child: widget.child);
+    return SlideTransition(position: _slideAnim, child: widget.child);
   }
 }

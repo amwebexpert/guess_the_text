@@ -3,11 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:guess_the_text/features/game/text_to_guess/text.to.guess.panel.widget.dart';
 
 class TextToGuessAnimating extends StatelessWidget {
-  const TextToGuessAnimating({
-    Key? key,
-    required this.text,
-    required this.style,
-  }) : super(key: key);
+  const TextToGuessAnimating({Key? key, required this.text, required this.style}) : super(key: key);
 
   final String text;
   final TextStyle style;

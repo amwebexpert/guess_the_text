@@ -8,7 +8,7 @@ import 'package:guess_the_text/services/qr/qr.code.service.dart';
 import 'package:guess_the_text/theme/theme.utils.dart';
 
 class OnTheFlyChalengeQrScreen extends StatelessWidget {
-  final QrCodeService qrCodeService = serviceLocator.get();
+  final QrCodeService _qrCodeService = serviceLocator.get();
   final OnTheFlyChallenge onTheFlyChallenge;
 
   OnTheFlyChalengeQrScreen({Key? key, required this.onTheFlyChallenge}) : super(key: key);
@@ -21,7 +21,7 @@ class OnTheFlyChalengeQrScreen extends StatelessWidget {
     final String jsonChallenge = onTheFlyChallenge.toJson(localizations.qrCodeReadInstructions);
     final color = isDarkTheme ? Colors.black : Colors.white;
     final qrCodeColor = isDarkTheme ? Colors.white.value : Colors.black.value;
-    final String qrCodeImage = qrCodeService.generateSvg(text: jsonChallenge, color: qrCodeColor);
+    final String qrCodeImage = _qrCodeService.generateSvg(text: jsonChallenge, color: qrCodeColor);
 
     return SafeArea(
       child: Container(

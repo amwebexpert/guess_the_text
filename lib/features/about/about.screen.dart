@@ -15,7 +15,7 @@ class AboutWidget extends StatefulWidget {
 }
 
 class _AboutWidgetState extends State<AboutWidget> {
-  bool isVisible = false;
+  bool _isVisible = false;
 
   @override
   void initState() {
@@ -25,7 +25,7 @@ class _AboutWidgetState extends State<AboutWidget> {
     Future.delayed(const Duration(milliseconds: 400), () {
       if (mounted) {
         setState(() {
-          isVisible = true;
+          _isVisible = true;
         });
       }
     });
@@ -49,7 +49,7 @@ class _AboutWidgetState extends State<AboutWidget> {
         body: FullScreenAssetBackground(
           assetImagePath: backgroundImage,
           child: AnimatedOpacity(
-            opacity: isVisible ? 1.0 : 0.0,
+            opacity: _isVisible ? 1.0 : 0.0,
             duration: const Duration(milliseconds: 800),
             child: Padding(
               padding: EdgeInsets.all(spacing(3)),

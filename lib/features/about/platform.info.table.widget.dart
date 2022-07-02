@@ -5,26 +5,24 @@ import 'package:guess_the_text/services/device/device.info.service.dart';
 import 'package:guess_the_text/theme/theme.utils.dart';
 
 class PlatformInfoTable extends StatefulWidget {
-  const PlatformInfoTable({
-    Key? key,
-  }) : super(key: key);
+  const PlatformInfoTable({Key? key}) : super(key: key);
 
   @override
   State<PlatformInfoTable> createState() => _PlatformInfoTableState();
 }
 
 class _PlatformInfoTableState extends State<PlatformInfoTable> {
-  final DeviceInfoService deviceInfoService = serviceLocator.get();
-  Map<String, dynamic> info = {};
+  final DeviceInfoService _deviceInfoService = serviceLocator.get();
+  Map<String, dynamic> _info = {};
 
   @override
   void initState() {
     super.initState();
 
-    deviceInfoService.loadAboutDeviceInfo().then((info) {
+    _deviceInfoService.loadAboutDeviceInfo().then((info) {
       if (mounted) {
         setState(() {
-          this.info = info;
+          _info = info;
         });
       }
     });
@@ -50,7 +48,7 @@ class _PlatformInfoTableState extends State<PlatformInfoTable> {
               1: FlexColumnWidth(),
             },
             defaultVerticalAlignment: TableCellVerticalAlignment.top,
-            children: info.keys.toList().map((key) {
+            children: _info.keys.toList().map((key) {
               return TableRow(children: [
                 Padding(
                   padding: EdgeInsets.all(spacing(1)),
@@ -59,7 +57,7 @@ class _PlatformInfoTableState extends State<PlatformInfoTable> {
                 Padding(
                   padding: EdgeInsets.all(spacing(1)),
                   child: Text(
-                    info[key]?.toString() ?? '',
+                    _info[key]?.toString() ?? '',
                   ),
                 ),
               ]);

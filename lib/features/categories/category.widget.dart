@@ -6,7 +6,7 @@ import 'package:guess_the_text/features/game/game.store.dart';
 import 'package:guess_the_text/theme/theme.utils.dart';
 
 class CategoryWidget extends StatelessWidget {
-  final GameStore gameStore = serviceLocator.get();
+  final GameStore _gameStore = serviceLocator.get();
 
   final ApiCategory category;
 
@@ -22,7 +22,7 @@ class CategoryWidget extends StatelessWidget {
           color: Theme.of(context).colorScheme.primary,
           child: ListTile(
             onTap: () {
-              gameStore.selectCategory(category);
+              _gameStore.selectCategory(category);
               Navigator.pop(context);
             },
             leading: Icon(categoryIcons[category.iconName]),

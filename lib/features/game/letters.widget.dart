@@ -49,45 +49,45 @@ class LettersWidget extends StatefulWidget {
 }
 
 class _LettersWidgetState extends State<LettersWidget> with SingleTickerProviderStateMixin {
-  final FixedDelaySpinnerStore spinnerStore = serviceLocator.get();
-  late final AnimationController animController;
-  late final Animation<double> rotationAnim;
+  final FixedDelaySpinnerStore _spinnerStore = serviceLocator.get();
+  late final AnimationController _animController;
+  late final Animation<double> _rotationAnim;
 
-  final List<ReactionDisposer> disposers = [];
+  final List<ReactionDisposer> _disposers = [];
 
   @override
   void initState() {
     super.initState();
 
     // prepare animation
-    animController = AnimationController(duration: const Duration(milliseconds: 1200), vsync: this);
-    animController.addListener(() {
+    _animController = AnimationController(duration: const Duration(milliseconds: 1200), vsync: this);
+    _animController.addListener(() {
       setState(() {});
     });
 
-    rotationAnim = Tween<double>(begin: 0.0, end: 1.0).chain(CurveTween(curve: Curves.ease)).animate(animController);
+    _rotationAnim = Tween<double>(begin: 0.0, end: 1.0).chain(CurveTween(curve: Curves.ease)).animate(_animController);
 
     // link animation to spinnerStore state change
-    final ReactionDisposer disposer = reaction((_) => spinnerStore.state, (StoreState storeState) {
+    final ReactionDisposer disposer = reaction((_) => _spinnerStore.state, (StoreState storeState) {
       if (storeState == StoreState.loading) {
-        animController.reverse(from: 1);
+        _animController.reverse(from: 1);
       }
     });
-    disposers.add(disposer);
+    _disposers.add(disposer);
 
     // start animation once the initial state is loaded
     Future.delayed(const Duration(milliseconds: 100), () {
       if (mounted) {
-        animController.reverse(from: 1);
+        _animController.reverse(from: 1);
       }
     });
   }
 
   @override
   void dispose() {
-    animController.dispose();
+    _animController.dispose();
 
-    for (var disposer in disposers) {
+    for (var disposer in _disposers) {
       disposer();
     }
 
@@ -109,7 +109,7 @@ class _LettersWidgetState extends State<LettersWidget> with SingleTickerProvider
       children: LettersWidget.letters
           .map(
             (c) => RotationTransition(
-                turns: rotationAnim,
+                turns: _rotationAnim,
                 alignment: Alignment.centerLeft,
                 child: LetterWidget(
                     letter: c, isButtonEnable: !widget.textToGuess.isCharTried(c), onLetterPressed: onPressed)),

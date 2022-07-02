@@ -5,12 +5,8 @@ import 'package:guess_the_text/features/game/text_to_guess/text.to.guess.shuffli
 import 'package:guess_the_text/theme/app.theme.dart';
 
 class TextToGuessWidget extends StatelessWidget {
-  const TextToGuessWidget({
-    Key? key,
-    required this.text,
-    required this.isAnimated,
-    required this.isLoading,
-  }) : super(key: key);
+  const TextToGuessWidget({Key? key, required this.text, required this.isAnimated, required this.isLoading})
+      : super(key: key);
 
   final String text;
   final bool isAnimated;

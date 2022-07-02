@@ -13,14 +13,14 @@ class GameImageWidget extends StatefulWidget {
 }
 
 class _GameImageWidgetState extends State<GameImageWidget> with SingleTickerProviderStateMixin {
-  final GameStore gameStore = serviceLocator.get();
+  final GameStore _gameStore = serviceLocator.get();
 
-  bool isIntroAnimation = true;
+  bool _isIntroAnimation = true;
 
   void onAnimationComplete() {
     if (mounted) {
       setState(() {
-        isIntroAnimation = false;
+        _isIntroAnimation = false;
       });
     }
   }
@@ -31,9 +31,9 @@ class _GameImageWidgetState extends State<GameImageWidget> with SingleTickerProv
       return Column(
         children: [
           Expanded(
-            child: isIntroAnimation
+            child: _isIntroAnimation
                 ? GameImageIntroWidget(onAnimationComplete: onAnimationComplete)
-                : SvgPicture.asset(gameStore.currentStateImg, fit: BoxFit.fill),
+                : SvgPicture.asset(_gameStore.currentStateImg, fit: BoxFit.fill),
           ),
         ],
       );

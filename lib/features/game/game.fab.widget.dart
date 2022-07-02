@@ -10,37 +10,37 @@ class GameFabWidget extends StatefulWidget {
 }
 
 class _GameFabWidgetState extends State<GameFabWidget> with SingleTickerProviderStateMixin {
-  late final AnimationController animController;
-  late final Animation<double> rotationAnim;
-  late final Animation<double> fadingAnim;
+  late final AnimationController _animController;
+  late final Animation<double> _rotationAnim;
+  late final Animation<double> _fadingAnim;
 
   @override
   void initState() {
     super.initState();
 
-    animController = AnimationController(duration: const Duration(milliseconds: 1000), vsync: this);
+    _animController = AnimationController(duration: const Duration(milliseconds: 1000), vsync: this);
 
-    rotationAnim = Tween<double>(begin: 0.0, end: 1.0).chain(CurveTween(curve: Curves.ease)).animate(animController);
-    fadingAnim = TweenSequence(
+    _rotationAnim = Tween<double>(begin: 0.0, end: 1.0).chain(CurveTween(curve: Curves.ease)).animate(_animController);
+    _fadingAnim = TweenSequence(
       [
         TweenSequenceItem(tween: Tween<double>(begin: 1.0, end: 0.5), weight: 1.0),
         TweenSequenceItem(tween: Tween<double>(begin: 0.5, end: 1.0), weight: 1.0),
       ],
-    ).animate(animController);
+    ).animate(_animController);
 
-    animController.addListener(() {
+    _animController.addListener(() {
       setState(() {});
     });
   }
 
   @override
   void dispose() {
-    animController.dispose();
+    _animController.dispose();
     super.dispose();
   }
 
   void onPressed() {
-    animController.forward(from: 0);
+    _animController.forward(from: 0);
     widget.onPressed();
   }
 
@@ -49,8 +49,8 @@ class _GameFabWidgetState extends State<GameFabWidget> with SingleTickerProvider
     return FloatingActionButton(
       onPressed: onPressed,
       tooltip: 'Shuffle', // TODO translate me i18n
-      backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(fadingAnim.value),
-      child: RotationTransition(turns: rotationAnim, child: const Icon(Icons.refresh)),
+      backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(_fadingAnim.value),
+      child: RotationTransition(turns: _rotationAnim, child: const Icon(Icons.refresh)),
     );
   }
 }

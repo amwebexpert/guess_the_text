@@ -12,28 +12,28 @@ class EditTextToGuessDialog extends StatefulWidget {
 }
 
 class _EditTextToGuessDialogState extends State<EditTextToGuessDialog> {
-  final GameStore gameStore = serviceLocator.get();
-  final TextEditingController textFieldController = TextEditingController();
+  final GameStore _gameStore = serviceLocator.get();
+  final TextEditingController _textFieldController = TextEditingController();
 
-  bool isTextHidden = true;
-  bool isTextEmpty = true;
+  bool _isTextHidden = true;
+  bool _isTextEmpty = true;
 
   void toggleHidden() {
     setState(() {
-      isTextHidden = !isTextHidden;
+      _isTextHidden = !_isTextHidden;
     });
   }
 
   void onGenerateQR() {
     Navigator.pop(context);
-    Navigator.pushNamed(context, '/onTheFlyChallenge', arguments: OnTheFlyChallenge(text: textFieldController.text));
-    textFieldController.text = '';
+    Navigator.pushNamed(context, '/onTheFlyChallenge', arguments: OnTheFlyChallenge(text: _textFieldController.text));
+    _textFieldController.text = '';
   }
 
   void onConfirm(String categoryName) {
     Navigator.pop(context);
-    gameStore.adhocText(textFieldController.text.trim(), categoryName);
-    textFieldController.text = '';
+    _gameStore.adhocText(_textFieldController.text.trim(), categoryName);
+    _textFieldController.text = '';
   }
 
   void onCancel() {
@@ -42,14 +42,14 @@ class _EditTextToGuessDialogState extends State<EditTextToGuessDialog> {
 
   void onTextUpdated(String value) {
     setState(() {
-      isTextEmpty = textFieldController.text.trim().isEmpty;
+      _isTextEmpty = _textFieldController.text.trim().isEmpty;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
-    final Widget icon = isTextHidden ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off);
+    final Widget icon = _isTextHidden ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off);
     final suffixIcon = IconButton(onPressed: toggleHidden, icon: icon);
 
     return AlertDialog(
@@ -58,9 +58,9 @@ class _EditTextToGuessDialogState extends State<EditTextToGuessDialog> {
         autofocus: true,
         enableSuggestions: false,
         autocorrect: false,
-        controller: textFieldController,
+        controller: _textFieldController,
         onChanged: onTextUpdated,
-        obscureText: isTextHidden,
+        obscureText: _isTextHidden,
         decoration: InputDecoration(hintText: localizations.adhocTextHint, suffixIcon: suffixIcon),
       ),
       actions: <Widget>[
@@ -69,11 +69,11 @@ class _EditTextToGuessDialogState extends State<EditTextToGuessDialog> {
           child: Text(localizations.actionCancel),
         ),
         ElevatedButton(
-          onPressed: isTextEmpty ? null : () => onConfirm(localizations.adhocText),
+          onPressed: _isTextEmpty ? null : () => onConfirm(localizations.adhocText),
           child: Text(localizations.actionOK),
         ),
         ElevatedButton(
-          onPressed: isTextEmpty ? null : onGenerateQR,
+          onPressed: _isTextEmpty ? null : onGenerateQR,
           child: Text(localizations.actionGenerateQR),
         ),
       ],
