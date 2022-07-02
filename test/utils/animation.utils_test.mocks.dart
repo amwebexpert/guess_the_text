@@ -2,7 +2,7 @@
 // in guess_the_text/test/utils/animation.utils_test.dart.
 // Do not manually edit this file.
 
-import 'package:guess_the_text/utils/randomizer.utils.dart' as _i2;
+import '/utils/randomizer.utils.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -24,7 +24,5 @@ class MockRandomizerUtils extends _i1.Mock implements _i2.RandomizerUtils {
   }
 
   @override
-  int nextInt(int? max) =>
-      (super.noSuchMethod(Invocation.method(#nextInt, [max]), returnValue: 0)
-          as int);
+  int nextInt(int? max) => (super.noSuchMethod(Invocation.method(#nextInt, [max]), returnValue: 0) as int);
 }

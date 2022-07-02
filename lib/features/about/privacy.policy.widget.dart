@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:guess_the_text/theme/widgets/text.link.widget.dart';
+
+import '/theme/widgets/text.link.widget.dart';
 
 class PrivacyPolicyWidget extends StatelessWidget {
   const PrivacyPolicyWidget({Key? key}) : super(key: key);

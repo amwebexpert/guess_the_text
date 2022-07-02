@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:guess_the_text/theme/theme.utils.dart';
-import 'package:guess_the_text/utils/icon.utils.dart';
+
+import '/theme/theme.utils.dart';
+import '/utils/icon.utils.dart';
 
 class HeroSettingsWidget extends StatelessWidget {
   HeroSettingsWidget({Key? key}) : super(key: key);

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:guess_the_text/features/about/api.about.model.dart';
-import 'package:guess_the_text/features/about/privacy.policy.widget.dart';
-import 'package:guess_the_text/features/game/api.texts.service.dart';
-import 'package:guess_the_text/service.locator.dart';
-import 'package:guess_the_text/theme/widgets/text.link.widget.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+
+import '/features/about/api.about.model.dart';
+import '/features/about/privacy.policy.widget.dart';
+import '/features/game/api.texts.service.dart';
+import '/service.locator.dart';
+import '/theme/widgets/text.link.widget.dart';
 
 class AppVersionTable extends StatefulWidget {
   const AppVersionTable({

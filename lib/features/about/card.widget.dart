@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:guess_the_text/features/about/card.app.description.dart';
-import 'package:guess_the_text/features/about/card.header.widget.dart';
-import 'package:guess_the_text/features/about/platform.screen.info.table.widget.dart';
-import 'package:guess_the_text/theme/theme.utils.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
+import '/features/about/card.app.description.dart';
+import '/features/about/card.header.widget.dart';
+import '/features/about/platform.screen.info.table.widget.dart';
+import '/theme/theme.utils.dart';
 import 'app.version.table.widget.dart';
 import 'platform.info.table.widget.dart';
 

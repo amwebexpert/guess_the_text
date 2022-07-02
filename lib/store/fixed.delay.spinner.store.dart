@@ -1,5 +1,5 @@
-import 'package:guess_the_text/store/store.state.enum.dart';
-import 'package:guess_the_text/store/store.state.utils.dart';
+import '/store/store.state.enum.dart';
+import '/store/store.state.utils.dart';
 import 'package:mobx/mobx.dart';
 
 // Include generated file

@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:guess_the_text/utils/animation.utils.dart';
-import 'package:guess_the_text/utils/randomizer.utils.dart';
+import '/utils/animation.utils.dart';
+import '/utils/randomizer.utils.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 

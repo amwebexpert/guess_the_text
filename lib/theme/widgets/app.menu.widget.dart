@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:guess_the_text/theme/widgets/app.menu.item.widget.dart';
-import 'package:guess_the_text/theme/widgets/menu.logo.widget.dart';
+import '/theme/widgets/app.menu.item.widget.dart';
+import '/theme/widgets/menu.logo.widget.dart';
 
 class AppMenu extends StatelessWidget {
   final Function() onCreateChallengePress;

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:guess_the_text/features/settings/hero.settings.widget.dart';
-import 'package:guess_the_text/service.locator.dart';
-import 'package:guess_the_text/theme/theme.utils.dart';
-import 'package:guess_the_text/theme/widgets/app.bar.title.widget.dart';
-import 'package:guess_the_text/theme/widgets/full.screen.bg.image.widget.dart';
-import 'package:guess_the_text/utils/language.utils.dart';
 
+import '/features/settings/hero.settings.widget.dart';
+import '/service.locator.dart';
+import '/theme/theme.utils.dart';
+import '/theme/widgets/app.bar.title.widget.dart';
+import '/theme/widgets/full.screen.bg.image.widget.dart';
+import '/utils/language.utils.dart';
 import 'settings.store.dart';
 
 class SettingsWidget extends StatefulWidget {

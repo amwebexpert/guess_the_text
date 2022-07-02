@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guess_the_text/utils/icon.utils.dart';
+import '/utils/icon.utils.dart';
 
 class MenuItemWidget extends StatelessWidget {
   const MenuItemWidget({Key? key, required this.titleLabel, required this.iconName, required this.onTap})

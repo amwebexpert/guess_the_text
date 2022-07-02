@@ -1,4 +1,4 @@
-import 'package:guess_the_text/utils/randomizer.utils.dart';
+import '/utils/randomizer.utils.dart';
 
 const List<String> animationNames = [
   '23486-reading-a-book',

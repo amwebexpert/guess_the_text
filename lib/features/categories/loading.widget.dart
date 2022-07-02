@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:guess_the_text/service.locator.dart';
-import 'package:guess_the_text/utils/animation.utils.dart';
 import 'package:lottie/lottie.dart';
+
+import '/service.locator.dart';
+import '/utils/animation.utils.dart';
 
 class CategoriesLoadingWidget extends StatelessWidget {
   const CategoriesLoadingWidget({Key? key}) : super(key: key);

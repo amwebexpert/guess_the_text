@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:guess_the_text/features/game/text_to_guess/text.to.guess.model.dart';
-import 'package:guess_the_text/service.locator.dart';
-import 'package:guess_the_text/store/fixed.delay.spinner.store.dart';
-import 'package:guess_the_text/store/store.state.enum.dart';
 import 'package:mobx/mobx.dart';
 
+import '/features/game/text_to_guess/text.to.guess.model.dart';
+import '/service.locator.dart';
+import '/store/fixed.delay.spinner.store.dart';
+import '/store/store.state.enum.dart';
 import 'letter.widget.dart';
 
 class LettersWidget extends StatefulWidget {

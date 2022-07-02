@@ -1,6 +1,7 @@
 import 'package:barcode/barcode.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-import 'package:guess_the_text/utils/extensions/string.extensions.dart';
+
+import '/utils/extensions/string.extensions.dart';
 
 class QrCodeService {
   static final QrCodeService _instance = QrCodeService._privateConstructor();

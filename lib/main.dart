@@ -2,17 +2,18 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:guess_the_text/features/categories/api.category.model.dart';
-import 'package:guess_the_text/features/game/api.texts.service.dart';
-import 'package:guess_the_text/features/settings/settings.store.dart';
-import 'package:guess_the_text/route.generator.dart';
-import 'package:guess_the_text/service.locator.dart';
-import 'package:guess_the_text/theme/app.theme.dart';
-import 'package:guess_the_text/theme/widgets/app.error.widget.dart';
-import 'package:guess_the_text/utils/animation.utils.dart';
-import 'package:guess_the_text/utils/randomizer.utils.dart';
 import 'package:lottie/lottie.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+
+import '/features/categories/api.category.model.dart';
+import '/features/game/api.texts.service.dart';
+import '/features/settings/settings.store.dart';
+import '/route.generator.dart';
+import '/service.locator.dart';
+import '/theme/app.theme.dart';
+import '/theme/widgets/app.error.widget.dart';
+import '/utils/animation.utils.dart';
+import '/utils/randomizer.utils.dart';
 
 void main() {
   if (!kDebugMode) {

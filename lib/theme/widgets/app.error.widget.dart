@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:guess_the_text/service.locator.dart';
-import 'package:guess_the_text/services/logger/logger.service.dart';
+import '/service.locator.dart';
+import '/services/logger/logger.service.dart';
 
 class AppErrorWidget extends StatelessWidget {
   final FlutterErrorDetails details;

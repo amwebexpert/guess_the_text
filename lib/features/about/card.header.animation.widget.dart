@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:guess_the_text/service.locator.dart';
-import 'package:guess_the_text/theme/widgets/animations/slide.intro.widget.dart';
-import 'package:guess_the_text/utils/animation.utils.dart';
 import 'package:lottie/lottie.dart';
+
+import '/service.locator.dart';
+import '/theme/widgets/animations/slide.intro.widget.dart';
+import '/utils/animation.utils.dart';
 
 class CardHeaderAnimation extends StatelessWidget {
   const CardHeaderAnimation({Key? key}) : super(key: key);

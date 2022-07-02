@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:guess_the_text/features/game/game.image.widget.dart';
-import 'package:guess_the_text/features/game/game.interaction.panel.widget.dart';
-import 'package:guess_the_text/features/game/text.and.category.widget.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+
+import '/features/game/game.image.widget.dart';
+import '/features/game/game.interaction.panel.widget.dart';
+import '/features/game/text.and.category.widget.dart';
 
 class GameLayoutLandscapeWidget extends StatelessWidget {
   const GameLayoutLandscapeWidget({Key? key}) : super(key: key);

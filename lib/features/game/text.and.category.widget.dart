@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:guess_the_text/features/game/category.widget.dart';
-import 'package:guess_the_text/features/game/game.store.dart';
-import 'package:guess_the_text/features/game/text_to_guess/text.to.guess.widget.dart';
-import 'package:guess_the_text/service.locator.dart';
-import 'package:guess_the_text/store/fixed.delay.spinner.store.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+
+import '/features/game/category.widget.dart';
+import '/features/game/game.store.dart';
+import '/features/game/text_to_guess/text.to.guess.widget.dart';
+import '/service.locator.dart';
+import '/store/fixed.delay.spinner.store.dart';
 
 class TextAndCategoryWidget extends StatelessWidget {
   const TextAndCategoryWidget({Key? key}) : super(key: key);

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:guess_the_text/features/game/game.session.conclusion.widget.dart';
-import 'package:guess_the_text/features/game/game.store.dart';
-import 'package:guess_the_text/features/game/letters.widget.dart';
-import 'package:guess_the_text/service.locator.dart';
+
+import '/features/game/game.session.conclusion.widget.dart';
+import '/features/game/game.store.dart';
+import '/features/game/letters.widget.dart';
+import '/service.locator.dart';
 
 class GameInteractionPanelWidget extends StatelessWidget {
   const GameInteractionPanelWidget({Key? key}) : super(key: key);
