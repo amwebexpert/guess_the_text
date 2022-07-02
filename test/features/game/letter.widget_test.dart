@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import '/features/game/letter.widget.dart';
+import 'package:guess_the_text/features/game/letter.widget.dart';
 
 void main() {
   const letter = 'B';

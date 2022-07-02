@@ -1,4 +1,4 @@
-import '/features/game/api.text.model.dart';
+import 'package:guess_the_text/features/game/api.text.model.dart';
 
 final mockTextToGuessFish = ApiText(
   id: 1,
