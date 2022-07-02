@@ -1,131 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:guess_the_text/features/settings/brightness.settings.widget.dart';
 
 import '/features/settings/hero.settings.widget.dart';
-import '/service.locator.dart';
 import '/theme/theme.utils.dart';
 import '/theme/widgets/app.bar.title.widget.dart';
 import '/theme/widgets/full.screen.bg.image.widget.dart';
-import '/utils/language.utils.dart';
-import 'settings.store.dart';
+import 'language.settings.widget.dart';
 
-class SettingsWidget extends StatefulWidget {
-  const SettingsWidget({Key? key}) : super(key: key);
-
-  @override
-  State<SettingsWidget> createState() => _SettingsWidgetState();
-}
-
-class _SettingsWidgetState extends State<SettingsWidget> {
+class SettingsWidget extends StatelessWidget {
   static const String backgroundImageDark = 'assets/images/backgrounds/background-pexels-pixabay-461940.jpg';
   static const String backgroundImageLight = 'assets/images/backgrounds/beach-sun.jpg';
 
-  final SettingsStore _settings = serviceLocator.get();
-
-  void themeBrightnessChanged(bool? isDark) {
-    if (isDark != _settings.isDarkTheme) {
-      _settings.toggleTheme();
-    }
-  }
-
-  void changeLanguage(AppLanguage? selectedLanguage) {
-    final AppLanguage? language = codesToLanguageMap[_settings.locale.languageCode];
-    if (selectedLanguage != language) {
-      _settings.changeLocale(selectedLanguage);
-    }
-  }
+  const SettingsWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
     final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
 
-    return Observer(builder: (context) {
-      return Scaffold(
-        appBar: AppBar(
-          title: AppBarTitle(title: localizations.preferences),
-        ),
-        body: FullScreenAssetBackground(
-          assetImagePath: isDarkTheme ? backgroundImageDark : backgroundImageLight,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: spacing(1)),
-              child: Column(
-                children: <Widget>[
-                  HeroSettingsWidget(),
-                  ListTile(
-                    leading: const Icon(Icons.language),
-                    title: Text(localizations.prefLanguage),
-                  ),
-                  ListTile(
-                    dense: true,
-                    title: Text(
-                      localizations.prefLangFr,
-                      style: Theme.of(context).textTheme.bodyText1,
-                    ),
-                    onTap: () => changeLanguage(AppLanguage.fr),
-                    leading: Radio<AppLanguage>(
-                      value: AppLanguage.fr,
-                      activeColor: Theme.of(context).colorScheme.primary,
-                      groupValue: codesToLanguageMap[_settings.locale.languageCode],
-                      onChanged: changeLanguage,
-                    ),
-                  ),
-                  ListTile(
-                    dense: true,
-                    title: Text(
-                      localizations.prefLangEn,
-                      style: Theme.of(context).textTheme.bodyText1,
-                    ),
-                    onTap: () => changeLanguage(AppLanguage.en),
-                    leading: Radio<AppLanguage>(
-                      value: AppLanguage.en,
-                      activeColor: Theme.of(context).colorScheme.primary,
-                      groupValue: codesToLanguageMap[_settings.locale.languageCode],
-                      onChanged: changeLanguage,
-                    ),
-                  ),
-                  const Divider(),
-                  ListTile(
-                    leading: Icon(isDarkTheme ? Icons.nightlight : Icons.sunny),
-                    title: Text(localizations.prefThemeBrightness),
-                  ),
-                  ListTile(
-                    dense: true,
-                    title: Text(
-                      localizations.prefThemeBrightnessLight,
-                      style: Theme.of(context).textTheme.bodyText1,
-                    ),
-                    onTap: () => themeBrightnessChanged(false),
-                    leading: Radio<bool>(
-                      value: false,
-                      activeColor: Theme.of(context).colorScheme.primary,
-                      groupValue: isDarkTheme,
-                      onChanged: themeBrightnessChanged,
-                    ),
-                  ),
-                  ListTile(
-                    dense: true,
-                    title: Text(
-                      localizations.prefThemeBrightnessDark,
-                      style: Theme.of(context).textTheme.bodyText1,
-                    ),
-                    onTap: () => themeBrightnessChanged(true),
-                    leading: Radio<bool>(
-                      value: true,
-                      activeColor: Theme.of(context).colorScheme.primary,
-                      groupValue: isDarkTheme,
-                      onChanged: themeBrightnessChanged,
-                    ),
-                  ),
-                  const Divider(),
-                ],
-              ),
+    return Scaffold(
+      appBar: AppBar(
+        title: AppBarTitle(title: localizations.preferences),
+      ),
+      body: FullScreenAssetBackground(
+        assetImagePath: isDarkTheme ? backgroundImageDark : backgroundImageLight,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: spacing(1)),
+            child: Column(
+              children: <Widget>[
+                HeroSettingsWidget(),
+                const LanguageSettingWidget(),
+                const Divider(),
+                const BrightnessSettingWidget(),
+                const Divider(),
+              ],
             ),
           ),
         ),
-      );
-    });
+      ),
+    );
   }
 }

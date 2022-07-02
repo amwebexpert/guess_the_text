@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '/theme/theme.utils.dart';
 import '/theme/widgets/app.bar.title.widget.dart';
 import '/theme/widgets/full.screen.bg.image.widget.dart';
-
 import 'card.widget.dart';
 
 class AboutWidget extends StatefulWidget {
