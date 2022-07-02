@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:guess_the_text/features/categories/category.icons.map.dart';
-import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/features/categories/api.category.model.dart';
+import 'package:guess_the_text/features/categories/category.icons.map.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
+import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/theme/theme.utils.dart';
 
 class CategoryWidget extends StatelessWidget {

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guess_the_text/features/game/challenge/edit.text.to.guess.widget.dart';
+import 'package:guess_the_text/features/game/challenge/on.the.fly.challenge.model.dart';
 import 'package:guess_the_text/features/game/game.fab.widget.dart';
 import 'package:guess_the_text/features/game/game.layout.landscape.widget.dart';
 import 'package:guess_the_text/features/game/game.layout.portrait.widget.dart';
-import 'package:guess_the_text/features/game/challenge/on.the.fly.challenge.model.dart';
-import 'package:guess_the_text/features/game/challenge/edit.text.to.guess.widget.dart';
+import 'package:guess_the_text/features/game/game.store.dart';
 import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
-import 'package:guess_the_text/features/game/game.store.dart';
 import 'package:guess_the_text/services/qr/qr.code.service.dart';
 import 'package:guess_the_text/store/fixed.delay.spinner.store.dart';
 import 'package:guess_the_text/store/store.state.enum.dart';

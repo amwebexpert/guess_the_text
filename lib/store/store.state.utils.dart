@@ -1,4 +1,5 @@
 import 'package:mobx/mobx.dart';
+
 import 'store.state.enum.dart';
 
 StoreState fromFuture(FutureStatus? status) {

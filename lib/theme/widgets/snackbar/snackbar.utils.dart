@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guess_the_text/theme/theme.utils.dart';
-import 'package:guess_the_text/theme/widgets/snackbar/snackbar.widget.dart';
 import 'package:guess_the_text/theme/widgets/snackbar/snackbar.model.dart';
+import 'package:guess_the_text/theme/widgets/snackbar/snackbar.widget.dart';
 
 void showAppSnackbar({required BuildContext context, required String message, required SnackbarType type}) {
   const duration = Duration(milliseconds: 2000);

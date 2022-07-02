@@ -1,13 +1,12 @@
 import 'dart:ui';
-import 'package:universal_io/io.dart';
 
 import 'package:flutter/scheduler.dart';
 import 'package:guess_the_text/service.locator.dart';
-import 'package:guess_the_text/utils/language.utils.dart';
-import 'package:mobx/mobx.dart';
-
 import 'package:guess_the_text/services/storage/shared.preferences.enum.dart';
 import 'package:guess_the_text/services/storage/shared.preferences.services.dart';
+import 'package:guess_the_text/utils/language.utils.dart';
+import 'package:mobx/mobx.dart';
+import 'package:universal_io/io.dart';
 
 import '../../services/logger/logger.service.dart';
 

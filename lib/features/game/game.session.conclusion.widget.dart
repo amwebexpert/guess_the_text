@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:guess_the_text/features/game/text_to_guess/text.to.guess.widget.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
+import 'package:guess_the_text/features/game/text_to_guess/text.to.guess.widget.dart';
 import 'package:guess_the_text/service.locator.dart';
 
 class GameSessionConclusion extends StatelessWidget {

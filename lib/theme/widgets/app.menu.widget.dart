@@ -30,7 +30,6 @@ class AppMenu extends StatelessWidget {
             Navigator.pushNamed(context, '/categories');
           },
         ),
-        const Divider(thickness: 2),
         MenuItemWidget(
           titleLabel: localizations.adhocText,
           iconName: 'adhoc',
@@ -39,7 +38,6 @@ class AppMenu extends StatelessWidget {
             onCreateChallengePress();
           },
         ),
-        const Divider(thickness: 2),
         MenuItemWidget(
           titleLabel: localizations.appMenuReadChalenge,
           iconName: 'adhocScan',
@@ -48,7 +46,6 @@ class AppMenu extends StatelessWidget {
             onAcceptChallengePress();
           },
         ),
-        const Divider(thickness: 2),
         MenuItemWidget(
           titleLabel: localizations.preferences,
           iconName: 'preferences',
@@ -57,7 +54,6 @@ class AppMenu extends StatelessWidget {
             Navigator.pushNamed(context, '/settings');
           },
         ),
-        const Divider(thickness: 2),
         MenuItemWidget(
           titleLabel: localizations.about,
           iconName: 'info',
@@ -66,7 +62,6 @@ class AppMenu extends StatelessWidget {
             Navigator.pushNamed(context, '/about');
           },
         ),
-        const Divider(thickness: 2),
       ],
     );
   }

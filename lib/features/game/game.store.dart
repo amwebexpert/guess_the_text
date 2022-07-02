@@ -1,14 +1,14 @@
-import 'package:guess_the_text/features/game/game.played.items.storage.service.dart';
-import 'package:guess_the_text/features/game/text_to_guess/text.to.guess.model.dart';
+import 'dart:math';
+
 import 'package:guess_the_text/features/categories/api.category.model.dart';
 import 'package:guess_the_text/features/game/api.text.model.dart';
 import 'package:guess_the_text/features/game/api.texts.service.dart';
+import 'package:guess_the_text/features/game/game.played.items.storage.service.dart';
+import 'package:guess_the_text/features/game/text_to_guess/text.to.guess.model.dart';
 import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:guess_the_text/utils/extensions/string.extensions.dart';
 import 'package:mobx/mobx.dart';
-
-import 'dart:math';
 
 // Include generated file
 part 'game.store.g.dart';
