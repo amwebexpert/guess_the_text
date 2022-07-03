@@ -7,11 +7,8 @@ class AppMenu extends StatelessWidget {
   final Function() onCreateChallengePress;
   final Function() onAcceptChallengePress;
 
-  const AppMenu({
-    Key? key,
-    required this.onCreateChallengePress,
-    required this.onAcceptChallengePress,
-  }) : super(key: key);
+  const AppMenu({Key? key, required this.onCreateChallengePress, required this.onAcceptChallengePress})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

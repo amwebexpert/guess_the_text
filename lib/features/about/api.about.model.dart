@@ -1,16 +1,14 @@
-class ApiAbout {
-  final String name;
-  final String version;
-  final String description;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  ApiAbout({this.name = 'hangman', this.version = 'N/A', this.description = 'N/A'});
+part 'api.about.model.freezed.dart';
+part 'api.about.model.g.dart';
 
-  factory ApiAbout.fromJson(Map<String, dynamic> json) {
-    return ApiAbout(name: json['name'], description: json['description'], version: json['version']);
-  }
+@Freezed()
+class ApiAbout with _$ApiAbout {
+  const factory ApiAbout(
+      {@Default('hangman') String name,
+      @Default('N/A') String version,
+      @Default('N/A') String description}) = _ApiAbout;
 
-  @override
-  String toString() {
-    return '{ $name, $version }';
-  }
+  factory ApiAbout.fromJson(Map<String, dynamic> json) => _$ApiAboutFromJson(json);
 }

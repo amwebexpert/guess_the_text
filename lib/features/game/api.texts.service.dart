@@ -36,7 +36,7 @@ class TextsService {
       return ApiAbout.fromJson(body);
     } catch (e) {
       logger.error('About request failed', e);
-      return ApiAbout();
+      return const ApiAbout();
     }
   }
 
