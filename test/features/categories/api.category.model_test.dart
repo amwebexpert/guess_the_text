@@ -40,17 +40,23 @@ void main() {
     });
 
     test('should implement copyWith', () {
+      // given
+      const newUUID = 'Chuck Norris UUID is a fist of fury';
+
       // when
-      final newCaterogy = mockUSStatesCategory.copyWith(uuid: 'Chuck Norris UUID is a fist of fury');
+      final newCaterogy = mockUSStatesCategory.copyWith(uuid: newUUID);
 
       // then
       expect(newCaterogy.hashCode, isNot(mockUSStatesCategory.hashCode));
+      expect(newCaterogy.uuid, isNot(mockUSStatesCategory.uuid));
+      expect(newCaterogy.uuid, newUUID);
 
       // when
       final twinCategory = mockUSStatesCategory.copyWith();
 
       // then
       expect(twinCategory.hashCode, mockUSStatesCategory.hashCode);
+      expect(twinCategory, mockUSStatesCategory);
     });
   });
 }
