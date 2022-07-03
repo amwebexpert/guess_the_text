@@ -19,6 +19,7 @@
   "appVersion": "Version",
   "categories": "Catégories",
   "category": "Catégorie",
+  "connectivityStatus": "Connexion",
   "deviceInfo": "Votre appareil…",
   "email": "Courriel",
   "githubProject": "GitHub",
