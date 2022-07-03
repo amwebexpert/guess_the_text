@@ -45,9 +45,7 @@ Route? onGenerateRoute(RouteSettings settings) {
 }
 
 Uri extractUri(RouteSettings settings) {
-  final LoggerService logger = serviceLocator.get();
-
-  logger.info('Navigation to ${settings.name}');
+  final LoggerService logger = serviceLocator.get()..info('Navigation to ${settings.name}');
   final uriLink = Uri.parse(settings.name ?? '/');
 
   if (uriLink.hasQuery) {

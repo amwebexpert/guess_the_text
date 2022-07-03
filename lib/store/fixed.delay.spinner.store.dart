@@ -1,6 +1,7 @@
+import 'package:mobx/mobx.dart';
+
 import '/store/store.state.enum.dart';
 import '/store/store.state.utils.dart';
-import 'package:mobx/mobx.dart';
 
 // Include generated file
 part 'fixed.delay.spinner.store.g.dart';

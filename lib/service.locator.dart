@@ -28,18 +28,16 @@ Future<GetIt> initServiceLocator() async {
 
   final gameStorageService = GamePlayedItemsStorageService();
   await gameStorageService.init();
-  serviceLocator.registerSingleton<GamePlayedItemsStorageService>(gameStorageService);
-
-  serviceLocator.registerLazySingleton<DeviceInfoService>(() => DeviceInfoService());
-  serviceLocator.registerLazySingleton<TextsService>(() => TextsService());
-  serviceLocator.registerLazySingleton<GameStore>(() => GameStore());
-  serviceLocator.registerLazySingleton<FixedDelaySpinnerStore>(() => FixedDelaySpinnerStore());
-  serviceLocator.registerLazySingleton<SettingsStore>(() => SettingsStore());
-
-  serviceLocator.registerLazySingleton<QrCodeService>(() => QrCodeService());
-
-  serviceLocator.registerLazySingleton<RandomizerUtils>(() => RandomizerUtils());
-  serviceLocator.registerLazySingleton<AnimationUtils>(() => AnimationUtils(serviceLocator.get<RandomizerUtils>()));
+  serviceLocator
+    ..registerSingleton<GamePlayedItemsStorageService>(gameStorageService)
+    ..registerLazySingleton<DeviceInfoService>(() => DeviceInfoService())
+    ..registerLazySingleton<TextsService>(() => TextsService())
+    ..registerLazySingleton<GameStore>(() => GameStore())
+    ..registerLazySingleton<FixedDelaySpinnerStore>(() => FixedDelaySpinnerStore())
+    ..registerLazySingleton<SettingsStore>(() => SettingsStore())
+    ..registerLazySingleton<QrCodeService>(() => QrCodeService())
+    ..registerLazySingleton<RandomizerUtils>(() => RandomizerUtils())
+    ..registerLazySingleton<AnimationUtils>(() => AnimationUtils(serviceLocator.get<RandomizerUtils>()));
 
   return serviceLocator;
 }

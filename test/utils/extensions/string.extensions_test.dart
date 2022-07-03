@@ -12,6 +12,7 @@ void main() {
       'Norris': false,
     };
 
+    // ignore: cascade_invocations
     testCases.forEach((input, expected) {
       test('"$input".isBlank should return $expected', () {
         expect(input.isBlank, expected);
@@ -32,6 +33,7 @@ void main() {
       withDia: withoutDia,
     };
 
+    // ignore: cascade_invocations
     testCases.forEach((input, expected) {
       test('should return "$expected" for input "$input"', () {
         expect(input.removeDiacritics(), expected);

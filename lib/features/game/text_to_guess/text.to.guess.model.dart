@@ -13,10 +13,9 @@ class TextToGuess {
   }
 
   factory TextToGuess.from(TextToGuess original) {
-    TextToGuess clone = TextToGuess(characters: original.characters, original: original.original);
-
-    clone.charsTried = original.charsTried;
-    clone.badTrialCount = original.badTrialCount;
+    TextToGuess clone = TextToGuess(characters: original.characters, original: original.original)
+      ..charsTried = original.charsTried
+      ..badTrialCount = original.badTrialCount;
 
     return clone;
   }
