@@ -19,6 +19,7 @@ class MenuItemWidget extends StatelessWidget {
             tag: 'app-menu-item-$iconName',
             child: Icon(iconsMap[iconName]),
           ),
+          trailing: const Icon(Icons.arrow_right),
           title: Text(titleLabel),
           onTap: onTap,
         ),
