@@ -33,7 +33,7 @@ class _ConnectivityStatusWidgetState extends State<ConnectivityStatusWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final stasusText = _connectivityResult?.toString().split('.')[1] ?? '?';
+    final stasusText = _connectivityResult?.toString().split('.')[1] ?? '-';
     return Text(stasusText);
   }
 }
