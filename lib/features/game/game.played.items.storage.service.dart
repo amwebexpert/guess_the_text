@@ -27,8 +27,7 @@ class GamePlayedItemsStorageService {
   Future<List<String>> addPlayedItems(String categoryUuid, List<String> newItems) async {
     final record = playedItemsStore.record(categoryUuid);
     final List existingItems = (await record.get(db) ?? []);
-    final List items = existingItems.toSet().toList();
-    items.addAll(newItems);
+    final List items = existingItems.toSet().toList()..addAll(newItems);
 
     await record.put(db, items);
     return items.map((e) => e.toString()).toList();
@@ -37,8 +36,7 @@ class GamePlayedItemsStorageService {
   Future<List<String>> addPlayedItem(String categoryUuid, String item) async {
     final record = playedItemsStore.record(categoryUuid);
     final List existingItems = (await record.get(db) ?? []);
-    final List items = existingItems.toSet().toList();
-    items.add(item);
+    final List items = existingItems.toSet().toList()..add(item);
     await record.put(db, items);
 
     return items.map((e) => e.toString()).toList();

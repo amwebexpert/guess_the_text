@@ -75,8 +75,9 @@ abstract class _GameStoreBase with Store {
     // get only the texts that have not been played yet
     apiTexts = apiTexts.where((apiText) => !currentCategoryPlayedItems.contains(apiText.original)).toList();
 
-    logger.info('--> ${currentCategoryPlayedItems.length} elements played: [${currentCategoryPlayedItems.join(', ')}]');
-    logger.info('--> ${apiTexts.length} texts remaining');
+    logger
+      ..info('--> ${currentCategoryPlayedItems.length} elements played: [${currentCategoryPlayedItems.join(', ')}]')
+      ..info('--> ${apiTexts.length} texts remaining');
     return apiTexts;
   }
 

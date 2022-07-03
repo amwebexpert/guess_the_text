@@ -22,10 +22,13 @@ linter:
   # `// ignore_for_file: name_of_lint` syntax on the line or in the file
   # producing the lint.
   rules:
+    always_declare_return_types: true
     avoid_print: false
+    cascade_invocations: true
+    directives_ordering: true
+    do_not_use_environment: true
     prefer_single_quotes: true
     require_trailling_commas: true
-    always_declare_return_types: true
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

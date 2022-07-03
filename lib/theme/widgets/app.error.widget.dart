@@ -9,8 +9,7 @@ class AppErrorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final LoggerService logger = serviceLocator.get();
-    logger.error(details.exception.toString(), details.stack);
+    serviceLocator.get<LoggerService>().error(details.exception.toString(), details.stack);
 
     return const Material(
       child: Center(
