@@ -1,25 +1,17 @@
-class ApiCategory {
-  final int id;
-  final String uuid;
-  final String langCode;
-  final String name;
-  final String iconName;
-  final bool isCustom;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  ApiCategory(
-      {this.id = 0, this.uuid = '', this.langCode = '', this.name = '', this.iconName = '', this.isCustom = false});
+part 'api.category.model.freezed.dart';
+part 'api.category.model.g.dart';
 
-  bool get isEmpty => id == 0;
+@Freezed()
+class ApiCategory with _$ApiCategory {
+  const factory ApiCategory(
+      {@Default(0) id,
+      @Default('') uuid,
+      @Default('') langCode,
+      @Default('') name,
+      @Default('') iconName,
+      @Default(false) isCustom}) = _ApiCategory;
 
-  factory ApiCategory.fromJson(Map<String, dynamic> json) => ApiCategory(
-      id: json['id'] as int,
-      uuid: json['uuid'] as String,
-      langCode: json['langcode'] as String,
-      name: json['name'] as String,
-      iconName: json['iconname'] as String);
-
-  @override
-  String toString() {
-    return '{ $id, $langCode, $name, $iconName }';
-  }
+  factory ApiCategory.fromJson(Map<String, dynamic> json) => _$ApiCategoryFromJson(json);
 }

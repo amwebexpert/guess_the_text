@@ -24,7 +24,7 @@ abstract class _GameStoreBase with Store {
   final GamePlayedItemsStorageService gamePlayedItemsStorageService = serviceLocator.get();
 
   @observable
-  ApiCategory currentCategory = ApiCategory();
+  ApiCategory currentCategory = const ApiCategory();
 
   @observable
   TextToGuess textToGuess = TextToGuess();
