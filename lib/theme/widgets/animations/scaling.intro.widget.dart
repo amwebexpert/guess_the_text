@@ -4,7 +4,7 @@ const welcomeImage = 'assets/images/hangman-happy.svg';
 
 class ScalingIntroWidget extends StatefulWidget {
   final Widget child;
-  final void Function()? onAnimationComplete;
+  final VoidCallback? onAnimationComplete;
 
   const ScalingIntroWidget({Key? key, required this.child, this.onAnimationComplete}) : super(key: key);
 
@@ -46,9 +46,7 @@ class _ScalingIntroWidgetState extends State<ScalingIntroWidget> with SingleTick
     }
 
     await _animController.forward(from: 0);
-    if (widget.onAnimationComplete != null) {
-      widget.onAnimationComplete!();
-    }
+    widget.onAnimationComplete?.call();
   }
 
   @override

@@ -14,7 +14,7 @@ FloatingActionButton(
 );
 ```
 
-#### :heavy_check_mark: prefer
+#### :white_check_mark: prefer
 
 ```dart
 FloatingActionButton(
@@ -22,4 +22,50 @@ FloatingActionButton(
       backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(fadingAnim.value),
       child: const MyChild(),
 );
+```
+
+
+## Classic callback definitions
+
+Prefer using explicit typed known functions like `VoidCallback` for common callbacks
+
+#### :x: avoid
+
+```dart
+class GameFabWidget extends StatefulWidget {
+  final void Function() onPressed;
+  . . .
+```
+
+#### :white_check_mark: prefer
+
+```dart
+class GameFabWidget extends StatefulWidget {
+  final VoidCallback onPressed;
+  . . .
+```
+
+
+## Calling optional functions
+
+Use the `?.call()` for running a nullable callback function
+
+#### :x: avoid
+
+```dart
+  Future<void> kickOffAnimation() async {
+    await _animController.forward(from: 0);
+    if (widget.onAnimationComplete != null) {
+      widget.onAnimationComplete!();
+    }
+  }
+```
+
+#### :white_check_mark: prefer
+
+```dart
+  Future<void> kickOffAnimation() async {
+    await _animController.forward(from: 0);
+    widget.onAnimationComplete?.call();
+  }
 ```

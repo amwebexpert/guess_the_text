@@ -4,7 +4,7 @@ const welcomeImage = 'assets/images/hangman-happy.svg';
 
 class SlideIntroWidget extends StatefulWidget {
   final Widget child;
-  final void Function()? onAnimationComplete;
+  final VoidCallback? onAnimationComplete;
   final Duration duration;
   final Offset offsetStart;
   final Offset offsetEnd;
@@ -48,9 +48,7 @@ class _SlideIntroWidgetState extends State<SlideIntroWidget> with SingleTickerPr
     }
 
     await _animController.forward(from: 0);
-    if (widget.onAnimationComplete != null) {
-      widget.onAnimationComplete!();
-    }
+    widget.onAnimationComplete?.call();
   }
 
   @override
