@@ -14,7 +14,7 @@ FloatingActionButton(
 );
 ```
 
-#### :heavy_check_mark: prefer
+#### :white_check_mark: prefer
 
 ```dart
 FloatingActionButton(
@@ -37,7 +37,7 @@ class GameFabWidget extends StatefulWidget {
   . . .
 ```
 
-#### :heavy_check_mark: prefer
+#### :white_check_mark: prefer
 
 ```dart
 class GameFabWidget extends StatefulWidget {
@@ -61,7 +61,7 @@ Use the `?.call()` for running a nullable callback function
   }
 ```
 
-#### :heavy_check_mark: prefer
+#### :white_check_mark: prefer
 
 ```dart
   Future<void> kickOffAnimation() async {
