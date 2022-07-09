@@ -20,6 +20,7 @@
   "appVersion": "Version",
   "categories": "Categories",
   "category": "Category",
+  "connectivityStatus": "Connectivity",
   "deviceInfo": "About your device…",
   "email": "Email",
   "githubProject": "GitHub",
