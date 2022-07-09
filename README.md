@@ -124,49 +124,32 @@ If you want to see test coverage in vscode, take a look at following extensions 
 
 ## Build & Publish Webapp
 
-Adjust the semversion of `pubspec.yaml` first, then generate the binary
-
-    flutter clean
-    flutter pub get
-    flutter build web --release --base-href=/guess_the_text/
+- create a branch
+- adjust the semversion of `pubspec.yaml` first
+- execute the script: `./scripts/build-web.sh`. Then the webapp will be available under `/build/web` folder.
 
 Update the online demo deployed as GitHub pages by doing this additional step:
-- copy the build result from `/build/web` folder into the `/docs` folder
-- git add .
-- git commit -m"docs: new online demo web release"
-- git push
+
+- execute the script: `./scripts/publish-web.sh`
+
+### References
 
 - [Build and release a web app](https://docs.flutter.dev/deployment/web)
 
-then the webapp will be available under `/build/web` folder
+## Build Android bundle
 
-## Build & Publish to Google Play
+- create a branch
+- adjust the semversion of `pubspec.yaml` first
+- execute the script: `./scripts/build-android.sh`. Then the android bundle will be available under `/build/app/outputs/bundle/release/app-release.aab` folder.
+- publish the `.app` file to Google Play
 
-Adjust the semversion of `pubspec.yaml` first, then generate the binary
+## Build & Run Linux build
 
-    flutter clean
-    flutter pub get
-    flutter build appbundle --release
-
-Tag creation commands
-
-    git commit -m"feature: my super feature"
-    git push
-    git tag <my-super-tag>
-    git push origin --tags
-
-# Build & Run Linux build
-
-To create a build for linux, run following command:
-
-    flutter build linux
-
-Flutter will build the application for linux, an executable will be found at following path:
-
-    /build/linux/x64/release/bundle
+- create a branch
+- adjust the semversion of `pubspec.yaml` first
+- execute the script: `./scripts/build-linux.sh`. Flutter will build the application for linux, an executable will be found at following path: `/build/linux/x64/release/bundle`
 
 From there, just run the `guess_the_text` executable to run the build!
-
 
 ## Start Flutter app on Simulator or a specific device
 
