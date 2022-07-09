@@ -127,6 +127,9 @@ If you want to see test coverage in vscode, take a look at following extensions 
 - create a branch
 - adjust the semversion of `pubspec.yaml` first
 - execute the script: `./scripts/build-web.sh`. Then the webapp will be available under `/build/web` folder.
+
+Update the online demo deployed as GitHub pages by doing this additional step:
+
 - execute the script: `./scripts/publish-web.sh`
 
 ### References
