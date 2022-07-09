@@ -20,7 +20,8 @@ void main() {
       final result = animationUtils.getAnimationPath();
 
       // then
-      expect(result, 'assets/animations/loading/87735-distance-learning.json');
+      expect(result, startsWith('assets/animations/loading/'));
+      expect(result, endsWith('.json'));
     });
   });
 }
