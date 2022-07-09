@@ -124,36 +124,23 @@ If you want to see test coverage in vscode, take a look at following extensions 
 
 ## Build & Publish Webapp
 
-Adjust the semversion of `pubspec.yaml` first, then generate the binary
+- create a branch
+- adjust the semversion of `pubspec.yaml` first
+- optionally add tag by using `push-version-tag.sh` script
+- execute the script: `./scripts/build-web.sh`. Then the webapp will be available under `/build/web` folder.
+- execute the script: `./scripts/publish-web.sh`
 
-    flutter clean
-    flutter pub get
-    flutter build web --release --base-href=/guess_the_text/
-
-Update the online demo deployed as GitHub pages by doing this additional step:
-- copy the build result from `/build/web` folder into the `/docs` folder
-- git add .
-- git commit -m"docs: new online demo web release"
-- git push
+### References
 
 - [Build and release a web app](https://docs.flutter.dev/deployment/web)
 
-then the webapp will be available under `/build/web` folder
-
 ## Build & Publish to Google Play
 
-Adjust the semversion of `pubspec.yaml` first, then generate the binary
-
-    flutter clean
-    flutter pub get
-    flutter build appbundle --release
-
-Tag creation commands
-
-    git commit -m"feature: my super feature"
-    git push
-    git tag <my-super-tag>
-    git push origin --tags
+- create a branch
+- adjust the semversion of `pubspec.yaml` first
+- optionally add tag by using `push-version-tag.sh` script
+- adjust the semversion of `pubspec.yaml` first
+- execute the script: `./scripts/build-android.sh`. Then the android bundle will be available under `/build/` folder.
 
 # Build & Run Linux build
 
