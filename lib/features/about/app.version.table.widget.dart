@@ -7,6 +7,7 @@ import '/features/about/privacy.policy.widget.dart';
 import '/features/game/api.texts.service.dart';
 import '/service.locator.dart';
 import '/theme/widgets/text.link.widget.dart';
+import 'card.app.connectivity.status.dart';
 
 class AppVersionTable extends StatefulWidget {
   const AppVersionTable({Key? key}) : super(key: key);
@@ -86,6 +87,12 @@ class _AppVersionTableState extends State<AppVersionTable> {
               cells: <DataCell>[
                 DataCell(Text(localizations.appBackendVersion)),
                 DataCell(Text(_apiAbout.version)),
+              ],
+            ),
+            DataRow(
+              cells: <DataCell>[
+                DataCell(Text(localizations.connectivityStatus)),
+                const DataCell(ConnectivityStatusWidget()),
               ],
             ),
             DataRow(
