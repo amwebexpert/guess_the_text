@@ -4,5 +4,5 @@ flutter clean
 echo "Step 2) flutter pub get"
 flutter pub get
 
-echo "Step 3) flutter build appbundle"
-flutter build appbundle --release
+echo "Step 3) flutter build linux"
+flutter build linux

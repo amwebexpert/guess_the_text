@@ -126,7 +126,6 @@ If you want to see test coverage in vscode, take a look at following extensions 
 
 - create a branch
 - adjust the semversion of `pubspec.yaml` first
-- optionally add tag by using `push-version-tag.sh` script
 - execute the script: `./scripts/build-web.sh`. Then the webapp will be available under `/build/web` folder.
 - execute the script: `./scripts/publish-web.sh`
 
@@ -134,26 +133,20 @@ If you want to see test coverage in vscode, take a look at following extensions 
 
 - [Build and release a web app](https://docs.flutter.dev/deployment/web)
 
-## Build & Publish to Google Play
+## Build Android bundle
 
 - create a branch
 - adjust the semversion of `pubspec.yaml` first
-- optionally add tag by using `push-version-tag.sh` script
+- execute the script: `./scripts/build-android.sh`. Then the android bundle will be available under `/build/app/outputs/bundle/release/app-release.aab` folder.
+- publish the `.app` file to Google Play
+
+## Build & Run Linux build
+
+- create a branch
 - adjust the semversion of `pubspec.yaml` first
-- execute the script: `./scripts/build-android.sh`. Then the android bundle will be available under `/build/` folder.
-
-# Build & Run Linux build
-
-To create a build for linux, run following command:
-
-    flutter build linux
-
-Flutter will build the application for linux, an executable will be found at following path:
-
-    /build/linux/x64/release/bundle
+- execute the script: `./scripts/build-linux.sh`. Flutter will build the application for linux, an executable will be found at following path: `/build/linux/x64/release/bundle`
 
 From there, just run the `guess_the_text` executable to run the build!
-
 
 ## Start Flutter app on Simulator or a specific device
 
