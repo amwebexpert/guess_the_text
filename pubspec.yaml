@@ -57,7 +57,6 @@ dependencies:
   shared_preferences: ^2.0.13
   universal_io: ^2.0.4
   url_launcher: ^6.0.20
-  responsive_framework: ^0.2.0
 
 dev_dependencies:
   integration_test:
