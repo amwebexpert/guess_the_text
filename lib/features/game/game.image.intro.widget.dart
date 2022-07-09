@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 const welcomeImage = 'assets/images/hangman-happy.svg';
 
 class GameImageIntroWidget extends StatefulWidget {
-  final void Function() onAnimationComplete;
+  final VoidCallback onAnimationComplete;
 
   const GameImageIntroWidget({Key? key, required this.onAnimationComplete}) : super(key: key);
 

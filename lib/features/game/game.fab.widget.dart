@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class GameFabWidget extends StatefulWidget {
-  final void Function() onPressed;
+  final VoidCallback onPressed;
 
   const GameFabWidget({Key? key, required this.onPressed}) : super(key: key);
 
