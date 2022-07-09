@@ -214,3 +214,4 @@ From there, just run the `guess_the_text` executable to run the build!
 - [Happy robot 1](https://freesvg.org/happy-robot)
 - [Happy robot 2](https://freesvg.org/happy-robot-remix)
 - [Happy robot 3](https://freesvg.org/1528841367)
+- [InkScape SVG editor](https://inkscape.org/release/inkscape-1.2/)
