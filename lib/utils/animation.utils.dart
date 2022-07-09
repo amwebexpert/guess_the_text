@@ -9,7 +9,6 @@ const Set<String> _animationUniqueNames = {
   '87735-distance-learning',
   '18365-animaton-for-e-learning-web-site',
   '24827-learn',
-  '69067-education-blue',
   '79657-child-learning',
   '86671-online-learning',
   '92377-quiz-mode',
