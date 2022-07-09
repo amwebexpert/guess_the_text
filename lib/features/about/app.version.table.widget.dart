@@ -10,9 +10,7 @@ import '/theme/widgets/text.link.widget.dart';
 import 'card.app.connectivity.status.dart';
 
 class AppVersionTable extends StatefulWidget {
-  const AppVersionTable({
-    Key? key,
-  }) : super(key: key);
+  const AppVersionTable({Key? key}) : super(key: key);
 
   @override
   State<AppVersionTable> createState() => _AppVersionTableState();
@@ -23,7 +21,7 @@ class _AppVersionTableState extends State<AppVersionTable> {
 
   String _appVersion = '';
   String _appBuildNumber = '';
-  ApiAbout _apiAbout = ApiAbout();
+  ApiAbout _apiAbout = const ApiAbout();
 
   @override
   void initState() {

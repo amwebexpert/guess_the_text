@@ -1,19 +1,11 @@
-class ApiText {
-  final int id;
-  final String uuid;
-  final String original;
-  final String normalized;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  ApiText({this.id = 0, this.uuid = '', this.original = '', this.normalized = ''});
+part 'api.text.model.freezed.dart';
+part 'api.text.model.g.dart';
 
-  factory ApiText.fromJson(Map<String, dynamic> json) => ApiText(
-      id: json['id'] as int,
-      uuid: json['uuid'] as String,
-      original: json['original'] as String,
-      normalized: json['normalized'] as String);
+@Freezed()
+class ApiText with _$ApiText {
+  const factory ApiText({@Default(0) id, @Default('') uuid, @Default('') original, @Default('') normalized}) = _ApiText;
 
-  @override
-  String toString() {
-    return '{ $id, $original }';
-  }
+  factory ApiText.fromJson(Map<String, dynamic> json) => _$ApiTextFromJson(json);
 }
