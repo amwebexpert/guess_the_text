@@ -3,5 +3,5 @@ class Contributor {
   String email;
   String linkedIn;
 
-  Contributor(this.name, this.email, this.linkedIn);
+  Contributor({this.name, this.email, this.linkedIn});
 }
