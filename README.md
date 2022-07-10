@@ -171,6 +171,7 @@ From there, just run the `guess_the_text` executable to run the build!
 - [Existing Dart language extensions](https://pub.dev/packages/dartx)
 - [Platform conditional widget rendering - Material / Cupertino management](https://pub.dev/packages/flutter_platform_widgets)
 - [Platform conditional widget rendering - Medium article](https://medium.com/flutter/do-flutter-apps-dream-of-platform-aware-widgets-7d7ed7b4624d)
+- [How to Parse JSON in Dart/Flutter with Code Generation using Freezed](https://codewithandrea.com/articles/parse-json-dart-codegen-freezed/)
 
 
 ## Troubleshothing
