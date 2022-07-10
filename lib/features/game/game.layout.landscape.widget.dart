@@ -10,11 +10,6 @@ class GameLayoutLandscapeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final leftFlexWeight = ResponsiveValue(
-      context,
-      defaultValue: 1,
-      valueWhen: const [Condition.largerThan(name: TABLET, value: 1)],
-    ).value!;
     final rightFlexWeight = ResponsiveValue(
       context,
       defaultValue: 1,
@@ -24,7 +19,7 @@ class GameLayoutLandscapeWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Flexible(flex: leftFlexWeight, child: const TextAndKeyboardWidget()),
+        const Flexible(flex: 1, child: TextAndKeyboardWidget()),
         Flexible(flex: rightFlexWeight, child: const GameImageWidget()),
       ],
     );
