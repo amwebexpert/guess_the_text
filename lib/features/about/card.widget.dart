@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guess_the_text/features/about/author.table.widget.dart';
+import 'package:guess_the_text/features/about/author.info.table.widget.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import '/features/about/card.app.description.dart';
@@ -40,7 +40,7 @@ class AboutCard extends StatelessWidget {
                     ),
                     ResponsiveRowColumnItem(
                       rowFlex: 1,
-                      child: AuthorTable(),
+                      child: AuthorInfoTable(),
                     ),
                   ],
                 ),

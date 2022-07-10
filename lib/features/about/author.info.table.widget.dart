@@ -4,14 +4,14 @@ import 'package:guess_the_text/features/about/contributor.model.dart';
 
 import '../../theme/widgets/text.link.widget.dart';
 
-class AuthorTable extends StatefulWidget {
-  const AuthorTable({Key? key}) : super(key: key);
+class AuthorInfoTable extends StatefulWidget {
+  const AuthorInfoTable({Key? key}) : super(key: key);
 
   @override
-  State<AuthorTable> createState() => _AuthorTableState();
+  State<AuthorInfoTable> createState() => _AuthorInfoTableState();
 }
 
-class _AuthorTableState extends State<AuthorTable> {
+class _AuthorInfoTableState extends State<AuthorInfoTable> {
   final List<Contributor> _contributors = <Contributor>[
     Contributor(name:  'André Masson', email: 'amwebexpert@gmail.com', linkedIn: 'https://www.linkedin.com/in/amwebexpert'),
     Contributor(name: 'Jef van der Avoirt', email: 'jef.v.d.a@live.be', linkedIn: 'https://www.linkedin.com/in/jefvda'),
