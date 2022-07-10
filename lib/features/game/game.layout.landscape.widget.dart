@@ -22,6 +22,7 @@ class GameLayoutLandscapeWidget extends StatelessWidget {
     ).value!;
 
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Flexible(flex: leftFlexWeight, child: const TextAndKeyboardWidget()),
         Flexible(flex: rightFlexWeight, child: const GameImageWidget()),
