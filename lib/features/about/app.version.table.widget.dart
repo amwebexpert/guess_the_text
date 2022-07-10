@@ -23,7 +23,7 @@ class _AppVersionTableState extends State<AppVersionTable> {
   String _appVersion = '';
   String _appBuildNumber = '';
   ApiAbout _apiAbout = const ApiAbout();
-  final Contributor _contributor = Contributor( 'André Masson', 'amwebexpert@gmail.com', 'https://www.linkedin.com/in/amwebexpert');
+  final Contributor _contributor = Contributor(name:  'André Masson', email: 'amwebexpert@gmail.com', linkedIn: 'https://www.linkedin.com/in/amwebexpert');
 
   @override
   void initState() {
