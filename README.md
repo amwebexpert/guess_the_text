@@ -194,8 +194,6 @@ From there, just run the `guess_the_text` executable to run the build!
 - [WikiMedia dev portal](https://developer.wikimedia.org/use-content/content/)
 - [Huge free french words list](https://www.freelang.com/dictionnaire/dic-francais.php#google_vignette)
 - [Another Flutter Hangman project](https://github.com/tavasolireza/Hangman-Game-Flutter)
-- [English food list](https://www.wordnik.com/lists/food--21)
-- [English words list](https://github.com/Xethron/Hangman/blob/master/words.txt)
 - [Happy robot 1](https://freesvg.org/happy-robot)
 - [Happy robot 2](https://freesvg.org/happy-robot-remix)
 - [Happy robot 3](https://freesvg.org/1528841367)
