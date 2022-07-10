@@ -1,4 +1,39 @@
-# React Components
+# Project coding standards
+
+## Class constructor parameters
+
+Prefer using named parameters. The advantages are:
+
+- usage becomes self explained
+- no need to order parameters
+
+#### :x: avoid
+
+```dart
+class MyRange {
+    int min;
+    int max;
+    MyRange(this.min, this.max);
+}
+
+final props = MyRange(4, 10);
+```
+
+#### :white_check_mark: prefer
+
+```dart
+class MyRange {
+    int min;
+    int max;
+    MyRange({required this.min, required this.max});
+}
+
+final explicitAndSelfExplained = MyRange(min: 4,  max: 10);
+final noNeedOfParamsOrdering = MyRange(max: 10,  min: 4);
+```
+
+
+
 
 ## Theme primary color usage
 
