@@ -11,6 +11,7 @@ class GameLayoutLandscapeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const leftFlexWeight = 1;
     final rightFlexWeight = ResponsiveValue(
       context,
       defaultValue: 1,
@@ -22,7 +23,7 @@ class GameLayoutLandscapeWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          const Flexible(flex: 1, fit: FlexFit.tight, child: TextAndKeyboardWidget()),
+          const Flexible(flex: leftFlexWeight, fit: FlexFit.tight, child: TextAndKeyboardWidget()),
           Flexible(flex: rightFlexWeight, fit: FlexFit.tight, child: const GameImageWidget()),
         ],
       ),
