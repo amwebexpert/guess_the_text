@@ -1,6 +1,8 @@
 # guess_the_text
 
-Words guess game app in `Flutter`
+Words guess game app
+
+[![made-with-Markdown](https://img.shields.io/badge/Made%20with-Flutter-1389FD.svg)](http://flutter.dev)
 
 Free mobile application originally created to learn the `Flutter` framework in my spare time.
 
