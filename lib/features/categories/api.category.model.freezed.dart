@@ -22,8 +22,10 @@ ApiCategory _$ApiCategoryFromJson(Map<String, dynamic> json) {
 mixin _$ApiCategory {
   dynamic get id => throw _privateConstructorUsedError;
   dynamic get uuid => throw _privateConstructorUsedError;
+  @JsonKey(name: 'langcode', defaultValue: '')
   dynamic get langCode => throw _privateConstructorUsedError;
   dynamic get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'iconname', defaultValue: '')
   dynamic get iconName => throw _privateConstructorUsedError;
   dynamic get isCustom => throw _privateConstructorUsedError;
 
@@ -41,9 +43,9 @@ abstract class $ApiCategoryCopyWith<$Res> {
   $Res call(
       {dynamic id,
       dynamic uuid,
-      dynamic langCode,
+      @JsonKey(name: 'langcode', defaultValue: '') dynamic langCode,
       dynamic name,
-      dynamic iconName,
+      @JsonKey(name: 'iconname', defaultValue: '') dynamic iconName,
       dynamic isCustom});
 }
 
@@ -103,9 +105,9 @@ abstract class _$$_ApiCategoryCopyWith<$Res>
   $Res call(
       {dynamic id,
       dynamic uuid,
-      dynamic langCode,
+      @JsonKey(name: 'langcode', defaultValue: '') dynamic langCode,
       dynamic name,
-      dynamic iconName,
+      @JsonKey(name: 'iconname', defaultValue: '') dynamic iconName,
       dynamic isCustom});
 }
 
@@ -145,9 +147,9 @@ class _$_ApiCategory implements _ApiCategory {
   const _$_ApiCategory(
       {this.id = 0,
       this.uuid = '',
-      this.langCode = '',
+      @JsonKey(name: 'langcode', defaultValue: '') this.langCode,
       this.name = '',
-      this.iconName = '',
+      @JsonKey(name: 'iconname', defaultValue: '') this.iconName,
       this.isCustom = false});
 
   factory _$_ApiCategory.fromJson(Map<String, dynamic> json) =>
@@ -160,13 +162,13 @@ class _$_ApiCategory implements _ApiCategory {
   @JsonKey()
   final dynamic uuid;
   @override
-  @JsonKey()
+  @JsonKey(name: 'langcode', defaultValue: '')
   final dynamic langCode;
   @override
   @JsonKey()
   final dynamic name;
   @override
-  @JsonKey()
+  @JsonKey(name: 'iconname', defaultValue: '')
   final dynamic iconName;
   @override
   @JsonKey()
@@ -216,9 +218,9 @@ abstract class _ApiCategory implements ApiCategory {
   const factory _ApiCategory(
       {final dynamic id,
       final dynamic uuid,
-      final dynamic langCode,
+      @JsonKey(name: 'langcode', defaultValue: '') final dynamic langCode,
       final dynamic name,
-      final dynamic iconName,
+      @JsonKey(name: 'iconname', defaultValue: '') final dynamic iconName,
       final dynamic isCustom}) = _$_ApiCategory;
 
   factory _ApiCategory.fromJson(Map<String, dynamic> json) =
@@ -229,10 +231,12 @@ abstract class _ApiCategory implements ApiCategory {
   @override
   dynamic get uuid => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'langcode', defaultValue: '')
   dynamic get langCode => throw _privateConstructorUsedError;
   @override
   dynamic get name => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'iconname', defaultValue: '')
   dynamic get iconName => throw _privateConstructorUsedError;
   @override
   dynamic get isCustom => throw _privateConstructorUsedError;

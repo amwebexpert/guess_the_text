@@ -7,4 +7,5 @@ const Map<String, IconData> categoryIcons = {
   'planets': Icons.rocket,
   'countries': Icons.place_sharp,
   'geography': Icons.place_outlined,
+  'mix': Icons.category,
 };
