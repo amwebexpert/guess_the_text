@@ -143,7 +143,7 @@ Update the online demo deployed as GitHub pages by doing this additional step:
 - create a branch
 - adjust the semversion of `pubspec.yaml` first
 - execute the script: `./scripts/build-android.sh`. Then the android bundle will be available under `/build/app/outputs/bundle/release/app-release.aab` folder.
-- publish the `.app` file to Google Play
+- publish the app on Google Play by uploading the `.abb` file from the Google Play Console
 
 ## Build & Run Linux build
 
