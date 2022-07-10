@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guess_the_text/features/about/contributor.model.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import '/features/about/api.about.model.dart';
@@ -22,6 +23,7 @@ class _AppVersionTableState extends State<AppVersionTable> {
   String _appVersion = '';
   String _appBuildNumber = '';
   ApiAbout _apiAbout = const ApiAbout();
+  final Contributor _contributor = Contributor( 'André Masson', 'amwebexpert@gmail.com', 'https://www.linkedin.com/in/amwebexpert');
 
   @override
   void initState() {
@@ -107,17 +109,17 @@ class _AppVersionTableState extends State<AppVersionTable> {
             DataRow(
               cells: <DataCell>[
                 DataCell(Text(localizations.appAuthorName)),
-                const DataCell(
-                  ThemedTextLink(displayText: 'André Masson', hyperlink: 'mailto:amwebexpert@gmail.com'),
+                DataCell(
+                  ThemedTextLink(displayText: _contributor.name, hyperlink: 'mailto:${_contributor.email}'),
                 ),
               ],
             ),
             DataRow(
               cells: <DataCell>[
                 DataCell(Text(localizations.appAuthorProfile)),
-                const DataCell(
+                DataCell(
                   ThemedTextLink(
-                      displayText: 'linkedin.com/in/amwebexpert', hyperlink: 'https://www.linkedin.com/in/amwebexpert'),
+                      displayText: _contributor.linkedIn, hyperlink: _contributor.linkedIn),
                 ),
               ],
             ),
