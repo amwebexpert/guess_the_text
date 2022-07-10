@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'api.category.model.freezed.dart';
@@ -8,9 +10,9 @@ class ApiCategory with _$ApiCategory {
   const factory ApiCategory(
       {@Default(0) id,
       @Default('') uuid,
-      @Default('') langCode,
+      @JsonKey(name: 'langcode', defaultValue: '') langCode,
       @Default('') name,
-      @Default('') iconName,
+      @JsonKey(name: 'iconname', defaultValue: '') iconName,
       @Default(false) isCustom}) = _ApiCategory;
 
   factory ApiCategory.fromJson(Map<String, dynamic> json) => _$ApiCategoryFromJson(json);

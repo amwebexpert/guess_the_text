@@ -10,9 +10,9 @@ _$_ApiCategory _$$_ApiCategoryFromJson(Map<String, dynamic> json) =>
     _$_ApiCategory(
       id: json['id'] ?? 0,
       uuid: json['uuid'] ?? '',
-      langCode: json['langCode'] ?? '',
+      langCode: json['langcode'] ?? '',
       name: json['name'] ?? '',
-      iconName: json['iconName'] ?? '',
+      iconName: json['iconname'] ?? '',
       isCustom: json['isCustom'] ?? false,
     );
 
@@ -20,8 +20,8 @@ Map<String, dynamic> _$$_ApiCategoryToJson(_$_ApiCategory instance) =>
     <String, dynamic>{
       'id': instance.id,
       'uuid': instance.uuid,
-      'langCode': instance.langCode,
+      'langcode': instance.langCode,
       'name': instance.name,
-      'iconName': instance.iconName,
+      'iconname': instance.iconName,
       'isCustom': instance.isCustom,
     };

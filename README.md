@@ -171,6 +171,7 @@ From there, just run the `guess_the_text` executable to run the build!
 - [Existing Dart language extensions](https://pub.dev/packages/dartx)
 - [Platform conditional widget rendering - Material / Cupertino management](https://pub.dev/packages/flutter_platform_widgets)
 - [Platform conditional widget rendering - Medium article](https://medium.com/flutter/do-flutter-apps-dream-of-platform-aware-widgets-7d7ed7b4624d)
+- [How to Parse JSON in Dart/Flutter with Code Generation using Freezed](https://codewithandrea.com/articles/parse-json-dart-codegen-freezed/)
 
 
 ## Troubleshothing
@@ -194,8 +195,6 @@ From there, just run the `guess_the_text` executable to run the build!
 - [WikiMedia dev portal](https://developer.wikimedia.org/use-content/content/)
 - [Huge free french words list](https://www.freelang.com/dictionnaire/dic-francais.php#google_vignette)
 - [Another Flutter Hangman project](https://github.com/tavasolireza/Hangman-Game-Flutter)
-- [English food list](https://www.wordnik.com/lists/food--21)
-- [English words list](https://github.com/Xethron/Hangman/blob/master/words.txt)
 - [Happy robot 1](https://freesvg.org/happy-robot)
 - [Happy robot 2](https://freesvg.org/happy-robot-remix)
 - [Happy robot 3](https://freesvg.org/1528841367)
