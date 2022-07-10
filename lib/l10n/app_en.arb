@@ -13,7 +13,7 @@
   "appBackendName": "BE Api name",
   "appBackendVersion": "API version",
   "appBuildNumber": "Build #",
-  "appDescription": "Free mobile application originally created to learn the Flutter framework in my spare time.\n\nThe goal is to learn a technology at the same time as providing a fun and scalable educational tool. The source code of this application will also be available shortly to eventually serve as a learning base for training sessions in Dart programming with Flutter!",
+  "appDescription": "Free mobile application originally created to learn the Flutter framework in our spare time.\n\nThe goals for developers is to learn a technology at the same time as providing a fun and scalable educational tool. The source code of this application is available and can be used as a learning base for training sessions in Dart programming with Flutter!",
   "appMenuReadChalenge": "Accept challenge",
   "appSubTitle": "Educational game about words and sentences",
   "appTitle": "Guess the text",
