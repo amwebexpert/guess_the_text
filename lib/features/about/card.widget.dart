@@ -23,8 +23,8 @@ class AboutCard extends StatelessWidget {
           ResponsiveRowColumn(
             rowMainAxisAlignment: MainAxisAlignment.spaceAround,
             layout: isColumnLayout ? ResponsiveRowColumnType.COLUMN : ResponsiveRowColumnType.ROW,
-            children: const [
-              ResponsiveRowColumnItem(
+            children: [
+              const ResponsiveRowColumnItem(
                 rowFlex: 1,
                 child: CardHeaderWidget(),
               ),
@@ -36,11 +36,17 @@ class AboutCard extends StatelessWidget {
                   children: [
                     ResponsiveRowColumnItem(
                       rowFlex: 1,
-                      child: AppVersionTable(),
+                      child: Padding(
+                          padding: EdgeInsets.fromLTRB(spacing(1), spacing(3), spacing(1), spacing(1.25)),
+                          child: const AppVersionTable(),
+                      ),
                     ),
                     ResponsiveRowColumnItem(
                       rowFlex: 1,
-                      child: AuthorInfoTable(),
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(spacing(1), spacing(3), spacing(1), spacing(1.25)),
+                        child: const AuthorInfoTable(),
+                      ),
                     ),
                   ],
                 ),
