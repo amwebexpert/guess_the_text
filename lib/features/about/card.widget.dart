@@ -45,7 +45,7 @@ class AboutCard extends StatelessWidget {
                       rowFlex: 1,
                       child: Padding(
                         padding: EdgeInsets.fromLTRB(spacing(1), spacing(3), spacing(1), spacing(1.25)),
-                        child: const AuthorInfoTable(),
+                        child: AuthorInfoTable(),
                       ),
                     ),
                   ],
