@@ -104,23 +104,6 @@ class _AppVersionTableState extends State<AppVersionTable> {
                 ),
               ],
             ),
-            DataRow(
-              cells: <DataCell>[
-                DataCell(Text(localizations.appAuthorName)),
-                const DataCell(
-                  ThemedTextLink(displayText: 'André Masson', hyperlink: 'mailto:amwebexpert@gmail.com'),
-                ),
-              ],
-            ),
-            DataRow(
-              cells: <DataCell>[
-                DataCell(Text(localizations.appAuthorProfile)),
-                const DataCell(
-                  ThemedTextLink(
-                      displayText: 'linkedin.com/in/amwebexpert', hyperlink: 'https://www.linkedin.com/in/amwebexpert'),
-                ),
-              ],
-            ),
           ],
         ),
       ],

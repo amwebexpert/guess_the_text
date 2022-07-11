@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guess_the_text/features/about/author.info.table.widget.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import '/features/about/card.app.description.dart';
@@ -22,14 +23,21 @@ class AboutCard extends StatelessWidget {
           ResponsiveRowColumn(
             rowMainAxisAlignment: MainAxisAlignment.spaceAround,
             layout: isColumnLayout ? ResponsiveRowColumnType.COLUMN : ResponsiveRowColumnType.ROW,
-            children: const [
-              ResponsiveRowColumnItem(
+            children: [
+              const ResponsiveRowColumnItem(
                 rowFlex: 1,
                 child: CardHeaderWidget(),
               ),
               ResponsiveRowColumnItem(
                 rowFlex: 1,
-                child: AppVersionTable(),
+                child: Column(
+                  children: [
+                    SizedBox(height: spacing(6)),
+                    const AppVersionTable(),
+                    SizedBox(height: spacing(3)),
+                    AuthorInfoTable()
+                  ],
+                ),
               ),
             ],
           ),
