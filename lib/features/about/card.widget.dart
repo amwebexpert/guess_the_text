@@ -30,24 +30,12 @@ class AboutCard extends StatelessWidget {
               ),
               ResponsiveRowColumnItem(
                 rowFlex: 1,
-                child: ResponsiveRowColumn(
-                  rowMainAxisAlignment: MainAxisAlignment.spaceAround,
-                  layout: ResponsiveRowColumnType.COLUMN,
+                child: Column(
                   children: [
-                    ResponsiveRowColumnItem(
-                      rowFlex: 1,
-                      child: Padding(
-                          padding: EdgeInsets.fromLTRB(spacing(1), spacing(3), spacing(1), spacing(1.25)),
-                          child: const AppVersionTable(),
-                      ),
-                    ),
-                    ResponsiveRowColumnItem(
-                      rowFlex: 1,
-                      child: Padding(
-                        padding: EdgeInsets.fromLTRB(spacing(1), spacing(3), spacing(1), spacing(1.25)),
-                        child: AuthorInfoTable(),
-                      ),
-                    ),
+                    SizedBox(height: spacing(6)),
+                    const AppVersionTable(),
+                    SizedBox(height: spacing(3)),
+                    AuthorInfoTable()
                   ],
                 ),
               ),
