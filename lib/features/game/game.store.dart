@@ -42,7 +42,7 @@ abstract class _GameStoreBase with Store {
   Future<void> _initialize() async {
     List<ApiCategory> categories = await textsService.getCategories();
 
-    String lastSelectedCategoryUuid = sp.getString(SharedPreferenceKey.lastSelectedCategory.name);
+    String lastSelectedCategoryUuid = sp.getString(SharedPreferenceKey.lastSelectedCategory.name, defaultValue: categories.first.uuid);
     ApiCategory initialCategory = categories.where((element) => element.uuid == lastSelectedCategoryUuid).first;
 
     await selectCategory(initialCategory);
