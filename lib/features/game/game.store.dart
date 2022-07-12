@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:guess_the_text/services/storage/shared.preferences.enum.dart';
+import 'package:guess_the_text/services/storage/shared.preferences.services.dart';
 import 'package:mobx/mobx.dart';
 
 import '/features/categories/api.category.model.dart';
@@ -20,6 +22,7 @@ class GameStore extends _GameStoreBase with _$GameStore {}
 // The store-class
 abstract class _GameStoreBase with Store {
   final LoggerService logger = serviceLocator.get();
+  final SharedPreferencesService sp = serviceLocator.get();
   final TextsService textsService = serviceLocator.get();
   final GamePlayedItemsStorageService gamePlayedItemsStorageService = serviceLocator.get();
 
@@ -46,6 +49,11 @@ abstract class _GameStoreBase with Store {
     if (currentCategory.uuid == selected.uuid) {
       return;
     }
+
+    sp.setString(SharedPreferenceKey.lastSelectedCategory.name, selected.uuid).onError((e, stackTrace) {
+      logger.error("Can't write preference ${SharedPreferenceKey.lastSelectedCategory}", e, stackTrace: stackTrace);
+      return false;
+    });
 
     currentCategory = selected;
     currentCategoryPlayedItems = await gamePlayedItemsStorageService.getPlayedItems(currentCategory.uuid);
