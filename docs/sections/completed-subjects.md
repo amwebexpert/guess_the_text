@@ -70,6 +70,8 @@ List of demonstrated elements inside the codebase, divided by categories
 
 ### Deap links on platforms
 
+The required [configuration for both Android and iOS](https://docs.flutter.dev/development/ui/navigation/deep-linking) is done. This means the application can be opened by other apps, like native QR Code scanner apps. Deep links are also testable on command line using a simulator or a real connected device as explained below.
+
 #### iOS
     xcrun simctl openurl booted guessTheText://com.amwebexpert.app.guessthetext/about
     xcrun simctl openurl booted guessTheText://com.amwebexpert.app.guessthetext/settings
@@ -78,8 +80,17 @@ List of demonstrated elements inside the codebase, divided by categories
     adb shell am start -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "guessTheText://com.amwebexpert.app.guessthetext/about"
     adb shell am start -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "guessTheText://com.amwebexpert.app.guessthetext/settings"
 
+#### Testing with another native application
+
 We can also install a generic deep link opener application like this one:
     https://play.google.com/store/apps/details?id=org.thewheatfield.android.deeplinks
+
+#### Testing with a classic QR Code scanner
+
+1. use a [QR Code generator](https://amwebexpert.github.io/etoolbox/#/QRCodeGenerator)
+2. generate the QR Code with the content: "guessTheText://com.amwebexpert.app.guessthetext/about"
+3. now the code is showing on screen, scan it with your prefered QR code scanner native application
+4. when your application is showing the link you can press it
 
 
 ### Others
