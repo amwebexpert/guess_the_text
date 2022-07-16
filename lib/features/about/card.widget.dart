@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guess_the_text/features/about/author.info.table.widget.dart';
+import 'package:guess_the_text/theme/widgets/height.spacer.widget.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import '/features/about/card.app.description.dart';
@@ -18,46 +19,41 @@ class AboutCard extends StatelessWidget {
     final isColumnLayout = ResponsiveWrapper.of(context).isSmallerThan(TABLET);
 
     return AboutCardPanel(
-      child: Column(
-        children: [
-          ResponsiveRowColumn(
-            rowMainAxisAlignment: MainAxisAlignment.spaceAround,
-            layout: isColumnLayout ? ResponsiveRowColumnType.COLUMN : ResponsiveRowColumnType.ROW,
-            children: [
-              const ResponsiveRowColumnItem(
-                rowFlex: 1,
-                child: CardHeaderWidget(),
-              ),
-              ResponsiveRowColumnItem(
-                rowFlex: 1,
-                child: Column(
-                  children: [
-                    SizedBox(height: spacing(6)),
-                    const AppVersionTable(),
-                    SizedBox(height: spacing(3)),
-                    AuthorInfoTable()
-                  ],
+      child: Padding(
+        padding: EdgeInsets.all(spacing(1)),
+        child: Column(
+          children: [
+            ResponsiveRowColumn(
+              rowMainAxisAlignment: MainAxisAlignment.spaceAround,
+              layout: isColumnLayout ? ResponsiveRowColumnType.COLUMN : ResponsiveRowColumnType.ROW,
+              children: [
+                const ResponsiveRowColumnItem(
+                  rowFlex: 1,
+                  child: CardHeaderWidget(),
                 ),
-              ),
-            ],
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(spacing(1), spacing(3), spacing(1), spacing(1.25)),
-            child: const CardAppDescriptionWidget(),
-          ),
-          Padding(
-            padding: EdgeInsets.all(spacing(1)),
-            child: const PlatformInfoTable(),
-          ),
-          Padding(
-            padding: EdgeInsets.all(spacing(1)),
-            child: const PlatformScreenInfoTable(),
-          ),
-          Padding(
-            padding: EdgeInsets.all(spacing(1)),
-            child: const MadeWithLoveWidget(),
-          ),
-        ],
+                ResponsiveRowColumnItem(
+                  rowFlex: 1,
+                  child: Column(
+                    children: [
+                      const HeightSpacer(spacingUnitCount: 6),
+                      const AppVersionTable(),
+                      const HeightSpacer(),
+                      AuthorInfoTable()
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const HeightSpacer(),
+            const CardAppDescriptionWidget(),
+            const HeightSpacer(),
+            const PlatformInfoTable(),
+            const HeightSpacer(),
+            const PlatformScreenInfoTable(),
+            const HeightSpacer(),
+            const MadeWithLoveWidget(),
+          ],
+        ),
       ),
     );
   }
