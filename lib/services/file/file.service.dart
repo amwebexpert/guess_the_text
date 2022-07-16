@@ -38,4 +38,13 @@ class FileService {
     logger.info('writing data to file $fullFilenanme');
     return file.writeAsString(data, mode: FileMode.write, encoding: utf8, flush: false);
   }
+
+  Future<String> read({required String filename, required DirectoryType directoryType}) async {
+    Directory supportDir = await getDirectory(directoryType);
+    String fullFilenanme = '${supportDir.path}/$filename';
+    File file = File(fullFilenanme);
+
+    logger.info('reading data from $fullFilenanme');
+    return file.readAsString(encoding: utf8);
+  }
 }

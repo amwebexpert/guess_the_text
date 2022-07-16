@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert' as convert;
 import 'dart:io';
 
@@ -32,10 +33,10 @@ class TextsService {
     Uri url = Uri.https(hostName, apiPathAbout);
 
     try {
-      String data = await _callCachedApi(url: url, cacheFile: 'about-info.json');
-      Map<String, dynamic> body = convert.jsonDecode(data);
+      String jsonContent = await _callCachedApi(url: url, cacheFile: 'about-info.json');
+      Map<String, dynamic> data = convert.jsonDecode(jsonContent);
 
-      return ApiAbout.fromJson(body);
+      return ApiAbout.fromJson(data);
     } catch (e) {
       logger.error('About request failed', e);
       return const ApiAbout();
@@ -49,8 +50,8 @@ class TextsService {
 
     Uri url = Uri.https(hostName, apiPathCategories);
 
-    String data = await _callCachedApi(url: url, cacheFile: 'categories.json');
-    List array = convert.jsonDecode(data);
+    String jsonContent = await _callCachedApi(url: url, cacheFile: 'categories.json');
+    List array = convert.jsonDecode(jsonContent);
 
     _categories = array.map((it) => ApiCategory.fromJson(it)).toList();
     return _categories;
@@ -68,8 +69,8 @@ class TextsService {
     String entriesUrl = '$apiPathCategories/$categoryUuid/texts';
     Uri url = Uri.https(hostName, entriesUrl);
 
-    String data = await _callCachedApi(url: url, cacheFile: 'category-$categoryUuid-texts.json');
-    List array = convert.jsonDecode(data);
+    String jsonContent = await _callCachedApi(url: url, cacheFile: 'category-$categoryUuid-texts.json');
+    List array = convert.jsonDecode(jsonContent);
 
     // memoize text items
     _lastCategoryUuid = categoryUuid;
@@ -84,16 +85,21 @@ class TextsService {
     try {
       response = await http.get(url);
       response = _validateApiResponse(response);
-      String data = response.body;
+      String jsonContent = response.body;
 
       if (cacheFile.isNotBlank) {
-        cacheData(data: data, cacheFile: cacheFile!);
+        unawaited(cacheData(data: jsonContent, cacheFile: cacheFile!));
       }
 
-      return data;
+      return jsonContent;
     } catch (e) {
-      logger.error('Request failed', e);
-      rethrow;
+      logger.error('Request failed, will try to load from "$cacheFile", url: "$url"', e);
+
+      String jsonContent = await loadFromCache(cacheFile);
+      if (jsonContent.isBlank) {
+        rethrow;
+      }
+      return jsonContent;
     }
   }
 
@@ -107,8 +113,24 @@ class TextsService {
     throw Exception('$message : ${response.statusCode}.');
   }
 
-  void cacheData({required String data, required String cacheFile}) async {
+  Future<void> cacheData({required String data, required String cacheFile}) async {
+    logger.info('caching data to file $cacheFile');
     File file = await fileService.write(data: data, filename: cacheFile, directoryType: DirectoryType.appSupport);
-    logger.info('file write succeeded: ${file.absolute}');
+    logger.info('\tfile write succeeded: ${file.absolute}');
+  }
+
+  Future<String> loadFromCache(String? cacheFile) async {
+    logger.info('loading API data from $cacheFile');
+    if (cacheFile.isBlank) {
+      logger.info('\tno cached file');
+      return '';
+    }
+
+    try {
+      return await fileService.read(filename: cacheFile!, directoryType: DirectoryType.appSupport);
+    } catch (e) {
+      logger.error('\texception while reading $cacheFile', e);
+      return '';
+    }
   }
 }
