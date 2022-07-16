@@ -127,7 +127,7 @@ class TextsService {
     }
 
     try {
-      return await fileService.read(filename: cacheFile!, directoryType: DirectoryType.appSupport);
+      return fileService.read(filename: cacheFile!, directoryType: DirectoryType.appSupport);
     } catch (e) {
       logger.error('\texception while reading $cacheFile', e);
       return '';
