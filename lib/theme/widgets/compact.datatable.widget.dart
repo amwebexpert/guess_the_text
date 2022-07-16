@@ -17,8 +17,8 @@ class CompactDatatableWidget extends StatelessWidget {
       child: DataTable(
         horizontalMargin: 0,
         columnSpacing: spacing(2),
-        headingRowHeight: 20,
-        dataRowHeight: 24,
+        headingRowHeight: 26,
+        dataRowHeight: 26,
         columns: columns ?? _buildDataColumns(_columnsCountFromDataRows),
         rows: rows,
       ));
