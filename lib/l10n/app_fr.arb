@@ -1,6 +1,6 @@
 {
   "about": "À propos de l'app",
-  "aboutMadeWithLove": "Fait avec amour via le framework Flutter !",
+  "aboutMadeWithLove": "Fait avec amour via le framework Flutter ! Appuyez sur le logo de Flutter pour voir les lisences des librairies utilisées par l'application",
   "acceptChallengeCancelled": "Lecture de code QR annulée",
   "actionCancel": "Annuler",
   "actionClose": "Fermer",
