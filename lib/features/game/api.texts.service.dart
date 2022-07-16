@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert' as convert;
 import 'dart:io';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 import 'package:guess_the_text/features/about/api.about.model.dart';
 import 'package:guess_the_text/features/categories/api.category.model.dart';
@@ -87,7 +88,7 @@ class TextsService {
       response = _validateApiResponse(response);
       String jsonContent = response.body;
 
-      if (cacheFile.isNotBlank) {
+      if (!kIsWeb && cacheFile.isNotBlank) {
         unawaited(cacheData(data: jsonContent, cacheFile: cacheFile!));
       }
 
@@ -121,7 +122,7 @@ class TextsService {
 
   Future<String> loadFromCache(String? cacheFile) async {
     logger.info('loading API data from $cacheFile');
-    if (cacheFile.isBlank) {
+    if (kIsWeb || cacheFile.isBlank) {
       logger.info('\tno cached file');
       return '';
     }
