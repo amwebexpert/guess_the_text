@@ -1,17 +1,19 @@
 import 'dart:convert' as convert;
 import 'dart:io';
 
+import 'package:guess_the_text/features/about/api.about.model.dart';
+import 'package:guess_the_text/features/categories/api.category.model.dart';
+import 'package:guess_the_text/features/game/api.text.model.dart';
+import 'package:guess_the_text/service.locator.dart';
+import 'package:guess_the_text/services/file/directory.enum.dart';
+import 'package:guess_the_text/services/file/file.service.dart';
+import 'package:guess_the_text/services/logger/logger.service.dart';
+import 'package:guess_the_text/utils/extensions/string.extensions.dart';
 import 'package:http/http.dart' as http;
-
-import '/features/about/api.about.model.dart';
-import '/features/categories/api.category.model.dart';
-import '/service.locator.dart';
-import '/services/logger/logger.service.dart';
-import '/utils/extensions/string.extensions.dart';
-import 'api.text.model.dart';
 
 class TextsService {
   final LoggerService logger = serviceLocator.get();
+  final FileService fileService = serviceLocator.get();
   static final TextsService _instance = TextsService._privateConstructor();
 
   static const String hostName = 'amw-hangman-api.herokuapp.com';
@@ -30,8 +32,8 @@ class TextsService {
     Uri url = Uri.https(hostName, apiPathAbout);
 
     try {
-      http.Response response = await _callApi(url);
-      Map<String, dynamic> body = convert.jsonDecode(response.body);
+      String data = await _callCachedApi(url: url, cacheFile: 'about-info.json');
+      Map<String, dynamic> body = convert.jsonDecode(data);
 
       return ApiAbout.fromJson(body);
     } catch (e) {
@@ -47,8 +49,8 @@ class TextsService {
 
     Uri url = Uri.https(hostName, apiPathCategories);
 
-    http.Response response = await _callApi(url);
-    List array = convert.jsonDecode(response.body);
+    String data = await _callCachedApi(url: url, cacheFile: 'categories.json');
+    List array = convert.jsonDecode(data);
 
     _categories = array.map((it) => ApiCategory.fromJson(it)).toList();
     return _categories;
@@ -66,8 +68,8 @@ class TextsService {
     String entriesUrl = '$apiPathCategories/$categoryUuid/texts';
     Uri url = Uri.https(hostName, entriesUrl);
 
-    http.Response response = await _callApi(url);
-    List array = convert.jsonDecode(response.body);
+    String data = await _callCachedApi(url: url, cacheFile: 'category-$categoryUuid-texts.json');
+    List array = convert.jsonDecode(data);
 
     // memoize text items
     _lastCategoryUuid = categoryUuid;
@@ -76,17 +78,23 @@ class TextsService {
     return _texts;
   }
 
-  Future<http.Response> _callApi(Uri url) async {
+  Future<String> _callCachedApi({required Uri url, String? cacheFile}) async {
     http.Response response;
 
     try {
       response = await http.get(url);
+      response = _validateApiResponse(response);
+      String data = response.body;
+
+      if (cacheFile.isNotBlank) {
+        cacheData(data: data, cacheFile: cacheFile!);
+      }
+
+      return data;
     } catch (e) {
       logger.error('Request failed', e);
       rethrow;
     }
-
-    return _validateApiResponse(response);
   }
 
   http.Response _validateApiResponse(http.Response response) {
@@ -97,5 +105,10 @@ class TextsService {
     const message = 'Request failed with status';
     logger.error(message, response.statusCode);
     throw Exception('$message : ${response.statusCode}.');
+  }
+
+  void cacheData({required String data, required String cacheFile}) async {
+    File file = await fileService.write(data: data, filename: cacheFile, directoryType: DirectoryType.appSupport);
+    logger.info('file write succeeded: ${file.absolute}');
   }
 }
