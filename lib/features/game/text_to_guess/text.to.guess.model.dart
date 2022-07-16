@@ -1,3 +1,5 @@
+import 'package:guess_the_text/utils/extensions/string.extensions.dart';
+
 class TextToGuess {
   static const String stateName = 'hangman';
   static const int maxTrials = 10;
@@ -19,6 +21,10 @@ class TextToGuess {
 
     return clone;
   }
+
+  bool get isEmpty => original.isBlank;
+
+  bool get isNotEmpty => original.isNotBlank;
 
   TextToGuess tryChar({required String c}) {
     TextToGuess mutation = TextToGuess.from(this);
@@ -53,7 +59,7 @@ class TextToGuess {
   }
 
   bool isGameOver() {
-    return isGameOverWithFailure() || isGameOverWithSuccess();
+    return isNotEmpty && (isGameOverWithFailure() || isGameOverWithSuccess());
   }
 
   bool isGameOverWithFailure() {
