@@ -128,7 +128,10 @@ class TextsService {
     }
 
     try {
-      return fileService.read(filename: cacheFile!, directoryType: DirectoryType.appSupport);
+      String jsonContent = await fileService.read(filename: cacheFile!, directoryType: DirectoryType.appSupport);
+      logger.info('\treturning cached content from $cacheFile');
+
+      return jsonContent;
     } catch (e) {
       logger.error('\texception while reading $cacheFile', e);
       return '';
