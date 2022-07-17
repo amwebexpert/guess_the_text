@@ -31,8 +31,8 @@ class FileService {
   }
 
   Future<File> write({required String data, required String filename, required DirectoryType directoryType}) async {
-    Directory supportDir = await getDirectory(directoryType);
-    String fullFilenanme = '${supportDir.path}/$filename';
+    Directory directory = await getDirectory(directoryType);
+    String fullFilenanme = '${directory.path}/$filename';
     File file = File(fullFilenanme);
 
     logger.info('writing data to file $fullFilenanme');
@@ -40,8 +40,8 @@ class FileService {
   }
 
   Future<String> read({required String filename, required DirectoryType directoryType}) async {
-    Directory supportDir = await getDirectory(directoryType);
-    String fullFilenanme = '${supportDir.path}/$filename';
+    Directory directory = await getDirectory(directoryType);
+    String fullFilenanme = '${directory.path}/$filename';
     File file = File(fullFilenanme);
 
     logger.info('reading data from $fullFilenanme');
