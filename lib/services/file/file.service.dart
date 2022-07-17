@@ -32,18 +32,23 @@ class FileService {
   }
 
   Future<File> write({required String data, required String filename, required DirectoryType directoryType}) async {
-    Directory directory = await getDirectory(directoryType);
-    String fullFilenanme = join(directory.path, filename);
-    File file = File(fullFilenanme);
+    final Directory directory = await getDirectory(directoryType);
+    final String fullFilenanme = join(directory.path, filename);
+    final File file = await File(fullFilenanme).create(recursive: true);
 
     logger.info('writing data to file $fullFilenanme');
     return file.writeAsString(data, mode: FileMode.write, encoding: utf8, flush: false);
   }
 
   Future<String> read({required String filename, required DirectoryType directoryType}) async {
-    Directory directory = await getDirectory(directoryType);
-    String fullFilenanme = join(directory.path, filename);
-    File file = File(fullFilenanme);
+    final Directory directory = await getDirectory(directoryType);
+    final String fullFilenanme = join(directory.path, filename);
+    final File file = File(fullFilenanme);
+
+    if (!file.existsSync()) {
+      logger.error('file does not exists', fullFilenanme);
+      return '';
+    }
 
     logger.info('reading data from $fullFilenanme');
     return file.readAsString(encoding: utf8);
