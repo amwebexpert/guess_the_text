@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/services/file/directory.enum.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
+import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
 class FileService {
@@ -32,7 +33,7 @@ class FileService {
 
   Future<File> write({required String data, required String filename, required DirectoryType directoryType}) async {
     Directory directory = await getDirectory(directoryType);
-    String fullFilenanme = '${directory.path}/$filename';
+    String fullFilenanme = join(directory.path, filename);
     File file = File(fullFilenanme);
 
     logger.info('writing data to file $fullFilenanme');
@@ -41,7 +42,7 @@ class FileService {
 
   Future<String> read({required String filename, required DirectoryType directoryType}) async {
     Directory directory = await getDirectory(directoryType);
-    String fullFilenanme = '${directory.path}/$filename';
+    String fullFilenanme = join(directory.path, filename);
     File file = File(fullFilenanme);
 
     logger.info('reading data from $fullFilenanme');
