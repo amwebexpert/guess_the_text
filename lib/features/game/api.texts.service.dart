@@ -58,6 +58,8 @@ class TextsService {
     return _categories;
   }
 
+  String getCategoryCacheFilename(String categoryUuid) => 'category-$categoryUuid-texts.json';
+
   Future<List<ApiText>> getTexts(String categoryUuid) async {
     if (categoryUuid.isBlank) {
       return [];
@@ -70,7 +72,7 @@ class TextsService {
     String entriesUrl = '$apiPathCategories/$categoryUuid/texts';
     Uri url = Uri.https(hostName, entriesUrl);
 
-    String jsonContent = await _callCachedApi(url: url, cacheFile: 'category-$categoryUuid-texts.json');
+    String jsonContent = await _callCachedApi(url: url, cacheFile: getCategoryCacheFilename(categoryUuid));
     List array = convert.jsonDecode(jsonContent);
 
     // memoize text items
