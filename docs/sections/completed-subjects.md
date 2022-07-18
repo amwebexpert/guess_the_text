@@ -38,6 +38,7 @@ List of demonstrated elements inside the codebase, divided by categories
 
 - Local storage using [Shared Preferences](https://pub.dev/packages/shared_preferences) for user settings
 - Usage of NoSQL database [Sembast solution](https://pub.dev/packages/sembast) to persisted guessed texts
+- Classic [text files read/write](https://docs.flutter.dev/cookbook/persistence/reading-writing-files) (see `FileService`)
 
 ### Dependencies injection (a.k.a. inversion of control IoC, Service locator)
 

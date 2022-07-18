@@ -1,17 +1,21 @@
+import 'dart:async';
 import 'dart:convert' as convert;
 import 'dart:io';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
+import 'package:guess_the_text/features/about/api.about.model.dart';
+import 'package:guess_the_text/features/categories/api.category.model.dart';
+import 'package:guess_the_text/features/game/api.text.model.dart';
+import 'package:guess_the_text/service.locator.dart';
+import 'package:guess_the_text/services/file/directory.enum.dart';
+import 'package:guess_the_text/services/file/file.service.dart';
+import 'package:guess_the_text/services/logger/logger.service.dart';
+import 'package:guess_the_text/utils/extensions/string.extensions.dart';
 import 'package:http/http.dart' as http;
-
-import '/features/about/api.about.model.dart';
-import '/features/categories/api.category.model.dart';
-import '/service.locator.dart';
-import '/services/logger/logger.service.dart';
-import '/utils/extensions/string.extensions.dart';
-import 'api.text.model.dart';
 
 class TextsService {
   final LoggerService logger = serviceLocator.get();
+  final FileService fileService = serviceLocator.get();
   static final TextsService _instance = TextsService._privateConstructor();
 
   static const String hostName = 'amw-hangman-api.herokuapp.com';
@@ -30,10 +34,10 @@ class TextsService {
     Uri url = Uri.https(hostName, apiPathAbout);
 
     try {
-      http.Response response = await _callApi(url);
-      Map<String, dynamic> body = convert.jsonDecode(response.body);
+      String jsonContent = await _callCachedApi(url: url, cacheFile: 'about-info.json');
+      Map<String, dynamic> data = convert.jsonDecode(jsonContent);
 
-      return ApiAbout.fromJson(body);
+      return ApiAbout.fromJson(data);
     } catch (e) {
       logger.error('About request failed', e);
       return const ApiAbout();
@@ -47,12 +51,14 @@ class TextsService {
 
     Uri url = Uri.https(hostName, apiPathCategories);
 
-    http.Response response = await _callApi(url);
-    List array = convert.jsonDecode(response.body);
+    String jsonContent = await _callCachedApi(url: url, cacheFile: 'categories.json');
+    List array = convert.jsonDecode(jsonContent);
 
     _categories = array.map((it) => ApiCategory.fromJson(it)).toList();
     return _categories;
   }
+
+  String getCategoryCacheFilename(String categoryUuid) => 'category-$categoryUuid-texts.json';
 
   Future<List<ApiText>> getTexts(String categoryUuid) async {
     if (categoryUuid.isBlank) {
@@ -66,8 +72,8 @@ class TextsService {
     String entriesUrl = '$apiPathCategories/$categoryUuid/texts';
     Uri url = Uri.https(hostName, entriesUrl);
 
-    http.Response response = await _callApi(url);
-    List array = convert.jsonDecode(response.body);
+    String jsonContent = await _callCachedApi(url: url, cacheFile: getCategoryCacheFilename(categoryUuid));
+    List array = convert.jsonDecode(jsonContent);
 
     // memoize text items
     _lastCategoryUuid = categoryUuid;
@@ -76,17 +82,28 @@ class TextsService {
     return _texts;
   }
 
-  Future<http.Response> _callApi(Uri url) async {
+  Future<String> _callCachedApi({required Uri url, String? cacheFile}) async {
     http.Response response;
 
     try {
       response = await http.get(url);
-    } catch (e) {
-      logger.error('Request failed', e);
-      rethrow;
-    }
+      response = _validateApiResponse(response);
+      String jsonContent = response.body;
 
-    return _validateApiResponse(response);
+      if (!kIsWeb && cacheFile.isNotBlank) {
+        unawaited(cacheData(data: jsonContent, cacheFile: cacheFile!));
+      }
+
+      return jsonContent;
+    } catch (e) {
+      logger.error('Request failed, will try to load from "$cacheFile", url: "$url"', e);
+
+      String jsonContent = await loadFromCache(cacheFile);
+      if (jsonContent.isBlank) {
+        rethrow;
+      }
+      return jsonContent;
+    }
   }
 
   http.Response _validateApiResponse(http.Response response) {
@@ -97,5 +114,29 @@ class TextsService {
     const message = 'Request failed with status';
     logger.error(message, response.statusCode);
     throw Exception('$message : ${response.statusCode}.');
+  }
+
+  Future<void> cacheData({required String data, required String cacheFile}) async {
+    logger.info('caching data to file $cacheFile');
+    File file = await fileService.write(data: data, filename: cacheFile, directoryType: DirectoryType.appSupport);
+    logger.info('\tfile write succeeded: ${file.absolute}');
+  }
+
+  Future<String> loadFromCache(String? cacheFile) async {
+    logger.info('loading API data from $cacheFile');
+    if (kIsWeb || cacheFile.isBlank) {
+      logger.info('\tno cached file');
+      return '';
+    }
+
+    try {
+      String jsonContent = await fileService.read(filename: cacheFile!, directoryType: DirectoryType.appSupport);
+      logger.info('\treturning cached content from $cacheFile');
+
+      return jsonContent;
+    } catch (e) {
+      logger.error('\texception while reading $cacheFile', e);
+      return '';
+    }
   }
 }
