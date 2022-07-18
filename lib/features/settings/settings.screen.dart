@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guess_the_text/features/settings/brightness.settings.widget.dart';
+import 'package:guess_the_text/theme/widgets/perspective.widget.dart';
 
 import '/features/settings/hero.settings.widget.dart';
 import '/theme/theme.utils.dart';
@@ -23,19 +24,24 @@ class SettingsWidget extends StatelessWidget {
       appBar: AppBar(
         title: AppBarTitle(title: localizations.preferences),
       ),
-      body: FullScreenAssetBackground(
-        assetImagePath: isDarkTheme ? backgroundImageDark : backgroundImageLight,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: spacing(1)),
-            child: Column(
-              children: <Widget>[
-                HeroSettingsWidget(),
-                const LanguageSettingWidget(),
-                const Divider(),
-                const BrightnessSettingWidget(),
-                const Divider(),
-              ],
+      body: PerspectiveWrapperWidget(
+        backWidget: Container(
+          decoration: const BoxDecoration(color: Colors.orange),
+        ),
+        frontWidget: FullScreenAssetBackground(
+          assetImagePath: isDarkTheme ? backgroundImageDark : backgroundImageLight,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: spacing(1)),
+              child: Column(
+                children: <Widget>[
+                  HeroSettingsWidget(),
+                  const LanguageSettingWidget(),
+                  const Divider(),
+                  const BrightnessSettingWidget(),
+                  const Divider(),
+                ],
+              ),
             ),
           ),
         ),
