@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guess_the_text/theme/widgets/compact.datatable.widget.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import '/features/about/api.about.model.dart';
@@ -51,19 +52,7 @@ class _AppVersionTableState extends State<AppVersionTable> {
     return Column(
       children: [
         const PrivacyPolicyWidget(),
-        DataTable(
-          horizontalMargin: 0,
-          columnSpacing: 16,
-          headingRowHeight: 20,
-          dataRowHeight: 24,
-          columns: const <DataColumn>[
-            DataColumn(
-              label: Text(''),
-            ),
-            DataColumn(
-              label: Text(''),
-            ),
-          ],
+        CompactDatatableWidget(
           rows: <DataRow>[
             DataRow(
               cells: <DataCell>[
