@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -44,6 +45,12 @@ class _HangmanAppState extends State<HangmanApp> {
 
     List<ApiCategory> categories = await textsService.getCategories();
     await textsService.getTexts(categories.first.uuid);
+
+    // prefetch game images so they are displayed without lagging
+    Future.wait([
+      precachePicture(ExactAssetPicture(SvgPicture.svgStringDecoderBuilder, 'assets/images/hangman-happy.svg'), null),
+      precachePicture(ExactAssetPicture(SvgPicture.svgStringDecoderBuilder, 'assets/images/hangman-01.svg'), null),
+    ]);
 
     // If the widget was removed from the tree while the asynchronous call was in flight
     if (!mounted) {
