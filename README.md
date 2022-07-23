@@ -18,9 +18,9 @@ We are actually limiting the number of contributors (so dont take that personnal
 
 ## Some screen captures of the implemented features
 
-success | failure | custom chalenge | qr-code
-------- | ---------- | ---------- | ----------
-<img src="store-presence/guess-the-text-03.png" /> | <img src="store-presence/guess-the-text-04.png" /> | <img src="store-presence/create-a-challenge.jpg" /> | <img src="store-presence/qr-code-display.jpg" />
+start game | success | categories | custom chalenge | qr-code
+------- | ---------- | ---------- | ---------- | ----------
+<img src="store-presence/guess-the-text-01.jpg" /> | <img src="store-presence/guess-the-text-02.jpg" /> | <img src="store-presence/guess-the-text-04.jpg" /> | <img src="store-presence/create-a-challenge.jpg" /> | <img src="store-presence/qr-code-display.jpg" />
 
 
 ## Deployed on production
