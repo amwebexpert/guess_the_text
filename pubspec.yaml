@@ -55,6 +55,7 @@ dependencies:
   shared_preferences: ^2.0.13
   universal_io: ^2.0.4
   url_launcher: ^6.0.20
+  vector_math: ^2.1.2
 
 dev_dependencies:
   integration_test:
