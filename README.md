@@ -4,9 +4,15 @@ Words guess game app
 
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Flutter-1389FD.svg)](http://flutter.dev) [![Flutter Responsive](https://img.shields.io/badge/flutter-responsive-brightgreen.svg?style=flat-square)](https://github.com/Codelessly/ResponsiveFramework)
 
-Free mobile application originally created to learn the `Flutter` framework in our spare time.
-
-The goal for the developers team is to learn a technology at the same time as providing a fun and scalable educational tool. The source code of this application is available and may also serve as a learning base for training sessions in `Dart` programming with `Flutter`!
+Free educational app deployable on several native platforms: Linux, Android, iOS (iPhone, Tablets), Webapp, and soon MacBook and Windows. The application is an evolving educational game. The goal is to establish native development standards applied to a real world application deployed on production via the Flutter framework:
+- app technical architecture, solution design and active development
+- promote Flutter cookbook recipies and Dart language best patterns
+- screen and animation design, theme, typography, dark mode, preferences, local persistence
+- automated unit and behavioral tests, end to end tests, code coverage report
+- evolutive structure of the source code, choice of open source libraries
+- integration of Rest and/or GraphQL APIs
+- dependencies injections pattern (IoC) for the whole application
+- implementation of best practices, development guide, code reviews, training sessions
 
 ## Contributors
 
