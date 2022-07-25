@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:guess_the_text/features/categories/api.category.model.dart';
+import 'package:guess_the_text/services/text.service/api.category.model.dart';
 
 import '../../mocks/categories.mocks.dart';
 

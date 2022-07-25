@@ -2,11 +2,11 @@ import 'dart:math';
 
 import 'package:guess_the_text/services/storage/shared.preferences.enum.dart';
 import 'package:guess_the_text/services/storage/shared.preferences.services.dart';
+import 'package:guess_the_text/services/text.service/api.category.model.dart';
+import 'package:guess_the_text/services/text.service/api.text.model.dart';
+import 'package:guess_the_text/services/text.service/api.texts.service.dart';
 import 'package:mobx/mobx.dart';
 
-import '/features/categories/api.category.model.dart';
-import '/features/game/api.text.model.dart';
-import '/features/game/api.texts.service.dart';
 import '/features/game/game.played.items.storage.service.dart';
 import '/features/game/text_to_guess/text.to.guess.model.dart';
 import '/service.locator.dart';
@@ -42,7 +42,8 @@ abstract class _GameStoreBase with Store {
   Future<void> _initialize() async {
     List<ApiCategory> categories = await textsService.getCategories();
 
-    String lastSelectedCategoryUuid = sp.getString(SharedPreferenceKey.lastSelectedCategory.name, defaultValue: categories.first.uuid);
+    String lastSelectedCategoryUuid =
+        sp.getString(SharedPreferenceKey.lastSelectedCategory.name, defaultValue: categories.first.uuid);
     ApiCategory initialCategory = categories.where((element) => element.uuid == lastSelectedCategoryUuid).first;
 
     await selectCategory(initialCategory);

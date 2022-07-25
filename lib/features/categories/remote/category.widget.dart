@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:guess_the_text/services/text.service/api.category.model.dart';
 
-import '/features/categories/api.category.model.dart';
 import '/features/categories/category.icons.map.dart';
 import '/features/game/game.store.dart';
 import '/service.locator.dart';
@@ -9,6 +9,7 @@ import '/theme/theme.utils.dart';
 class CategoryWidget extends StatelessWidget {
   final GameStore _gameStore = serviceLocator.get();
 
+  // TODO Convert field to a screen model inside parent folder so we can reuse category for local and remote
   final ApiCategory category;
 
   CategoryWidget({Key? key, required this.category}) : super(key: key);
