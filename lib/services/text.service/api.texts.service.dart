@@ -3,13 +3,13 @@ import 'dart:convert' as convert;
 import 'dart:io';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
-import 'package:guess_the_text/features/about/api.about.model.dart';
-import 'package:guess_the_text/features/categories/api.category.model.dart';
-import 'package:guess_the_text/features/game/api.text.model.dart';
 import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/services/file/directory.enum.dart';
 import 'package:guess_the_text/services/file/file.service.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
+import 'package:guess_the_text/services/text.service/api.about.model.dart';
+import 'package:guess_the_text/services/text.service/api.category.model.dart';
+import 'package:guess_the_text/services/text.service/api.text.model.dart';
 import 'package:guess_the_text/utils/extensions/string.extensions.dart';
 import 'package:http/http.dart' as http;
 

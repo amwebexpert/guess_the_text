@@ -1,4 +1,4 @@
-import 'package:guess_the_text/features/game/api.text.model.dart';
+import 'package:guess_the_text/services/text.service/api.text.model.dart';
 
 const mockTextToGuessFish = ApiText(
   id: 1,

@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:guess_the_text/services/text.service/api.category.model.dart';
+import 'package:guess_the_text/services/text.service/api.texts.service.dart';
 import 'package:lottie/lottie.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-import '/features/categories/api.category.model.dart';
-import '/features/game/api.texts.service.dart';
 import '/features/settings/settings.store.dart';
 import '/route.generator.dart';
 import '/service.locator.dart';

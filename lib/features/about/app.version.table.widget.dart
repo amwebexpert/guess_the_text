@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guess_the_text/services/text.service/api.about.model.dart';
+import 'package:guess_the_text/services/text.service/api.texts.service.dart';
 import 'package:guess_the_text/theme/widgets/compact.datatable.widget.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
-import '/features/about/api.about.model.dart';
 import '/features/about/privacy.policy.widget.dart';
-import '/features/game/api.texts.service.dart';
 import '/service.locator.dart';
 import '/theme/widgets/text.link.widget.dart';
 import 'card.app.connectivity.status.dart';
