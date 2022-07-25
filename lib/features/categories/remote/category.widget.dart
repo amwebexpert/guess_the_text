@@ -9,7 +9,6 @@ import '/theme/theme.utils.dart';
 class CategoryWidget extends StatelessWidget {
   final GameStore _gameStore = serviceLocator.get();
 
-  // TODO Convert field to a screen model inside parent folder so we can reuse category for local and remote
   final ApiCategory category;
 
   CategoryWidget({Key? key, required this.category}) : super(key: key);
