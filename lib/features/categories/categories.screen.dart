@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:guess_the_text/features/categories/categories.bottom.bar.layout.widget.dart';
-import 'package:guess_the_text/features/categories/categories.nav.rail.layout.widget.dart';
+import 'package:guess_the_text/features/categories/categories.landscape.layout.widget.dart';
+import 'package:guess_the_text/features/categories/categories.portrait.layout.widget.dart';
 import 'package:guess_the_text/theme/widgets/app.bar.title.widget.dart';
 
 class CategoriesWidget extends StatefulWidget {
@@ -29,8 +29,8 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
         body: OrientationBuilder(
           builder: (context, orientation) {
             return orientation == Orientation.portrait
-                ? const CategoriesBottomBarWidget()
-                : const CategoriesNavRailWidget();
+                ? const CategoriesPortraitWidget()
+                : const CategoriesLandscapeWidget();
           },
         ));
   }

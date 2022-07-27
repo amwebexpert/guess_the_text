@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:guess_the_text/features/categories/local/local.categories.widget.dart';
 import 'package:guess_the_text/features/categories/remote/remote.categories.widget.dart';
 
-class CategoriesBottomBarWidget extends StatefulWidget {
-  const CategoriesBottomBarWidget({Key? key}) : super(key: key);
+class CategoriesPortraitWidget extends StatefulWidget {
+  const CategoriesPortraitWidget({Key? key}) : super(key: key);
 
   @override
-  State<CategoriesBottomBarWidget> createState() => _CategoriesBottomBarWidgetState();
+  State<CategoriesPortraitWidget> createState() => _CategoriesPortraitWidgetState();
 }
 
-class _CategoriesBottomBarWidgetState extends State<CategoriesBottomBarWidget> {
+class _CategoriesPortraitWidgetState extends State<CategoriesPortraitWidget> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {

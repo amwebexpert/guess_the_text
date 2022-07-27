@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:guess_the_text/features/categories/local/local.categories.widget.dart';
 import 'package:guess_the_text/features/categories/remote/remote.categories.widget.dart';
 
-class CategoriesNavRailWidget extends StatefulWidget {
-  const CategoriesNavRailWidget({Key? key}) : super(key: key);
+class CategoriesLandscapeWidget extends StatefulWidget {
+  const CategoriesLandscapeWidget({Key? key}) : super(key: key);
 
   @override
-  State<CategoriesNavRailWidget> createState() => _CategoriesNavRailWidgetState();
+  State<CategoriesLandscapeWidget> createState() => _CategoriesLandscapeWidgetState();
 }
 
-class _CategoriesNavRailWidgetState extends State<CategoriesNavRailWidget> {
+class _CategoriesLandscapeWidgetState extends State<CategoriesLandscapeWidget> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
