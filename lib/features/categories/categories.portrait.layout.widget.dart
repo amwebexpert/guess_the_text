@@ -28,11 +28,11 @@ class _CategoriesPortraitWidgetState extends State<CategoriesPortraitWidget> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.cloud),
-            label: 'Public server categories',
+            label: 'Public server categories', // TODO Translate me
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.save_alt),
-            label: 'Private device categories',
+            label: 'Private device categories', // TODO Translate me
           ),
         ],
       ),
