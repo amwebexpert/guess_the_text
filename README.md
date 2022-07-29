@@ -159,6 +159,14 @@ Update the online demo deployed as GitHub pages by doing this additional step:
 
 From there, just run the `guess_the_text` executable to run the build!
 
+## Build & Run on macOS
+
+- create a branch
+- adjust the semversion of `pubspec.yaml` first
+- execute the script: `./scripts/build-macos.sh`. Flutter will build the application for linux, an executable will be found at following path: `/build/macos/Build/Products/Release`
+
+From there, just run the `guess_the_text.app` to run the app!
+
 ## Start Flutter app on Simulator or a specific device
 
     open -a Simulator
