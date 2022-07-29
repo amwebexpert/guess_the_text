@@ -16,7 +16,7 @@ class CategoriesListWidget extends StatelessWidget {
   Widget build(BuildContext context) => FullScreenAssetBackground(
         assetImagePath: backgroundImage,
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: spacing(1)),
+          padding: EdgeInsets.all(spacing(2)),
           child: ListView.builder(
               itemCount: categories.length,
               itemBuilder: (context, index) => CategoryWidget(category: categories[index])),

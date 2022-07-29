@@ -26,10 +26,8 @@ class _CategoriesLandscapeWidgetState extends State<CategoriesLandscapeWidget> {
           selectedIndex: _selectedIndex,
           onDestinationSelected: _onItemTapped,
           destinations: const [
-            NavigationRailDestination(
-                icon: Icon(Icons.cloud), label: Text('Public server categories')), // TODO Translate me
-            NavigationRailDestination(
-                icon: Icon(Icons.save_alt), label: Text('Private device categories')) // TODO Translate me
+            NavigationRailDestination(icon: Icon(Icons.cloud), label: Text('Public server')), // TODO Translate me
+            NavigationRailDestination(icon: Icon(Icons.save_alt), label: Text('Private device')) // TODO Translate me
           ],
           labelType: NavigationRailLabelType.all,
         ),
