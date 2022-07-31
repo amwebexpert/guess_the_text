@@ -3,10 +3,10 @@ import 'package:guess_the_text/features/game/game.played.items.storage.service.d
 import 'package:guess_the_text/features/game/game.store.dart';
 import 'package:guess_the_text/features/settings/settings.store.dart';
 import 'package:guess_the_text/services/device/device.info.service.dart';
-import 'package:guess_the_text/services/documents/documents.repository.dart';
 import 'package:guess_the_text/services/file/file.service.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:guess_the_text/services/qr/qr.code.service.dart';
+import 'package:guess_the_text/services/storage/documents/documents.repository.dart';
 import 'package:guess_the_text/services/storage/shared.preferences.services.dart';
 import 'package:guess_the_text/services/text.service/api.texts.service.dart';
 import 'package:guess_the_text/store/fixed.delay.spinner.store.dart';

@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:guess_the_text/service.locator.dart';
-import 'package:guess_the_text/services/documents/documents.repository.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
+import 'package:guess_the_text/services/storage/documents/documents.repository.dart';
 import 'package:sembast/sembast.dart';
 
 class GamePlayedItemsStorageService {
