@@ -2,14 +2,13 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:guess_the_text/service.locator.dart';
+import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sembast/sembast.dart';
 import 'package:sembast/sembast_io.dart';
 import 'package:sembast_web/sembast_web.dart';
-
-import '/service.locator.dart';
-import '/services/logger/logger.service.dart';
 
 class DocumentsRepository {
   static final DocumentsRepository _instance = DocumentsRepository._privateConstructor();

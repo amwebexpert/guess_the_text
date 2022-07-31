@@ -1,9 +1,9 @@
 import 'package:get_it/get_it.dart';
-import 'package:guess_the_text/documents.repository.dart';
 import 'package:guess_the_text/features/game/game.played.items.storage.service.dart';
 import 'package:guess_the_text/features/game/game.store.dart';
 import 'package:guess_the_text/features/settings/settings.store.dart';
 import 'package:guess_the_text/services/device/device.info.service.dart';
+import 'package:guess_the_text/services/documents/documents.repository.dart';
 import 'package:guess_the_text/services/file/file.service.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:guess_the_text/services/qr/qr.code.service.dart';
