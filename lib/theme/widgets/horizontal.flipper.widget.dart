@@ -4,7 +4,7 @@ import 'package:guess_the_text/utils/debouncer/modulo.debouncer.dart';
 import 'package:vector_math/vector_math.dart' as vector_math;
 
 const offsetMultiplicationFactor = 0.005;
-const offsetMultiplicationFactorY = 0.0003;
+const offsetMultiplicationFactorY = 0.0005;
 final delta180deg = vector_math.radians(180) / offsetMultiplicationFactor;
 
 class HorizontalFlipper extends StatefulWidget {
