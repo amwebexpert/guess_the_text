@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:guess_the_text/features/settings/brightness.settings.widget.dart';
+import 'package:guess_the_text/features/settings/settings.store.dart';
+import 'package:guess_the_text/service.locator.dart';
+import 'package:guess_the_text/theme/widgets/horizontal.flipper.widget.dart';
 
 import '/features/settings/hero.settings.widget.dart';
 import '/theme/theme.utils.dart';
@@ -17,29 +21,47 @@ class SettingsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
-    final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+    final SettingsStore settings = serviceLocator.get();
 
     return Scaffold(
-      appBar: AppBar(
-        title: AppBarTitle(title: localizations.preferences),
-      ),
-      body: FullScreenAssetBackground(
-        assetImagePath: isDarkTheme ? backgroundImageDark : backgroundImageLight,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: spacing(1)),
-            child: Column(
-              children: <Widget>[
-                HeroSettingsWidget(),
-                const LanguageSettingWidget(),
-                const Divider(),
-                const BrightnessSettingWidget(),
-                const Divider(),
-              ],
+        appBar: AppBar(
+          title: AppBarTitle(title: localizations.preferences),
+        ),
+        body: HorizontalFlipper(
+          backWidget: const BackDemoWidget(),
+          frontWidget: Observer(
+            builder: (BuildContext context) => FullScreenAssetBackground(
+              assetImagePath: settings.isDarkTheme ? backgroundImageDark : backgroundImageLight,
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: spacing(1)),
+                  child: Column(
+                    children: <Widget>[
+                      HeroSettingsWidget(),
+                      const LanguageSettingWidget(),
+                      const Divider(),
+                      const BrightnessSettingWidget(),
+                      const Divider(),
+                    ],
+                  ),
+                ),
+              ),
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
+}
+
+class BackDemoWidget extends StatelessWidget {
+  const BackDemoWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) => Container(
+        decoration: const BoxDecoration(color: Colors.orange),
+        child: Center(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [Icon(Icons.settings_applications, size: 200), Text('Hidden settings goes here!')],
+        )),
+      );
 }

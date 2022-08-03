@@ -112,6 +112,11 @@ If you want to see test coverage in vscode, take a look at following extensions 
 - [e2e demo recording here](docs/sections/training/recordings/e2e-tests-demo-flutter.mov)
 
 
+### Kill android emulator
+
+    adb kill-server
+    adb emu kill
+
 ### Mockito re-generate `.g.dart` mocks files
 
     flutter pub run build_runner build
