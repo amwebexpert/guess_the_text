@@ -20,6 +20,8 @@
   "appVersion": "Version",
   "categories": "Catégories",
   "category": "Catégorie",
+  "categoryTypeCloud": "Serveur cloud",
+  "categoryTypeDevice": "Sur l'appareil",
   "connectivityStatus": "Connexion",
   "deviceInfo": "Votre appareil…",
   "email": "Courriel",

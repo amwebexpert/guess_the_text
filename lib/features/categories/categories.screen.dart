@@ -13,14 +13,16 @@ class CategoriesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations localizations = AppLocalizations.of(context)!;
+
     final List<NavigationChoices> items = [
-      NavigationChoices(icon: const Icon(Icons.cloud), text: 'Public server'), // TODO Translate me
-      NavigationChoices(icon: const Icon(Icons.save_alt), text: 'Private device'), // TODO Translate me
+      NavigationChoices(icon: const Icon(Icons.cloud), text: localizations.categoryTypeCloud),
+      NavigationChoices(icon: const Icon(Icons.save_alt), text: localizations.categoryTypeDevice),
     ];
 
     return Scaffold(
         appBar: AppBar(
-          title: AppBarTitle(title: AppLocalizations.of(context)!.categories),
+          title: AppBarTitle(title: localizations.categories),
         ),
         body: ResponsiveNavigationRailOrBar(currentIndex: 0, items: items, childBuilder: childBuilder));
   }
