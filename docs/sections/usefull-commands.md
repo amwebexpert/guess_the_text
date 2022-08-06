@@ -1,5 +1,17 @@
 # Usefull VSCode and Flutter CLI operations
 
+- [Usefull VSCode and Flutter CLI operations](#usefull-vscode-and-flutter-cli-operations)
+  - [Usefull VSCode commands](#usefull-vscode-commands)
+  - [Usefull CLI operations](#usefull-cli-operations)
+    - [environment info listing](#environment-info-listing)
+    - [clean and rebuild](#clean-and-rebuild)
+    - [unit tests, widget and integration tests, e2e](#unit-tests-widget-and-integration-tests-e2e)
+    - [Start headless android emulator before running e2e tests](#start-headless-android-emulator-before-running-e2e-tests)
+    - [Kill android emulator](#kill-android-emulator)
+    - [Mockito re-generate `.g.dart` mocks files](#mockito-re-generate-gdart-mocks-files)
+    - [MobX re-generate `.g.dart` store files](#mobx-re-generate-gdart-store-files)
+  - [Start Flutter app on Simulator or a specific device](#start-flutter-app-on-simulator-or-a-specific-device)
+
 ## Usefull VSCode commands
 
     Command-Shift-P > Dart: Open DevTools Network Page
