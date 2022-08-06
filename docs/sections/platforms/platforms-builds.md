@@ -1,8 +1,12 @@
 # Platforms support
 
-- [Add support for a new platform](https://stackoverflow.com/a/66214067/704681)
-
-    flutter create --platforms=web,macos,windows,linux,android,ios .
+- [Platforms support](#platforms-support)
+  - [Build & Publish Webapp](#build--publish-webapp)
+  - [Build Android bundle](#build-android-bundle)
+  - [Build & Run Linux build](#build--run-linux-build)
+  - [Build & Run Windows build](#build--run-windows-build)
+  - [Build & Run on macOS](#build--run-on-macos)
+  - [References](#references)
 
 ## Build & Publish Webapp
 
@@ -47,9 +51,10 @@ From there, just run the `guess_the_text.app` to run the app!
 
 
 
-### References
+## References
 
 - [Build and release a web app](https://docs.flutter.dev/deployment/web)
 - [Building Windows apps with Flutter](https://docs.flutter.dev/development/platform-integration/windows/building)
-
-
+- [Build and release an iOS app](https://docs.flutter.dev/deployment/ios)
+- [Add support for a new platform](https://stackoverflow.com/a/66214067/704681)
+    flutter create --platforms=web,macos,windows,linux,android,ios .
