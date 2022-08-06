@@ -44,11 +44,11 @@ List of demonstrated elements inside the codebase, divided by categories
 
 - Simple out of the box state management (setState similar to React.useState)
 - Not demonstrated: InheritedWidget similar to React useContext because we've picked MobX (see below)
-- State management with MobX
-- MobX Store annotations via the mobx_codegen package
-- FutureBuilder for aync widget building pattern (https://stackoverflow.com/a/51983699/704681)
-- MobX reaction and disposers
-- Preferences page
+- State management with `MobX`
+- `MobX` Store annotations via the mobx_codegen package
+- `FutureBuilder` for aync widget building pattern (https://stackoverflow.com/a/51983699/704681)
+- `MobX` reaction and disposers
+- Preferences page, device stored categories
 
 ## Local storages
 
@@ -69,11 +69,11 @@ List of demonstrated elements inside the codebase, divided by categories
 
 ## Animations
 
-- AnimationController with SingleTickerProviderStateMixin
+- `AnimationController` with `SingleTickerProviderStateMixin`
 - Usage of `GestureDetector` for horizontal flipper widget with 3D effect
-- Tween and TweenSequence
-- RotationTransition, AnimatedOpacity
-- Example of Staggered animations through CurvedAnimation and intervals
+- `Tween` and `TweenSequence`
+- `RotationTransition`, `AnimatedOpacity`
+- Example of `Staggered` animations through `CurvedAnimation` and intervals
 - Re-use animation through a behavioral wrapper widget with a child attribute
 - [Hero animations](https://docs.flutter.dev/development/ui/animations/hero-animations)
 
@@ -83,8 +83,8 @@ List of demonstrated elements inside the codebase, divided by categories
 - https://medium.com/flutter-community/the-ultimate-javascript-vs-dart-syntax-guide-2f7d8ad8bde6
 - Async API services
 - Factory pattern to create services singleton
-- Power of Dart extensions
-- JSON serialization
+- Power of `Dart` extensions
+- JSON serialization and common class methods (copyWith, toString, equals...)
 - Clone vs copy(...) with adjusted params
 
 ## Deap links on platforms
