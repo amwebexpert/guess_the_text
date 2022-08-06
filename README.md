@@ -14,20 +14,11 @@ Free educational app deployable on several native platforms: `Linux`, `Android`,
 - dependencies injections pattern (`IoC`) for the whole application
 - implementation of best practices, development guide, code reviews, training sessions
 
-## Contributors
-
-We are actually limiting the number of contributors (so dont take that personnaly) since this project:
-- has to refine it's roadmap and goals
-- we are in the process of adding a lot of assets to improve the onboarding process
-- coding conventions have to be defined
-- the developer documentation will be re-structured soon
-
 ## Some screen captures of the implemented features
 
 start game | success | categories | custom chalenge | qr-code
 ------- | ---------- | ---------- | ---------- | ----------
 <img src="store-presence/guess-the-text-01.jpg" /> | <img src="store-presence/guess-the-text-02.jpg" /> | <img src="store-presence/guess-the-text-04.jpg" /> | <img src="store-presence/create-a-challenge.jpg" /> | <img src="store-presence/qr-code-display.jpg" />
-
 
 ## Deployed on production
 
@@ -59,14 +50,22 @@ List of demonstrated elements inside the codebase, divided by categories:
 - [Covered subjects by categories](docs/sections/completed-subjects.md)
 
 
-### Platforms support
+## Platforms support
 
-The app supports multiple plateforms (more than just Android and iOS). See the list of supported platforms and how to add another platform
+The app supports multiple plateforms (more than just `Android` and `iOS`). See the list of supported platforms and how to add another platform
 
 - [Supported platforms & builds](docs/sections/platforms/platforms-builds.md)
 
-### Usefull VSCode & Flutter CLI operations
+## Usefull VSCode & Flutter CLI operations
 
-Running e2e tests, generating .g.dart files, coverages reports and many other commands
+Running `e2e` tests, re-generate `.g.dart` files, coverages reports and many other commands
 
 - [Usefull VSCode features & command line operations](docs/sections/usefull-commands.md)
+
+## Contributors
+
+We are actually limiting the number of contributors (so dont take that personnaly) since this project:
+- has to refine it's roadmap and goals
+- we are in the process of adding a lot of assets to improve the onboarding process
+- coding conventions have to be defined
+- the developer documentation will be re-structured soon
