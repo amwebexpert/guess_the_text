@@ -62,7 +62,7 @@ If you want to see test coverage in vscode, take a look at following extensions 
     emulator -avd  Pixel_5_API_29 -no-audio -no-window
 
 - https://docs.flutter.dev/testing/integration-tests
-- [e2e demo recording here](docs/sections/training/recordings/e2e-tests-demo-flutter.mov)
+- [e2e demo recording here](training/recordings/e2e-tests-demo-flutter.mov)
 
 
 ### Kill android emulator
