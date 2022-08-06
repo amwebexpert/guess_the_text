@@ -63,7 +63,7 @@ List of demonstrated elements inside the codebase, divided by categories:
 
 The app supports multiple plateforms (more than just Android and iOS). See the list of supported platforms and how to add another platform
 
-- [Supported platforms & builds](docs/sections/platforms-builds.md)
+- [Supported platforms & builds](docs/sections/platforms/platforms-builds.md)
 
 ### Usefull VSCode & Flutter CLI operations
 
