@@ -1,4 +1,4 @@
-# guess_the_text
+# Guess the text
 
 Words guess game app
 
