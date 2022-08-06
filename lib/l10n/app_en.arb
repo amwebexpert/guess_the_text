@@ -20,6 +20,8 @@
   "appVersion": "Version",
   "categories": "Categories",
   "category": "Category",
+  "categoryTypeCloud": "Remote server",
+  "categoryTypeDevice": "Private device",
   "connectivityStatus": "Connectivity",
   "deviceInfo": "About your device…",
   "email": "Email",
