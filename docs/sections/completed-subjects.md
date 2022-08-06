@@ -53,8 +53,9 @@ List of demonstrated elements inside the codebase, divided by categories
 ## Local storages
 
 - Local storage using [Shared Preferences](https://pub.dev/packages/shared_preferences) for user settings
-- Usage of NoSQL database [Sembast solution](https://pub.dev/packages/sembast) to persisted guessed texts
 - Classic [text files read/write](https://docs.flutter.dev/cookbook/persistence/reading-writing-files) (see `FileService`)
+- Usage of NoSQL database [Sembast solution](https://pub.dev/packages/sembast) to persist guessed texts
+- Usage of SQL database [SQFlite solution](https://pub.dev/packages/sqflite) to store device categories
 
 ## Dependencies injection (a.k.a. inversion of control IoC, Service locator)
 
@@ -69,6 +70,7 @@ List of demonstrated elements inside the codebase, divided by categories
 ## Animations
 
 - AnimationController with SingleTickerProviderStateMixin
+- Usage of `GestureDetector` for horizontal flipper widget with 3D effect
 - Tween and TweenSequence
 - RotationTransition, AnimatedOpacity
 - Example of Staggered animations through CurvedAnimation and intervals
