@@ -1,5 +1,7 @@
 # Project coding standards
 
+This section list coding patterns promoted in the project.
+
 ## Class constructor parameters
 
 Prefer using named parameters. The advantages are:
