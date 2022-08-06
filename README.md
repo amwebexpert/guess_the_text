@@ -7,11 +7,11 @@ Words guess game app
 Free educational app deployable on several native platforms: `Android` & `iOS` (iPhone, Tablets), Webapp, `Linux`, `MacOS`, and `Windows`. The application is an evolving educational game. The goal is to establish native development standards applied to a real world application deployed on production via the `Flutter` framework:
 - app technical architecture, solution design and active development
 - promote `Flutter` cookbook recipies and `Dart` language best patterns
-- responsive layouts, screen design, theme, typography, dark mode, animations
-- local storage, preferences, devoce NoSQL database like Sembast, local SQL db SQFLite
-- automated unit and behavioral tests, end to end tests, code coverage report
+- responsive layouts, screen design, app theme, typography, dark mode, animations
+- local storage, `shared preferences`, devoce NoSQL database like `Sembast`, local SQL db `SQFLite`
+- automated unit and behavioral tests, end to end (`e2e`) tests, code coverage report
 - evolutive structure of the source code, choice of open source libraries
-- integration of `REST` and/or `GraphQL` APIs
+- integration to `REST` and/or `GraphQL` backend APIs
 - dependencies injections pattern (`IoC`) for the whole application
 - implementation of best practices, development guide, code reviews, training sessions
 
