@@ -26,11 +26,10 @@ class EditCategoryState extends State<EditCategory> {
   final SqlDbService sqlDbService = serviceLocator.get();
   final SettingsStore settings = serviceLocator.get();
 
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _txtCategoryController = TextEditingController();
   late String _langCode;
   late String _iconName;
-
-  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -54,15 +53,12 @@ class EditCategoryState extends State<EditCategory> {
 
   Future<void> _saveCategory() async {
     final name = _txtCategoryController.text;
-    final iconName = _iconName;
-    final langCode = _langCode;
 
     if (widget.isNew) {
-      final uuid = const Uuid().v4(); // TODO put this into a UuidUtils.create() method
-      final category = ApiCategory(uuid: uuid, name: name, langCode: langCode, iconName: iconName);
+      final category = ApiCategory(uuid: const Uuid().v4(), name: name, langCode: _langCode, iconName: _iconName);
       await sqlDbService.createCategory(category);
     } else {
-      final category = widget.category.copyWith(name: name, langCode: langCode, iconName: iconName);
+      final category = widget.category.copyWith(name: name, langCode: _langCode, iconName: _iconName);
       await sqlDbService.updateCategory(category);
     }
   }
