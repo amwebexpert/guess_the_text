@@ -6,6 +6,7 @@ import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:guess_the_text/services/text.service/api.category.model.dart';
 import 'package:guess_the_text/services/text.service/sql.db.service.dart';
+import 'package:guess_the_text/theme/theme.utils.dart';
 import 'package:guess_the_text/utils/extensions/string.extensions.dart';
 import 'package:guess_the_text/utils/language.utils.dart';
 import 'package:uuid/uuid.dart';
@@ -73,17 +74,26 @@ class EditCategoryState extends State<EditCategory> {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
+    final title = widget.isNew ? Text(localizations.categoryNew) : Text(localizations.categoryEdit);
 
     return AlertDialog(
-      title: widget.isNew ? Text(localizations.categoryNew) : Text(localizations.categoryEdit),
+      title: title,
       content: Form(
         key: _formKey,
         child: SingleChildScrollView(
           child: Column(
             children: [
               TextFormFieldCategoryName(controller: _txtCategoryController),
-              DropDownButtonFieldIcon(value: _iconName, onChanged: _onCategoryIconChange),
-              DropDownButtonFieldLanguage(value: _langCode, onChanged: _onLanguageChange),
+              Row(
+                children: [
+                  Expanded(child: DropDownButtonFieldLanguage(value: _langCode, onChanged: _onLanguageChange)),
+                  SizedBox(width: spacing(2)),
+                  SizedBox(
+                    width: 50,
+                    child: DropDownButtonFieldIcon(value: _iconName, onChanged: _onCategoryIconChange),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -116,6 +126,8 @@ class DropDownButtonFieldIcon extends StatelessWidget {
     return DropdownButtonFormField<String>(
       items: categoryIcons.entries.map((e) => DropdownMenuItem(value: e.key, child: Icon(e.value))).toList(),
       hint: Text(localizations.categoryIcon),
+      isExpanded: true,
+      isDense: true,
       value: value,
       onChanged: onChanged,
     );
