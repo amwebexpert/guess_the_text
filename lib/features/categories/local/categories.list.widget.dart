@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guess_the_text/features/categories/category.icons.map.dart';
 import 'package:guess_the_text/features/categories/local/edit.category.widget.dart';
 import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/services/text.service/api.category.model.dart';
 import 'package:guess_the_text/services/text.service/sql.db.service.dart';
+import 'package:guess_the_text/utils/language.utils.dart';
 
 import '/theme/theme.utils.dart';
 import '/theme/widgets/full.screen.bg.image.widget.dart';
@@ -55,6 +58,8 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations localizations = AppLocalizations.of(context)!;
+
     return Scaffold(
         floatingActionButton:
             FloatingActionButton(child: const Icon(Icons.add), onPressed: () => _createCategory(context)),
@@ -74,7 +79,9 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
                       child: Card(
                         key: ValueKey(id),
                         child: ListTile(
-                          title: Text(category.name), // TODO add icon
+                          leading: Icon(categoryIcons[category.iconName]),
+                          title: Text(category.name),
+                          subtitle: Text(getLanguageFullNameFromCode(context, category.langCode)),
                           onTap: () => _updateCategory(context, category, index),
                         ),
                       ));
