@@ -48,7 +48,7 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
     }
   }
 
-  Future<void> _onCategoryDismiss(ApiCategory category) async {
+  Future<void> _deleteCategory(ApiCategory category) async {
     await sqlDbService.deleteCategory(category);
     setState(() => categories.remove(category));
   }
@@ -68,7 +68,7 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
                   final category = categories[index];
                   return Dismissible(
                       key: Key(category.id.toString()),
-                      onDismissed: (direction) => _onCategoryDismiss(category),
+                      onDismissed: (direction) => _deleteCategory(category),
                       child: Card(
                         key: ValueKey(category.id.toString()),
                         child: ListTile(
