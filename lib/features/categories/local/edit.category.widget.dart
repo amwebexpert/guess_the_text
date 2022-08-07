@@ -82,12 +82,7 @@ class EditCategoryState extends State<EditCategory> {
           child: Column(
             children: [
               TextFormFieldCategoryName(controller: _txtCategoryController),
-              DropdownButtonFormField<String>(
-                items: categoryIcons.entries.map((e) => DropdownMenuItem(value: e.key, child: Icon(e.value))).toList(),
-                hint: Text(localizations.categoryIcon),
-                value: _iconName,
-                onChanged: _onCategoryIconChange,
-              ),
+              DropDownButtonFieldIcon(value: _iconName, onChanged: _onCategoryIconChange),
               DropDownButtonFieldLanguage(value: _langCode, onChanged: _onLanguageChange),
             ],
           ),
@@ -104,6 +99,25 @@ class EditCategoryState extends State<EditCategory> {
           },
         ),
       ],
+    );
+  }
+}
+
+class DropDownButtonFieldIcon extends StatelessWidget {
+  const DropDownButtonFieldIcon({Key? key, required this.value, required this.onChanged}) : super(key: key);
+
+  final String value;
+  final void Function(String?) onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    final AppLocalizations localizations = AppLocalizations.of(context)!;
+
+    return DropdownButtonFormField<String>(
+      items: categoryIcons.entries.map((e) => DropdownMenuItem(value: e.key, child: Icon(e.value))).toList(),
+      hint: Text(localizations.categoryIcon),
+      value: value,
+      onChanged: onChanged,
     );
   }
 }
