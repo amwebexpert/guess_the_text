@@ -22,7 +22,7 @@ Route? onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => const GameWidget());
 
     case '/categories':
-      return MaterialPageRoute(builder: (_) => const CategoriesWidget());
+      return MaterialPageRoute(builder: (_) => CategoriesWidget());
 
     case '/onTheFlyChallenge':
       return MaterialPageRoute(

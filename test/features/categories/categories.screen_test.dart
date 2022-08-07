@@ -62,7 +62,7 @@ void main() {
     when(mockTextsService.getCategories()).thenAnswer((_) => Future.value(mockCategories));
 
     // when
-    await tester.pumpWidget(wrapper(const CategoriesWidget()));
+    await tester.pumpWidget(wrapper(CategoriesWidget()));
 
     // then
     expect(spinnerFinder, findsOneWidget);
@@ -79,7 +79,7 @@ void main() {
     when(mockTextsService.getCategories()).thenAnswer((_) => Future.value(mockCategories));
 
     // when
-    await tester.pumpWidget(wrapper(const CategoriesWidget()));
+    await tester.pumpWidget(wrapper(CategoriesWidget()));
     await tester.pump(); // wait for the spinner to disappear
 
     // then
@@ -97,7 +97,7 @@ void main() {
     when(mockGameStore.selectCategory(any)).thenAnswer((_) => Future.value(null));
 
     // asserts before acting
-    await tester.pumpWidget(wrapper(const CategoriesWidget()));
+    await tester.pumpWidget(wrapper(CategoriesWidget()));
     await tester.pump(); // wait for the spinner to disappear
 
     // when
@@ -117,7 +117,7 @@ void main() {
     reset(mockNavigatorObserver);
 
     // asserts before acting
-    await tester.pumpWidget(wrapper(const CategoriesWidget()));
+    await tester.pumpWidget(wrapper(CategoriesWidget()));
     await tester.pump(); // wait for the spinner to disappear
 
     // when

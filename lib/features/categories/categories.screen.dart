@@ -2,28 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guess_the_text/features/categories/local/local.categories.widget.dart';
 import 'package:guess_the_text/features/categories/remote/remote.categories.widget.dart';
+import 'package:guess_the_text/service.locator.dart';
+import 'package:guess_the_text/services/storage/shared.preferences.enum.dart';
+import 'package:guess_the_text/services/storage/shared.preferences.services.dart';
 import 'package:guess_the_text/theme/widgets/app.bar.title.widget.dart';
 import 'package:guess_the_text/theme/widgets/responsive/navigation/navigation.choices.model.dart';
 import 'package:guess_the_text/theme/widgets/responsive/navigation/responsive.navigation.rail.or.bar.widget.dart';
 
 class CategoriesWidget extends StatelessWidget {
-  const CategoriesWidget({Key? key}) : super(key: key);
+  final SharedPreferencesService sp = serviceLocator.get();
+  final _lastSelectionKey = SharedPreferenceKey.lastSelectedCategoriesListType.name;
 
-  Widget childBuilder(int index) => index == 0 ? const RemoteCategoriesWidget() : const LocalCategoriesWidget();
+  CategoriesWidget({Key? key}) : super(key: key);
+
+  Widget childBuilder(int index) {
+    sp.setInt(_lastSelectionKey, index);
+    return index == 0 ? const RemoteCategoriesWidget() : const LocalCategoriesWidget();
+  }
 
   @override
   Widget build(BuildContext context) {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
 
-    final List<NavigationChoices> items = [
-      NavigationChoices(icon: const Icon(Icons.cloud), text: localizations.categoryTypeCloud),
-      NavigationChoices(icon: const Icon(Icons.save_alt), text: localizations.categoryTypeDevice),
-    ];
-
     return Scaffold(
         appBar: AppBar(
           title: AppBarTitle(title: localizations.categories),
         ),
-        body: ResponsiveNavigationRailOrBar(currentIndex: 0, items: items, childBuilder: childBuilder));
+        body: ResponsiveNavigationRailOrBar(
+            currentIndex: sp.getInt(_lastSelectionKey, defaultValue: 0),
+            items: [
+              NavigationChoices(text: localizations.categoryTypeCloud, icon: const Icon(Icons.cloud)),
+              NavigationChoices(text: localizations.categoryTypeDevice, icon: const Icon(Icons.save_alt)),
+            ],
+            childBuilder: childBuilder));
   }
 }
