@@ -69,8 +69,8 @@ class SqlDbService {
   Future<ApiCategory> createCategory(ApiCategory category) async {
     _validateInitCalled();
     Map<String, dynamic> toInsert = category.toJson()
-      ..remove('isCustom')
-      ..remove(CategoryColumns.id.name);
+      ..remove('isCustom') // Note: 'isCustom' is atransient field (never persisted)
+      ..remove(CategoryColumns.id.name); // the 'id' value will be auto-generated
     int newId = await _db!.insert(TableNames.category.name, toInsert);
     logger.info('created category id $newId - ${category.name}');
     return category.copyWith(id: newId);
@@ -79,6 +79,7 @@ class SqlDbService {
   Future<ApiCategory> updateCategory(ApiCategory category) async {
     _validateInitCalled();
 
+    // Note: isCustom is atransient field (never persisted)
     Map<String, dynamic> toUpdate = category.toJson()..remove('isCustom');
     final where = '${CategoryColumns.id.name} = ?';
     int result = await _db!.update(TableNames.category.name, toUpdate, where: where, whereArgs: [category.id]);
