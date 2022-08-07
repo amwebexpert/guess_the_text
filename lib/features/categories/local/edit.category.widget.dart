@@ -67,7 +67,7 @@ class EditCategoryState extends State<EditCategory> {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
 
     return AlertDialog(
-      title: widget.isNew ? const Text('Insert category') : const Text('Edit category'),
+      title: widget.isNew ? Text(localizations.categoryNew) : Text(localizations.categoryEdit),
       content: Form(
         key: _formKey,
         child: SingleChildScrollView(
@@ -85,7 +85,7 @@ class EditCategoryState extends State<EditCategory> {
                     child: Text(localizations.prefLangFr, style: Theme.of(context).textTheme.bodyText1),
                   ),
                 ],
-                hint: const Text('Language'),
+                hint: Text(localizations.language),
                 value: _langCode,
                 onChanged: (value) {
                   setState(() => _langCode = value!);
@@ -98,7 +98,7 @@ class EditCategoryState extends State<EditCategory> {
                           child: Icon(e.value),
                         ))
                     .toList(),
-                hint: const Text('Category icon'),
+                hint: Text(localizations.categoryIcon),
                 value: _iconName,
                 onChanged: (value) {
                   setState(() => _iconName = value!);
@@ -135,12 +135,16 @@ class NoteText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations localizations = AppLocalizations.of(context)!;
+
     return TextFormField(
+      autofocus: controller.text.isBlank,
+      enableSuggestions: false,
+      autocorrect: false,
       controller: controller,
-      validator: (value) => value.isBlank ? 'Field is mandatory' : null,
+      validator: (value) => value.isBlank ? localizations.fieldValidationMandatory : null,
       style: Theme.of(context).textTheme.bodyText1,
-      decoration: InputDecoration(
-          border: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10))), hintText: hintText),
+      decoration: InputDecoration(hintText: hintText),
     );
   }
 }
