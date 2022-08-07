@@ -1,5 +1,10 @@
 # References
 
+- [References](#references)
+  - [Usefull references](#usefull-references)
+  - [Troubleshothing](#troubleshothing)
+  - [Hangman gaming resources](#hangman-gaming-resources)
+    - [Images and backgrounds](#images-and-backgrounds)
 
 ## Usefull references
 

@@ -5,7 +5,6 @@ import 'package:guess_the_text/services/text.service/api.texts.service.dart';
 import 'package:guess_the_text/theme/widgets/compact.datatable.widget.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
-import '/features/about/privacy.policy.widget.dart';
 import '/service.locator.dart';
 import '/theme/widgets/text.link.widget.dart';
 import 'card.app.connectivity.status.dart';
@@ -51,7 +50,6 @@ class _AppVersionTableState extends State<AppVersionTable> {
 
     return Column(
       children: [
-        const PrivacyPolicyWidget(),
         CompactDatatableWidget(
           rows: <DataRow>[
             DataRow(

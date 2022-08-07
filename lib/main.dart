@@ -20,6 +20,7 @@ void main() {
   if (!kDebugMode) {
     ErrorWidget.builder = (FlutterErrorDetails details) => AppErrorWidget(details: details);
   }
+  // debugRepaintRainbowEnabled = true;
   runApp(const HangmanApp());
 }
 
