@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const defaultCategoryIcon = 'mix';
+
 const Map<String, IconData> categoryIcons = {
   'animals': Icons.pets,
   'transports': Icons.local_taxi,
@@ -7,5 +9,5 @@ const Map<String, IconData> categoryIcons = {
   'planets': Icons.rocket,
   'countries': Icons.place_sharp,
   'geography': Icons.place_outlined,
-  'mix': Icons.category,
+  defaultCategoryIcon: Icons.category,
 };

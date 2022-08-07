@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guess_the_text/features/categories/category.icons.map.dart';
+import 'package:guess_the_text/features/settings/settings.store.dart';
 import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:guess_the_text/services/text.service/api.category.model.dart';
@@ -23,17 +24,21 @@ class EditCategory extends StatefulWidget {
 class EditCategoryState extends State<EditCategory> {
   final LoggerService loggerService = serviceLocator.get();
   final SqlDbService sqlDbService = serviceLocator.get();
+  final SettingsStore settings = serviceLocator.get();
 
-  final TextEditingController txtName = TextEditingController();
-  String _langCode = AppLanguage.en.name;
-  String _iconName = 'mix';
+  final TextEditingController _txtCategoryController = TextEditingController();
+  late String _langCode;
+  late String _iconName;
 
   final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
-    if (!widget.isNew) {
-      txtName.text = widget.category.name;
+    if (widget.isNew) {
+      _langCode = settings.locale.languageCode;
+      _iconName = defaultCategoryIcon;
+    } else {
+      _txtCategoryController.text = widget.category.name;
       _langCode = widget.category.langCode;
       _iconName = widget.category.iconName;
     }
@@ -43,12 +48,12 @@ class EditCategoryState extends State<EditCategory> {
 
   @override
   void dispose() {
-    txtName.dispose();
+    _txtCategoryController.dispose();
     super.dispose();
   }
 
   Future<void> _saveCategory() async {
-    final name = txtName.text;
+    final name = _txtCategoryController.text;
     final iconName = _iconName;
     final langCode = _langCode;
 
@@ -77,7 +82,7 @@ class EditCategoryState extends State<EditCategory> {
             padding: EdgeInsets.all(spacing(2)),
             child: Column(
               children: [
-                NoteText(hintText: 'Name', controller: txtName),
+                NoteText(hintText: 'Name', controller: _txtCategoryController),
                 DropdownButtonFormField<String>(
                   items: [
                     DropdownMenuItem(
