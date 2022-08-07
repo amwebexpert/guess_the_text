@@ -60,7 +60,7 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
                   final category = categories[index];
                   return Dismissible(
                       key: Key(category.id.toString()),
-                      onDismissed: (direction) {},
+                      onDismissed: (direction) {}, // TODO Deleted the category
                       child: Card(
                         key: ValueKey(category.id.toString()),
                         child: ListTile(
