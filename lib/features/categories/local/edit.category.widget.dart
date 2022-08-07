@@ -6,7 +6,6 @@ import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:guess_the_text/services/text.service/api.category.model.dart';
 import 'package:guess_the_text/services/text.service/sql.db.service.dart';
-import 'package:guess_the_text/theme/theme.utils.dart';
 import 'package:guess_the_text/utils/extensions/string.extensions.dart';
 import 'package:guess_the_text/utils/language.utils.dart';
 import 'package:uuid/uuid.dart';
@@ -51,15 +50,15 @@ class EditCategoryState extends State<EditCategory> {
     super.dispose();
   }
 
-  Future<void> _saveCategory() async {
+  Future<ApiCategory?> _saveCategory(BuildContext context) async {
     final name = _txtCategoryController.text;
 
     if (widget.isNew) {
       final category = ApiCategory(uuid: const Uuid().v4(), name: name, langCode: _langCode, iconName: _iconName);
-      await sqlDbService.createCategory(category);
+      return sqlDbService.createCategory(category);
     } else {
       final category = widget.category.copyWith(name: name, langCode: _langCode, iconName: _iconName);
-      await sqlDbService.updateCategory(category);
+      return sqlDbService.updateCategory(category);
     }
   }
 
@@ -67,61 +66,62 @@ class EditCategoryState extends State<EditCategory> {
   Widget build(BuildContext context) {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: widget.isNew ? const Text('Insert category') : const Text('Edit category'),
-      ),
-      body: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Padding(
-            padding: EdgeInsets.all(spacing(2)),
-            child: Column(
-              children: [
-                NoteText(hintText: 'Name', controller: _txtCategoryController),
-                DropdownButtonFormField<String>(
-                  items: [
-                    DropdownMenuItem(
-                      value: AppLanguage.en.name,
-                      child: Text(localizations.prefLangEn),
-                    ),
-                    DropdownMenuItem(
-                      value: AppLanguage.fr.name,
-                      child: Text(localizations.prefLangFr),
-                    ),
-                  ],
-                  hint: const Text('Language'),
-                  value: _langCode,
-                  onChanged: (value) {
-                    setState(() => _langCode = value!);
-                  },
-                ),
-                DropdownButtonFormField<String>(
-                  items: categoryIcons.entries
-                      .map((e) => DropdownMenuItem(
-                            value: e.key,
-                            child: Icon(e.value),
-                          ))
-                      .toList(),
-                  hint: const Text('Category icon'),
-                  value: _iconName,
-                  onChanged: (value) {
-                    setState(() => _iconName = value!);
-                  },
-                )
-              ],
-            ),
+    return AlertDialog(
+      title: widget.isNew ? const Text('Insert category') : const Text('Edit category'),
+      content: Form(
+        key: _formKey,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              NoteText(hintText: 'Name', controller: _txtCategoryController),
+              DropdownButtonFormField<String>(
+                items: [
+                  DropdownMenuItem(
+                    value: AppLanguage.en.name,
+                    child: Text(localizations.prefLangEn, style: Theme.of(context).textTheme.bodyText1),
+                  ),
+                  DropdownMenuItem(
+                    value: AppLanguage.fr.name,
+                    child: Text(localizations.prefLangFr, style: Theme.of(context).textTheme.bodyText1),
+                  ),
+                ],
+                hint: const Text('Language'),
+                value: _langCode,
+                onChanged: (value) {
+                  setState(() => _langCode = value!);
+                },
+              ),
+              DropdownButtonFormField<String>(
+                items: categoryIcons.entries
+                    .map((e) => DropdownMenuItem(
+                          value: e.key,
+                          child: Icon(e.value),
+                        ))
+                    .toList(),
+                hint: const Text('Category icon'),
+                value: _iconName,
+                onChanged: (value) {
+                  setState(() => _iconName = value!);
+                },
+              )
+            ],
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+      actions: <Widget>[
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: Text(localizations.actionCancel),
+        ),
+        ElevatedButton(
           onPressed: () {
             if (_formKey.currentState!.validate()) {
-              _saveCategory();
-              Navigator.pop(context);
+              _saveCategory(context).then((value) => Navigator.pop(context, value));
             }
           },
-          child: const Icon(Icons.save)),
+          child: Text(localizations.actionOK),
+        ),
+      ],
     );
   }
 }
@@ -138,6 +138,7 @@ class NoteText extends StatelessWidget {
     return TextFormField(
       controller: controller,
       validator: (value) => value.isBlank ? 'Field is mandatory' : null,
+      style: Theme.of(context).textTheme.bodyText1,
       decoration: InputDecoration(
           border: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10))), hintText: hintText),
     );

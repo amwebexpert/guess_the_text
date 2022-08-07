@@ -5,20 +5,44 @@ import 'package:guess_the_text/services/text.service/api.category.model.dart';
 import '/theme/theme.utils.dart';
 import '/theme/widgets/full.screen.bg.image.widget.dart';
 
-class CategoriesListWidget extends StatelessWidget {
+class CategoriesListWidget extends StatefulWidget {
   static const String backgroundImage = 'assets/images/backgrounds/background-pexels-pixabay-461940.jpg';
 
-  const CategoriesListWidget({Key? key, required this.categories}) : super(key: key);
+  const CategoriesListWidget({Key? key, required this.originalCategories}) : super(key: key);
 
-  final List<ApiCategory> categories;
+  final List<ApiCategory> originalCategories;
 
-  void _createCategory(BuildContext context) {
-    const category = ApiCategory();
-    Navigator.push(context, MaterialPageRoute(builder: (_) => const EditCategory(category: category, isNew: true)));
+  @override
+  State<CategoriesListWidget> createState() => _CategoriesListWidgetState();
+}
+
+class _CategoriesListWidgetState extends State<CategoriesListWidget> {
+  late List<ApiCategory> categories;
+
+  @override
+  void initState() {
+    super.initState();
+    categories = widget.originalCategories;
   }
 
-  void _updateCategory(BuildContext context, ApiCategory category) {
-    Navigator.push(context, MaterialPageRoute(builder: (_) => EditCategory(category: category, isNew: false)));
+  Future<void> _createCategory(BuildContext context) async {
+    final ApiCategory? result =
+        await showDialog(context: context, builder: (_) => const EditCategory(category: ApiCategory(), isNew: true));
+
+    if (result != null) {
+      categories.add(result);
+      setState(() {});
+    }
+  }
+
+  Future<void> _updateCategory(BuildContext context, ApiCategory category, int index) async {
+    final ApiCategory? result =
+        await showDialog(context: context, builder: (_) => EditCategory(category: category, isNew: false));
+
+    if (result != null) {
+      categories[index] = result;
+      setState(() {});
+    }
   }
 
   @override
@@ -27,7 +51,7 @@ class CategoriesListWidget extends StatelessWidget {
         floatingActionButton:
             FloatingActionButton(child: const Icon(Icons.add), onPressed: () => _createCategory(context)),
         body: FullScreenAssetBackground(
-          assetImagePath: backgroundImage,
+          assetImagePath: CategoriesListWidget.backgroundImage,
           child: Padding(
             padding: EdgeInsets.all(spacing(2)),
             child: ListView.builder(
@@ -41,7 +65,7 @@ class CategoriesListWidget extends StatelessWidget {
                         key: ValueKey(category.id.toString()),
                         child: ListTile(
                           title: Text(category.name),
-                          onTap: () => _updateCategory(context, category),
+                          onTap: () => _updateCategory(context, category, index),
                         ),
                       ));
                 }),

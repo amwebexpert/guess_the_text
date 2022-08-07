@@ -30,7 +30,7 @@ class _LocalCategoriesWidgetState extends State<LocalCategoriesWidget> {
       builder: ((context, snapshot) {
         return snapshot.connectionState == ConnectionState.done
             ? snapshot.hasData
-                ? CategoriesListWidget(categories: snapshot.data!)
+                ? CategoriesListWidget(originalCategories: snapshot.data!)
                 : const LoadingErrorWidget()
             : const CategoriesLoadingWidget();
       }));
