@@ -62,6 +62,14 @@ class EditCategoryState extends State<EditCategory> {
     }
   }
 
+  void _onLanguageChange(String? value) {
+    setState(() => _langCode = value ?? settings.locale.languageCode);
+  }
+
+  void _onCategoryIconChange(String? value) {
+    setState(() => _iconName = value ?? defaultCategoryIcon);
+  }
+
   @override
   Widget build(BuildContext context) {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
@@ -73,65 +81,65 @@ class EditCategoryState extends State<EditCategory> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              NoteText(hintText: 'Name', controller: _txtCategoryController),
+              TextFormFieldCategoryName(controller: _txtCategoryController),
               DropdownButtonFormField<String>(
-                items: [
-                  DropdownMenuItem(
-                    value: AppLanguage.en.name,
-                    child: Text(localizations.prefLangEn, style: Theme.of(context).textTheme.bodyText1),
-                  ),
-                  DropdownMenuItem(
-                    value: AppLanguage.fr.name,
-                    child: Text(localizations.prefLangFr, style: Theme.of(context).textTheme.bodyText1),
-                  ),
-                ],
-                hint: Text(localizations.language),
-                value: _langCode,
-                onChanged: (value) {
-                  setState(() => _langCode = value!);
-                },
-              ),
-              DropdownButtonFormField<String>(
-                items: categoryIcons.entries
-                    .map((e) => DropdownMenuItem(
-                          value: e.key,
-                          child: Icon(e.value),
-                        ))
-                    .toList(),
+                items: categoryIcons.entries.map((e) => DropdownMenuItem(value: e.key, child: Icon(e.value))).toList(),
                 hint: Text(localizations.categoryIcon),
                 value: _iconName,
-                onChanged: (value) {
-                  setState(() => _iconName = value!);
-                },
-              )
+                onChanged: _onCategoryIconChange,
+              ),
+              DropDownButtonFieldLanguage(value: _langCode, onChanged: _onLanguageChange),
             ],
           ),
         ),
       ),
       actions: <Widget>[
-        TextButton(
-          onPressed: () => Navigator.pop(context),
-          child: Text(localizations.actionCancel),
-        ),
+        TextButton(onPressed: () => Navigator.pop(context), child: Text(localizations.actionCancel)),
         ElevatedButton(
+          child: Text(localizations.actionOK),
           onPressed: () {
             if (_formKey.currentState!.validate()) {
               _saveCategory(context).then((value) => Navigator.pop(context, value));
             }
           },
-          child: Text(localizations.actionOK),
         ),
       ],
     );
   }
 }
 
-// TODO move this into theming folder
-class NoteText extends StatelessWidget {
-  final String hintText;
+class DropDownButtonFieldLanguage extends StatelessWidget {
+  const DropDownButtonFieldLanguage({Key? key, required this.value, required this.onChanged}) : super(key: key);
+
+  final String value;
+  final void Function(String?) onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    final AppLocalizations localizations = AppLocalizations.of(context)!;
+
+    return DropdownButtonFormField<String>(
+      items: [
+        DropdownMenuItem(
+          value: AppLanguage.en.name,
+          child: Text(localizations.prefLangEn, style: Theme.of(context).textTheme.bodyText1),
+        ),
+        DropdownMenuItem(
+          value: AppLanguage.fr.name,
+          child: Text(localizations.prefLangFr, style: Theme.of(context).textTheme.bodyText1),
+        ),
+      ],
+      hint: Text(localizations.language),
+      value: value,
+      onChanged: onChanged,
+    );
+  }
+}
+
+class TextFormFieldCategoryName extends StatelessWidget {
   final TextEditingController controller;
 
-  const NoteText({Key? key, required this.hintText, required this.controller}) : super(key: key);
+  const TextFormFieldCategoryName({Key? key, required this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -144,7 +152,7 @@ class NoteText extends StatelessWidget {
       controller: controller,
       validator: (value) => value.isBlank ? localizations.fieldValidationMandatory : null,
       style: Theme.of(context).textTheme.bodyText1,
-      decoration: InputDecoration(hintText: hintText),
+      decoration: InputDecoration(hintText: localizations.category),
     );
   }
 }
