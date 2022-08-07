@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:guess_the_text/features/categories/local/edit.category.widget.dart';
+import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/services/text.service/api.category.model.dart';
+import 'package:guess_the_text/services/text.service/sql.db.service.dart';
 
 import '/theme/theme.utils.dart';
 import '/theme/widgets/full.screen.bg.image.widget.dart';
@@ -17,6 +19,7 @@ class CategoriesListWidget extends StatefulWidget {
 }
 
 class _CategoriesListWidgetState extends State<CategoriesListWidget> {
+  final SqlDbService sqlDbService = serviceLocator.get();
   late List<ApiCategory> categories;
 
   @override
@@ -45,6 +48,11 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
     }
   }
 
+  Future<void> _onCategoryDismiss(ApiCategory category) async {
+    await sqlDbService.deleteCategory(category);
+    setState(() => categories.remove(category));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +68,7 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
                   final category = categories[index];
                   return Dismissible(
                       key: Key(category.id.toString()),
-                      onDismissed: (direction) {}, // TODO Delete the category from local DB
+                      onDismissed: (direction) => _onCategoryDismiss(category),
                       child: Card(
                         key: ValueKey(category.id.toString()),
                         child: ListTile(
