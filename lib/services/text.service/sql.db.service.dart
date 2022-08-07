@@ -68,7 +68,9 @@ class SqlDbService {
 
   Future<ApiCategory> createCategory(ApiCategory category) async {
     _validateInitCalled();
-    Map<String, dynamic> toInsert = category.toJson()..remove('isCustom');
+    Map<String, dynamic> toInsert = category.toJson()
+      ..remove('isCustom')
+      ..remove(CategoryColumns.id.name);
     int newId = await _db!.insert(TableNames.category.name, toInsert);
     logger.info('created category id $newId - ${category.name}');
     return category.copyWith(id: newId);

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:guess_the_text/features/categories/category.icons.map.dart';
 import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:guess_the_text/services/text.service/api.category.model.dart';
 import 'package:guess_the_text/services/text.service/sql.db.service.dart';
 import 'package:guess_the_text/theme/theme.utils.dart';
+import 'package:guess_the_text/utils/extensions/string.extensions.dart';
+import 'package:guess_the_text/utils/language.utils.dart';
 import 'package:uuid/uuid.dart';
 
 class EditCategory extends StatefulWidget {
@@ -21,24 +25,32 @@ class EditCategoryState extends State<EditCategory> {
   final SqlDbService sqlDbService = serviceLocator.get();
 
   final TextEditingController txtName = TextEditingController();
-  final TextEditingController txtLangCode = TextEditingController();
-  final TextEditingController txtIconName = TextEditingController();
+  String _langCode = AppLanguage.en.name;
+  String _iconName = 'mix';
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     if (!widget.isNew) {
       txtName.text = widget.category.name;
-      txtLangCode.text = widget.category.langCode;
-      txtIconName.text = widget.category.iconName;
+      _langCode = widget.category.langCode;
+      _iconName = widget.category.iconName;
     }
 
     super.initState();
   }
 
+  @override
+  void dispose() {
+    txtName.dispose();
+    super.dispose();
+  }
+
   Future<void> _saveCategory() async {
     final name = txtName.text;
-    final iconName = txtIconName.text;
-    final langCode = txtLangCode.text;
+    final iconName = _iconName;
+    final langCode = _langCode;
 
     if (widget.isNew) {
       final uuid = const Uuid().v4(); // TODO put this into a UuidUtils.create() method
@@ -52,23 +64,61 @@ class EditCategoryState extends State<EditCategory> {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations localizations = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
         title: widget.isNew ? const Text('Insert category') : const Text('Edit category'),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            NoteText(description: 'Name', controller: txtName),
-            NoteText(description: 'Language', controller: txtLangCode),
-            NoteText(description: 'Category icon', controller: txtIconName),
-          ],
+        child: Form(
+          key: _formKey,
+          child: Padding(
+            padding: EdgeInsets.all(spacing(2)),
+            child: Column(
+              children: [
+                NoteText(hintText: 'Name', controller: txtName),
+                DropdownButtonFormField<String>(
+                  items: [
+                    DropdownMenuItem(
+                      value: AppLanguage.en.name,
+                      child: Text(localizations.prefLangEn),
+                    ),
+                    DropdownMenuItem(
+                      value: AppLanguage.fr.name,
+                      child: Text(localizations.prefLangFr),
+                    ),
+                  ],
+                  hint: const Text('Language'),
+                  value: _langCode,
+                  onChanged: (value) {
+                    setState(() => _langCode = value!);
+                  },
+                ),
+                DropdownButtonFormField<String>(
+                  items: categoryIcons.entries
+                      .map((e) => DropdownMenuItem(
+                            value: e.key,
+                            child: Icon(e.value),
+                          ))
+                      .toList(),
+                  hint: const Text('Category icon'),
+                  value: _iconName,
+                  onChanged: (value) {
+                    setState(() => _iconName = value!);
+                  },
+                )
+              ],
+            ),
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            _saveCategory();
-            Navigator.pop(context);
+            if (_formKey.currentState!.validate()) {
+              _saveCategory();
+              Navigator.pop(context);
+            }
           },
           child: const Icon(Icons.save)),
     );
@@ -77,21 +127,18 @@ class EditCategoryState extends State<EditCategory> {
 
 // TODO move this into theming folder
 class NoteText extends StatelessWidget {
-  final String description;
+  final String hintText;
   final TextEditingController controller;
 
-  const NoteText({Key? key, required this.description, required this.controller}) : super(key: key);
+  const NoteText({Key? key, required this.hintText, required this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(spacing(2)),
-      child: TextField(
-        controller: controller,
-        decoration: InputDecoration(
-            border: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
-            hintText: description),
-      ),
+    return TextFormField(
+      controller: controller,
+      validator: (value) => value.isBlank ? 'Field is mandatory' : null,
+      decoration: InputDecoration(
+          border: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10))), hintText: hintText),
     );
   }
 }

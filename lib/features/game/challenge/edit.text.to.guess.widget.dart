@@ -19,6 +19,12 @@ class _EditTextToGuessDialogState extends State<EditTextToGuessDialog> {
   bool _isTextHidden = true;
   bool _isTextEmpty = true;
 
+  @override
+  void dispose() {
+    _textFieldController.dispose();
+    super.dispose();
+  }
+
   void toggleHidden() {
     setState(() {
       _isTextHidden = !_isTextHidden;
