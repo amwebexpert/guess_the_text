@@ -52,10 +52,10 @@ class EditCategoryState extends State<EditCategory> {
   }
 
   Future<ApiCategory?> _saveCategory(BuildContext context) async {
-    final name = _txtCategoryController.text;
+    final name = _txtCategoryController.text.trim();
 
     if (widget.isNew) {
-      final category = ApiCategory(uuid: const Uuid().v4(), name: name, langCode: _langCode, iconName: _iconName);
+      final category = ApiCategory(name: name, langCode: _langCode, iconName: _iconName, uuid: const Uuid().v4());
       return sqlDbService.createCategory(category);
     } else {
       final category = widget.category.copyWith(name: name, langCode: _langCode, iconName: _iconName);
