@@ -69,6 +69,8 @@ If you want to see test coverage in vscode, take a look at following extensions 
 
     adb kill-server
     adb emu kill
+    
+If that's not enough, from Android Studio on the AVD panel, go to the down arrow and click on the "Show on Disk". You will get the list of all files, then remove the files "*.lock"
 
 ### Mockito re-generate `.g.dart` mocks files
 
