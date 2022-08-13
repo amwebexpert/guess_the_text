@@ -104,15 +104,24 @@ class SqlDbService {
     logger.info('removed category ${category.name}, result: $result');
   }
 
-  Future<ApiText> createText(ApiText text) async {
+  Future<List<ApiText>> getTexts(ApiCategory category) async {
+    final where = '${TextColumns.categoryid.name} = ?';
+    List<Map<String, dynamic>> texts = await _getDb()
+        .query(TableNames.text.name, orderBy: TextColumns.original.name, where: where, whereArgs: [category.id]);
+    return texts.map(ApiText.fromJson).toList();
+  }
+
+  Future<ApiText> createText(ApiCategory category, ApiText text) async {
     Map<String, dynamic> toInsert = text.toJson()..remove(TextColumns.id.name); // the 'id' value will be auto-generated
+    toInsert['categoryid'] = category.id;
     int newId = await _getDb().insert(TableNames.text.name, toInsert);
     logger.info('created text id $newId - ${text.original}');
     return text.copyWith(id: newId);
   }
 
-  Future<ApiText> updateText(ApiText text) async {
+  Future<ApiText> updateText(ApiCategory category, ApiText text) async {
     Map<String, dynamic> toUpdate = text.toJson();
+    toUpdate['categoryid'] = category.id;
     final where = '${TextColumns.id.name} = ?';
     int result = await _getDb().update(TableNames.text.name, toUpdate, where: where, whereArgs: [text.id]);
     logger.info('updated text ${text.original}, result: $result');

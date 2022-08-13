@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guess_the_text/features/categories/category.icons.map.dart';
 import 'package:guess_the_text/features/categories/local/edit.category.widget.dart';
+import 'package:guess_the_text/features/categories/local/texts/local.texts.widget.dart';
 import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/services/text.service/api.category.model.dart';
 import 'package:guess_the_text/services/text.service/sql.db.service.dart';
@@ -33,7 +34,7 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
     categories = widget.originalCategories;
   }
 
-  Future<void> _createCategory(BuildContext context) async {
+  Future<void> _createCategory() async {
     final ApiCategory? result =
         await showDialog(context: context, builder: (_) => const EditCategory(category: ApiCategory(), isNew: true));
 
@@ -42,7 +43,7 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
     }
   }
 
-  Future<void> _updateCategory(BuildContext context, ApiCategory category, int index) async {
+  Future<void> _updateCategory(ApiCategory category, int index) async {
     final ApiCategory? result =
         await showDialog(context: context, builder: (_) => EditCategory(category: category, isNew: false));
 
@@ -51,7 +52,7 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
     }
   }
 
-  Future<void> _deleteCategory(BuildContext context, ApiCategory category, int index) async {
+  Future<void> _deleteCategory(ApiCategory category, int index) async {
     await sqlDbService.deleteCategory(category);
     setState(() => categories.remove(category));
 
@@ -60,23 +61,25 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
     }
 
     final AppLocalizations localizations = AppLocalizations.of(context)!;
-    final action = SnackBarAction(
-        label: 'UNDO', // TODO Translate me
-        onPressed: () {
-          sqlDbService.createCategory(category).then((restoredCategory) {
-            setState(() => categories.insert(index, restoredCategory));
-          });
-        });
     showAppSnackbar(
         context: context,
         message: localizations.categoryDeletedMessage(category.name),
         type: SnackbarType.info,
         milliseconds: 4 * 1000,
-        action: action);
+        action: SnackBarAction(
+            label: 'UNDO', // TODO Translate me
+            onPressed: () {
+              sqlDbService.createCategory(category).then((restoredCategory) {
+                setState(() => categories.insert(index, restoredCategory));
+              });
+            }));
   }
 
   void _editCategoryElements(ApiCategory category) {
-    print('_editCategoryElements ' + category.name);
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => LocalTextsWidget(category: category)),
+    );
   }
 
   @override
@@ -87,8 +90,7 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
         primary: Theme.of(context).colorScheme.primary);
 
     return Scaffold(
-        floatingActionButton:
-            FloatingActionButton(child: const Icon(Icons.add), onPressed: () => _createCategory(context)),
+        floatingActionButton: FloatingActionButton(onPressed: _createCategory, child: const Icon(Icons.add)),
         body: FullScreenAssetBackground(
           assetImagePath: CategoriesListWidget.backgroundImage,
           child: Padding(
@@ -101,7 +103,7 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
 
                   return Dismissible(
                       key: Key(id),
-                      onDismissed: (direction) => _deleteCategory(context, category, index),
+                      onDismissed: (direction) => _deleteCategory(category, index),
                       child: Card(
                         key: ValueKey(id),
                         child: ListTile(
@@ -110,7 +112,7 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
                           trailing: ElevatedButton(
                               style: editButtonStyle,
                               child: const Icon(Icons.edit),
-                              onPressed: () => _updateCategory(context, category, index)),
+                              onPressed: () => _updateCategory(category, index)),
                           subtitle: Text(getLanguageFullNameFromCode(context, category.langCode)),
                           onTap: () => _editCategoryElements(category),
                         ),

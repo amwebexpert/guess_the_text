@@ -33,6 +33,6 @@ class _RemoteCategoriesWidgetState extends State<RemoteCategoriesWidget> {
             ? snapshot.hasData
                 ? CategoriesListWidget(categories: snapshot.data!)
                 : const LoadingErrorWidget()
-            : const CategoriesLoadingWidget();
+            : const ElementsLoadingWidget();
       }));
 }
