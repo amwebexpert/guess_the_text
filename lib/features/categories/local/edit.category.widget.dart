@@ -104,7 +104,7 @@ class EditCategoryState extends State<EditCategory> {
           child: Text(localizations.actionOK),
           onPressed: () {
             if (_formKey.currentState!.validate()) {
-              _saveCategory(context).then((value) => Navigator.pop(context, value));
+              _saveCategory(context).then((category) => Navigator.pop(context, category));
             }
           },
         ),
