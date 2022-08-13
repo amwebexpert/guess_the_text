@@ -80,39 +80,43 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-      floatingActionButton:
-          FloatingActionButton(child: const Icon(Icons.add), onPressed: () => _createCategory(context)),
-      body: FullScreenAssetBackground(
-        assetImagePath: CategoriesListWidget.backgroundImage,
-        child: Padding(
-          padding: EdgeInsets.all(spacing(2)),
-          child: ListView.builder(
-              itemCount: categories.length,
-              itemBuilder: (context, index) {
-                final category = categories[index];
-                final id = category.id.toString();
+  Widget build(BuildContext context) {
+    final editButtonStyle = ElevatedButton.styleFrom(
+        shape: const CircleBorder(),
+        padding: EdgeInsets.all(spacing(1)),
+        primary: Theme.of(context).colorScheme.primary);
 
-                return Dismissible(
-                    key: Key(id),
-                    onDismissed: (direction) => _deleteCategory(context, category, index),
-                    child: Card(
-                      key: ValueKey(id),
-                      child: ListTile(
-                        leading: Icon(categoryIcons[category.iconName]),
-                        title: Text(category.name, style: Theme.of(context).textTheme.bodyText1),
-                        trailing: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                shape: const CircleBorder(),
-                                padding: EdgeInsets.all(spacing(1)),
-                                primary: Theme.of(context).colorScheme.primary),
-                            child: const Icon(Icons.edit),
-                            onPressed: () => _updateCategory(context, category, index)),
-                        subtitle: Text(getLanguageFullNameFromCode(context, category.langCode)),
-                        onTap: () => _editCategoryElements(category),
-                      ),
-                    ));
-              }),
-        ),
-      ));
+    return Scaffold(
+        floatingActionButton:
+            FloatingActionButton(child: const Icon(Icons.add), onPressed: () => _createCategory(context)),
+        body: FullScreenAssetBackground(
+          assetImagePath: CategoriesListWidget.backgroundImage,
+          child: Padding(
+            padding: EdgeInsets.all(spacing(2)),
+            child: ListView.builder(
+                itemCount: categories.length,
+                itemBuilder: (context, index) {
+                  final category = categories[index];
+                  final id = category.id.toString();
+
+                  return Dismissible(
+                      key: Key(id),
+                      onDismissed: (direction) => _deleteCategory(context, category, index),
+                      child: Card(
+                        key: ValueKey(id),
+                        child: ListTile(
+                          leading: Icon(categoryIcons[category.iconName]),
+                          title: Text(category.name, style: Theme.of(context).textTheme.bodyText1),
+                          trailing: ElevatedButton(
+                              style: editButtonStyle,
+                              child: const Icon(Icons.edit),
+                              onPressed: () => _updateCategory(context, category, index)),
+                          subtitle: Text(getLanguageFullNameFromCode(context, category.langCode)),
+                          onTap: () => _editCategoryElements(category),
+                        ),
+                      ));
+                }),
+          ),
+        ));
+  }
 }
