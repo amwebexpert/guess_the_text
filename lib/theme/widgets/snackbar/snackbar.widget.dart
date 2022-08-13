@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/theme/theme.utils.dart';
+import 'package:guess_the_text/theme/theme.utils.dart';
 import '/theme/widgets/snackbar/snackbar.model.dart';
 
 class SnackbarWidget extends StatelessWidget {
@@ -11,12 +11,11 @@ class SnackbarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Icon(snackbarIcons[type], color: Theme.of(context).colorScheme.secondary),
-        Padding(
-          padding: EdgeInsets.only(left: spacing(1)),
-          child: Text(message),
-        ),
+        SizedBox(width: spacing(2)),
+        Expanded(child: Text(message)),
       ],
     );
   }
