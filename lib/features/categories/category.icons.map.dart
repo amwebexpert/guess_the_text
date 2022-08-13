@@ -23,6 +23,7 @@ const Map<String, IconData> categoryIcons = {
   'calculate': Icons.calculate,
   'camera': Icons.camera,
   'camera_alt': Icons.camera_alt,
+  'translate': Icons.translate,
   'photo_size_select_actual_sharp': Icons.photo_size_select_actual_sharp,
   defaultCategoryIcon: Icons.category,
 };
