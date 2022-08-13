@@ -35,8 +35,7 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
         await showDialog(context: context, builder: (_) => const EditCategory(category: ApiCategory(), isNew: true));
 
     if (result != null) {
-      categories.add(result);
-      setState(() {});
+      setState(() => categories.add(result));
     }
   }
 
@@ -45,8 +44,7 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
         await showDialog(context: context, builder: (_) => EditCategory(category: category, isNew: false));
 
     if (result != null) {
-      categories[index] = result;
-      setState(() {});
+      setState(() => categories[index] = result);
     }
   }
 
