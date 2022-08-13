@@ -75,6 +75,10 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
         action: action);
   }
 
+  void _editCategoryElements(ApiCategory category) {
+    print('_editCategoryElements ' + category.name);
+  }
+
   @override
   Widget build(BuildContext context) => Scaffold(
       floatingActionButton:
@@ -96,9 +100,16 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
                       key: ValueKey(id),
                       child: ListTile(
                         leading: Icon(categoryIcons[category.iconName]),
-                        title: Text(category.name),
+                        title: Text(category.name, style: Theme.of(context).textTheme.bodyText1),
+                        trailing: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                shape: const CircleBorder(),
+                                padding: EdgeInsets.all(spacing(1)),
+                                primary: Theme.of(context).colorScheme.primary),
+                            child: const Icon(Icons.edit),
+                            onPressed: () => _updateCategory(context, category, index)),
                         subtitle: Text(getLanguageFullNameFromCode(context, category.langCode)),
-                        onTap: () => _updateCategory(context, category, index),
+                        onTap: () => _editCategoryElements(category),
                       ),
                     ));
               }),
