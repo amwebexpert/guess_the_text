@@ -3,7 +3,7 @@
 List of demonstrated elements inside the codebase, divided by categories
 
 - [Completed so far](#completed-so-far)
-  - [Look & Feel and out of the box components](#look--feel-and-out-of-the-box-components)
+  - [Look & Feel, layouts & components](#look--feel-layouts--components)
   - [I18N](#i18n)
   - [State management](#state-management)
   - [Local storages](#local-storages)
@@ -18,21 +18,19 @@ List of demonstrated elements inside the codebase, divided by categories
     - [Testing with a classic QR Code scanner](#testing-with-a-classic-qr-code-scanner)
   - [Others](#others)
 
-## Look & Feel and out of the box components
+## Look & Feel, layouts & components
 
 - Create a Theme and customize Typography (headline6, bodyText2, ...) https://docs.flutter.dev/cookbook/design/themes
 - Dark theme mode
-- Flexible is a built-in widget in flutter which controls how a child of base flex widgets that are Row, Column, and Flex will fill the space available to it
-- The Expanded widget in flutter is shorthand of Flexible with the default fit of FlexFit
+- `Flexible` is a built-in widget in flutter which controls how a child of base flex widgets that are `Row`, `Column`, and `Flex` will fill the space available to it
+- The `Expanded` widget in flutter is shorthand of Flexible with the default fit of FlexFit
 - Scroll view, list view, Drawer menu
-- Lottie animations while loading
-- Prefer SVG images over PNG
-- Background images
+- Images: prefer `SVG` images over `PNG`, widget background images
 - Add ability to (input modal) add any text_to_guess on the fly
 - Orientation locking
 - Conditional layout depending on device orientation
-- Example of a FadeIn animation
-- FutureBuilder for aync widget building pattern (https://stackoverflow.com/a/51983699/704681)
+- `FutureBuilder` for aync widget building pattern (https://stackoverflow.com/a/51983699/704681)
+- building a form with fields validation on submit and validation errors displayed
 
 ## I18N
 
@@ -69,11 +67,13 @@ List of demonstrated elements inside the codebase, divided by categories
 
 ## Animations
 
+- many `Lottie` animation exampls
 - `AnimationController` with `SingleTickerProviderStateMixin`
 - Usage of `GestureDetector` for horizontal flipper widget with 3D effect
 - `Tween` and `TweenSequence`
 - `RotationTransition`, `AnimatedOpacity`
-- Example of `Staggered` animations through `CurvedAnimation` and intervals
+- Examples of `Staggered` animation through `CurvedAnimation` and intervals
+- Examples of `FadeIn` animation
 - Re-use animation through a behavioral wrapper widget with a child attribute
 - [Hero animations](https://docs.flutter.dev/development/ui/animations/hero-animations)
 

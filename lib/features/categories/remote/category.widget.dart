@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guess_the_text/services/text.service/api.category.model.dart';
+import 'package:guess_the_text/utils/language.utils.dart';
 
 import '/features/categories/category.icons.map.dart';
 import '/features/game/game.store.dart';
@@ -20,6 +21,7 @@ class CategoryWidget extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.all(spacing(0.25)),
         child: Card(
+          key: ValueKey(category.id.toString()),
           color: Theme.of(context).colorScheme.primary,
           child: ListTile(
             onTap: () {
@@ -27,10 +29,8 @@ class CategoryWidget extends StatelessWidget {
               Navigator.pop(context);
             },
             leading: Icon(categoryIcons[category.iconName]),
-            title: Text(
-              category.name,
-              style: Theme.of(context).textTheme.bodyText1,
-            ),
+            title: Text(category.name),
+            subtitle: Text(getLanguageFullNameFromCode(context, category.langCode)),
           ),
         ),
       ),

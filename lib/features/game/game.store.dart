@@ -22,7 +22,7 @@ class GameStore extends _GameStoreBase with _$GameStore {}
 // The store-class
 abstract class _GameStoreBase with Store {
   final LoggerService logger = serviceLocator.get();
-  final SharedPreferencesService sp = serviceLocator.get();
+  final SharedPreferencesService preferences = serviceLocator.get();
   final TextsService textsService = serviceLocator.get();
   final GamePlayedItemsStorageService gamePlayedItemsStorageService = serviceLocator.get();
 
@@ -43,7 +43,7 @@ abstract class _GameStoreBase with Store {
     List<ApiCategory> categories = await textsService.getCategories();
 
     String lastSelectedCategoryUuid =
-        sp.getString(SharedPreferenceKey.lastSelectedCategory.name, defaultValue: categories.first.uuid);
+        preferences.getString(SharedPreferenceKey.lastSelectedCategory.name, defaultValue: categories.first.uuid);
     ApiCategory initialCategory = categories.where((element) => element.uuid == lastSelectedCategoryUuid).first;
 
     await selectCategory(initialCategory);
@@ -55,7 +55,7 @@ abstract class _GameStoreBase with Store {
       return;
     }
 
-    sp.setString(SharedPreferenceKey.lastSelectedCategory.name, selected.uuid).onError((e, stackTrace) {
+    preferences.setString(SharedPreferenceKey.lastSelectedCategory.name, selected.uuid).onError((e, stackTrace) {
       logger.error("Can't write preference ${SharedPreferenceKey.lastSelectedCategory}", e, stackTrace: stackTrace);
       return false;
     });
