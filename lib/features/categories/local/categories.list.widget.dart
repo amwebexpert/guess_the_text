@@ -61,7 +61,7 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
 
     final AppLocalizations localizations = AppLocalizations.of(context)!;
     final action = SnackBarAction(
-        label: 'UNDO',
+        label: 'UNDO', // TODO Translate me
         onPressed: () {
           sqlDbService.createCategory(category).then((restoredCategory) {
             setState(() => categories.insert(index, restoredCategory));
