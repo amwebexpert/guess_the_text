@@ -20,6 +20,16 @@
   "appVersion": "Version",
   "categories": "Categories",
   "category": "Category",
+  "categoryDeletedMessage": "The category «{name}» has been deleted.",
+  "@categoryDeletedMessage": {
+      "description": "Category removed status message",
+      "placeholders": {
+          "name": {
+              "type": "String",
+              "example": "Planets"
+          }
+      }
+  },
   "categoryEdit": "Edit category",
   "categoryIcon": "Category icon",
   "categoryNew": "New category",
