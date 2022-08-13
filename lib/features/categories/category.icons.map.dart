@@ -9,7 +9,7 @@ const Map<String, IconData> categoryIcons = {
   'planets': Icons.rocket,
   'countries': Icons.place_sharp,
   'geography': Icons.place_outlined,
-  'abc': Icons.abc,
+  'abc': Icons.text_fields,
   'ac_unit': Icons.ac_unit,
   'alarm': Icons.access_alarm,
   'account': Icons.account_balance,
