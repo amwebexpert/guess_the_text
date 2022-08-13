@@ -32,6 +32,10 @@
   - code $FLUTTER_HOME/packages/flutter_tools/lib/src/web/chrome.dart
   - add '--disable-web-security' as per [instructions here](https://stackoverflow.com/a/66879350/704681)
 - [Error: Unsupported operation: Platform._localeName](https://stackoverflow.com/a/69922286/704681)
+- [CocoaPods not installed or not in valid state](https://stackoverflow.com/a/65026366/704681)
+  - flutter clean
+  - start the iPhone simulator
+  - flutter run
 
 ## Hangman gaming resources
 
