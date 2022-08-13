@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guess_the_text/features/categories/category.icons.map.dart';
 import 'package:guess_the_text/features/categories/local/edit.category.widget.dart';
 import 'package:guess_the_text/service.locator.dart';
@@ -58,8 +57,6 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final AppLocalizations localizations = AppLocalizations.of(context)!;
-
     return Scaffold(
         floatingActionButton:
             FloatingActionButton(child: const Icon(Icons.add), onPressed: () => _createCategory(context)),

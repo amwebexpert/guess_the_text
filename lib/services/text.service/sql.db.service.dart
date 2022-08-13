@@ -42,8 +42,9 @@ class SqlDbService {
     return this;
   }
 
-  void _validateInitCalled() {
+  Database _getDb() {
     assert(_db != null, 'Database not initialized. The init() method has to be called on app startup');
+    return _db!;
   }
 
   Future<void> _onConfigure(Database db) async {
@@ -60,37 +61,32 @@ class SqlDbService {
   }
 
   Future<List<ApiCategory>> getCategories() async {
-    _validateInitCalled();
     List<Map<String, dynamic>> categories =
-        await _db!.query(TableNames.category.name, orderBy: CategoryColumns.id.name);
+        await _getDb().query(TableNames.category.name, orderBy: CategoryColumns.id.name);
     return categories.map(ApiCategory.fromJson).toList();
   }
 
   Future<ApiCategory> createCategory(ApiCategory category) async {
-    _validateInitCalled();
     Map<String, dynamic> toInsert = category.toJson()
-      ..remove('isCustom') // Note: 'isCustom' is atransient field (never persisted)
+      ..remove('isCustom') // Note: 'isCustom' is a transient field (never persisted)
       ..remove(CategoryColumns.id.name); // the 'id' value will be auto-generated
-    int newId = await _db!.insert(TableNames.category.name, toInsert);
+    int newId = await _getDb().insert(TableNames.category.name, toInsert);
     logger.info('created category id $newId - ${category.name}');
     return category.copyWith(id: newId);
   }
 
   Future<ApiCategory> updateCategory(ApiCategory category) async {
-    _validateInitCalled();
-
     // Note: isCustom is atransient field (never persisted)
     Map<String, dynamic> toUpdate = category.toJson()..remove('isCustom');
     final where = '${CategoryColumns.id.name} = ?';
-    int result = await _db!.update(TableNames.category.name, toUpdate, where: where, whereArgs: [category.id]);
+    int result = await _getDb().update(TableNames.category.name, toUpdate, where: where, whereArgs: [category.id]);
     logger.info('updated category ${category.name}, result: $result');
     return category;
   }
 
   Future<void> deleteCategory(ApiCategory category) async {
-    _validateInitCalled();
     final where = '${CategoryColumns.id.name} = ?';
-    int result = await _db!.delete(TableNames.category.name, where: where, whereArgs: [category.id]);
+    int result = await _getDb().delete(TableNames.category.name, where: where, whereArgs: [category.id]);
     logger.info('removed category ${category.name}, result: $result');
   }
 }
