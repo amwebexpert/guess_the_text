@@ -19,7 +19,7 @@ class SettingsStore extends _SettingsStoreBase with _$SettingsStore {}
 // The store-class
 abstract class _SettingsStoreBase with Store {
   final LoggerService logger = serviceLocator.get();
-  final SharedPreferencesService sp = serviceLocator.get();
+  final SharedPreferencesService preferences = serviceLocator.get();
 
   @observable
   late bool isDarkTheme = true;
@@ -34,13 +34,15 @@ abstract class _SettingsStoreBase with Store {
 
   Locale _initLocale() {
     final String platformLanguageCode = Locale(Platform.localeName.split('_')[0]).languageCode;
-    final String appLanguage = sp.getString(SharedPreferenceKey.appLanguage.name, defaultValue: platformLanguageCode);
+    final String appLanguage =
+        preferences.getString(SharedPreferenceKey.appLanguage.name, defaultValue: platformLanguageCode);
     return languageToLocaleMap[appLanguage] ?? defaultAppLocale;
   }
 
   bool _initDarkTheme() {
     final platformThemeMode = SchedulerBinding.instance.window.platformBrightness;
-    return sp.getBool(SharedPreferenceKey.appIsThemeDark.name, defaultValue: platformThemeMode == Brightness.dark);
+    return preferences.getBool(SharedPreferenceKey.appIsThemeDark.name,
+        defaultValue: platformThemeMode == Brightness.dark);
   }
 
   @action
@@ -51,7 +53,9 @@ abstract class _SettingsStoreBase with Store {
 
     final languageCode = languageToCodeMap[newLanguage];
     locale = languageToLocaleMap[languageCode]!;
-    sp.setString(SharedPreferenceKey.appLanguage.name, languageToCodeMap[newLanguage]!).onError((e, stackTrace) {
+    preferences
+        .setString(SharedPreferenceKey.appLanguage.name, languageToCodeMap[newLanguage]!)
+        .onError((e, stackTrace) {
       logger.error("Can't write preference ${SharedPreferenceKey.appLanguage}", e, stackTrace: stackTrace);
       return false;
     });
@@ -61,7 +65,7 @@ abstract class _SettingsStoreBase with Store {
   void toggleTheme() {
     final bool newValue = !isDarkTheme;
     isDarkTheme = newValue;
-    sp.setBool(SharedPreferenceKey.appIsThemeDark.name, newValue).onError((e, stackTrace) {
+    preferences.setBool(SharedPreferenceKey.appIsThemeDark.name, newValue).onError((e, stackTrace) {
       logger.error("Can't write preference ${SharedPreferenceKey.appIsThemeDark}", e, stackTrace: stackTrace);
       return false;
     });

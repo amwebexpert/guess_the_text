@@ -10,13 +10,13 @@ import 'package:guess_the_text/theme/widgets/responsive/navigation/navigation.ch
 import 'package:guess_the_text/theme/widgets/responsive/navigation/responsive.navigation.rail.or.bar.widget.dart';
 
 class CategoriesWidget extends StatelessWidget {
-  final SharedPreferencesService sp = serviceLocator.get();
+  final SharedPreferencesService preferences = serviceLocator.get();
   final _lastSelectionKey = SharedPreferenceKey.lastSelectedCategoriesListType.name;
 
   CategoriesWidget({Key? key}) : super(key: key);
 
   Widget childBuilder(int index) {
-    sp.setInt(_lastSelectionKey, index);
+    preferences.setInt(_lastSelectionKey, index);
     return index == 0 ? const RemoteCategoriesWidget() : const LocalCategoriesWidget();
   }
 
@@ -29,7 +29,7 @@ class CategoriesWidget extends StatelessWidget {
           title: AppBarTitle(title: localizations.categories),
         ),
         body: ResponsiveNavigationRailOrBar(
-            currentIndex: sp.getInt(_lastSelectionKey, defaultValue: 0),
+            currentIndex: preferences.getInt(_lastSelectionKey, defaultValue: 0),
             items: [
               NavigationChoices(text: localizations.categoryTypeCloud, icon: const Icon(Icons.cloud)),
               NavigationChoices(text: localizations.categoryTypeDevice, icon: const Icon(Icons.save_alt)),
