@@ -1,12 +1,15 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '/theme/theme.utils.dart';
-import '/theme/widgets/full.screen.bg.image.widget.dart';
 import '../../../service.locator.dart';
 import '../../../services/text.service/api.category.model.dart';
 import '../../../services/text.service/sql.db.service.dart';
 import '../../../theme/app.theme.dart';
+import '../../../theme/theme.utils.dart';
+import '../../../theme/widgets/dialogs/confirm.dialog.widget.dart';
+import '../../../theme/widgets/full.screen.bg.image.widget.dart';
 import '../../../theme/widgets/snackbar/snackbar.model.dart';
 import '../../../theme/widgets/snackbar/snackbar.utils.dart';
 import '../../../utils/language.utils.dart';
@@ -54,26 +57,26 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
   }
 
   Future<void> _deleteCategory(ApiCategory category, int index) async {
+    showConfirmDialog(
+        context: context,
+        title: 'Remove category', // TODO Translate me
+        body: 'Delete the entire category including all it\'s text entries?', // TODO Translate me
+        onCancel: () => setState(() {}),
+        onConfirm: () => _doDeleteCategory(category));
+  }
+
+  Future<void> _doDeleteCategory(ApiCategory category) async {
     await sqlDbService.deleteCategory(category);
-    setState(() => categories.remove(category));
 
     if (!mounted) {
       return;
     }
 
-    final AppLocalizations localizations = AppLocalizations.of(context)!;
     showAppSnackbar(
         context: context,
-        message: localizations.categoryDeletedMessage(category.name),
-        type: SnackbarType.info,
-        milliseconds: 4 * 1000,
-        action: SnackBarAction(
-            label: 'UNDO', // TODO Translate me
-            onPressed: () {
-              sqlDbService.createCategory(category).then((restoredCategory) {
-                setState(() => categories.insert(index, restoredCategory));
-              });
-            }));
+        message: AppLocalizations.of(context)!.categoryDeletedMessage(category.name),
+        type: SnackbarType.info);
+    setState(() => categories.remove(category));
   }
 
   void _editCategoryElements(ApiCategory category) {
@@ -98,7 +101,7 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
                   final id = category.id.toString();
 
                   return Dismissible(
-                      key: Key(id),
+                      key: UniqueKey(),
                       onDismissed: (direction) => _deleteCategory(category, index),
                       child: Card(
                         key: ValueKey(id),
