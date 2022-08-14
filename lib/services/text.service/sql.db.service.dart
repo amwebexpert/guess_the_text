@@ -1,13 +1,14 @@
 import 'dart:async';
 
-import 'package:guess_the_text/service.locator.dart';
-import 'package:guess_the_text/services/file/directory.enum.dart';
-import 'package:guess_the_text/services/file/file.service.dart';
-import 'package:guess_the_text/services/logger/logger.service.dart';
-import 'package:guess_the_text/services/text.service/api.category.model.dart';
-import 'package:guess_the_text/services/text.service/api.text.model.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+
+import '../../service.locator.dart';
+import '../file/directory.enum.dart';
+import '../file/file.service.dart';
+import '../logger/logger.service.dart';
+import 'api.category.model.dart';
+import 'api.text.model.dart';
 
 enum TableNames { category, text }
 

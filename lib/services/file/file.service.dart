@@ -1,11 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:guess_the_text/service.locator.dart';
-import 'package:guess_the_text/services/file/directory.enum.dart';
-import 'package:guess_the_text/services/logger/logger.service.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
+
+import '../../service.locator.dart';
+import '../logger/logger.service.dart';
+import 'directory.enum.dart';
 
 class FileService {
   final LoggerService logger = serviceLocator.get();

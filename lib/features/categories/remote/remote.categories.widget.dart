@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:guess_the_text/features/categories/remote/categories.list.widget.dart';
-import 'package:guess_the_text/services/text.service/api.category.model.dart';
-import 'package:guess_the_text/services/text.service/api.texts.service.dart';
 
 import '/features/categories/loading.error.widget.dart';
 import '/features/categories/loading.widget.dart';
 import '/service.locator.dart';
+import '../../../services/text.service/api.category.model.dart';
+import '../../../services/text.service/api.texts.service.dart';
+import 'categories.list.widget.dart';
 
 class RemoteCategoriesWidget extends StatefulWidget {
   const RemoteCategoriesWidget({Key? key}) : super(key: key);

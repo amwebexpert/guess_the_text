@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:guess_the_text/services/text.service/api.category.model.dart';
-import 'package:guess_the_text/services/text.service/api.texts.service.dart';
 import 'package:lottie/lottie.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -15,6 +13,8 @@ import '/theme/app.theme.dart';
 import '/theme/widgets/app.error.widget.dart';
 import '/utils/animation.utils.dart';
 import '/utils/randomizer.utils.dart';
+import 'services/text.service/api.category.model.dart';
+import 'services/text.service/api.texts.service.dart';
 
 void main() {
   if (!kDebugMode) {

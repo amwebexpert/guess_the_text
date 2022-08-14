@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:guess_the_text/features/categories/loading.error.widget.dart';
-import 'package:guess_the_text/features/categories/loading.widget.dart';
-import 'package:guess_the_text/features/categories/local/texts/texts.list.widget.dart';
-import 'package:guess_the_text/service.locator.dart';
-import 'package:guess_the_text/services/text.service/api.category.model.dart';
-import 'package:guess_the_text/services/text.service/api.text.model.dart';
-import 'package:guess_the_text/services/text.service/sql.db.service.dart';
+
+import '../../../../service.locator.dart';
+import '../../../../services/text.service/api.category.model.dart';
+import '../../../../services/text.service/api.text.model.dart';
+import '../../../../services/text.service/sql.db.service.dart';
+import '../../loading.error.widget.dart';
+import '../../loading.widget.dart';
+import 'texts.list.widget.dart';
 
 class LocalTextsWidget extends StatefulWidget {
   final ApiCategory category;

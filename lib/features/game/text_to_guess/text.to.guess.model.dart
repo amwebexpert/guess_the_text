@@ -1,4 +1,4 @@
-import 'package:guess_the_text/utils/extensions/string.extensions.dart';
+import '../../../utils/extensions/string.extensions.dart';
 
 class TextToGuess {
   static const String stateName = 'hangman';

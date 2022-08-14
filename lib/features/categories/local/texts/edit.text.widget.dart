@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:guess_the_text/service.locator.dart';
-import 'package:guess_the_text/services/logger/logger.service.dart';
-import 'package:guess_the_text/services/text.service/api.category.model.dart';
-import 'package:guess_the_text/services/text.service/api.text.model.dart';
-import 'package:guess_the_text/services/text.service/sql.db.service.dart';
-import 'package:guess_the_text/utils/extensions/string.extensions.dart';
 import 'package:uuid/uuid.dart';
+
+import '../../../../service.locator.dart';
+import '../../../../services/logger/logger.service.dart';
+import '../../../../services/text.service/api.category.model.dart';
+import '../../../../services/text.service/api.text.model.dart';
+import '../../../../services/text.service/sql.db.service.dart';
+import '../../../../utils/extensions/string.extensions.dart';
 
 class EditText extends StatefulWidget {
   final ApiCategory category;

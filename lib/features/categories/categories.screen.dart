@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:guess_the_text/features/categories/local/local.categories.widget.dart';
-import 'package:guess_the_text/features/categories/remote/remote.categories.widget.dart';
-import 'package:guess_the_text/service.locator.dart';
-import 'package:guess_the_text/services/storage/shared.preferences.enum.dart';
-import 'package:guess_the_text/services/storage/shared.preferences.services.dart';
-import 'package:guess_the_text/theme/widgets/app.bar.title.widget.dart';
-import 'package:guess_the_text/theme/widgets/responsive/navigation/navigation.choices.model.dart';
-import 'package:guess_the_text/theme/widgets/responsive/navigation/responsive.navigation.rail.or.bar.widget.dart';
+
+import '../../service.locator.dart';
+import '../../services/storage/shared.preferences.enum.dart';
+import '../../services/storage/shared.preferences.services.dart';
+import '../../theme/widgets/app.bar.title.widget.dart';
+import '../../theme/widgets/responsive/navigation/navigation.choices.model.dart';
+import '../../theme/widgets/responsive/navigation/responsive.navigation.rail.or.bar.widget.dart';
+import 'local/local.categories.widget.dart';
+import 'remote/remote.categories.widget.dart';
 
 class CategoriesWidget extends StatelessWidget {
   final SharedPreferencesService preferences = serviceLocator.get();

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:guess_the_text/features/categories/category.icons.map.dart';
-import 'package:guess_the_text/features/categories/local/edit.category.widget.dart';
-import 'package:guess_the_text/features/categories/local/texts/local.texts.widget.dart';
-import 'package:guess_the_text/service.locator.dart';
-import 'package:guess_the_text/services/text.service/api.category.model.dart';
-import 'package:guess_the_text/services/text.service/sql.db.service.dart';
-import 'package:guess_the_text/theme/app.theme.dart';
-import 'package:guess_the_text/theme/widgets/snackbar/snackbar.model.dart';
-import 'package:guess_the_text/theme/widgets/snackbar/snackbar.utils.dart';
-import 'package:guess_the_text/utils/language.utils.dart';
 
 import '/theme/theme.utils.dart';
 import '/theme/widgets/full.screen.bg.image.widget.dart';
+import '../../../service.locator.dart';
+import '../../../services/text.service/api.category.model.dart';
+import '../../../services/text.service/sql.db.service.dart';
+import '../../../theme/app.theme.dart';
+import '../../../theme/widgets/snackbar/snackbar.model.dart';
+import '../../../theme/widgets/snackbar/snackbar.utils.dart';
+import '../../../utils/language.utils.dart';
+import '../category.icons.map.dart';
+import 'edit.category.widget.dart';
+import 'texts/local.texts.widget.dart';
 
 class CategoriesListWidget extends StatefulWidget {
   static const String backgroundImage = 'assets/images/backgrounds/background-pexels-pixabay-461940.jpg';

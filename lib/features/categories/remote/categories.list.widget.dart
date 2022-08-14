@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:guess_the_text/services/text.service/api.category.model.dart';
 
 import '/theme/theme.utils.dart';
 import '/theme/widgets/full.screen.bg.image.widget.dart';
+import '../../../services/text.service/api.category.model.dart';
 import 'category.widget.dart';
 
 class CategoriesListWidget extends StatelessWidget {

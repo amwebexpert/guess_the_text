@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:guess_the_text/theme/theme.utils.dart';
+
+import 'theme.utils.dart';
 
 const appFontFamily = 'IndieFlower';
 

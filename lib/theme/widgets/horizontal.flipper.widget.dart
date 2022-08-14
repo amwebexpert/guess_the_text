@@ -1,7 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:guess_the_text/utils/debouncer/modulo.debouncer.dart';
 import 'package:vector_math/vector_math.dart' as vector_math;
+
+import '../../utils/debouncer/modulo.debouncer.dart';
 
 const offsetMultiplicationFactor = 0.005;
 const offsetMultiplicationFactorY = 0.0005;

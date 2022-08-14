@@ -1,9 +1,10 @@
 import 'dart:async';
 
-import 'package:guess_the_text/service.locator.dart';
-import 'package:guess_the_text/services/logger/logger.service.dart';
-import 'package:guess_the_text/services/storage/documents.repository.dart';
 import 'package:sembast/sembast.dart';
+
+import '../../service.locator.dart';
+import '../../services/logger/logger.service.dart';
+import '../../services/storage/documents.repository.dart';
 
 class GamePlayedItemsStorageService {
   static final GamePlayedItemsStorageService _instance = GamePlayedItemsStorageService._privateConstructor();

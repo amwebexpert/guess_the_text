@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import 'package:guess_the_text/theme/theme.utils.dart';
-import 'package:guess_the_text/theme/widgets/animations/scaling.intro.widget.dart';
+import '../../theme/theme.utils.dart';
+import '../../theme/widgets/animations/scaling.intro.widget.dart';
 
 class OnTheFlyChalengeQrLandscape extends StatelessWidget {
   final String qrCodeImage;

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:guess_the_text/services/text.service/api.category.model.dart';
-import 'package:guess_the_text/utils/language.utils.dart';
 
 import '/features/categories/category.icons.map.dart';
 import '/features/game/game.store.dart';
 import '/service.locator.dart';
 import '/theme/theme.utils.dart';
+import '../../../services/text.service/api.category.model.dart';
+import '../../../utils/language.utils.dart';
 
 class CategoryWidget extends StatelessWidget {
   final GameStore _gameStore = serviceLocator.get();

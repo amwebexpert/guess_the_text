@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:guess_the_text/theme/theme.utils.dart';
+
 import '/theme/widgets/snackbar/snackbar.model.dart';
+import '../../theme.utils.dart';
 
 class SnackbarWidget extends StatelessWidget {
   final String message;

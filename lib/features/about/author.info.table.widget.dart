@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:guess_the_text/features/about/contributor.model.dart';
-import 'package:guess_the_text/theme/widgets/compact.datatable.widget.dart';
 
+import '../../theme/widgets/compact.datatable.widget.dart';
 import '../../theme/widgets/text.link.widget.dart';
+import 'contributor.model.dart';
 
 class AuthorInfoTable extends StatelessWidget {
   AuthorInfoTable({Key? key}) : super(key: key);
