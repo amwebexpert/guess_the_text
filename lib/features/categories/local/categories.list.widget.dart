@@ -6,6 +6,7 @@ import 'package:guess_the_text/features/categories/local/texts/local.texts.widge
 import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/services/text.service/api.category.model.dart';
 import 'package:guess_the_text/services/text.service/sql.db.service.dart';
+import 'package:guess_the_text/theme/app.theme.dart';
 import 'package:guess_the_text/theme/widgets/snackbar/snackbar.model.dart';
 import 'package:guess_the_text/theme/widgets/snackbar/snackbar.utils.dart';
 import 'package:guess_the_text/utils/language.utils.dart';
@@ -84,11 +85,6 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final editButtonStyle = ElevatedButton.styleFrom(
-        shape: const CircleBorder(),
-        padding: EdgeInsets.all(spacing(1)),
-        primary: Theme.of(context).colorScheme.primary);
-
     return Scaffold(
         floatingActionButton: FloatingActionButton(onPressed: _createCategory, child: const Icon(Icons.add)),
         body: FullScreenAssetBackground(
@@ -110,7 +106,7 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
                           leading: Icon(categoryIcons[category.iconName]),
                           title: Text(category.name, style: Theme.of(context).textTheme.bodyText1),
                           trailing: ElevatedButton(
-                              style: editButtonStyle,
+                              style: listTileTralingButtonStyle,
                               child: const Icon(Icons.edit),
                               onPressed: () => _updateCategory(category, index)),
                           subtitle: Text(getLanguageFullNameFromCode(context, category.langCode)),

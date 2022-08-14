@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guess_the_text/theme/theme.utils.dart';
 
 const appFontFamily = 'IndieFlower';
 
@@ -29,3 +30,6 @@ final themeDataLight = ThemeData(
   fontFamily: appFontFamily,
   textTheme: _textTheme,
 );
+
+final listTileTralingButtonStyle =
+    ElevatedButton.styleFrom(shape: const CircleBorder(), padding: EdgeInsets.all(spacing(1)), primary: Colors.orange);

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:guess_the_text/features/categories/local/texts/edit.text.widget.dart';
+import 'package:guess_the_text/features/game/challenge/on.the.fly.challenge.model.dart';
 import 'package:guess_the_text/service.locator.dart';
 import 'package:guess_the_text/services/text.service/api.category.model.dart';
 import 'package:guess_the_text/services/text.service/api.text.model.dart';
 import 'package:guess_the_text/services/text.service/sql.db.service.dart';
+import 'package:guess_the_text/theme/app.theme.dart';
 import 'package:guess_the_text/theme/widgets/app.bar.title.widget.dart';
 import 'package:guess_the_text/theme/widgets/snackbar/snackbar.model.dart';
 import 'package:guess_the_text/theme/widgets/snackbar/snackbar.utils.dart';
@@ -75,6 +77,10 @@ class _TextsListWidgetState extends State<TextsListWidget> {
             }));
   }
 
+  void _generateQR(ApiText textModel) {
+    Navigator.pushNamed(context, '/onTheFlyChallenge', arguments: OnTheFlyChallenge(text: textModel.original));
+  }
+
   @override
   Widget build(BuildContext context) {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
@@ -100,8 +106,12 @@ class _TextsListWidgetState extends State<TextsListWidget> {
                       child: Card(
                         key: ValueKey(id),
                         child: ListTile(
-                          title: Text('$id - ${textModel.original}', style: Theme.of(context).textTheme.bodyText1),
+                          title: Text(textModel.original, style: Theme.of(context).textTheme.bodyText1),
                           onTap: () => _updateText(textModel, index),
+                          trailing: ElevatedButton(
+                              style: listTileTralingButtonStyle,
+                              child: const Icon(Icons.qr_code),
+                              onPressed: () => _generateQR(textModel)),
                         ),
                       ));
                 }),
