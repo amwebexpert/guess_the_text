@@ -100,8 +100,12 @@ class SqlDbService {
   }
 
   Future<void> deleteCategory(ApiCategory category) async {
-    final where = '${CategoryColumns.id.name} = ?';
-    int result = await _getDb().delete(TableNames.category.name, where: where, whereArgs: [category.id]);
+    String where = '${TextColumns.categoryid.name} = ?';
+    int result = await _getDb().delete(TableNames.text.name, where: where, whereArgs: [category.id]);
+    logger.info('removed $result text entries for category ${category.name}');
+
+    where = '${CategoryColumns.id.name} = ?';
+    result = await _getDb().delete(TableNames.category.name, where: where, whereArgs: [category.id]);
     logger.info('removed category ${category.name}, result: $result');
   }
 
