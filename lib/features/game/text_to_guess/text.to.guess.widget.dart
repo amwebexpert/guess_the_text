@@ -29,6 +29,11 @@ class TextToGuessWidget extends StatelessWidget {
 
     return isAnimated
         ? TextToGuessAnimating(text: text, style: textStyle)
-        : TextToGuessPanel(child: Text(text, style: textStyle));
+        : TextToGuessPanel(
+            child: Text(
+            text,
+            style: textStyle,
+            textAlign: TextAlign.center,
+          ));
   }
 }

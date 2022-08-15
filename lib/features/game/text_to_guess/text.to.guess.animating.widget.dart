@@ -14,6 +14,7 @@ class TextToGuessAnimating extends StatelessWidget {
     return TextToGuessPanel(
       child: DefaultTextStyle(
         style: style,
+        textAlign: TextAlign.center,
         child: AnimatedTextKit(
           animatedTexts: [WavyAnimatedText(text)],
           isRepeatingAnimation: true,
