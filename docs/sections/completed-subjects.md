@@ -24,13 +24,14 @@ List of demonstrated elements inside the codebase, divided by categories
 - Dark theme mode
 - `Flexible` is a built-in widget in flutter which controls how a child of base flex widgets that are `Row`, `Column`, and `Flex` will fill the space available to it
 - The `Expanded` widget in flutter is shorthand of Flexible with the default fit of FlexFit
-- Scroll view, list view, Drawer menu
+- Scroll view, list view, Drawer menu, NavigationRail, BottomNavigationBar
 - Images: prefer `SVG` images over `PNG`, widget background images
 - Add ability to (input modal) add any text_to_guess on the fly
 - Orientation locking
-- Conditional layout depending on device orientation
+- Responsive conditional layout depending on device orientation (see `ResponsiveNavigationRailOrBar` custom reusable widget)
 - `FutureBuilder` for aync widget building pattern (https://stackoverflow.com/a/51983699/704681)
 - building a form with fields validation on submit and validation errors displayed
+- usage of _swipe to delete_ behavior with both confirmation and undo approaches
 
 ## I18N
 
@@ -58,11 +59,11 @@ List of demonstrated elements inside the codebase, divided by categories
 ## Dependencies injection (a.k.a. inversion of control IoC, Service locator)
 
 - [get_it](https://pub.dev/packages/get_it)
-- GetIt integration with Mockito for testing Widget and other services
+- `GetIt` integration with Mockito for testing Widget and other services
 
 ## Tests automation
 
-- e2e tests (called "integration tests" by Flutter team https://docs.flutter.dev/cookbook/testing/integration/introduction)
+- `e2e` tests (called "integration tests" by Flutter team https://docs.flutter.dev/cookbook/testing/integration/introduction)
 - Testing and code coverage: unit, mocks, widget, e2e
 
 ## Animations
@@ -74,6 +75,7 @@ List of demonstrated elements inside the codebase, divided by categories
 - `RotationTransition`, `AnimatedOpacity`
 - Examples of `Staggered` animation through `CurvedAnimation` and intervals
 - Examples of `FadeIn` animation
+- Examples of `animated_text_kit` lib usage
 - Re-use animation through a behavioral wrapper widget with a child attribute
 - [Hero animations](https://docs.flutter.dev/development/ui/animations/hero-animations)
 
