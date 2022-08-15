@@ -48,6 +48,7 @@ class _HangmanAppState extends State<HangmanApp> {
 
     Future.wait([
       textsService.getTexts(categories.first.uuid),
+
       // prefetch game images so they are displayed without lagging
       precachePicture(ExactAssetPicture(SvgPicture.svgStringDecoderBuilder, 'assets/images/hangman-happy.svg'), null),
       precachePicture(ExactAssetPicture(SvgPicture.svgStringDecoderBuilder, 'assets/images/hangman-01.svg'), null),
