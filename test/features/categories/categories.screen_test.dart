@@ -18,7 +18,7 @@ import 'categories.screen_test.mocks.dart';
   [TextsService, GameStore],
   customMocks: [
     MockSpec<NavigatorObserver>(
-      returnNullOnMissingStub: true,
+      onMissingStub: OnMissingStub.returnDefault,
     )
   ],
 )

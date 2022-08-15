@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guess_the_text/theme/widgets/responsive/navigation/navigation.choices.model.dart';
+import 'navigation.choices.model.dart';
 
 class NavigationPortraitLayout extends StatelessWidget {
   final int currentIndex;

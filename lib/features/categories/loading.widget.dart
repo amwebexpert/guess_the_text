@@ -4,15 +4,15 @@ import 'package:lottie/lottie.dart';
 import '/service.locator.dart';
 import '/utils/animation.utils.dart';
 
-class CategoriesLoadingWidget extends StatelessWidget {
-  const CategoriesLoadingWidget({Key? key}) : super(key: key);
+class ElementsLoadingWidget extends StatelessWidget {
+  const ElementsLoadingWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final AnimationUtils animationUtils = serviceLocator.get();
 
     return Center(
-      key: const Key('categories_loading'),
+      key: const Key('elements_loading'),
       child: Lottie.asset(animationUtils.getAnimationPath()),
     );
   }

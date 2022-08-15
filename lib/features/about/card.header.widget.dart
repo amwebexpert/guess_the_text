@@ -1,8 +1,9 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:guess_the_text/features/about/card.header.animation.widget.dart';
-import 'package:guess_the_text/features/about/privacy.policy.widget.dart';
+
+import 'card.header.animation.widget.dart';
+import 'privacy.policy.widget.dart';
 
 class CardHeaderWidget extends StatelessWidget {
   const CardHeaderWidget({Key? key}) : super(key: key);

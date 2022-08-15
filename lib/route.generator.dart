@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '/features/about/about.screen.dart';
-import '/features/categories/categories.screen.dart';
-import '/features/game/challenge/on.the.fly.chalenge.qr.screen.dart';
-import '/features/game/challenge/on.the.fly.challenge.model.dart';
-import '/features/game/game.screen.dart';
-import '/features/settings/settings.screen.dart';
-import '/service.locator.dart';
-import '/services/logger/logger.service.dart';
+import 'features/about/about.screen.dart';
+import 'features/categories/categories.screen.dart';
+import 'features/challenge/on.the.fly.chalenge.qr.screen.dart';
+import 'features/challenge/on.the.fly.challenge.model.dart';
+import 'features/game/game.screen.dart';
+import 'features/settings/settings.screen.dart';
+import 'service.locator.dart';
+import 'services/logger/logger.service.dart';
 
 Route? onGenerateRoute(RouteSettings settings) {
   final LoggerService logger = serviceLocator.get();

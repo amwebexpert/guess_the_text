@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'theme.utils.dart';
+
 const appFontFamily = 'IndieFlower';
 
 const _textTheme = TextTheme(
@@ -29,3 +31,6 @@ final themeDataLight = ThemeData(
   fontFamily: appFontFamily,
   textTheme: _textTheme,
 );
+
+final listTileTralingButtonStyle = ElevatedButton.styleFrom(
+    shape: const CircleBorder(), padding: EdgeInsets.all(spacing(1.5)), primary: Colors.orange);

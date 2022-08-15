@@ -1,18 +1,19 @@
 import 'package:get_it/get_it.dart';
-import 'package:guess_the_text/features/game/game.played.items.storage.service.dart';
-import 'package:guess_the_text/features/game/game.store.dart';
-import 'package:guess_the_text/features/settings/settings.store.dart';
-import 'package:guess_the_text/services/device/device.info.service.dart';
-import 'package:guess_the_text/services/file/file.service.dart';
-import 'package:guess_the_text/services/logger/logger.service.dart';
-import 'package:guess_the_text/services/qr/qr.code.service.dart';
-import 'package:guess_the_text/services/storage/documents.repository.dart';
-import 'package:guess_the_text/services/storage/shared.preferences.services.dart';
-import 'package:guess_the_text/services/text.service/api.texts.service.dart';
-import 'package:guess_the_text/services/text.service/sql.db.service.dart';
-import 'package:guess_the_text/store/fixed.delay.spinner.store.dart';
-import 'package:guess_the_text/utils/animation.utils.dart';
-import 'package:guess_the_text/utils/randomizer.utils.dart';
+
+import 'features/game/game.played.items.storage.service.dart';
+import 'features/game/game.store.dart';
+import 'features/settings/settings.store.dart';
+import 'services/device/device.info.service.dart';
+import 'services/file/file.service.dart';
+import 'services/logger/logger.service.dart';
+import 'services/qr/qr.code.service.dart';
+import 'services/storage/documents.repository.dart';
+import 'services/storage/shared.preferences.services.dart';
+import 'services/text.service/api.texts.service.dart';
+import 'services/text.service/sql.db.service.dart';
+import 'store/fixed.delay.spinner.store.dart';
+import 'utils/animation.utils.dart';
+import 'utils/randomizer.utils.dart';
 
 final serviceLocator = GetIt.instance;
 

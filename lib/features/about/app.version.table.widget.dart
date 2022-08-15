@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:guess_the_text/services/text.service/api.about.model.dart';
-import 'package:guess_the_text/services/text.service/api.texts.service.dart';
-import 'package:guess_the_text/theme/widgets/compact.datatable.widget.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import '/service.locator.dart';
 import '/theme/widgets/text.link.widget.dart';
+import '../../services/text.service/api.about.model.dart';
+import '../../services/text.service/api.texts.service.dart';
+import '../../theme/widgets/compact.datatable.widget.dart';
 import 'card.app.connectivity.status.dart';
 
 class AppVersionTable extends StatefulWidget {

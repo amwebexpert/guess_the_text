@@ -1,13 +1,14 @@
 import 'dart:async';
 
-import 'package:guess_the_text/service.locator.dart';
-import 'package:guess_the_text/services/file/directory.enum.dart';
-import 'package:guess_the_text/services/file/file.service.dart';
-import 'package:guess_the_text/services/logger/logger.service.dart';
-import 'package:guess_the_text/services/text.service/api.category.model.dart';
-import 'package:guess_the_text/services/text.service/api.text.model.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+
+import '../../service.locator.dart';
+import '../file/directory.enum.dart';
+import '../file/file.service.dart';
+import '../logger/logger.service.dart';
+import 'api.category.model.dart';
+import 'api.text.model.dart';
 
 enum TableNames { category, text }
 
@@ -99,20 +100,33 @@ class SqlDbService {
   }
 
   Future<void> deleteCategory(ApiCategory category) async {
-    final where = '${CategoryColumns.id.name} = ?';
-    int result = await _getDb().delete(TableNames.category.name, where: where, whereArgs: [category.id]);
+    String where = '${TextColumns.categoryid.name} = ?';
+    int result = await _getDb().delete(TableNames.text.name, where: where, whereArgs: [category.id]);
+    logger.info('removed $result text entries for category ${category.name}');
+
+    where = '${CategoryColumns.id.name} = ?';
+    result = await _getDb().delete(TableNames.category.name, where: where, whereArgs: [category.id]);
     logger.info('removed category ${category.name}, result: $result');
   }
 
-  Future<ApiText> createText(ApiText text) async {
+  Future<List<ApiText>> getTexts(ApiCategory category) async {
+    final where = '${TextColumns.categoryid.name} = ?';
+    List<Map<String, dynamic>> texts = await _getDb()
+        .query(TableNames.text.name, orderBy: TextColumns.original.name, where: where, whereArgs: [category.id]);
+    return texts.map(ApiText.fromJson).toList();
+  }
+
+  Future<ApiText> createText(ApiCategory category, ApiText text) async {
     Map<String, dynamic> toInsert = text.toJson()..remove(TextColumns.id.name); // the 'id' value will be auto-generated
+    toInsert['categoryid'] = category.id;
     int newId = await _getDb().insert(TableNames.text.name, toInsert);
     logger.info('created text id $newId - ${text.original}');
     return text.copyWith(id: newId);
   }
 
-  Future<ApiText> updateText(ApiText text) async {
+  Future<ApiText> updateText(ApiCategory category, ApiText text) async {
     Map<String, dynamic> toUpdate = text.toJson();
+    toUpdate['categoryid'] = category.id;
     final where = '${TextColumns.id.name} = ?';
     int result = await _getDb().update(TableNames.text.name, toUpdate, where: where, whereArgs: [text.id]);
     logger.info('updated text ${text.original}, result: $result');

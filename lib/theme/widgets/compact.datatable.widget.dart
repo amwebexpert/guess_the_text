@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guess_the_text/theme/theme.utils.dart';
+import '../theme.utils.dart';
 
 /// @see https://stackoverflow.com/a/68507055/704681
 class CompactDatatableWidget extends StatelessWidget {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '/features/game/challenge/on.the.fly.challenge.model.dart';
-import '/features/game/game.store.dart';
-import '/service.locator.dart';
+import '../../service.locator.dart';
+import '../game/game.store.dart';
+import 'on.the.fly.challenge.model.dart';
 
 class EditTextToGuessDialog extends StatefulWidget {
   const EditTextToGuessDialog({Key? key}) : super(key: key);

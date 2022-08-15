@@ -2,24 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mobx/mobx.dart';
 
-import '/features/game/challenge/edit.text.to.guess.widget.dart';
-import '/features/game/challenge/on.the.fly.challenge.model.dart';
-import '/features/game/game.fab.widget.dart';
-import '/features/game/game.layout.landscape.widget.dart';
-import '/features/game/game.layout.portrait.widget.dart';
-import '/features/game/game.store.dart';
-import '/service.locator.dart';
-import '/services/logger/logger.service.dart';
-import '/services/qr/qr.code.service.dart';
-import '/store/fixed.delay.spinner.store.dart';
-import '/store/store.state.enum.dart';
-import '/theme/widgets/app.bar.title.widget.dart';
-import '/theme/widgets/app.menu.widget.dart';
-import '/theme/widgets/snackbar/snackbar.model.dart';
-import '/theme/widgets/snackbar/snackbar.utils.dart';
-import '/utils/extensions/string.extensions.dart';
+import '../../service.locator.dart';
+import '../../services/logger/logger.service.dart';
+import '../../services/qr/qr.code.service.dart';
+import '../../store/fixed.delay.spinner.store.dart';
+import '../../store/store.state.enum.dart';
+import '../../theme/widgets/app.bar.title.widget.dart';
+import '../../theme/widgets/app.menu.widget.dart';
+import '../../theme/widgets/snackbar/snackbar.model.dart';
+import '../../theme/widgets/snackbar/snackbar.utils.dart';
+import '../../utils/extensions/string.extensions.dart';
+import '../challenge/edit.text.to.guess.widget.dart';
+import '../challenge/on.the.fly.challenge.model.dart';
+import 'game.fab.widget.dart';
 import 'game.layout.landscape.widget.dart';
 import 'game.layout.portrait.widget.dart';
+import 'game.store.dart';
 
 class GameWidget extends StatefulWidget {
   const GameWidget({Key? key}) : super(key: key);

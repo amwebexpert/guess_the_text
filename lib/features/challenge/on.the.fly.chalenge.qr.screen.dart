@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '/features/game/challenge/chalenge.qr.landscape.layout.dart';
-import '/features/game/challenge/chalenge.qr.portrait.layout.dart';
-import '/features/game/challenge/on.the.fly.challenge.model.dart';
-import '/service.locator.dart';
-import '/services/qr/qr.code.service.dart';
-import '/theme/theme.utils.dart';
+import '../../service.locator.dart';
+import '../../services/qr/qr.code.service.dart';
+import '../../theme/theme.utils.dart';
+import 'chalenge.qr.landscape.layout.dart';
+import 'chalenge.qr.portrait.layout.dart';
+import 'on.the.fly.challenge.model.dart';
 
 class OnTheFlyChalengeQrScreen extends StatelessWidget {
   final QrCodeService _qrCodeService = serviceLocator.get();

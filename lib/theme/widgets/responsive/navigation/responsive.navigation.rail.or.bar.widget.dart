@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:guess_the_text/theme/widgets/responsive/navigation/navigation.choices.model.dart';
-import 'package:guess_the_text/theme/widgets/responsive/navigation/navigation.landscape.layout.dart';
-import 'package:guess_the_text/theme/widgets/responsive/navigation/navigation.portrait.layout.widget.dart';
+import 'navigation.choices.model.dart';
+import 'navigation.landscape.layout.dart';
+import 'navigation.portrait.layout.widget.dart';
 
 class ResponsiveNavigationRailOrBar extends StatefulWidget {
   final List<NavigationChoices> items;
