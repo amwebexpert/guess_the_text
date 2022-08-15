@@ -39,7 +39,8 @@
 
 ## Hangman gaming resources
 
-- [Wikitionaire](https://fr.wiktionary.org/wiki/Wiktionnaire:Liste_de_1750_mots_fran%C3%A7ais_les_plus_courants#top-page)
+- [Wikitionary frequent french word list](https://fr.wiktionary.org/wiki/Wiktionnaire:Liste_de_1750_mots_fran%C3%A7ais_les_plus_courants#top-page)
+- [Wikitionary basic english word list](https://en.wiktionary.org/wiki/Appendix:Basic_English_word_list)
 - [Wikipedia list of animal names](https://en.wikipedia.org/wiki/List_of_animal_names)
 - [WikiMedia dev portal](https://developer.wikimedia.org/use-content/content/)
 - [Another Flutter Hangman project](https://github.com/tavasolireza/Hangman-Game-Flutter)
