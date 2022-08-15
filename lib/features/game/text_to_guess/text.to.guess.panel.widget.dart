@@ -7,9 +7,8 @@ class TextToGuessPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 58,
-      child: child,
+    return Column(
+      children: [child],
     );
   }
 }

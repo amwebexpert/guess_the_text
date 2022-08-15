@@ -45,10 +45,11 @@ class _HangmanAppState extends State<HangmanApp> {
     final TextsService textsService = serviceLocator.get<TextsService>();
 
     List<ApiCategory> categories = await textsService.getCategories();
-    await textsService.getTexts(categories.first.uuid);
 
-    // prefetch game images so they are displayed without lagging
     Future.wait([
+      textsService.getTexts(categories.first.uuid),
+
+      // prefetch game images so they are displayed without lagging
       precachePicture(ExactAssetPicture(SvgPicture.svgStringDecoderBuilder, 'assets/images/hangman-happy.svg'), null),
       precachePicture(ExactAssetPicture(SvgPicture.svgStringDecoderBuilder, 'assets/images/hangman-01.svg'), null),
     ]);
