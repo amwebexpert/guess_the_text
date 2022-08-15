@@ -58,7 +58,7 @@ class EditTextState extends State<EditText> {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
-    final title = widget.isNew ? Text(localizations.categoryNew) : Text(localizations.categoryEdit);
+    final title = widget.isNew ? Text(localizations.adhocText) : Text(localizations.adhocTextHint);
 
     return AlertDialog(
       title: title,

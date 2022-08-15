@@ -32,5 +32,5 @@ final themeDataLight = ThemeData(
   textTheme: _textTheme,
 );
 
-final listTileTralingButtonStyle =
-    ElevatedButton.styleFrom(shape: const CircleBorder(), padding: EdgeInsets.all(spacing(1)), primary: Colors.orange);
+final listTileTralingButtonStyle = ElevatedButton.styleFrom(
+    shape: const CircleBorder(), padding: EdgeInsets.all(spacing(1.5)), primary: Colors.orange);
