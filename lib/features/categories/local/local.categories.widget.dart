@@ -15,14 +15,18 @@ class LocalCategoriesWidget extends StatefulWidget {
 }
 
 class _LocalCategoriesWidgetState extends State<LocalCategoriesWidget> {
-  final SqlDbService sqlDbService = serviceLocator.get();
-
   late Future<List<ApiCategory>> _categoriesFuture;
 
   @override
   void initState() {
     super.initState();
-    _categoriesFuture = sqlDbService.getCategories();
+
+    if (serviceLocator.isRegistered<SqlDbService>()) {
+      final SqlDbService sqlDbService = serviceLocator.get();
+      _categoriesFuture = sqlDbService.isPlateformSupported ? sqlDbService.getCategories() : Future.value([]);
+    } else {
+      _categoriesFuture = Future.value([]);
+    }
   }
 
   @override

@@ -29,7 +29,8 @@ class CategoriesListWidget extends StatefulWidget {
 }
 
 class _CategoriesListWidgetState extends State<CategoriesListWidget> {
-  final SqlDbService sqlDbService = serviceLocator.get();
+  final SqlDbService? sqlDbService = serviceLocator.isRegistered<SqlDbService>() ? serviceLocator.get() : null;
+  late bool isFeatureSupported = sqlDbService?.isPlateformSupported ?? false;
   late List<ApiCategory> categories;
 
   @override
@@ -39,8 +40,7 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
   }
 
   Future<void> _createCategory() async {
-    final ApiCategory? result =
-        await showDialog(context: context, builder: (_) => const EditCategory(category: ApiCategory(), isNew: true));
+    final ApiCategory? result = await showDialog(context: context, builder: (_) => const EditCategory(category: ApiCategory(), isNew: true));
 
     if (result != null) {
       setState(() => categories.add(result));
@@ -48,8 +48,7 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
   }
 
   Future<void> _updateCategory(ApiCategory category, int index) async {
-    final ApiCategory? result =
-        await showDialog(context: context, builder: (_) => EditCategory(category: category, isNew: false));
+    final ApiCategory? result = await showDialog(context: context, builder: (_) => EditCategory(category: category, isNew: false));
 
     if (result != null) {
       setState(() => categories[index] = result);
@@ -66,16 +65,13 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
   }
 
   Future<void> _doDeleteCategory(ApiCategory category) async {
-    await sqlDbService.deleteCategory(category);
+    await sqlDbService?.deleteCategory(category);
 
     if (!mounted) {
       return;
     }
 
-    showAppSnackbar(
-        context: context,
-        message: AppLocalizations.of(context)!.categoryDeletedMessage(category.name),
-        type: SnackbarType.info);
+    showAppSnackbar(context: context, message: AppLocalizations.of(context)!.categoryDeletedMessage(category.name), type: SnackbarType.info);
     setState(() => categories.remove(category));
   }
 
@@ -88,8 +84,9 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
 
   @override
   Widget build(BuildContext context) {
+    // TODO early return feature-not-supported whenever isFeatureSupported is false
     return Scaffold(
-        floatingActionButton: FloatingActionButton(onPressed: _createCategory, child: const Icon(Icons.add)),
+        floatingActionButton: FloatingActionButton(onPressed: isFeatureSupported ? _createCategory : null, child: const Icon(Icons.add)),
         body: FullScreenAssetBackground(
           assetImagePath: CategoriesListWidget.backgroundImage,
           child: Padding(
@@ -108,10 +105,7 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
                         child: ListTile(
                           leading: Icon(categoryIcons[category.iconName]),
                           title: Text(category.name, style: Theme.of(context).textTheme.bodyText1),
-                          trailing: ElevatedButton(
-                              style: listTileTralingButtonStyle,
-                              child: const Icon(Icons.edit),
-                              onPressed: () => _updateCategory(category, index)),
+                          trailing: ElevatedButton(style: listTileTralingButtonStyle, child: const Icon(Icons.edit), onPressed: () => _updateCategory(category, index)),
                           subtitle: Text(getLanguageFullNameFromCode(context, category.langCode)),
                           onTap: () => _editCategoryElements(category),
                         ),

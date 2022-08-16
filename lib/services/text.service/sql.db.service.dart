@@ -1,8 +1,9 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
+import 'package:flutter/services.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-
 import '../../service.locator.dart';
 import '../file/directory.enum.dart';
 import '../file/file.service.dart';
@@ -43,15 +44,28 @@ class SqlDbService {
   static final SqlDbService _instance = SqlDbService._privateConstructor();
   Database? _db;
   final version = 1;
+  bool isPlateformSupported = false;
 
   factory SqlDbService() => _instance;
   SqlDbService._privateConstructor();
 
-  Future<SqlDbService> init() async {
+  Future<SqlDbService?> init() async {
+    if (kIsWeb) {
+      // Web platform not (yet) supported by sqlite as of 2022-08-16
+      return null;
+    }
+
     final dir = await fileService.getDirectory(DirectoryType.appSupport);
     final dbPath = join(dir.path, 'guess-the-text-sql.db');
 
-    _db = await openDatabase(dbPath, version: version, onConfigure: _onConfigure, onCreate: _onCreate, onOpen: _onOpen);
+    try {
+      _db = await openDatabase(dbPath, version: version, onConfigure: _onConfigure, onCreate: _onCreate, onOpen: _onOpen);
+      isPlateformSupported = true;
+    } on MissingPluginException {
+      // https://github.com/tekartik/sqflite/blob/master/sqflite_common_ffi/doc/using_ffi_instead_of_sqflite.md
+      // problem: this require an upgrade of cmake which comes with Flutter build fwk (not ready yet)
+      logger.info('sqflite not supported on current platform');
+    }
 
     return this;
   }
@@ -76,8 +90,7 @@ class SqlDbService {
   }
 
   Future<List<ApiCategory>> getCategories() async {
-    List<Map<String, dynamic>> categories =
-        await _getDb().query(TableNames.category.name, orderBy: CategoryColumns.id.name);
+    List<Map<String, dynamic>> categories = await _getDb().query(TableNames.category.name, orderBy: CategoryColumns.id.name);
     return categories.map(ApiCategory.fromJson).toList();
   }
 
@@ -111,8 +124,7 @@ class SqlDbService {
 
   Future<List<ApiText>> getTexts(ApiCategory category) async {
     final where = '${TextColumns.categoryid.name} = ?';
-    List<Map<String, dynamic>> texts = await _getDb()
-        .query(TableNames.text.name, orderBy: TextColumns.original.name, where: where, whereArgs: [category.id]);
+    List<Map<String, dynamic>> texts = await _getDb().query(TableNames.text.name, orderBy: TextColumns.original.name, where: where, whereArgs: [category.id]);
     return texts.map(ApiText.fromJson).toList();
   }
 
