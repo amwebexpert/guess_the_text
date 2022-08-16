@@ -34,10 +34,12 @@ Future<GetIt> initServiceLocator() async {
   await gameStorageService.init();
 
   final sqlDbService = await SqlDbService().init();
+  if (sqlDbService != null) {
+    serviceLocator.registerSingleton<SqlDbService>(sqlDbService);
+  }
 
   serviceLocator
     ..registerSingleton<GamePlayedItemsStorageService>(gameStorageService)
-    ..registerSingleton<SqlDbService>(sqlDbService)
     ..registerLazySingleton<DeviceInfoService>(() => DeviceInfoService())
     ..registerLazySingleton<TextsService>(() => TextsService())
     ..registerLazySingleton<GameStore>(() => GameStore())
