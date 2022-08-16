@@ -8,6 +8,7 @@
 .buildlog/
 .history
 .svn/
+cmake-3.24.0/
 
 # IntelliJ related
 *.iml
