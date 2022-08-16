@@ -22,7 +22,7 @@ class _LocalCategoriesWidgetState extends State<LocalCategoriesWidget> {
   @override
   void initState() {
     super.initState();
-    _categoriesFuture = sqlDbService.getCategories();
+    _categoriesFuture = sqlDbService.isPlateformSupported ? sqlDbService.getCategories() : Future.value([]);
   }
 
   @override

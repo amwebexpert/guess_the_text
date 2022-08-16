@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:flutter/services.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:universal_io/io.dart';
 
 import '../../service.locator.dart';
 import '../file/directory.enum.dart';
@@ -43,6 +45,7 @@ class SqlDbService {
   static final SqlDbService _instance = SqlDbService._privateConstructor();
   Database? _db;
   final version = 1;
+  bool isPlateformSupported = false;
 
   factory SqlDbService() => _instance;
   SqlDbService._privateConstructor();
@@ -51,7 +54,18 @@ class SqlDbService {
     final dir = await fileService.getDirectory(DirectoryType.appSupport);
     final dbPath = join(dir.path, 'guess-the-text-sql.db');
 
-    _db = await openDatabase(dbPath, version: version, onConfigure: _onConfigure, onCreate: _onCreate, onOpen: _onOpen);
+    try {
+      _db = await openDatabase(dbPath,
+          version: version,
+          onConfigure: _onConfigure,
+          onCreate: _onCreate,
+          onOpen: _onOpen);
+      isPlateformSupported = true;
+    } on MissingPluginException {
+      // https://github.com/tekartik/sqflite/blob/master/sqflite_common_ffi/doc/using_ffi_instead_of_sqflite.md
+      // problem: this require an upgrade of cmake which comes with Flutter build fwk (not ready yet)
+      logger.info('sqflite not supported on current platform');
+    }
 
     return this;
   }

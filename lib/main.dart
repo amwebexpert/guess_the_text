@@ -1,27 +1,37 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-import '/features/settings/settings.store.dart';
-import '/route.generator.dart';
-import '/service.locator.dart';
-import '/theme/app.theme.dart';
-import '/theme/widgets/app.error.widget.dart';
-import '/utils/animation.utils.dart';
-import '/utils/randomizer.utils.dart';
-import 'services/text.service/api.category.model.dart';
-import 'services/text.service/api.texts.service.dart';
+import './features/settings/settings.store.dart';
+import './route.generator.dart';
+import './service.locator.dart';
+import './services/logger/logger.service.dart';
+import './services/text.service/api.category.model.dart';
+import './services/text.service/api.texts.service.dart';
+import './theme/app.theme.dart';
+import './theme/widgets/app.error.widget.dart';
+import './utils/animation.utils.dart';
+import './utils/randomizer.utils.dart';
 
 void main() {
   if (!kDebugMode) {
     ErrorWidget.builder = (FlutterErrorDetails details) => AppErrorWidget(details: details);
   }
-  // debugRepaintRainbowEnabled = true;
-  runApp(const HangmanApp());
+  debugRepaintRainbowEnabled = false;
+
+  runZonedGuarded(() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    runApp(const HangmanApp());
+  }, (error, stackTrace) {
+    LoggerService().error('unhandled error occured in root zone', error, stackTrace: stackTrace);
+  });
 }
 
 class HangmanApp extends StatefulWidget {
