@@ -89,7 +89,9 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: FloatingActionButton(onPressed: _createCategory, child: const Icon(Icons.add)),
+        floatingActionButton: FloatingActionButton(
+            onPressed: sqlDbService.isPlateformSupported ? _createCategory : null,
+            child: const Icon(Icons.add)),
         body: FullScreenAssetBackground(
           assetImagePath: CategoriesListWidget.backgroundImage,
           child: Padding(

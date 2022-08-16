@@ -1,7 +1,10 @@
 import 'dart:async';
 
+import 'package:flutter/services.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+import 'package:universal_io/io.dart';
 
 import '../../service.locator.dart';
 import '../file/directory.enum.dart';
@@ -43,15 +46,33 @@ class SqlDbService {
   static final SqlDbService _instance = SqlDbService._privateConstructor();
   Database? _db;
   final version = 1;
+  bool isPlateformSupported = false;
 
   factory SqlDbService() => _instance;
-  SqlDbService._privateConstructor();
+  SqlDbService._privateConstructor() {
+    // https://github.com/tekartik/sqflite/blob/master/sqflite_common_ffi/doc/using_ffi_instead_of_sqflite.md
+    if (Platform.isWindows || Platform.isLinux) {
+      sqfliteFfiInit();
+    }
+
+    databaseFactory = databaseFactoryFfi; // change the default factory
+  }
 
   Future<SqlDbService> init() async {
     final dir = await fileService.getDirectory(DirectoryType.appSupport);
     final dbPath = join(dir.path, 'guess-the-text-sql.db');
 
-    _db = await openDatabase(dbPath, version: version, onConfigure: _onConfigure, onCreate: _onCreate, onOpen: _onOpen);
+    try {
+      _db = await openDatabase(dbPath,
+          version: version,
+          onConfigure: _onConfigure,
+          onCreate: _onCreate,
+          onOpen: _onOpen);
+      isPlateformSupported = true;
+    } on MissingPluginException {
+      // https://github.com/tekartik/sqflite/blob/master/sqflite_common_ffi/doc/using_ffi_instead_of_sqflite.md
+      logger.info('sqflite not supported on current platform');
+    }
 
     return this;
   }
