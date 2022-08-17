@@ -2,7 +2,7 @@
 
 Words guess game app
 
-[![made-with-Markdown](https://img.shields.io/badge/Made%20with-Flutter-1389FD.svg)](http://flutter.dev) [![Flutter Responsive](https://img.shields.io/badge/flutter-responsive-brightgreen.svg?style=flat-square)](https://github.com/Codelessly/ResponsiveFramework)
+[![made-with-Markdown](https://img.shields.io/badge/Made%20with-Flutter-1389FD.svg)](http://flutter.dev) [![Flutter Responsive](https://img.shields.io/badge/flutter-responsive-brightgreen.svg?style=flat-square)](https://github.com/Codelessly/ResponsiveFramework) ![GitHub Release Date](https://img.shields.io/github/release-date/amwebexpert/guess_the_text)
 
 Free educational app deployable on several native platforms: `Android` & `iOS` (iPhone, Tablets), Webapp, `Linux`, `MacOS`, and `Windows`. The application is an evolving educational game. The goal is to establish native development standards applied to a real world application deployed on production via the `Flutter` framework:
 - app technical architecture, solution design and active development
