@@ -34,15 +34,13 @@ abstract class _SettingsStoreBase with Store {
 
   Locale _initLocale() {
     final String platformLanguageCode = Locale(Platform.localeName.split('_')[0]).languageCode;
-    final String appLanguage =
-        preferences.getString(SharedPreferenceKey.appLanguage.name, defaultValue: platformLanguageCode);
+    final String appLanguage = preferences.getString(SharedPreferenceKey.appLanguage.name, defaultValue: platformLanguageCode);
     return languageToLocaleMap[appLanguage] ?? defaultAppLocale;
   }
 
   bool _initDarkTheme() {
     final platformThemeMode = SchedulerBinding.instance.window.platformBrightness;
-    return preferences.getBool(SharedPreferenceKey.appIsThemeDark.name,
-        defaultValue: platformThemeMode == Brightness.dark);
+    return preferences.getBool(SharedPreferenceKey.appIsThemeDark.name, defaultValue: platformThemeMode == Brightness.dark);
   }
 
   @action
@@ -53,10 +51,8 @@ abstract class _SettingsStoreBase with Store {
 
     final languageCode = languageToCodeMap[newLanguage];
     locale = languageToLocaleMap[languageCode]!;
-    preferences
-        .setString(SharedPreferenceKey.appLanguage.name, languageToCodeMap[newLanguage]!)
-        .onError((e, stackTrace) {
-      logger.error("Can't write preference ${SharedPreferenceKey.appLanguage}", e, stackTrace: stackTrace);
+    preferences.setString(SharedPreferenceKey.appLanguage.name, languageToCodeMap[newLanguage]!).onError((e, stackTrace) {
+      logger.error("Can't write preference ${SharedPreferenceKey.appLanguage}", error: e, stackTrace: stackTrace);
       return false;
     });
   }
@@ -66,7 +62,7 @@ abstract class _SettingsStoreBase with Store {
     final bool newValue = !isDarkTheme;
     isDarkTheme = newValue;
     preferences.setBool(SharedPreferenceKey.appIsThemeDark.name, newValue).onError((e, stackTrace) {
-      logger.error("Can't write preference ${SharedPreferenceKey.appIsThemeDark}", e, stackTrace: stackTrace);
+      logger.error("Can't write preference ${SharedPreferenceKey.appIsThemeDark}", error: e, stackTrace: stackTrace);
       return false;
     });
   }

@@ -42,8 +42,7 @@ abstract class _GameStoreBase with Store {
   Future<void> _initialize() async {
     List<ApiCategory> categories = await textsService.getCategories();
 
-    String lastSelectedCategoryUuid =
-        preferences.getString(SharedPreferenceKey.lastSelectedCategory.name, defaultValue: categories.first.uuid);
+    String lastSelectedCategoryUuid = preferences.getString(SharedPreferenceKey.lastSelectedCategory.name, defaultValue: categories.first.uuid);
     ApiCategory initialCategory = categories.where((element) => element.uuid == lastSelectedCategoryUuid).first;
 
     await selectCategory(initialCategory);
@@ -56,7 +55,7 @@ abstract class _GameStoreBase with Store {
     }
 
     preferences.setString(SharedPreferenceKey.lastSelectedCategory.name, selected.uuid).onError((e, stackTrace) {
-      logger.error("Can't write preference ${SharedPreferenceKey.lastSelectedCategory}", e, stackTrace: stackTrace);
+      logger.error("Can't write preference ${SharedPreferenceKey.lastSelectedCategory}", error: e, stackTrace: stackTrace);
       return false;
     });
 
@@ -99,8 +98,7 @@ abstract class _GameStoreBase with Store {
     textToGuess = textToGuess.tryChar(c: c);
 
     if (textToGuess.isGameOver()) {
-      currentCategoryPlayedItems =
-          await gamePlayedItemsStorageService.addPlayedItem(currentCategory.uuid, textToGuess.original);
+      currentCategoryPlayedItems = await gamePlayedItemsStorageService.addPlayedItem(currentCategory.uuid, textToGuess.original);
     }
   }
 

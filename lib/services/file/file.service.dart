@@ -27,7 +27,7 @@ class FileService {
         return getTemporaryDirectory();
 
       default:
-        logger.error('unsupported type, returning temporary dir as default', directoryType);
+        logger.error('unsupported type $directoryType, returning temporary dir as default');
         return getTemporaryDirectory();
     }
   }
@@ -45,7 +45,7 @@ class FileService {
     final File file = File(fullFilenanme);
 
     if (!file.existsSync()) {
-      logger.error('file does not exists', fullFilenanme);
+      logger.error('file does not exists: $fullFilenanme');
       return '';
     }
 
