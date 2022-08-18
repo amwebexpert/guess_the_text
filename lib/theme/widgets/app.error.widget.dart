@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '/service.locator.dart';
 import '/services/logger/logger.service.dart';
 
@@ -9,7 +10,7 @@ class AppErrorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    serviceLocator.get<LoggerService>().error(details.exception.toString(), details.stack);
+    serviceLocator.get<LoggerService>().error(details.exception.toString(), stackTrace: details.stack);
 
     return const Material(
       child: Center(

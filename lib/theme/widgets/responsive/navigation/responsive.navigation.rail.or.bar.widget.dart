@@ -1,45 +1,23 @@
 import 'package:flutter/material.dart';
+
 import 'navigation.choices.model.dart';
 import 'navigation.landscape.layout.dart';
 import 'navigation.portrait.layout.widget.dart';
 
-class ResponsiveNavigationRailOrBar extends StatefulWidget {
+class ResponsiveNavigationRailOrBar extends StatelessWidget {
   final List<NavigationChoices> items;
   final int currentIndex;
-  final Widget Function(int index) childBuilder;
+  final Widget child;
+  final Function(int index) onTap;
 
-  const ResponsiveNavigationRailOrBar(
-      {Key? key, required this.items, required this.childBuilder, this.currentIndex = 0})
-      : super(key: key);
-
-  @override
-  State<ResponsiveNavigationRailOrBar> createState() => _ResponsiveNavigationRailOrBarState();
-}
-
-class _ResponsiveNavigationRailOrBarState extends State<ResponsiveNavigationRailOrBar> {
-  late int currentIndex;
-  late Widget child;
-
-  @override
-  void initState() {
-    super.initState();
-    currentIndex = widget.currentIndex;
-    child = widget.childBuilder(widget.currentIndex);
-  }
-
-  void onTap(int index) {
-    setState(() {
-      currentIndex = index;
-      child = widget.childBuilder(index);
-    });
-  }
+  const ResponsiveNavigationRailOrBar({Key? key, required this.items, required this.currentIndex, required this.child, required this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => OrientationBuilder(
         builder: (context, orientation) {
           return orientation == Orientation.portrait
-              ? NavigationPortraitLayout(items: widget.items, currentIndex: currentIndex, onTap: onTap, child: child)
-              : NavigationLandscapeLayout(items: widget.items, currentIndex: currentIndex, onTap: onTap, child: child);
+              ? NavigationPortraitLayout(items: items, currentIndex: currentIndex, onTap: onTap, child: child)
+              : NavigationLandscapeLayout(items: items, currentIndex: currentIndex, onTap: onTap, child: child);
         },
       );
 }

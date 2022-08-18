@@ -37,14 +37,7 @@ void main() {
         GetIt.I.reset(),
       });
 
-  final mockCategories = [
-    mockAnimalsCategory,
-    mockTransportsCategory,
-    mockColorsCategory,
-    mockUSStatesCategory,
-    mockPlanetsCategory,
-    mockCountriesCategory
-  ];
+  final mockCategories = [mockAnimalsCategory, mockTransportsCategory, mockColorsCategory, mockUSStatesCategory, mockPlanetsCategory, mockCountriesCategory];
   final spinnerFinder = find.byKey(const Key('categories_loading'));
 
   Widget wrapper(Widget widget) => MaterialApp(
@@ -62,7 +55,7 @@ void main() {
     when(mockTextsService.getCategories()).thenAnswer((_) => Future.value(mockCategories));
 
     // when
-    await tester.pumpWidget(wrapper(CategoriesWidget()));
+    await tester.pumpWidget(wrapper(const CategoriesWidget()));
 
     // then
     expect(spinnerFinder, findsOneWidget);
@@ -79,7 +72,7 @@ void main() {
     when(mockTextsService.getCategories()).thenAnswer((_) => Future.value(mockCategories));
 
     // when
-    await tester.pumpWidget(wrapper(CategoriesWidget()));
+    await tester.pumpWidget(wrapper(const CategoriesWidget()));
     await tester.pump(); // wait for the spinner to disappear
 
     // then
@@ -97,7 +90,7 @@ void main() {
     when(mockGameStore.selectCategory(any)).thenAnswer((_) => Future.value(null));
 
     // asserts before acting
-    await tester.pumpWidget(wrapper(CategoriesWidget()));
+    await tester.pumpWidget(wrapper(const CategoriesWidget()));
     await tester.pump(); // wait for the spinner to disappear
 
     // when
@@ -117,7 +110,7 @@ void main() {
     reset(mockNavigatorObserver);
 
     // asserts before acting
-    await tester.pumpWidget(wrapper(CategoriesWidget()));
+    await tester.pumpWidget(wrapper(const CategoriesWidget()));
     await tester.pump(); // wait for the spinner to disappear
 
     // when

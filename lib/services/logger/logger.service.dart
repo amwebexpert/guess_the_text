@@ -10,7 +10,7 @@ class LoggerService {
     log(message, time: DateTime.now(), name: 'INFO');
   }
 
-  void error(String message, dynamic error, {StackTrace? stackTrace}) {
-    log(message, time: DateTime.now(), name: 'ERROR', error: error.toString(), stackTrace: stackTrace);
+  void error(String message, {dynamic error, StackTrace? stackTrace}) {
+    log(message, time: DateTime.now(), name: 'ERROR', error: error?.toString(), stackTrace: stackTrace);
   }
 }

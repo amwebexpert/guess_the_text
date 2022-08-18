@@ -22,7 +22,7 @@ Route? onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => const GameWidget());
 
     case '/categories':
-      return MaterialPageRoute(builder: (_) => CategoriesWidget());
+      return MaterialPageRoute(builder: (_) => const CategoriesWidget());
 
     case '/onTheFlyChallenge':
       return MaterialPageRoute(
@@ -31,15 +31,13 @@ Route? onGenerateRoute(RouteSettings settings) {
               ));
 
     case '/settings':
-      return PageRouteBuilder(
-          pageBuilder: ((context, animation, secondaryAnimation) => const SettingsWidget()),
-          transitionDuration: const Duration(seconds: 2));
+      return PageRouteBuilder(pageBuilder: ((context, animation, secondaryAnimation) => const SettingsWidget()), transitionDuration: const Duration(seconds: 2));
 
     case '/about':
       return MaterialPageRoute(builder: (_) => const AboutWidget());
 
     default:
-      logger.error('Invalid navigation', settings.name);
+      logger.error('Invalid navigation: ${settings.name}');
       return MaterialPageRoute(builder: (_) => const GameWidget());
   }
 }

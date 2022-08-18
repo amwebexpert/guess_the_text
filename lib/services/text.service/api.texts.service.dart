@@ -40,7 +40,7 @@ class TextsService {
 
       return ApiAbout.fromJson(data);
     } catch (e) {
-      logger.error('About request failed', e);
+      logger.error('About request failed', error: e);
       return const ApiAbout();
     }
   }
@@ -97,7 +97,7 @@ class TextsService {
 
       return jsonContent;
     } catch (e) {
-      logger.error('Request failed, will try to load from "$cacheFile", url: "$url"', e);
+      logger.error('Request failed, will try to load from "$cacheFile", url: "$url"', error: e);
 
       String jsonContent = await loadFromCache(cacheFile);
       if (jsonContent.isBlank) {
@@ -113,7 +113,7 @@ class TextsService {
     }
 
     const message = 'Request failed with status';
-    logger.error(message, response.statusCode);
+    logger.error('$message: ${response.statusCode}');
     throw Exception('$message : ${response.statusCode}.');
   }
 
@@ -136,7 +136,7 @@ class TextsService {
 
       return jsonContent;
     } catch (e) {
-      logger.error('\texception while reading $cacheFile', e);
+      logger.error('\texception while reading $cacheFile', error: e);
       return '';
     }
   }

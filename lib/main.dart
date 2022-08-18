@@ -30,7 +30,7 @@ void main() {
     WidgetsFlutterBinding.ensureInitialized();
     runApp(const HangmanApp());
   }, (error, stackTrace) {
-    LoggerService().error('unhandled error occured in root zone', error, stackTrace: stackTrace);
+    LoggerService().error('unhandled error occured in root zone', error: error, stackTrace: stackTrace);
   });
 }
 
