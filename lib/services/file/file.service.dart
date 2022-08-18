@@ -27,7 +27,7 @@ class FileService {
         return getTemporaryDirectory();
 
       default:
-        logger.error('unsupported type, returning temporary dir as default', error: directoryType);
+        logger.error('unsupported type $directoryType, returning temporary dir as default');
         return getTemporaryDirectory();
     }
   }
