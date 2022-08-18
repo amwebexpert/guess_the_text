@@ -4,11 +4,11 @@ Words guess game app
 
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Flutter-1389FD.svg)](http://flutter.dev) [![Flutter Responsive](https://img.shields.io/badge/flutter-responsive-brightgreen.svg?style=flat-square)](https://github.com/Codelessly/ResponsiveFramework) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/amwebexpert/guess_the_text) ![GitHub Release Date](https://img.shields.io/github/release-date/amwebexpert/guess_the_text) ![GitHub last commit](https://img.shields.io/github/last-commit/amwebexpert/guess_the_text) ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/amwebexpert/guess_the_text)
 
-Free educational app deployable on several native platforms: `Android` & `iOS` (iPhone, Tablets), Webapp, `Linux`, `MacOS`, and `Windows`. The application is an evolving educational game. The goal is to establish native development standards applied to a real world application deployed on production via the `Flutter` framework:
+Free educational app deployable on several native platforms: `Android` & `iOS` (iPhone, Tablets), `Webapp, `Linux`, `MacOS`, and `Windows`. The application is an evolving educational game. The goal is to establish native development standards applied to a real world application deployed on production via the `Flutter` framework:
 - app technical architecture, solution design and active development
 - promote `Flutter` cookbook recipies and `Dart` language best patterns
 - responsive layouts, screen design, app theme, typography, dark mode, animations
-- local storage, `shared preferences`, devoce NoSQL database like `Sembast`, local SQL db `SQFLite`
+- device local storage, `shared preferences`, `NoSQL` database like `Sembast`, local SQL db `SQFLite`
 - automated unit and behavioral tests, end to end (`e2e`) tests, code coverage report
 - evolutive structure of the source code, choice of open source libraries
 - integration to `REST` and/or `GraphQL` backend APIs
