@@ -20,12 +20,13 @@ class DocumentsRepository {
   factory DocumentsRepository() => _instance;
   DocumentsRepository._privateConstructor();
 
-  Future<void> init() async {
+  Future<DocumentsRepository> init() async {
     if (kIsWeb) {
       await initWebPlatform();
     } else {
       await initNonWebPlatform();
     }
+    return this;
   }
 
   Future<void> initWebPlatform() async {

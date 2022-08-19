@@ -18,10 +18,11 @@ class GamePlayedItemsStorageService {
   factory GamePlayedItemsStorageService() => _instance;
   GamePlayedItemsStorageService._privateConstructor();
 
-  Future<void> init() async {
+  Future<GamePlayedItemsStorageService> init() async {
     playedItemsStore = StoreRef('played_items_store');
     final count = await playedItemsStore.count(db);
     logger.info('Storage "${playedItemsStore.name}" elements count: $count.');
+    return this;
   }
 
   Future<List<String>> addPlayedItems(String categoryUuid, List<String> newItems) async {

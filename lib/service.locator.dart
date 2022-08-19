@@ -22,16 +22,13 @@ Future<GetIt> initServiceLocator() async {
     ..registerLazySingleton<LoggerService>(() => LoggerService())
     ..registerLazySingleton<FileService>(() => FileService());
 
-  final sharedPreferencesService = SharedPreferencesService();
-  await sharedPreferencesService.init();
+  final sharedPreferencesService = await SharedPreferencesService().init();
   serviceLocator.registerSingleton<SharedPreferencesService>(sharedPreferencesService);
 
-  final documentsRepository = DocumentsRepository();
-  await documentsRepository.init();
+  final documentsRepository = await DocumentsRepository().init();
   serviceLocator.registerSingleton<DocumentsRepository>(documentsRepository);
 
-  final gameStorageService = GamePlayedItemsStorageService();
-  await gameStorageService.init();
+  final gameStorageService = await GamePlayedItemsStorageService().init();
 
   final sqlDbService = await SqlDbService().init();
   if (sqlDbService != null) {
