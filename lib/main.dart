@@ -53,8 +53,7 @@ class _HangmanAppState extends State<HangmanApp> {
   }
 
   void loadData() async {
-    final serviceLocator = await initServiceLocator();
-    final TextsService textsService = serviceLocator.get<TextsService>();
+    await initServiceLocator();
 
     Future.wait([
       loadTexts(),
@@ -64,14 +63,10 @@ class _HangmanAppState extends State<HangmanApp> {
       precachePicture(ExactAssetPicture(SvgPicture.svgStringDecoderBuilder, 'assets/images/hangman-01.svg'), null),
     ]);
 
-    // If the widget was removed from the tree while the asynchronous call was in flight
-    if (!mounted) {
-      return;
+    // ensure the widget was not removed from the tree while the asynchronous call was in flight
+    if (mounted) {
+      setState(() => _isAppLoading = false);
     }
-
-    setState(() {
-      _isAppLoading = false;
-    });
   }
 
   Future<void> loadTexts() async {
