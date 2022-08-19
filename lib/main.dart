@@ -55,7 +55,7 @@ class _HangmanAppState extends State<HangmanApp> {
   void loadData() async {
     await initServiceLocator();
 
-    Future.wait([
+    await Future.wait([
       loadTexts(),
 
       // prefetch game images so they are displayed without lagging
