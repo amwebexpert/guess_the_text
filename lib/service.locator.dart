@@ -19,24 +19,11 @@ final serviceLocator = GetIt.instance;
 
 Future<GetIt> initServiceLocator() async {
   serviceLocator
-    ..registerLazySingleton<LoggerService>(() => LoggerService())
-    ..registerLazySingleton<FileService>(() => FileService());
-
-  final sharedPreferencesService = await SharedPreferencesService().init();
-  serviceLocator.registerSingleton<SharedPreferencesService>(sharedPreferencesService);
-
-  final documentsRepository = await DocumentsRepository().init();
-  serviceLocator.registerSingleton<DocumentsRepository>(documentsRepository);
-
-  final gameStorageService = await GamePlayedItemsStorageService().init();
-
-  final sqlDbService = await SqlDbService().init();
-  if (sqlDbService != null) {
-    serviceLocator.registerSingleton<SqlDbService>(sqlDbService);
-  }
-
-  serviceLocator
-    ..registerSingleton<GamePlayedItemsStorageService>(gameStorageService)
+    ..registerSingleton<LoggerService>(LoggerService())
+    ..registerSingleton<FileService>(FileService())
+    ..registerSingleton<SharedPreferencesService>(await SharedPreferencesService().init())
+    ..registerSingleton<DocumentsRepository>(await DocumentsRepository().init())
+    ..registerSingleton<GamePlayedItemsStorageService>(await GamePlayedItemsStorageService().init())
     ..registerLazySingleton<DeviceInfoService>(() => DeviceInfoService())
     ..registerLazySingleton<TextsService>(() => TextsService())
     ..registerLazySingleton<GameStore>(() => GameStore())
@@ -45,6 +32,12 @@ Future<GetIt> initServiceLocator() async {
     ..registerLazySingleton<QrCodeService>(() => QrCodeService())
     ..registerLazySingleton<RandomizerUtils>(() => RandomizerUtils())
     ..registerLazySingleton<AnimationUtils>(() => AnimationUtils(serviceLocator.get<RandomizerUtils>()));
+
+  // service not supported by all platforms
+  final sqlDbService = await SqlDbService().init();
+  if (sqlDbService != null) {
+    serviceLocator.registerSingleton<SqlDbService>(sqlDbService);
+  }
 
   return serviceLocator;
 }
