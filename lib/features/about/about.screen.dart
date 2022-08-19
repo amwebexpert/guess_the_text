@@ -7,6 +7,8 @@ import '/theme/widgets/app.bar.title.widget.dart';
 import '/theme/widgets/full.screen.bg.image.widget.dart';
 import 'card.widget.dart';
 
+const isPortraitOrientationLocked = false; // TODO Create a preferences for this feature
+
 class AboutWidget extends StatefulWidget {
   const AboutWidget({Key? key}) : super(key: key);
 
@@ -20,7 +22,9 @@ class _AboutWidgetState extends State<AboutWidget> {
   @override
   void initState() {
     super.initState();
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    if (isPortraitOrientationLocked) {
+      SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    }
 
     Future.delayed(const Duration(milliseconds: 400), () {
       if (mounted) {

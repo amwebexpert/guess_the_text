@@ -15,46 +15,48 @@ class AboutCard extends StatelessWidget {
   const AboutCard({Key? key}) : super(key: key);
 
   @override
+  Widget build(BuildContext context) => AboutCardPanel(
+        child: Padding(
+          padding: EdgeInsets.all(spacing(1)),
+          child: Column(
+            children: const [
+              ResponsiveAboutHeaderPanel(),
+              HeightSpacer(),
+              CardAppDescriptionWidget(),
+              HeightSpacer(),
+              PlatformInfoTable(),
+              HeightSpacer(),
+              PlatformScreenInfoTable(),
+              HeightSpacer(),
+              MadeWithLoveWidget(),
+            ],
+          ),
+        ),
+      );
+}
+
+class ResponsiveAboutHeaderPanel extends StatelessWidget {
+  const ResponsiveAboutHeaderPanel({Key? key}) : super(key: key);
+
+  @override
   Widget build(BuildContext context) {
     final isColumnLayout = ResponsiveWrapper.of(context).isSmallerThan(TABLET);
 
-    return AboutCardPanel(
-      child: Padding(
-        padding: EdgeInsets.all(spacing(1)),
-        child: Column(
-          children: [
-            ResponsiveRowColumn(
-              rowMainAxisAlignment: MainAxisAlignment.spaceAround,
-              layout: isColumnLayout ? ResponsiveRowColumnType.COLUMN : ResponsiveRowColumnType.ROW,
-              children: [
-                const ResponsiveRowColumnItem(
-                  rowFlex: 1,
-                  child: CardHeaderWidget(),
-                ),
-                ResponsiveRowColumnItem(
-                  rowFlex: 1,
-                  child: Column(
-                    children: [
-                      const HeightSpacer(spacingUnitCount: 6),
-                      const AppVersionTable(),
-                      const HeightSpacer(),
-                      AuthorInfoTable()
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            const HeightSpacer(),
-            const CardAppDescriptionWidget(),
-            const HeightSpacer(),
-            const PlatformInfoTable(),
-            const HeightSpacer(),
-            const PlatformScreenInfoTable(),
-            const HeightSpacer(),
-            const MadeWithLoveWidget(),
-          ],
+    return ResponsiveRowColumn(
+      rowMainAxisAlignment: MainAxisAlignment.spaceAround,
+      layout: isColumnLayout ? ResponsiveRowColumnType.COLUMN : ResponsiveRowColumnType.ROW,
+      children: [
+        const ResponsiveRowColumnItem(
+          rowFlex: 1,
+          child: CardHeaderWidget(),
         ),
-      ),
+        ResponsiveRowColumnItem(
+          rowFlex: 1,
+          child: Column(
+            children: [const HeightSpacer(spacingUnitCount: 6), const AppVersionTable(), const HeightSpacer(), AuthorInfoTable()],
+          ),
+        ),
+      ],
     );
   }
 }
