@@ -9,16 +9,18 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-import './features/settings/settings.store.dart';
-import './route.generator.dart';
-import './service.locator.dart';
-import './services/logger/logger.service.dart';
-import './services/text.service/api.category.model.dart';
-import './services/text.service/api.texts.service.dart';
-import './theme/app.theme.dart';
-import './theme/widgets/app.error.widget.dart';
-import './utils/animation.utils.dart';
-import './utils/randomizer.utils.dart';
+import 'features/settings/settings.store.dart';
+import 'route.generator.dart';
+import 'service.locator.dart';
+import 'services/logger/logger.service.dart';
+import 'services/storage/shared.preferences.enum.dart';
+import 'services/storage/shared.preferences.services.dart';
+import 'services/text.service/api.category.model.dart';
+import 'services/text.service/api.texts.service.dart';
+import 'theme/app.theme.dart';
+import 'theme/widgets/app.error.widget.dart';
+import 'utils/animation.utils.dart';
+import 'utils/randomizer.utils.dart';
 
 void main() {
   if (!kDebugMode) {
@@ -54,10 +56,8 @@ class _HangmanAppState extends State<HangmanApp> {
     final serviceLocator = await initServiceLocator();
     final TextsService textsService = serviceLocator.get<TextsService>();
 
-    List<ApiCategory> categories = await textsService.getCategories();
-
     Future.wait([
-      textsService.getTexts(categories.first.uuid),
+      loadTexts(),
 
       // prefetch game images so they are displayed without lagging
       precachePicture(ExactAssetPicture(SvgPicture.svgStringDecoderBuilder, 'assets/images/hangman-happy.svg'), null),
@@ -72,6 +72,15 @@ class _HangmanAppState extends State<HangmanApp> {
     setState(() {
       _isAppLoading = false;
     });
+  }
+
+  Future<void> loadTexts() async {
+    final TextsService textsService = serviceLocator.get<TextsService>();
+    final SharedPreferencesService preferences = serviceLocator.get();
+
+    List<ApiCategory> categories = await textsService.getCategories();
+    String lastSelectedCategoryUuid = preferences.getString(SharedPreferenceKey.lastSelectedCategory.name, defaultValue: categories.first.uuid);
+    await textsService.getTexts(lastSelectedCategoryUuid);
   }
 
   @override
