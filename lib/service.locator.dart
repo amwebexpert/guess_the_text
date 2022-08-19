@@ -33,7 +33,7 @@ Future<GetIt> initServiceLocator() async {
     ..registerLazySingleton<RandomizerUtils>(() => RandomizerUtils())
     ..registerLazySingleton<AnimationUtils>(() => AnimationUtils(serviceLocator.get<RandomizerUtils>()));
 
-  // service not supported by all platforms
+  // conditionaly register service(s) not yet supported by all platforms
   final sqlDbService = await SqlDbService().init();
   if (sqlDbService != null) {
     serviceLocator.registerSingleton<SqlDbService>(sqlDbService);
