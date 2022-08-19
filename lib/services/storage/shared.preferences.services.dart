@@ -7,8 +7,9 @@ class SharedPreferencesService {
   factory SharedPreferencesService() => _instance;
   SharedPreferencesService._privateConstructor();
 
-  Future<void> init() async {
+  Future<SharedPreferencesService> init() async {
     _prefs = await SharedPreferences.getInstance();
+    return this;
   }
 
   Set<String> getKeys() => _prefs.getKeys();
@@ -19,8 +20,7 @@ class SharedPreferencesService {
   bool getBool(String key, {bool defaultValue = false}) => _prefs.getBool(key) ?? defaultValue;
   double getDouble(String key, {double defaultValue = 0}) => _prefs.getDouble(key) ?? defaultValue;
   String getString(String key, {String defaultValue = ''}) => _prefs.getString(key) ?? defaultValue;
-  List<String> getStringList(String key, {List<String> defaultValue = const []}) =>
-      _prefs.getStringList(key) ?? defaultValue;
+  List<String> getStringList(String key, {List<String> defaultValue = const []}) => _prefs.getStringList(key) ?? defaultValue;
 
   Future<bool> setInt(String key, int value) => _prefs.setInt(key, value);
   Future<bool> setBool(String key, bool value) => _prefs.setBool(key, value);
