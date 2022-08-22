@@ -145,7 +145,7 @@ Instead of building a `List<Widgets>` before the `build` method, prefer usage of
     return Column(
       children: [
           oneItem,
-          if (canIKickIt())
+          if (canIKickIt()) // the condition here should remaine a one liner simple to read expression
             kickTheCan
           for (item in items)
             Text(item)
