@@ -16,6 +16,8 @@
 - [Existing Dart language extensions](https://pub.dev/packages/dartx)
 - [Platform conditional widget rendering - Material / Cupertino management](https://pub.dev/packages/flutter_platform_widgets)
 - [Platform conditional widget rendering - Medium article](https://medium.com/flutter/do-flutter-apps-dream-of-platform-aware-widgets-7d7ed7b4624d)
+- [Choose an open source license](https://choosealicense.com/)
+- [Shields badges for Github projects](https://shields.io/)
 
 
 ## Troubleshothing

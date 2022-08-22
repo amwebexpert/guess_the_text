@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:orientation_aware_widgets/orientation_aware_widgets.dart';
 
 import '../../service.locator.dart';
 import '../../services/logger/logger.service.dart';
 import '../../services/storage/shared.preferences.enum.dart';
 import '../../services/storage/shared.preferences.services.dart';
 import '../../theme/widgets/app.bar.title.widget.dart';
-import '../../theme/widgets/responsive/navigation/navigation.choices.model.dart';
-import '../../theme/widgets/responsive/navigation/responsive.navigation.rail.or.bar.widget.dart';
 import 'local/local.categories.widget.dart';
 import 'remote/remote.categories.widget.dart';
 
