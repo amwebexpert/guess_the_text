@@ -61,6 +61,11 @@ List of demonstrated elements inside the codebase, divided by categories
 - [get_it](https://pub.dev/packages/get_it)
 - `GetIt` integration with Mockito for testing Widget and other services
 
+## Flutter custom packages and plugins
+
+- ✔️ creation of a Flutter package (see `orientation_aware_widgets` folder at the root of this project)
+- work in progress 👷‍♂️ creation of a Flutter plugin (stay tuned :-))
+
 ## Tests automation
 
 - `e2e` tests (called "integration tests" by Flutter team https://docs.flutter.dev/cookbook/testing/integration/introduction)
@@ -86,8 +91,8 @@ List of demonstrated elements inside the codebase, divided by categories
 - Async API services
 - Factory pattern to create services singleton
 - Power of `Dart` extensions
-- JSON serialization and common class methods (copyWith, toString, equals...)
-- Clone vs copy(...) with adjusted params
+- `JSON` serialization and common class methods (`copyWith`, `toString`, `equals`, `hashCode` ...)
+- `Clone` vs `copy(...)` with adjusted params
 
 ## Deap links on platforms
 
@@ -120,5 +125,4 @@ We can also install a generic deep link opener application like this one:
 - [barcode scanner](https://pub.dev/packages/flutter_barcode_scanner) feature to accept (scan) challenge
 - [connectivity_plus](https://pub.dev/packages/connectivity_plus) to handle network connection state
 - [Freezed](https://pub.dev/packages/freezed) library to generate boilerplate methods like: toString, toJson, fromJson, copyWith, equals, hashcode
-- Deep link navigation for both platforms
 
