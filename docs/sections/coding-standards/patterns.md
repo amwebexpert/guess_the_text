@@ -106,3 +106,47 @@ Use the `?.call()` for running a nullable callback function
     widget.onAnimationComplete?.call();
   }
 ```
+
+
+## Conditional child widgets
+
+Instead of building a `List<Widgets>` before the `build` method, prefer usage of conditional expression widget
+
+#### :x: avoid
+
+```dart
+  List<Widgets> buildWithSomeLogic() {
+    List<Widgets> widgets = [];
+
+    widgets.add(oneItem);
+
+    if (canIKickIt) {
+        widgets.add(kickTheCan);
+    }
+
+    for (item in items) {
+        Text(item)
+    }
+
+    return widgets;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: ...buildWithSomeLogic()
+```
+
+#### :white_check_mark: prefer
+
+```dart
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+          oneItem,
+          if (canIKickIt)
+            ...kickTheCan
+          for (item in items)
+            Text(item)
+```
