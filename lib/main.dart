@@ -12,6 +12,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'features/settings/settings.store.dart';
 import 'route.generator.dart';
 import 'service.locator.dart';
+import 'services/assets/asset.locator.service.dart';
 import 'services/logger/logger.service.dart';
 import 'services/storage/shared.preferences.enum.dart';
 import 'services/storage/shared.preferences.services.dart';
@@ -53,14 +54,15 @@ class _HangmanAppState extends State<HangmanApp> {
   }
 
   void loadData() async {
-    await initServiceLocator();
+    final serviceLocator = await initServiceLocator();
+    final AssetLocatorService assetLocatorService = serviceLocator.get();
 
     await Future.wait([
       loadTexts(),
 
       // prefetch game images so they are displayed without lagging
-      precachePicture(ExactAssetPicture(SvgPicture.svgStringDecoderBuilder, 'assets/images/hangman-happy.svg'), null),
-      precachePicture(ExactAssetPicture(SvgPicture.svgStringDecoderBuilder, 'assets/images/hangman-01.svg'), null),
+      precachePicture(assetLocatorService.getPicture('hangman-happy'), null),
+      precachePicture(assetLocatorService.getPicture('hangman-01'), null),
     ]);
 
     // ensure the widget was not removed from the tree while the asynchronous call was in flight
@@ -74,7 +76,8 @@ class _HangmanAppState extends State<HangmanApp> {
     final SharedPreferencesService preferences = serviceLocator.get();
 
     List<ApiCategory> categories = await textsService.getCategories();
-    String lastSelectedCategoryUuid = preferences.getString(SharedPreferenceKey.lastSelectedCategory.name, defaultValue: categories.first.uuid);
+    String lastSelectedCategoryUuid =
+        preferences.getString(SharedPreferenceKey.lastSelectedCategory.name, defaultValue: categories.first.uuid);
     await textsService.getTexts(lastSelectedCategoryUuid);
   }
 

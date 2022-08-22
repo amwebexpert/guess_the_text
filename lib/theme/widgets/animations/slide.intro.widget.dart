@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-const welcomeImage = 'assets/images/hangman-happy.svg';
-
 class SlideIntroWidget extends StatefulWidget {
   final Widget child;
   final VoidCallback? onAnimationComplete;

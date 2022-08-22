@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'features/game/game.played.items.storage.service.dart';
 import 'features/game/game.store.dart';
 import 'features/settings/settings.store.dart';
+import 'services/assets/asset.locator.service.dart';
 import 'services/device/device.info.service.dart';
 import 'services/file/file.service.dart';
 import 'services/logger/logger.service.dart';
@@ -31,6 +32,7 @@ Future<GetIt> initServiceLocator() async {
     ..registerLazySingleton<SettingsStore>(() => SettingsStore())
     ..registerLazySingleton<QrCodeService>(() => QrCodeService())
     ..registerLazySingleton<RandomizerUtils>(() => RandomizerUtils())
+    ..registerLazySingleton<AssetLocatorService>(() => AssetLocatorService())
     ..registerLazySingleton<AnimationUtils>(() => AnimationUtils(serviceLocator.get<RandomizerUtils>()));
 
   // conditionaly register service(s) not yet supported by all platforms
