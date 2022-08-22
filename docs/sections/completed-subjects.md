@@ -125,4 +125,3 @@ We can also install a generic deep link opener application like this one:
 - [barcode scanner](https://pub.dev/packages/flutter_barcode_scanner) feature to accept (scan) challenge
 - [connectivity_plus](https://pub.dev/packages/connectivity_plus) to handle network connection state
 - [Freezed](https://pub.dev/packages/freezed) library to generate boilerplate methods like: toString, toJson, fromJson, copyWith, equals, hashcode
-
