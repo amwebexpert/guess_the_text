@@ -110,7 +110,7 @@ Use the `?.call()` for running a nullable callback function
 
 ## Conditional child widgets
 
-Instead of building a `List<Widgets>` before the `build` method, prefer usage of conditional expression widget
+Instead of building a `List<Widgets>` before the `build` method, prefer usage of conditional expression widget. Also bear in mind to extract logic of complex `if/else` statement into dedicated method like `canIKickIt()` below to promote template readability.
 
 #### :x: avoid
 
@@ -120,7 +120,7 @@ Instead of building a `List<Widgets>` before the `build` method, prefer usage of
 
     widgets.add(oneItem);
 
-    if (canIKickIt) {
+    if (canIKickIt()) {
         widgets.add(kickTheCan);
     }
 
@@ -145,8 +145,8 @@ Instead of building a `List<Widgets>` before the `build` method, prefer usage of
     return Column(
       children: [
           oneItem,
-          if (canIKickIt)
-            ...kickTheCan
+          if (canIKickIt())
+            kickTheCan
           for (item in items)
             Text(item)
 ```
