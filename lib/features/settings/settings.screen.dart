@@ -7,16 +7,17 @@ import '/theme/theme.utils.dart';
 import '/theme/widgets/app.bar.title.widget.dart';
 import '/theme/widgets/full.screen.bg.image.widget.dart';
 import '../../service.locator.dart';
+import '../../services/assets/asset.locator.service.dart';
 import '../../theme/widgets/horizontal.flipper.widget.dart';
 import 'brightness.settings.widget.dart';
 import 'language.settings.widget.dart';
 import 'settings.store.dart';
 
 class SettingsWidget extends StatelessWidget {
-  static const String backgroundImageDark = 'assets/images/backgrounds/background-pexels-pixabay-461940.jpg';
-  static const String backgroundImageLight = 'assets/images/backgrounds/beach-sun.jpg';
+  final String backgroundImageDark = serviceLocator.get<AssetLocatorService>().darkBackgroundImagePath();
+  final String backgroundImageLight = serviceLocator.get<AssetLocatorService>().lightBackgroundImagePath();
 
-  const SettingsWidget({Key? key}) : super(key: key);
+  SettingsWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

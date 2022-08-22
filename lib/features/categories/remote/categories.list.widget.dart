@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 
 import '/theme/theme.utils.dart';
 import '/theme/widgets/full.screen.bg.image.widget.dart';
+import '../../../service.locator.dart';
+import '../../../services/assets/asset.locator.service.dart';
 import '../../../services/text.service/api.category.model.dart';
 import 'category.widget.dart';
 
 class CategoriesListWidget extends StatelessWidget {
-  static const String backgroundImage = 'assets/images/backgrounds/background-pexels-pixabay-461940.jpg';
-
-  const CategoriesListWidget({Key? key, required this.categories}) : super(key: key);
+  final String backgroundImage = serviceLocator.get<AssetLocatorService>().darkBackgroundImagePath();
+  CategoriesListWidget({Key? key, required this.categories}) : super(key: key);
 
   final List<ApiCategory> categories;
 

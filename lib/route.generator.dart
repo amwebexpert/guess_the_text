@@ -31,7 +31,9 @@ Route? onGenerateRoute(RouteSettings settings) {
               ));
 
     case '/settings':
-      return PageRouteBuilder(pageBuilder: ((context, animation, secondaryAnimation) => const SettingsWidget()), transitionDuration: const Duration(seconds: 2));
+      return PageRouteBuilder(
+          pageBuilder: ((context, animation, secondaryAnimation) => SettingsWidget()),
+          transitionDuration: const Duration(seconds: 2));
 
     case '/about':
       return MaterialPageRoute(builder: (_) => const AboutWidget());

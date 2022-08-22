@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../service.locator.dart';
+import '../../../../services/assets/asset.locator.service.dart';
 import '../../../../services/text.service/api.category.model.dart';
 import '../../../../services/text.service/api.text.model.dart';
 import '../../../../services/text.service/sql.db.service.dart';
@@ -15,8 +16,6 @@ import '../../../challenge/on.the.fly.challenge.model.dart';
 import 'edit.text.widget.dart';
 
 class TextsListWidget extends StatefulWidget {
-  static const String backgroundImage = 'assets/images/backgrounds/background-pexels-pixabay-461940.jpg';
-
   const TextsListWidget({Key? key, required this.category, required this.initialTexts}) : super(key: key);
 
   final ApiCategory category;
@@ -27,6 +26,7 @@ class TextsListWidget extends StatefulWidget {
 }
 
 class _TextsListWidgetState extends State<TextsListWidget> {
+  final String backgroundImage = serviceLocator.get<AssetLocatorService>().darkBackgroundImagePath();
   final SqlDbService sqlDbService = serviceLocator.get();
   late List<ApiText> texts;
 
@@ -91,7 +91,7 @@ class _TextsListWidgetState extends State<TextsListWidget> {
         ),
         floatingActionButton: FloatingActionButton(onPressed: _createText, child: const Icon(Icons.add)),
         body: FullScreenAssetBackground(
-          assetImagePath: TextsListWidget.backgroundImage,
+          assetImagePath: backgroundImage,
           child: Padding(
             padding: EdgeInsets.all(spacing(2)),
             child: ListView.builder(
