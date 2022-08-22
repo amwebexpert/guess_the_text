@@ -14,8 +14,7 @@ import 'language.settings.widget.dart';
 import 'settings.store.dart';
 
 class SettingsWidget extends StatelessWidget {
-  final String backgroundImageDark = serviceLocator.get<AssetLocatorService>().darkBackgroundImagePath();
-  final String backgroundImageLight = serviceLocator.get<AssetLocatorService>().lightBackgroundImagePath();
+  final AssetLocatorService assetLocatorService = serviceLocator.get();
 
   SettingsWidget({Key? key}) : super(key: key);
 
@@ -32,7 +31,9 @@ class SettingsWidget extends StatelessWidget {
           backWidget: const BackDemoWidget(),
           frontWidget: Observer(
             builder: (BuildContext context) => FullScreenAssetBackground(
-              assetImagePath: settings.isDarkTheme ? backgroundImageDark : backgroundImageLight,
+              assetImagePath: settings.isDarkTheme
+                  ? assetLocatorService.darkBackgroundImagePath()
+                  : assetLocatorService.lightBackgroundImagePath(),
               child: SingleChildScrollView(
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: spacing(1)),
