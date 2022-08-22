@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../service.locator.dart';
+import '../../../services/assets/asset.locator.service.dart';
 import '../../../services/text.service/api.category.model.dart';
 import '../../../services/text.service/sql.db.service.dart';
 import '../../../theme/app.theme.dart';
@@ -18,8 +19,6 @@ import 'edit.category.widget.dart';
 import 'texts/local.texts.widget.dart';
 
 class CategoriesListWidget extends StatefulWidget {
-  static const String backgroundImage = 'assets/images/backgrounds/background-pexels-pixabay-461940.jpg';
-
   const CategoriesListWidget({Key? key, required this.originalCategories}) : super(key: key);
 
   final List<ApiCategory> originalCategories;
@@ -29,6 +28,7 @@ class CategoriesListWidget extends StatefulWidget {
 }
 
 class _CategoriesListWidgetState extends State<CategoriesListWidget> {
+  final String backgroundImage = serviceLocator.get<AssetLocatorService>().darkBackgroundImagePath();
   final SqlDbService? sqlDbService = serviceLocator.isRegistered<SqlDbService>() ? serviceLocator.get() : null;
   late bool isFeatureSupported = sqlDbService?.isPlateformSupported ?? false;
   late List<ApiCategory> categories;
@@ -40,7 +40,8 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
   }
 
   Future<void> _createCategory() async {
-    final ApiCategory? result = await showDialog(context: context, builder: (_) => const EditCategory(category: ApiCategory(), isNew: true));
+    final ApiCategory? result =
+        await showDialog(context: context, builder: (_) => const EditCategory(category: ApiCategory(), isNew: true));
 
     if (result != null) {
       setState(() => categories.add(result));
@@ -48,7 +49,8 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
   }
 
   Future<void> _updateCategory(ApiCategory category, int index) async {
-    final ApiCategory? result = await showDialog(context: context, builder: (_) => EditCategory(category: category, isNew: false));
+    final ApiCategory? result =
+        await showDialog(context: context, builder: (_) => EditCategory(category: category, isNew: false));
 
     if (result != null) {
       setState(() => categories[index] = result);
@@ -71,7 +73,10 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
       return;
     }
 
-    showAppSnackbar(context: context, message: AppLocalizations.of(context)!.categoryDeletedMessage(category.name), type: SnackbarType.info);
+    showAppSnackbar(
+        context: context,
+        message: AppLocalizations.of(context)!.categoryDeletedMessage(category.name),
+        type: SnackbarType.info);
     setState(() => categories.remove(category));
   }
 
@@ -86,9 +91,10 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
   Widget build(BuildContext context) {
     // TODO early return feature-not-supported whenever isFeatureSupported is false
     return Scaffold(
-        floatingActionButton: FloatingActionButton(onPressed: isFeatureSupported ? _createCategory : null, child: const Icon(Icons.add)),
+        floatingActionButton:
+            FloatingActionButton(onPressed: isFeatureSupported ? _createCategory : null, child: const Icon(Icons.add)),
         body: FullScreenAssetBackground(
-          assetImagePath: CategoriesListWidget.backgroundImage,
+          assetImagePath: backgroundImage,
           child: Padding(
             padding: EdgeInsets.all(spacing(2)),
             child: ListView.builder(
@@ -105,7 +111,10 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
                         child: ListTile(
                           leading: Icon(categoryIcons[category.iconName]),
                           title: Text(category.name, style: Theme.of(context).textTheme.bodyText1),
-                          trailing: ElevatedButton(style: listTileTralingButtonStyle, child: const Icon(Icons.edit), onPressed: () => _updateCategory(category, index)),
+                          trailing: ElevatedButton(
+                              style: listTileTralingButtonStyle,
+                              child: const Icon(Icons.edit),
+                              onPressed: () => _updateCategory(category, index)),
                           subtitle: Text(getLanguageFullNameFromCode(context, category.langCode)),
                           onTap: () => _editCategoryElements(category),
                         ),

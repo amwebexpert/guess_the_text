@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-const welcomeImage = 'assets/images/hangman-happy.svg';
+import '../../service.locator.dart';
+import '../../services/assets/asset.locator.service.dart';
 
 class GameImageIntroWidget extends StatefulWidget {
   final VoidCallback onAnimationComplete;
@@ -13,6 +14,8 @@ class GameImageIntroWidget extends StatefulWidget {
 }
 
 class _GameImageIntroWidgetState extends State<GameImageIntroWidget> with SingleTickerProviderStateMixin {
+  final String welcomeImage = serviceLocator.get<AssetLocatorService>().gameImagePath('hangman-happy');
+
   late final AnimationController _animController;
   late final Animation<double> _scaleAnimation;
   late final Animation<double> _fadeAnimation;

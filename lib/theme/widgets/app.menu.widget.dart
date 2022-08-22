@@ -18,7 +18,7 @@ class AppMenu extends StatelessWidget {
       // Important: Remove any padding from the ListView.
       padding: EdgeInsets.zero,
       children: [
-        const MenuLogo(),
+        MenuLogo(),
         MenuItemWidget(
           titleLabel: localizations.categories,
           iconName: 'categories',

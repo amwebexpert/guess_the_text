@@ -19,15 +19,15 @@ class AboutCard extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(spacing(1)),
           child: Column(
-            children: const [
-              ResponsiveAboutHeaderPanel(),
-              HeightSpacer(),
-              CardAppDescriptionWidget(),
-              HeightSpacer(),
-              PlatformInfoTable(),
-              HeightSpacer(),
-              PlatformScreenInfoTable(),
-              HeightSpacer(),
+            children: [
+              const ResponsiveAboutHeaderPanel(),
+              const HeightSpacer(),
+              const CardAppDescriptionWidget(),
+              const HeightSpacer(),
+              const PlatformInfoTable(),
+              const HeightSpacer(),
+              const PlatformScreenInfoTable(),
+              const HeightSpacer(),
               MadeWithLoveWidget(),
             ],
           ),
@@ -53,7 +53,12 @@ class ResponsiveAboutHeaderPanel extends StatelessWidget {
         ResponsiveRowColumnItem(
           rowFlex: 1,
           child: Column(
-            children: [const HeightSpacer(spacingUnitCount: 6), const AppVersionTable(), const HeightSpacer(), AuthorInfoTable()],
+            children: [
+              const HeightSpacer(spacingUnitCount: 6),
+              const AppVersionTable(),
+              const HeightSpacer(),
+              AuthorInfoTable()
+            ],
           ),
         ),
       ],

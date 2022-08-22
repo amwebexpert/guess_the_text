@@ -5,6 +5,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '/theme/theme.utils.dart';
 import '/theme/widgets/app.bar.title.widget.dart';
 import '/theme/widgets/full.screen.bg.image.widget.dart';
+import '../../service.locator.dart';
+import '../../services/assets/asset.locator.service.dart';
 import 'card.widget.dart';
 
 const isPortraitOrientationLocked = false; // TODO Create a preferences for this feature
@@ -17,6 +19,7 @@ class AboutWidget extends StatefulWidget {
 }
 
 class _AboutWidgetState extends State<AboutWidget> {
+  final String backgroundImage = serviceLocator.get<AssetLocatorService>().darkBackgroundImagePath();
   bool _isVisible = false;
 
   @override
@@ -44,7 +47,6 @@ class _AboutWidgetState extends State<AboutWidget> {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations localizations = AppLocalizations.of(context)!;
-    const String backgroundImage = 'assets/images/backgrounds/background-pexels-pixabay-461940.jpg';
 
     return Scaffold(
         appBar: AppBar(
