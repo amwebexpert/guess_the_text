@@ -30,11 +30,20 @@ void main() {
   debugRepaintRainbowEnabled = false;
 
   runZonedGuarded(() async {
+    // https://github.com/flutter/flutter/issues/48972
+    // it seems that moving the WidgetsBinding.ensureInitialized() and FlutterError.onError inside
+    // the runZonedGuarded call makes it so the following happens in debug builds:
+    // - the synchronous error is reported via the FlutterError.onError path
+    // - the asynchronous error is reported via the runZonedGuarded error callback
     WidgetsFlutterBinding.ensureInitialized();
 
     FlutterError.onError = (FlutterErrorDetails details) {
-      FlutterError.presentError(details);
       loggerService.error('Exception while running App', error: details.exception, stackTrace: details.stack);
+      if (details.stack != null) {
+        Zone.current.handleUncaughtError(details.exception, details.stack!);
+      } else {
+        FlutterError.presentError(details);
+      }
       if (!kDebugMode) {
         exit(1);
       }
@@ -59,7 +68,7 @@ class _HangmanAppState extends State<HangmanApp> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => loadData());
+    loadData();
   }
 
   Future<void> loadData() async {
