@@ -8,6 +8,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:universal_io/io.dart';
 
 import 'features/settings/settings.store.dart';
 import 'route.generator.dart';
@@ -24,16 +25,24 @@ import 'utils/animation.utils.dart';
 import 'utils/randomizer.utils.dart';
 
 void main() {
-  if (!kDebugMode) {
-    ErrorWidget.builder = (FlutterErrorDetails details) => AppErrorWidget(details: details);
-  }
+  LoggerService loggerService = LoggerService();
+  ErrorWidget.builder = (FlutterErrorDetails details) => AppErrorWidget(details: details);
   debugRepaintRainbowEnabled = false;
 
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
+
+    FlutterError.onError = (FlutterErrorDetails details) {
+      FlutterError.presentError(details);
+      loggerService.error('Exception while running App', error: details.exception, stackTrace: details.stack);
+      if (!kDebugMode) {
+        exit(1);
+      }
+    };
+
     runApp(const HangmanApp());
   }, (error, stackTrace) {
-    LoggerService().error('unhandled error occured in root zone', error: error, stackTrace: stackTrace);
+    loggerService.error('Exception in root zone', error: error, stackTrace: stackTrace);
   });
 }
 
@@ -50,10 +59,10 @@ class _HangmanAppState extends State<HangmanApp> {
   @override
   void initState() {
     super.initState();
-    loadData();
+    WidgetsBinding.instance.addPostFrameCallback((_) => loadData());
   }
 
-  void loadData() async {
+  Future<void> loadData() async {
     final serviceLocator = await initServiceLocator();
     final AssetLocatorService assetLocatorService = serviceLocator.get();
 
