@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 
 import '../../theme.utils.dart';
 
+/// Show textual description under a centered spinner, the layout being a modal.
+///
+/// Example:
+/// ```dart
+/// showSpinnerWithDescription(description: newAnimation, context: context);
+/// await Future.delayed(const Duration(seconds: 3), () {
+///   Navigator.of(context).pop();
+/// });
+/// ```
 void showSpinnerWithDescription({required String description, required BuildContext context}) {
   final verticalSpacing = spacing(2);
 
