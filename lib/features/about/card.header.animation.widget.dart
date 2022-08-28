@@ -16,26 +16,24 @@ class CardHeaderAnimation extends StatefulWidget {
 class _CardHeaderAnimationState extends State<CardHeaderAnimation> {
   final LoggerService logger = serviceLocator.get();
   final AnimationUtils animationUtils = serviceLocator.get();
-  String _assetAnimation = '';
+  late String _assetAnimation;
 
   @override
   void initState() {
     super.initState();
-    updateAnimation();
+    _assetAnimation = animationUtils.getAnimationPath();
   }
 
-  void updateAnimation() {
+  void _updateAnimation() {
     final newAnimation = animationUtils.getAnimationPath();
     logger.info('asset animation: [$newAnimation]');
-    setState(() {
-      _assetAnimation = newAnimation;
-    });
+    setState(() => _assetAnimation = newAnimation);
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: updateAnimation,
+      onTap: _updateAnimation,
       child: SizedBox(
           width: 200,
           child: Center(

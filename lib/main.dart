@@ -68,7 +68,7 @@ class _HangmanAppState extends State<HangmanApp> {
   @override
   void initState() {
     super.initState();
-    loadData();
+    WidgetsBinding.instance.addPostFrameCallback((_) => loadData());
   }
 
   Future<void> loadData() async {
