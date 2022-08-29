@@ -1,4 +1,7 @@
+import 'dart:io' show Platform;
+
 import 'package:barcode/barcode.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 import '/utils/extensions/string.extensions.dart';
@@ -9,6 +12,8 @@ class QrCodeService {
   factory QrCodeService() => _instance;
 
   QrCodeService._privateConstructor();
+
+  bool isScanOperationSupported() => !kIsWeb && (Platform.isAndroid || Platform.isIOS);
 
   Future<String> scan({required String cancelLabel, String lineColor = '#ff6666', bool isShowFlashIcon = true}) async {
     final String data =
