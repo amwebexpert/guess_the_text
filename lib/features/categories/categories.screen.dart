@@ -6,6 +6,7 @@ import '../../service.locator.dart';
 import '../../services/logger/logger.service.dart';
 import '../../services/storage/shared.preferences.enum.dart';
 import '../../services/storage/shared.preferences.services.dart';
+import '../../services/text.service/sql.db.service.dart';
 import '../../theme/widgets/app.bar.title.widget.dart';
 import 'local/local.categories.widget.dart';
 import 'remote/remote.categories.widget.dart';
@@ -20,6 +21,7 @@ class CategoriesWidget extends StatefulWidget {
 class _CategoriesWidgetState extends State<CategoriesWidget> {
   final SharedPreferencesService preferences = serviceLocator.get();
   final LoggerService loggerService = serviceLocator.get();
+  final hasDeviceSqlSupport = serviceLocator.isRegistered<SqlDbService>();
 
   late int _currentIndex;
   late Widget _child;
@@ -61,9 +63,11 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
         appBar: AppBar(
           title: AppBarTitle(title: localizations.categories),
         ),
-        body: ResponsiveNavigationRailOrBar(items: [
-          NavigationChoices(text: localizations.categoryTypeCloud, icon: const Icon(Icons.cloud)),
-          NavigationChoices(text: localizations.categoryTypeDevice, icon: const Icon(Icons.save_alt)),
-        ], currentIndex: _currentIndex, onTap: _onTap, child: _child));
+        body: hasDeviceSqlSupport
+            ? ResponsiveNavigationRailOrBar(items: [
+                NavigationChoices(text: localizations.categoryTypeCloud, icon: const Icon(Icons.cloud)),
+                NavigationChoices(text: localizations.categoryTypeDevice, icon: const Icon(Icons.save_alt)),
+              ], currentIndex: _currentIndex, onTap: _onTap, child: _child)
+            : const RemoteCategoriesWidget());
   }
 }
