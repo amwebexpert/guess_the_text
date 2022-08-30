@@ -31,8 +31,7 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      platformVersion =
-          await _osConsoleLoggerPlugin.getPlatformVersion() ?? 'Unknown platform version';
+      platformVersion = await _osConsoleLoggerPlugin.getPlatformVersion() ?? 'Unknown platform version';
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
@@ -54,8 +53,29 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+        body: Column(
+          children: [
+            Expanded(
+              child: Text(_platformVersion, textAlign: TextAlign.center),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () => _osConsoleLoggerPlugin.debug('here is a debug line'),
+                    child: const Text('debug'),
+                  ),
+                  const SizedBox(width: 16),
+                  ElevatedButton(
+                    onPressed: () => _osConsoleLoggerPlugin.debug('here is an ERROR line'),
+                    child: const Text('error'),
+                  ),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );

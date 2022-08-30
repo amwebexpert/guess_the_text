@@ -120,7 +120,7 @@ class _HangmanAppState extends State<HangmanApp> {
         themeMode: settingsStore.isDarkTheme ? ThemeMode.dark : ThemeMode.light,
         initialRoute: '/',
         onGenerateRoute: onGenerateRoute,
-        onGenerateTitle: (BuildContext context) => AppLocalizations.of(context)!.appTitle, 
+        onGenerateTitle: (BuildContext context) => AppLocalizations.of(context)!.appTitle,
         builder: (context, widget) => ResponsiveWrapper.builder(
           ClampingScrollWrapper.builder(context, widget!),
           backgroundColor: Colors.black,

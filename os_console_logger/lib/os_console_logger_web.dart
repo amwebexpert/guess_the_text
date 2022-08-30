@@ -20,7 +20,14 @@ class OsConsoleLoggerWeb extends OsConsoleLoggerPlatform {
   /// Returns a [String] containing the version of the platform.
   @override
   Future<String?> getPlatformVersion() async {
-    final version = html.window.navigator.userAgent;
-    return version;
+    const List<String> infos = [];
+
+    final navigator = html.window.navigator;
+    infos.add('UserAgent: ${navigator.userAgent}');
+    infos.add('Platform: ${navigator.platform ?? 'Unknown'}');
+    infos.add('AppCodeName: ${navigator.appCodeName}');
+    infos.add('Language: ${navigator.language}');
+
+    return infos.join('\n');
   }
 }
