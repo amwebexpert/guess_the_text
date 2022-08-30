@@ -46,6 +46,14 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  Future<void> _debug() async {
+    _osConsoleLoggerPlugin.debug('here is a debug line').then((_) => print('End of native call'));
+  }
+
+  Future<void> _error() async {
+    _osConsoleLoggerPlugin.error('here is an ERROR line').then((_) => print('End of native call'));
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -64,12 +72,12 @@ class _MyAppState extends State<MyApp> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
-                    onPressed: () => _osConsoleLoggerPlugin.debug('here is a debug line'),
+                    onPressed: () => _debug(),
                     child: const Text('debug'),
                   ),
                   const SizedBox(width: 16),
                   ElevatedButton(
-                    onPressed: () => _osConsoleLoggerPlugin.debug('here is an ERROR line'),
+                    onPressed: () => _error(),
                     child: const Text('error'),
                   ),
                 ],
