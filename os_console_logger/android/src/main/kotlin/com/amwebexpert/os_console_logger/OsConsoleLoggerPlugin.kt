@@ -28,12 +28,12 @@ class OsConsoleLoggerPlugin: FlutterPlugin, MethodCallHandler {
         result.success("Android ${android.os.Build.VERSION.RELEASE} SDK_INT ${android.os.Build.VERSION.SDK_INT}")
       }
       "debug" -> {
-        val message = call.argument<String>("message")!!
-        Log.d("[OsConsoleLogger]", message)        
+        val message = call.argument<String>("message")
+        Log.d("[OsConsoleLogger]", "kotlin message: $message")
       }
       "error" -> {
-        val message = call.argument<String>("message")!!
-        Log.e("[OsConsoleLogger]", message)        
+        val message = call.argument<String>("message")
+        Log.e("[OsConsoleLogger]", "kotlin message: $message")
       }
       else -> {
         result.notImplemented()
