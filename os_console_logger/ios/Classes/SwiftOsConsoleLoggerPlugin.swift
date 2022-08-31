@@ -9,6 +9,25 @@ public class SwiftOsConsoleLoggerPlugin: NSObject, FlutterPlugin {
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-    result("iOS " + UIDevice.current.systemVersion)
+    switch call.method {
+    case "getPlatformVersion":
+      result("iOS: " + UIDevice.current.systemVersion)
+      break
+      
+    case "debug":
+      let arguments = call.arguments as! NSDictionary
+      print(arguments["message"]!)
+      result(nil)
+      break
+
+    case "error":
+      let arguments = call.arguments as! NSDictionary
+      print(arguments["message"]!)
+      result(nil)
+      break
+
+    default:
+      result(FlutterMethodNotImplemented)
+    }
   }
 }

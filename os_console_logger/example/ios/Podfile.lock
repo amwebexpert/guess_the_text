@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - os_console_logger (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - os_console_logger (from `.symlinks/plugins/os_console_logger/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  os_console_logger:
+    :path: ".symlinks/plugins/os_console_logger/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  os_console_logger: f8a304ae2d2f28527960b9dc0e4b03a1d4c2a4af
+
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+
+COCOAPODS: 1.11.3

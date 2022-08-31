@@ -47,11 +47,13 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> _debug() async {
-    _osConsoleLoggerPlugin.debug('here is a debug line').then((_) => print('End of native call'));
+    print('calling _osConsoleLoggerPlugin.debug...');
+    _osConsoleLoggerPlugin.debug('here a debugging line').then((value) => print('End of native call'));
   }
 
   Future<void> _error() async {
-    _osConsoleLoggerPlugin.error('here is an ERROR line').then((_) => print('End of native call'));
+    print('calling _osConsoleLoggerPlugin.error...');
+    _osConsoleLoggerPlugin.error('here an ERROR line').then((value) => print('End of native call'));
   }
 
   @override
