@@ -14,7 +14,6 @@ abstract class OsConsoleLoggerPlatform extends PlatformInterface {
   ///
   /// Defaults to [MethodChannelOsConsoleLogger].
   static OsConsoleLoggerPlatform get instance => _instance;
-
   /// Platform-specific implementations should set this with their own
   /// platform-specific class that extends [OsConsoleLoggerPlatform] when
   /// they register themselves.

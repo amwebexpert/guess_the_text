@@ -26,7 +26,6 @@ void main() {
     OsConsoleLogger osConsoleLoggerPlugin = OsConsoleLogger();
     MockOsConsoleLoggerPlatform fakePlatform = MockOsConsoleLoggerPlatform();
     OsConsoleLoggerPlatform.instance = fakePlatform;
-
     expect(await osConsoleLoggerPlugin.getPlatformVersion(), '42');
   });
 }
