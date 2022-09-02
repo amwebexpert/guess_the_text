@@ -4,7 +4,7 @@ List of demonstrated elements inside the codebase, divided by categories
 
 - [Completed so far](#completed-so-far)
   - [Look & Feel, layouts & components](#look--feel-layouts--components)
-  - [Dart Packages & Plugins](#dart-packages--plugins)
+  - [Packages & Plugins examples](#dart-packages--plugins)
   - [I18N](#i18n)
   - [State management](#state-management)
   - [Local storages](#local-storages)
@@ -35,10 +35,13 @@ List of demonstrated elements inside the codebase, divided by categories
 - building a form with fields validation on submit and validation errors displayed
 - usage of _swipe to delete_ behavior with both confirmation and undo approaches
 
-## Dart Packages & Plugins
+## Packages & Plugins examples
 
 - Example of a [Dart package here](https://github.com/amwebexpert/guess_the_text/tree/master/orientation_aware_widgets)
+  - only `Dart` code
 - Example of a [Dart plugin here](https://github.com/amwebexpert/guess_the_text/tree/master/os_console_logger) (implementations available for `Android`, `iOS`, `macOS`, `webapp`)
+  - contains both `Dart` and native code like `Kotlin`, `Swift`...
+
 
 ## I18N
 
