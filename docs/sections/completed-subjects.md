@@ -33,6 +33,11 @@ List of demonstrated elements inside the codebase, divided by categories
 - building a form with fields validation on submit and validation errors displayed
 - usage of _swipe to delete_ behavior with both confirmation and undo approaches
 
+## Dart Packages & Plugins
+
+- Example of a [Dart package here](https://github.com/amwebexpert/guess_the_text/tree/master/orientation_aware_widgets)
+- Example of a [Dart plugin here](https://github.com/amwebexpert/guess_the_text/tree/master/os_console_logger) (implementations available for `Android`, `iOS`, `macOS`, `webapp`)
+
 ## I18N
 
 - I18n configurations
