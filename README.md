@@ -13,6 +13,8 @@ Free educational app deployable on several native platforms: `Android` & `iOS` (
 - evolutive structure of the source code, choice of open source libraries
 - integration to `REST` and/or `GraphQL` backend APIs
 - dependencies injections pattern (`IoC`) for the whole application
+- Flutter package (only `Dart` code)
+- Flutter plugin (contains both Dart and Native code like `Kotlin` `Swift`...)
 - implementation of best practices, development guide, code reviews, training sessions
 
 ## Some screen captures of the implemented features
