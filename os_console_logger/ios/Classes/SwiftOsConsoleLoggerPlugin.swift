@@ -16,13 +16,17 @@ public class SwiftOsConsoleLoggerPlugin: NSObject, FlutterPlugin {
       
     case "debug":
       let arguments = call.arguments as! NSDictionary
-      print(arguments["message"]!)
+      let message = arguments["message"]! as! String;
+      // https://github.com/flutter/flutter/issues/13204#issuecomment-347659250
+      NSLog("\n LOG: %@ ", message)
       result(nil)
       break
 
     case "error":
       let arguments = call.arguments as! NSDictionary
-      print(arguments["message"]!)
+      let message = arguments["message"]! as! String;
+      // https://github.com/flutter/flutter/issues/13204#issuecomment-347659250
+      NSLog("\n LOG: %@ ", message)
       result(nil)
       break
 
