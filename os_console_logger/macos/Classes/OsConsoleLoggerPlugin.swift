@@ -12,6 +12,20 @@ public class OsConsoleLoggerPlugin: NSObject, FlutterPlugin {
     switch call.method {
     case "getPlatformVersion":
       result("macOS " + ProcessInfo.processInfo.operatingSystemVersionString)
+      break
+      
+    case "debug":
+      let arguments = call.arguments as! NSDictionary
+      print(arguments["message"]!)
+      result(nil)
+      break
+
+    case "error":
+      let arguments = call.arguments as! NSDictionary
+      print(arguments["message"]!)
+      result(nil)
+      break
+
     default:
       result(FlutterMethodNotImplemented)
     }
