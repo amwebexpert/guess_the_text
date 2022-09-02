@@ -4,7 +4,7 @@ List of demonstrated elements inside the codebase, divided by categories
 
 - [Completed so far](#completed-so-far)
   - [Look & Feel, layouts & components](#look--feel-layouts--components)
-  - [Packages & Plugins examples](#dart-packages--plugins)
+  - [Packages & Plugins examples](#packages--plugins-examples)
   - [I18N](#i18n)
   - [State management](#state-management)
   - [Local storages](#local-storages)
