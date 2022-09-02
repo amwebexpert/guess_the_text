@@ -4,10 +4,12 @@ List of demonstrated elements inside the codebase, divided by categories
 
 - [Completed so far](#completed-so-far)
   - [Look & Feel, layouts & components](#look--feel-layouts--components)
+  - [Dart Packages & Plugins](#dart-packages--plugins)
   - [I18N](#i18n)
   - [State management](#state-management)
   - [Local storages](#local-storages)
   - [Dependencies injection (a.k.a. inversion of control IoC, Service locator)](#dependencies-injection-aka-inversion-of-control-ioc-service-locator)
+  - [Flutter custom packages and plugins](#flutter-custom-packages-and-plugins)
   - [Tests automation](#tests-automation)
   - [Animations](#animations)
   - [Dart language](#dart-language)
