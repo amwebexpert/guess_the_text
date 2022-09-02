@@ -14,7 +14,6 @@ abstract class OsConsoleLoggerPlatform extends PlatformInterface {
   ///
   /// Defaults to [MethodChannelOsConsoleLogger].
   static OsConsoleLoggerPlatform get instance => _instance;
-  
   /// Platform-specific implementations should set this with their own
   /// platform-specific class that extends [OsConsoleLoggerPlatform] when
   /// they register themselves.
@@ -23,7 +22,12 @@ abstract class OsConsoleLoggerPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
-    throw UnimplementedError('platformVersion() has not been implemented.');
-  }
+  Future<String?> getPlatformVersion() => throw _unimplementedError('platformVersion');
+
+  Future<void> debug(String message) => throw _unimplementedError('debug');
+
+  Future<void> error(String message) => throw _unimplementedError('error');
+
+  UnimplementedError _unimplementedError(String methodName) =>
+      UnimplementedError('the method "$methodName()" has not been implemented on this platform');
 }

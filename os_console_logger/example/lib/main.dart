@@ -31,8 +31,7 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      platformVersion =
-          await _osConsoleLoggerPlugin.getPlatformVersion() ?? 'Unknown platform version';
+      platformVersion = await _osConsoleLoggerPlugin.getPlatformVersion() ?? 'Unknown platform version';
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
@@ -47,6 +46,16 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  Future<void> _debug() async {
+    print('calling _osConsoleLoggerPlugin.debug...');
+    _osConsoleLoggerPlugin.debug('here a debugging line').then((value) => print('End of native call'));
+  }
+
+  Future<void> _error() async {
+    print('calling _osConsoleLoggerPlugin.error...');
+    _osConsoleLoggerPlugin.error('here an ERROR line').then((value) => print('End of native call'));
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -54,8 +63,29 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+        body: Column(
+          children: [
+            Expanded(
+              child: Text(_platformVersion, textAlign: TextAlign.center),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () => _debug(),
+                    child: const Text('debug'),
+                  ),
+                  const SizedBox(width: 16),
+                  ElevatedButton(
+                    onPressed: () => _error(),
+                    child: const Text('error'),
+                  ),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );

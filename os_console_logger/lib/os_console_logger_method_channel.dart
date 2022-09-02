@@ -14,4 +14,16 @@ class MethodChannelOsConsoleLogger extends OsConsoleLoggerPlatform {
     final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
     return version;
   }
+
+  @override
+  Future<void> debug(String message) async {
+    final messageToLog = '🐞 $message';
+    await methodChannel.invokeMethod<void>('debug', {'message': messageToLog});
+  }
+
+  @override
+  Future<void> error(String message) async {
+    final messageToLog = '🚨🚨🚨 $message';
+    await methodChannel.invokeMethod<void>('error', {'message': messageToLog});
+  }
 }

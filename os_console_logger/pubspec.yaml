@@ -1,7 +1,7 @@
 name: os_console_logger
-description: A new Flutter plugin project.
+description: Simple native logger with emojii
 version: 0.0.1
-homepage:
+homepage: https://github.com/amwebexpert/guess_the_text/tree/master/os_console_logger
 
 environment:
   sdk: ">=2.17.6 <3.0.0"

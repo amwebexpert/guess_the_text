@@ -1,6 +1,7 @@
 package com.amwebexpert.os_console_logger
 
 import androidx.annotation.NonNull
+import 	android.util.Log
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
@@ -22,10 +23,21 @@ class OsConsoleLoggerPlugin: FlutterPlugin, MethodCallHandler {
   }
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-    if (call.method == "getPlatformVersion") {
-      result.success("Android ${android.os.Build.VERSION.RELEASE}")
-    } else {
-      result.notImplemented()
+    when (call.method) {
+      "getPlatformVersion" -> {
+        result.success("Android ${android.os.Build.VERSION.RELEASE} SDK_INT ${android.os.Build.VERSION.SDK_INT}")
+      }
+      "debug" -> {
+        val message = call.argument<String>("message")
+        Log.d("[OsConsoleLogger]", "kotlin message: $message")
+      }
+      "error" -> {
+        val message = call.argument<String>("message")
+        Log.e("[OsConsoleLogger]", "kotlin message: $message")
+      }
+      else -> {
+        result.notImplemented()
+      }
     }
   }
 
