@@ -12,6 +12,13 @@ Collection of usefull widgets having responsive behaviors depending on device or
 
 The `ResponsiveNavigationRailOrBar` is a `StatelessWidget` so you need to manage yourself the state of the user selection and displayed content widget. The simplest way is using a `StatefullWidget` like the `MyHomePage` below.
 
+## Demo
+
+ResponsiveNavigationRailOrBar | description
+----------------------------- | --------------------
+<img src="docs/images/ResponsiveNavigationRailOrBar-demo.gif" /> | `ResponsiveNavigationRailOrBar` switch between a `BottomNavigationBar` (portrait) and a `NavigationRail` (landscape)
+
+
 ## Usage
 
 

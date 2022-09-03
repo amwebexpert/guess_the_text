@@ -39,9 +39,23 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _computeChild(int index) {
     switch (index) {
       case 0:
-        return const Center(child: Text('Cloud is REMOTE'));
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Icon(Icons.cloud_done_outlined),
+            Center(child: Text('Cloud is REMOTE')),
+            Icon(Icons.cloud_done_outlined),
+          ],
+        );
       case 1:
-        return const Center(child: Text('Device is LOCAL'));
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Icon(Icons.save),
+            Center(child: Text('Device is LOCAL')),
+            Icon(Icons.save),
+          ],
+        );
 
       default:
         if (kDebugMode) {
