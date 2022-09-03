@@ -40,10 +40,17 @@ Guidelines for developers
 * [Store](docs/sections/coding-standards/store.md)
 * [Tests](docs/sections/coding-standards/tests.md)
 
-## BE Api (deployed on Heroku)
+## BE Api
+
+### When running on Heroku
 
 - https://amw-hangman-api.herokuapp.com/api/v1/categories
 - https://amw-hangman-api.herokuapp.com/api/v1/categories/580b0004-d581-49d1-9c84-bddffdb5f3fd/texts
+
+### When running on Back4App
+
+- https://hangmanapi.b4a.app/api/v1/categories
+- https://hangmanapi.b4a.app/api/v1/categories/580b0004-d581-49d1-9c84-bddffdb5f3fd/texts
 
 
 ## Completed so far
