@@ -3,40 +3,52 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "version.json": "21a094886225fcca1d0899715836ef04",
-"index.html": "062c747d4f817563e10fc3ae236ce1fc",
-"/": "062c747d4f817563e10fc3ae236ce1fc",
-"main.dart.js": "060dece4ce96f4cf48606376917eaa47",
-"flutter.js": "eb2682e33f25cd8f1fc59011497c35f8",
-"favicon.png": "2d9cacf839d7619705624ea318d55b7a",
-"icons/Icon-192.png": "2aaef2422b9bb9c1ca8ddc0033615e94",
-"icons/Icon-maskable-192.png": "2aaef2422b9bb9c1ca8ddc0033615e94",
-"icons/Icon-maskable-512.png": "300f9432036fe9a7705e971bc46badae",
-"icons/Icon-512.png": "300f9432036fe9a7705e971bc46badae",
-"manifest.json": "86d241a8868e3c2ad06a1d833e439c3d",
-"assets/AssetManifest.json": "e9ad19335d532e30e1ce0f8933646a2d",
-"assets/NOTICES": "83c4b7e6fbffbb0f6b4230bb4acb0917",
+  "version.json": "9a5be4a0f22b80dce1dd17d7f157123b",
+"splash/img/light-2x.png": "88e6754b5b6566ddcb7457020186d5ad",
+"splash/img/dark-4x.png": "92ac41a5cdbe2953dcca7cfd28398851",
+"splash/img/light-3x.png": "1519beb7003e885d49a123cd18319a6b",
+"splash/img/dark-3x.png": "1519beb7003e885d49a123cd18319a6b",
+"splash/img/light-4x.png": "92ac41a5cdbe2953dcca7cfd28398851",
+"splash/img/dark-2x.png": "88e6754b5b6566ddcb7457020186d5ad",
+"splash/img/dark-1x.png": "f0e7868016683d0fe3ed3edc98c928d0",
+"splash/img/light-1x.png": "f0e7868016683d0fe3ed3edc98c928d0",
+"splash/splash.js": "123c400b58bea74c1305ca3ac966748d",
+"splash/style.css": "051d090817004f223014d935c4396f01",
+"index.html": "bc08180dc3e250bf609616e4003bfde6",
+"/": "bc08180dc3e250bf609616e4003bfde6",
+"main.dart.js": "db767dc1c5e9772fbe2a6ddc07dcecaf",
+"flutter.js": "f85e6fb278b0fd20c349186fb46ae36d",
+"favicon.png": "9fb7c9137d1c77d5eb06c55cb5d8288c",
+"icons/Icon-192.png": "042fcc06f796e8fc1f179402d17cd792",
+"icons/Icon-maskable-192.png": "042fcc06f796e8fc1f179402d17cd792",
+"icons/Icon-maskable-512.png": "fe198d3fe2ad40b07da94825477692db",
+"icons/Icon-512.png": "fe198d3fe2ad40b07da94825477692db",
+"manifest.json": "048b617a00c0dae373325b46fda9a927",
+"assets/AssetManifest.json": "63c6e3e7a62cf9894b622041fbc06a0a",
+"assets/NOTICES": "3e18fc20314d51058c619fafe04d34b5",
 "assets/FontManifest.json": "36b3262214f236f04c078ff2dc00f4a9",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
+"assets/shaders/ink_sparkle.frag": "747ddfc512ec7dee1cef7b2083242690",
 "assets/fonts/MaterialIcons-Regular.otf": "95db9098c58fd6db106f1116bae85a0b",
-"assets/assets/images/drawer-header.svg": "93989a323afa50979ad8698b865a4351",
-"assets/assets/images/hangman-09.svg": "577ff8349cbc2b5fb73d93ade9285e27",
-"assets/assets/images/hangman-08.svg": "cdc943280ae3af4ff6aeb680d6c2e898",
+"assets/assets/images/drawer-header.svg": "04d10899e89c0b5d016b9838ce5abd20",
+"assets/assets/images/work-in-progress.svg": "d0f8477496b433efe9d4c3f3b9c5e13d",
+"assets/assets/images/game/hangman-09.svg": "577ff8349cbc2b5fb73d93ade9285e27",
+"assets/assets/images/game/hangman-08.svg": "cdc943280ae3af4ff6aeb680d6c2e898",
+"assets/assets/images/game/fail.svg": "f089265c50feee4f8133b60f4bcacca5",
+"assets/assets/images/game/hangman-03.svg": "388943d3ad05d534e2e86b214fe36af1",
+"assets/assets/images/game/success.svg": "63bf6f43a6dc8dfd16c41f85dfa30ba8",
+"assets/assets/images/game/hangman-happy.svg": "96dc2b7de913df7ea7139aa20291edda",
+"assets/assets/images/game/hangman-02.svg": "c2576534a671f0f78c0fa1a03f37cb00",
+"assets/assets/images/game/hangman-01.svg": "da38574eb8b69b92c5d58ac428e1a41b",
+"assets/assets/images/game/hangman-05.svg": "e46ca28266e2d411cc08b1660f43e616",
+"assets/assets/images/game/hangman-04.svg": "1f7b3bae90d1bd734dee3613d0eade71",
+"assets/assets/images/game/hangman-10.svg": "37e93ec40b7482bc1344fe2b57e087a2",
+"assets/assets/images/game/hangman-06.svg": "a4994cc5eca896bbc3b4baca5a3d3e0d",
+"assets/assets/images/game/hangman-07.svg": "4f937fd8917539f96254932939a452ad",
 "assets/assets/images/backgrounds/background-pexels-pixabay-461940.jpg": "18efea87f640410625f669235fdb4c46",
 "assets/assets/images/backgrounds/beach-sun.jpg": "40a390da4752a037e883da03758b761a",
-"assets/assets/images/splash.png": "3015bca1e05e8b2858bb955c4819361b",
-"assets/assets/images/fail.svg": "f089265c50feee4f8133b60f4bcacca5",
-"assets/assets/images/hangman-03.svg": "388943d3ad05d534e2e86b214fe36af1",
-"assets/assets/images/success.svg": "63bf6f43a6dc8dfd16c41f85dfa30ba8",
-"assets/assets/images/hangman-happy.svg": "96dc2b7de913df7ea7139aa20291edda",
-"assets/assets/images/hangman-02.svg": "c2576534a671f0f78c0fa1a03f37cb00",
+"assets/assets/images/splash.png": "d077fcd446b9a90904307f86d1a8ee62",
 "assets/assets/images/happy_robot_remix.svg": "ec3b52bd0a58e9e121dd6ef295c81512",
-"assets/assets/images/hangman-01.svg": "da38574eb8b69b92c5d58ac428e1a41b",
-"assets/assets/images/hangman-05.svg": "e46ca28266e2d411cc08b1660f43e616",
-"assets/assets/images/hangman-04.svg": "1f7b3bae90d1bd734dee3613d0eade71",
-"assets/assets/images/hangman-10.svg": "37e93ec40b7482bc1344fe2b57e087a2",
-"assets/assets/images/hangman-06.svg": "a4994cc5eca896bbc3b4baca5a3d3e0d",
-"assets/assets/images/hangman-07.svg": "4f937fd8917539f96254932939a452ad",
 "assets/assets/fonts/IndieFlower-Regular.ttf": "0841af952c807bdf56455b1addb4c7df",
 "assets/assets/fonts/OFL.txt": "b117924592ddee79b545b76597291fbe",
 "assets/assets/animations/loading/42293-get-things-done.json": "5c7e269d32daf5a1a3274e8bface5cc3",
@@ -59,10 +71,10 @@ const RESOURCES = {
 "assets/assets/animations/loading/80356-online-learning.json": "176e184d3d194e7e598035cdce3f8eef",
 "assets/assets/animations/loading/61026-password.json": "58ee86f394c29ca64c4479d2739c07f3",
 "assets/assets/animations/loading/79657-child-learning.json": "67e16b9c673491d27ea98104f408637e",
-"canvaskit/canvaskit.js": "c2b4e5f3d7a3d82aed024e7249a78487",
-"canvaskit/profiling/canvaskit.js": "ae2949af4efc61d28a4a80fffa1db900",
-"canvaskit/profiling/canvaskit.wasm": "95e736ab31147d1b2c7b25f11d4c32cd",
-"canvaskit/canvaskit.wasm": "4b83d89d9fecbea8ca46f2f760c5a9ba"
+"canvaskit/canvaskit.js": "2bc454a691c631b07a9307ac4ca47797",
+"canvaskit/profiling/canvaskit.js": "38164e5a72bdad0faa4ce740c9b8e564",
+"canvaskit/profiling/canvaskit.wasm": "95a45378b69e77af5ed2bc72b2209b94",
+"canvaskit/canvaskit.wasm": "bf50631470eb967688cca13ee181af62"
 };
 
 // The application shell files that are downloaded before a service worker can
@@ -70,7 +82,6 @@ const RESOURCES = {
 const CORE = [
   "main.dart.js",
 "index.html",
-"assets/NOTICES",
 "assets/AssetManifest.json",
 "assets/FontManifest.json"];
 // During install, the TEMP cache is populated with the application shell files.
@@ -169,9 +180,11 @@ self.addEventListener("fetch", (event) => {
     .then((cache) =>  {
       return cache.match(event.request).then((response) => {
         // Either respond with the cached resource, or perform a fetch and
-        // lazily populate the cache.
+        // lazily populate the cache only if the resource was successfully fetched.
         return response || fetch(event.request).then((response) => {
-          cache.put(event.request, response.clone());
+          if (response && Boolean(response.ok)) {
+            cache.put(event.request, response.clone());
+          }
           return response;
         });
       })
