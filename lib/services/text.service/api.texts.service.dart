@@ -19,9 +19,14 @@ class TextsService {
   final FileService fileService = serviceLocator.get();
   static final TextsService _instance = TextsService._privateConstructor();
 
-  static const String hostName = 'amw-hangman-api.herokuapp.com';
+  // TODO put all these configurations into .env files
+  static const String hostName = 'hangmanapi.b4a.app';
   static const String apiPathCategories = '/api/v1/categories';
   static const String apiPathAbout = '/api/v1/about';
+  static const Map<String, String> apiHeaders = {
+    'X-Parse-Application-Id': 'psLdcLlpjuQmXTsnEBh671Ms7oOIyFonSFi33jSt',
+    'X-Parse-REST-API-Key': '1rsCpKAjKj9EorxhhFbS8ZyTW3VnT0tx0IqoIoyx',
+  };
 
   // internal service cache
   List<ApiCategory> _categories = [];
@@ -87,7 +92,7 @@ class TextsService {
     http.Response response;
 
     try {
-      response = await http.get(url);
+      response = await http.get(url, headers: apiHeaders);
       response = _validateApiResponse(response);
       String jsonContent = response.body;
 
