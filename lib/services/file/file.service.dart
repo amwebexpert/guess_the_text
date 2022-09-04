@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:isolate';
 
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -33,11 +34,30 @@ class FileService {
   }
 
   Future<File> write({required String data, required String filename, required DirectoryType directoryType}) async {
+    // Note: path_provider has to be used inside main Isolate:
+    // https://github.com/flutter/flutter/issues/45491
+    // https://github.com/flutter/flutter/issues/13937
     final String fullFilenanme = await buildFullFilename(directoryType, filename);
-    final File file = await File(fullFilenanme).create(recursive: true);
 
-    logger.info('writing data to file $fullFilenanme');
-    return file.writeAsString(data, mode: FileMode.write, encoding: utf8, flush: false);
+    // all the other operations can run in background
+    final port = ReceivePort();
+    await Isolate.spawn(_writeInBackground, [port.sendPort, fullFilenanme, data]);
+    final File file = await port.first as File;
+
+    logger.info('data written to file "${file.uri}".');
+    return file;
+  }
+
+  Future<File> _writeInBackground(List<Object> arguments) async {
+    SendPort port = arguments[0] as SendPort;
+    String fullFilenanme = arguments[1] as String;
+    String data = arguments[2] as String;
+
+    logger.info('writing data to file "$fullFilenanme"...');
+    final File file = await File(fullFilenanme).create(recursive: true);
+    final updatedFile = await file.writeAsString(data, mode: FileMode.write, encoding: utf8, flush: true);
+
+    Isolate.exit(port, updatedFile);
   }
 
   Future<String> read({required String filename, required DirectoryType directoryType}) async {
