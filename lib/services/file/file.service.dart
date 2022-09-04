@@ -52,7 +52,7 @@ class FileService {
     return file;
   }
 
-  Future<File> _writeInBackground(FileWriteInputs inputs) async {
+  Future<void> _writeInBackground(FileWriteInputs inputs) async {
     SendPort port = inputs.sendPort;
     String fullFilenanme = inputs.fullFilenanme;
     String data = inputs.data;
@@ -84,7 +84,7 @@ class FileService {
     return data;
   }
 
-  Future<File> _readInBackground(FileReadInputs inputs) async {
+  Future<void> _readInBackground(FileReadInputs inputs) async {
     SendPort port = inputs.sendPort;
     File file = inputs.file;
 
