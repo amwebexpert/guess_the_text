@@ -8,6 +8,7 @@ import 'package:path_provider/path_provider.dart';
 import '../../service.locator.dart';
 import '../logger/logger.service.dart';
 import 'directory.enum.dart';
+import 'file.service.model.dart';
 
 class FileService {
   final LoggerService logger = serviceLocator.get();
@@ -41,17 +42,18 @@ class FileService {
 
     // all the other operations can run in background
     final port = ReceivePort();
-    await Isolate.spawn(_writeInBackground, [port.sendPort, fullFilenanme, data]);
+    final args = FileWriteInputs(sendPort: port.sendPort, fullFilenanme: fullFilenanme, data: data);
+    await Isolate.spawn(_writeInBackground, args);
     final File file = await port.first as File;
 
     logger.info('data written to file "${file.uri}".');
     return file;
   }
 
-  Future<File> _writeInBackground(List<Object> arguments) async {
-    SendPort port = arguments[0] as SendPort;
-    String fullFilenanme = arguments[1] as String;
-    String data = arguments[2] as String;
+  Future<File> _writeInBackground(FileWriteInputs inputs) async {
+    SendPort port = inputs.sendPort;
+    String fullFilenanme = inputs.fullFilenanme;
+    String data = inputs.data;
 
     logger.info('writing data to file "$fullFilenanme"...');
     final File file = await File(fullFilenanme).create(recursive: true);
