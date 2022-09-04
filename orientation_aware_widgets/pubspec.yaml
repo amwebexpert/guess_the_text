@@ -1,6 +1,6 @@
 name: orientation_aware_widgets
 description: Device orientation aware widgets collection
-version: 0.0.1
+version: 1.0.0
 homepage: https://github.com/amwebexpert/guess_the_text/tree/master/orientation_aware_widgets
 
 environment:
