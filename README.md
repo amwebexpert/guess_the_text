@@ -42,6 +42,11 @@ Guidelines for developers
 
 ## BE Api
 
+The BE API is also another Open source project:
+* [amw-hangman-api](https://github.com/amwebexpert/amw-hangman-api)
+
+Was originally deployed on `Heroku` platform (with free dino) but has been relocated to Back4App as a collection of simple HTTP Get read-only requests.
+
 ### When running on Heroku
 
 - https://amw-hangman-api.herokuapp.com/api/v1/categories
