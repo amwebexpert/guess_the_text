@@ -42,8 +42,8 @@ class FileService {
 
     // all the other operations can run in background
     final port = ReceivePort();
-    final args = FileWriteInputs(sendPort: port.sendPort, fullFilenanme: fullFilenanme, data: data);
-    await Isolate.spawn(_writeInBackground, args);
+    final inputs = FileWriteInputs(sendPort: port.sendPort, fullFilenanme: fullFilenanme, data: data);
+    await Isolate.spawn(_writeInBackground, inputs);
     final File file = await port.first as File;
 
     logger.info('data written to file "${file.uri}".');
