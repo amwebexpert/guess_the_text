@@ -21,14 +21,28 @@ class ResponsiveNavigationRailOrBar extends StatelessWidget {
   ///          NavigationChoices(text: 'Cloud', icon: const Icon(Icons.cloud)),
   ///          NavigationChoices(text: 'Device', icon: const Icon(Icons.save_alt)),
   ///        ], currentIndex: _currentIndex, onTap: _onTap, child: _child));
-  const ResponsiveNavigationRailOrBar({Key? key, required this.items, required this.currentIndex, required this.child, required this.onTap}) : super(key: key);
+  const ResponsiveNavigationRailOrBar(
+      {Key? key,
+      required this.items,
+      required this.currentIndex,
+      required this.child,
+      required this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) => OrientationBuilder(
         builder: (context, orientation) {
           return orientation == Orientation.portrait
-              ? NavigationPortraitLayout(items: items, currentIndex: currentIndex, onTap: onTap, child: child)
-              : NavigationLandscapeLayout(items: items, currentIndex: currentIndex, onTap: onTap, child: child);
+              ? NavigationPortraitLayout(
+                  items: items,
+                  currentIndex: currentIndex,
+                  onTap: onTap,
+                  child: child)
+              : NavigationLandscapeLayout(
+                  items: items,
+                  currentIndex: currentIndex,
+                  onTap: onTap,
+                  child: child);
         },
       );
 }

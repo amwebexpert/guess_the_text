@@ -15,11 +15,16 @@ void main() {
       NavigationChoices(text: 'Device', icon: const Icon(Icons.save_alt)),
     ];
 
-    await tester.pumpWidget(wrapper(ResponsiveNavigationRailOrBar(items: items, currentIndex: 0, onTap: (i) => {lastIndex = i}, child: const Text('visible content'))));
+    await tester.pumpWidget(wrapper(ResponsiveNavigationRailOrBar(
+        items: items,
+        currentIndex: 0,
+        onTap: (i) => {lastIndex = i},
+        child: const Text('visible content'))));
 
     // when
     await tester.tap(buttonFinder, warnIfMissed: true);
-    await tester.pumpAndSettle(); // wait for all the animations end and then pump the frames
+    await tester
+        .pumpAndSettle(); // wait for all the animations end and then pump the frames
 
     // then
     expect(lastIndex, 1);

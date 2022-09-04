@@ -8,7 +8,11 @@ class NavigationPortraitLayout extends StatelessWidget {
   final Widget child;
 
   const NavigationPortraitLayout(
-      {Key? key, required this.currentIndex, required this.onTap, required this.items, required this.child})
+      {Key? key,
+      required this.currentIndex,
+      required this.onTap,
+      required this.items,
+      required this.child})
       : super(key: key);
 
   @override
@@ -17,7 +21,10 @@ class NavigationPortraitLayout extends StatelessWidget {
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: currentIndex,
           onTap: onTap,
-          items: items.map((it) => BottomNavigationBarItem(icon: it.icon, label: it.text)).toList(),
+          items: items
+              .map((it) =>
+                  BottomNavigationBarItem(icon: it.icon, label: it.text))
+              .toList(),
         ),
       );
 }

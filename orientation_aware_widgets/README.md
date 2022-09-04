@@ -2,7 +2,7 @@
 
 Collection of usefull widgets having responsive behaviors depending on device orientation
 
-[![made-with-Markdown](https://img.shields.io/badge/Made%20with-Flutter-1389FD.svg)](http://flutter.dev) ![GitHub last commit](https://img.shields.io/github/last-commit/amwebexpert/guess_the_text) ![GitHub](https://img.shields.io/github/license/amwebexpert/guess_the_text)
+[![made-with-Markdown](https://img.shields.io/badge/Made%20with-Flutter-1389FD.svg)](https://flutter.dev) ![GitHub last commit](https://img.shields.io/github/last-commit/amwebexpert/guess_the_text) ![GitHub](https://img.shields.io/github/license/amwebexpert/guess_the_text)
 
 ## Features
 

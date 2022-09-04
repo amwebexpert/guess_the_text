@@ -8,7 +8,11 @@ class NavigationLandscapeLayout extends StatelessWidget {
   final Widget child;
 
   const NavigationLandscapeLayout(
-      {Key? key, required this.currentIndex, required this.onTap, required this.items, required this.child})
+      {Key? key,
+      required this.currentIndex,
+      required this.onTap,
+      required this.items,
+      required this.child})
       : super(key: key);
 
   @override
@@ -18,7 +22,10 @@ class NavigationLandscapeLayout extends StatelessWidget {
         NavigationRail(
           selectedIndex: currentIndex,
           onDestinationSelected: onTap,
-          destinations: items.map((it) => NavigationRailDestination(icon: it.icon, label: Text(it.text))).toList(),
+          destinations: items
+              .map((it) => NavigationRailDestination(
+                  icon: it.icon, label: Text(it.text)))
+              .toList(),
           labelType: NavigationRailLabelType.all,
         ),
         Expanded(child: child)
