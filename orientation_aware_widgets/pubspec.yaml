@@ -1,7 +1,8 @@
 name: orientation_aware_widgets
 description: Device orientation aware widgets collection that combines existing Flutter compoments to simplify UI development.
-version: 1.0.3
+version: 1.0.4
 homepage: https://github.com/amwebexpert/guess_the_text/tree/master/orientation_aware_widgets
+repository: https://github.com/amwebexpert/guess_the_text/tree/master/orientation_aware_widgets
 
 environment:
   sdk: ">=2.17.6 <3.0.0"

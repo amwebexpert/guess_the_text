@@ -13,3 +13,7 @@
 ## 1.0.3
 
 * Documentation update
+
+## 1.0.4
+
+* Documentation update
