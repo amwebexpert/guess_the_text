@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:isolate';
 
 class FileWriteInputs {
@@ -6,4 +7,11 @@ class FileWriteInputs {
   final String data;
 
   FileWriteInputs({required this.sendPort, required this.fullFilenanme, required this.data});
+}
+
+class FileReadInputs {
+  final SendPort sendPort;
+  final File file;
+
+  FileReadInputs({required this.sendPort, required this.file});
 }

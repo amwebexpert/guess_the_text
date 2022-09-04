@@ -44,6 +44,8 @@ class FileService {
     final port = ReceivePort();
     final inputs = FileWriteInputs(sendPort: port.sendPort, fullFilenanme: fullFilenanme, data: data);
     await Isolate.spawn(_writeInBackground, inputs);
+
+    // TODO Error handling: port.first as FileOperationResult with attributes like isSuccess, errorMessage, errorTrace...
     final File file = await port.first as File;
 
     logger.info('data written to file "${file.uri}".');
@@ -71,8 +73,25 @@ class FileService {
       return '';
     }
 
-    logger.info('reading data from $fullFilenanme');
-    return file.readAsString(encoding: utf8);
+    final port = ReceivePort();
+    final inputs = FileReadInputs(sendPort: port.sendPort, file: file);
+    await Isolate.spawn(_readInBackground, inputs);
+
+    // TODO Error handling: port.first as FileOperationResult with attributes like isSuccess, errorMessage, errorTrace...
+    final String data = await port.first as String;
+
+    logger.info('data read from file "${file.uri}".');
+    return data;
+  }
+
+  Future<File> _readInBackground(FileReadInputs inputs) async {
+    SendPort port = inputs.sendPort;
+    File file = inputs.file;
+
+    logger.info('read data from file "${file.uri}"...');
+    final data = await file.readAsString(encoding: utf8);
+
+    Isolate.exit(port, data);
   }
 
   Future<String> buildFullFilename(DirectoryType directoryType, String filename) async {
