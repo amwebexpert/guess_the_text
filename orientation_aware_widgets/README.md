@@ -14,9 +14,12 @@ The `ResponsiveNavigationRailOrBar` is a `StatelessWidget` so you need to manage
 
 ## Demo
 
-ResponsiveNavigationRailOrBar | description
------------------------------ | --------------------
-<img src="https://github.com/amwebexpert/guess_the_text/raw/master/orientation_aware_widgets/doc/images/ResponsiveNavigationRailOrBar-demo.gif" /> | `ResponsiveNavigationRailOrBar` switch between a `BottomNavigationBar` (portrait) and a `NavigationRail` (landscape)
+### ResponsiveNavigationRailOrBar
+
+Android device | MacBook (macOS)
+-------------- | ----------------
+<img src="https://github.com/amwebexpert/guess_the_text/raw/master/orientation_aware_widgets/doc/images/ResponsiveNavigationRailOrBar-demo.gif" /> | <img src="https://github.com/amwebexpert/guess_the_text/raw/master/orientation_aware_widgets/doc/images/ResponsiveNavigationRailOrBar-demo-macOS.gif" />
+
 
 
 ## Usage
