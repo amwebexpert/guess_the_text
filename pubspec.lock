@@ -609,7 +609,7 @@ packages:
       path: orientation_aware_widgets
       relative: true
     source: path
-    version: "0.0.1"
+    version: "1.0.4"
   package_config:
     dependency: transitive
     description:
