@@ -60,6 +60,7 @@ dependencies:
   vector_math: ^2.1.2
   orientation_aware_widgets:
     path: ./orientation_aware_widgets
+  uni_links: ^0.5.1
 
 dev_dependencies:
   integration_test:

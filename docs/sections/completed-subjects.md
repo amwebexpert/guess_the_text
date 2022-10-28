@@ -42,7 +42,6 @@ List of demonstrated elements inside the codebase, divided by categories
 - Example of a [Dart plugin here](https://github.com/amwebexpert/guess_the_text/tree/master/os_console_logger) (implementations available for `Android`, `iOS`, `macOS`, `webapp`)
   - contains both `Dart` and native code like `Kotlin`, `Swift`...
 
-
 ## I18N
 
 - I18n configurations
@@ -109,17 +108,41 @@ List of demonstrated elements inside the codebase, divided by categories
 The required [configuration for both Android and iOS](https://docs.flutter.dev/development/ui/navigation/deep-linking) is done. This means the application can be opened by other apps, like native QR Code scanner apps. Deep links are also testable on command line using a simulator or a real connected device as explained below.
 
 ### iOS
+
+iOS platform has specifications for _Custom url schemes_ and _Universal links_.
+
+#### Custom url schemes
+
     xcrun simctl openurl booted guessTheText://com.amwebexpert.app.guessthetext/about
     xcrun simctl openurl booted guessTheText://com.amwebexpert.app.guessthetext/settings
 
+#### Universal links
+
+    TODO
+
 ### Android
+
+Android platform has specifications for _Deep links_ and _App links_
+
+#### Deep links
+
     adb shell am start -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "guessTheText://com.amwebexpert.app.guessthetext/about"
     adb shell am start -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "guessTheText://com.amwebexpert.app.guessthetext/settings"
+
+#### App links
+
+The app has been associated with the [amwebexpert.users.sourceforge.net](https://amwebexpert.users.sourceforge.net/.well-known/assetlinks.json) domain so here some examples to test the application:
+
+- [App about page](https://amwebexpert.users.sourceforge.net/about)
+- [App settings page](https://amwebexpert.users.sourceforge.net/settings)
+
+  adb shell 'am start -W -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "https://amwebexpert.users.sourceforge.net/about"'
+  adb shell 'am start -W -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "https://amwebexpert.users.sourceforge.net/settings"'
 
 ### Testing with another native application
 
 We can also install a generic deep link opener application like this one:
-    https://play.google.com/store/apps/details?id=org.thewheatfield.android.deeplinks
+https://play.google.com/store/apps/details?id=org.thewheatfield.android.deeplinks
 
 ### Testing with a classic QR Code scanner
 
@@ -127,7 +150,6 @@ We can also install a generic deep link opener application like this one:
 2. generate the QR Code with the content: "guessTheText://com.amwebexpert.app.guessthetext/about"
 3. now the code is showing on screen, scan it with your prefered QR code scanner native application
 4. when your application is showing the link you can press it
-
 
 ## Others
 
