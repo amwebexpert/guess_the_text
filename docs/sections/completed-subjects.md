@@ -98,6 +98,7 @@ List of demonstrated elements inside the codebase, divided by categories
 - Modern, functionnal programming, assign fonction to var, deconstruction, named parameters, mixins, elvis operator et bang (? et !), double elvis operator (??), late, etc.
 - https://medium.com/flutter-community/the-ultimate-javascript-vs-dart-syntax-guide-2f7d8ad8bde6
 - Async API services
+- solated Dart execution context example (see usage of `Isolate.spawn` within the `FileService`)
 - Factory pattern to create services singleton
 - Power of `Dart` extensions
 - `JSON` serialization and common class methods (`copyWith`, `toString`, `equals`, `hashCode` ...)
