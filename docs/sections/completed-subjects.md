@@ -136,8 +136,10 @@ The app has been associated with the [amwebexpert.users.sourceforge.net](https:/
 - [App about page](https://amwebexpert.users.sourceforge.net/about)
 - [App settings page](https://amwebexpert.users.sourceforge.net/settings)
 
-  adb shell 'am start -W -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "https://amwebexpert.users.sourceforge.net/about"'
-  adb shell 'am start -W -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "https://amwebexpert.users.sourceforge.net/settings"'
+Testing on command line:
+
+    adb shell 'am start -W -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "https://amwebexpert.users.sourceforge.net/about"'
+    adb shell 'am start -W -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "https://amwebexpert.users.sourceforge.net/settings"'
 
 ### Testing with another native application
 
