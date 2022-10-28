@@ -73,7 +73,7 @@ List of demonstrated elements inside the codebase, divided by categories
 ## Flutter custom packages and plugins
 
 - ✔️ creation of a Flutter package (see `orientation_aware_widgets` folder at the root of this project)
-- work in progress 👷‍♂️ creation of a Flutter plugin (stay tuned :-))
+- ✔️ creation of a Flutter plugin (see `os_console_logger` folder at the root of this project)
 
 ## Tests automation
 
