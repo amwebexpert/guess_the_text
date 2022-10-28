@@ -135,7 +135,7 @@ The app has been associated with the [amwebexpert.users.sourceforge.net](https:/
 
 - [App about page](https://amwebexpert.users.sourceforge.net/about)
 - [App settings page](https://amwebexpert.users.sourceforge.net/settings)
-- [Classic links html page here](links-test.html)
+- [Classic links html page here](https://amwebexpert.github.io/guess_the_text/sections/links-test.html)
 
 Testing on command line:
 
