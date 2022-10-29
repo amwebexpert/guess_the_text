@@ -134,14 +134,14 @@ Android platform has specifications for _Deep links_ and _App links_
 
 The app has been associated with the [amwebexpert.users.sourceforge.net](https://amwebexpert.users.sourceforge.net/.well-known/assetlinks.json) domain so here some examples to test the application:
 
-- [App about page](https://amwebexpert.users.sourceforge.net/about)
-- [App settings page](https://amwebexpert.users.sourceforge.net/settings)
-- [Classic links html page here](https://amwebexpert.github.io/guess_the_text/sections/links-test.html)
+- [App about page](https://amwebexpert.users.sourceforge.net/deep_link_guess_the_text/about)
+- [App settings page](https://amwebexpert.users.sourceforge.net/deep_link_guess_the_text/settings)
+- [Classic links html page here](https://amwebexpert.github.io/deep_link_guess_the_text/sections/links-test.html)
 
 Testing on command line:
 
-    adb shell 'am start -W -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "https://amwebexpert.users.sourceforge.net/about"'
-    adb shell 'am start -W -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "https://amwebexpert.users.sourceforge.net/settings"'
+    adb shell 'am start -W -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "https://amwebexpert.users.sourceforge.net/deep_link_guess_the_text/about"'
+    adb shell 'am start -W -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d "https://amwebexpert.users.sourceforge.net/deep_link_guess_the_text/settings"'
 
 ### Testing with another native application
 

@@ -38,6 +38,15 @@ Route? onGenerateRoute(RouteSettings settings) {
     case '/about':
       return MaterialPageRoute(builder: (_) => const AboutWidget());
 
+    case '/deep_link_guess_the_text':
+      return null;
+
+    case '/deep_link_guess_the_text/settings':
+      return MaterialPageRoute(builder: (_) => SettingsWidget());
+
+    case '/deep_link_guess_the_text/about':
+      return MaterialPageRoute(builder: (_) => const AboutWidget());
+
     default:
       logger.error('Invalid navigation: ${settings.name}');
       return MaterialPageRoute(builder: (_) => const GameWidget());

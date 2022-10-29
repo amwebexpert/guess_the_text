@@ -44,7 +44,9 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="https" android:host="amwebexpert.users.sourceforge.net" />
+                <data android:scheme="https"
+                    android:host="amwebexpert.users.sourceforge.net"
+                    android:pathPrefix="/deep_link_guess_the_text/" />
             </intent-filter>
         </activity>
 
