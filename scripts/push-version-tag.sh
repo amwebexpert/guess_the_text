@@ -2,9 +2,12 @@
 
 set -e
 
-file=$(cat pubspec.yaml)
-semanticVersionWithPlus=$(echo $file | sed -ne 's/[^0-9]*\(\([0-9]\.\)\{0,4\}[0-9][^.]\).*/\1/p')
-semanticVersion=${semanticVersionWithPlus:0:$((${#semanticVersionWithPlus}-1))}
+cd cli
+dart run
+cd ..
+
+file=$(cat semver.txt)
+semanticVersion=$(echo $file)
 
 export APP_VERSION="$semanticVersion"
 
