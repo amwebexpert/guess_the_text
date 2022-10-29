@@ -12,6 +12,6 @@ class PrivacyPolicyWidget extends StatelessWidget {
 
     return ThemedTextLink(
         displayText: localizations.privacyPolicy,
-        hyperlink: 'https://amw-hangman-api.herokuapp.com/privacy-policy.html'); // TODO dot env config
+        hyperlink: 'https://amwebexpert.github.io/etoolbox/privacy-policy.html'); // TODO dot env config
   }
 }
